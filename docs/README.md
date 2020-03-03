@@ -5,4 +5,4 @@
 Useful links:
 * [User Guide](UserGuide.md)
 * [Developer Guide](UserGuide.md)
-* [About Us](AboutUs.md)
+* [About Us](NizarMohd.md)
