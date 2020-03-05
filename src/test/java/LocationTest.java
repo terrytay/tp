@@ -1,11 +1,14 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LocationTest {
 
     Location location1 = new Location("mac commons", "utown", "nil", true, true, 5);
+
+    LocationTest() throws Exception {
+    }
 
     @Test
     void getName() {
