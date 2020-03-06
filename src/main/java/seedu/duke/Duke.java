@@ -1,12 +1,14 @@
 package seedu.duke;
 
+import studyarea.StudyArea;
+
 import java.util.Scanner;
 
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -17,5 +19,8 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
+        StudyArea studyArea = new StudyArea();
+        String output = studyArea.getLocationsList().get(1).getAddress();
+        System.out.println(output);
     }
 }
