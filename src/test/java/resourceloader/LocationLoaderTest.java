@@ -8,10 +8,14 @@ import java.io.FileNotFoundException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LocationLoaderTest {
+
     LocationLoader locationLoader = new LocationLoader("library/locations.txt");
 
+    LocationLoaderTest() throws FileNotFoundException {
+    }
+
     @Test
-    void loadFile() throws FileNotFoundException {
+    void getFile() throws FileNotFoundException {
         locationLoader.loadFile();
         assertEquals(new File("library/locations.txt"), locationLoader.getFile());
     }

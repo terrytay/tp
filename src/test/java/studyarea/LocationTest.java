@@ -1,5 +1,7 @@
-import org.junit.jupiter.api.BeforeEach;
+package studyarea;
+
 import org.junit.jupiter.api.Test;
+import studyarea.Location;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
