@@ -2,7 +2,8 @@ package event;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Contains all the tests related to the Event class.
@@ -113,5 +114,5 @@ class EventTest {
         assertEquals(false, new Event("Team Meeting", "2020-03-21", "09:00",
                 "17:00", "1").hasKeyword("Class"));
     }
-    
+
 }
