@@ -38,7 +38,6 @@ public class EventList {
         ui.printWithIndentation("A new event with the following information has been added.");
         ui.printWithIndentation(newEvent.getEventInformation());
         ui.printLine();
-        events.add(newEvent);
     }
 
     /**
