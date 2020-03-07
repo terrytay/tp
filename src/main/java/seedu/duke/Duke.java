@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Duke {
 
-    private static final String FILE_PATH = "data" + File.separator + "EventList.txt";
+    private static final String FILE_PATH = "library" + File.separator + "eventList.txt";
     public static Ui ui = new Ui();
     public static EventLoader eventLoader;
     public static final String ADD_COMMAND = "add";
