@@ -12,17 +12,34 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+/**
+ * Handles the task of loading and storing events.
+ */
 public class EventLoader {
 
+    /** Location of data file. */
     private String filePath;
+    /** Directory of data file. */
     private Path fileDirectory;
 
+    /**
+     * Constructor for EventLoader object.
+     * Initialises the object with the file path provided.
+     *
+     * @param filePath The location of the data file.
+     */
     public EventLoader(String filePath) {
         this.filePath = filePath;
         this.fileDirectory = Paths.get(filePath).getParent();
     }
 
 
+    /**
+     * Reads the list of events stored previously and returns it as an ArrayList of Events.
+     *
+     * @return events The list of events stored previously.
+     */
     public ArrayList<Event> loadFile() {
         ArrayList<Event> events = new ArrayList<>();;
         File dataFile;
@@ -41,6 +58,12 @@ public class EventLoader {
         return events;
     }
 
+    /**
+     * Parses the Event details from the given string and returns a new event object with the specified details.
+     *
+     * @param taskDescription Contains all the details with regards to the Event.
+     * @return newEvent The new event created with the details provided.
+     */
     private Event parseEventDetails(String taskDescription) {
         String[] splitDescription = taskDescription.split("#", 5);
         String description = splitDescription[0];
@@ -48,9 +71,14 @@ public class EventLoader {
         String startTime = splitDescription[2];
         String endTime = splitDescription[3];
         String priority = splitDescription[4];
-        return new Event(description ,date ,startTime, endTime, priority);
+        Event newEvent = new Event(description, date, startTime, endTime, priority);
+        return newEvent;
     }
 
+
+    /**
+     * Creates a new data file when the application is run for the first time.
+     */
     private void createNewDataFile() {
 
         try {
@@ -61,8 +89,12 @@ public class EventLoader {
         }
     }
 
+    /**
+     * Saves the list of current tasks to the data file.
+     *
+     * @param events Represents the current list of events.
+     */
     public void saveEvents(ArrayList<Event> events) {
-
         try {
             FileWriter fw = new FileWriter(filePath);
             for (Event event: events) {
