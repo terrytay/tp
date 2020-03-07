@@ -30,10 +30,11 @@ public class EventList {
      */
     public void addEvent(Event newEvent) {
         ui.printLine();
+       
+        events.add(newEvent);
         System.out.println("A new event with the following information has been added.");
         System.out.println(newEvent.getEventInformation());
         ui.printLine();
-        events.add(newEvent);
     }
 
     /**
