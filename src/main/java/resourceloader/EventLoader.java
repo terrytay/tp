@@ -1,6 +1,7 @@
 package resourceloader;
 
 import event.Event;
+import ui.Ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,6 +45,7 @@ public class EventLoader {
         ArrayList<Event> events = new ArrayList<>();;
         File dataFile;
         Scanner s;
+        Ui ui = new Ui();
         try {
             dataFile = new File(filePath);
             s = new Scanner(dataFile);
@@ -54,6 +56,10 @@ public class EventLoader {
             }
         }  catch (FileNotFoundException e) {
             createNewDataFile();
+        } catch (Exception e) {
+            ui.printLine();
+            ui.printWithIndentation(e.getMessage());
+            ui.printLine();
         }
         return events;
     }
@@ -64,7 +70,7 @@ public class EventLoader {
      * @param taskDescription Contains all the details with regards to the Event.
      * @return newEvent The new event created with the details provided.
      */
-    private Event parseEventDetails(String taskDescription) {
+    private Event parseEventDetails(String taskDescription) throws Exception {
         String[] splitDescription = taskDescription.split("#", 5);
         String description = splitDescription[0];
         String date = splitDescription[1];

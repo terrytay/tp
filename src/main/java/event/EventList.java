@@ -129,9 +129,13 @@ public class EventList {
         ui.printLine();
         int eventNumber = 1;
         for (Event event:events) {
-            if (event.hasKeyword(keyword)) {
-                ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
-                eventNumber++;
+            try {
+                if (event.hasKeyword(keyword)) {
+                    ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
+                    eventNumber++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         if (eventNumber == 1) {
@@ -160,6 +164,10 @@ public class EventList {
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
             ui.printLine();
             ui.printWithIndentation("Wrong format to add events");
+            ui.printLine();
+        } catch (Exception e) {
+            ui.printLine();
+            ui.printWithIndentation(e.getMessage());
             ui.printLine();
         }
     }
