@@ -74,4 +74,7 @@ public class Event {
         return containsKeyword;
     }
 
+    public String getFormattedDetails() {
+        return description + "#" + date + "#" + startTime + "#" + endTime + "#" + priority;
+    }
 }
