@@ -1,14 +1,17 @@
 package seedu.duke;
 
 import event.EventList;
+import resourceloader.EventLoader;
 import ui.Ui;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Duke {
 
+    private static final String FILE_PATH = "library" + File.separator + "eventList.txt";
     public static Ui ui = new Ui();
-
+    public static EventLoader eventLoader;
     public static final String ADD_COMMAND = "add";
     public static final String VIEW_COMMAND = "view";
     public static final String PRIORITY_VIEW_COMMAND = "priority_view";
@@ -20,7 +23,7 @@ public class Duke {
     public static final String INVALID_COMMAND_MESSAGE = "Enter a valid command";
     public static final String BYE_COMMAND = "bye";
     public static final String BYE_MESSAGE = "Bye!!!!!!";
-    static EventList eventList = new EventList();
+    static EventList eventList;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -36,7 +39,10 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
+        eventLoader = new EventLoader(FILE_PATH);
+        eventList = new EventList(eventLoader.loadFile());
         runCommands();
+        eventLoader.saveEvents(eventList.events);
     }
 
     private static void runCommands() {
