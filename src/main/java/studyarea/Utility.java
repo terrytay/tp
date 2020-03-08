@@ -1,5 +1,7 @@
 package studyarea;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 /**
@@ -36,6 +38,7 @@ public class Utility {
     public static final String TAB = "\t ";
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
+    public static final String EMPTY_COMMAND = "Command entered is empty!";
 
     /**
      * This method ensures that the message printed is within the standard<br>
@@ -61,4 +64,5 @@ public class Utility {
         }
         return TAB + standardLengthMessage.toString().stripTrailing();
     }
+
 }

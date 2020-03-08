@@ -30,7 +30,8 @@ public class StudyAreaList {
      * LocationLoader class. The file is then load onto the software and then
      * parsed as an ArrayList to be stored in location in this StudyArea class.
      *
-     * @throws FileNotFoundException to be edited
+     * @throws FileNotFoundException if location.txt is missing.
+     * @throws IllegalStudyAreaException if data stored in location.txt is inconsistent.
      */
 
     public StudyAreaList() throws FileNotFoundException, IllegalStudyAreaException {
@@ -134,6 +135,7 @@ public class StudyAreaList {
      *
      * @param userIn This is the requirement entered by User
      * @return ArrayList of StudyAreas
+     * @throws IllegalStudyAreaException if User enters invalid commands
      */
 
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {

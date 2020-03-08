@@ -5,7 +5,9 @@ import ui.Ui;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import static studyarea.Utility.AVAILABLE_STUDY_AREAS;
+import static studyarea.Utility.EMPTY_COMMAND;
 import static studyarea.Utility.EMPTY_LIST;
 import static studyarea.Utility.END_COMMAND;
 import static studyarea.Utility.END_MESSAGE;
@@ -44,26 +46,33 @@ public class StudyAreaCommand {
      * @param command This is the command entered by User.
      * @param studyAreaList This is the list of all Study Areas in location.txt.
      * @return boolean status. False if User enters "end" , else will always return true;
+     * @throws IllegalStudyAreaException if command is invalid.
      */
 
-    public static boolean filterCommand(String command,StudyAreaList studyAreaList) {
-        switch (command) {
-        case END_COMMAND :
-            System.out.println(formatMessage(END_MESSAGE, MAX_LINE_LENGTH));
-            return false;
-        case HELP_COMMAND :
-            System.out.println(FLAGS);
-            break;
-        default:
-            try {
-                ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
-                printList(availStudyAreas);
-                System.out.println(formatMessage(PROMPT_USER, MAX_LINE_LENGTH));
-            } catch (IllegalStudyAreaException e) {
-                System.out.println(formatMessage(e.getMessage(), MAX_LINE_LENGTH));
+    public static boolean filterCommand(String command,StudyAreaList studyAreaList) throws IllegalStudyAreaException {
+
+        command = command.trim();
+        if (command.isEmpty()) {
+            throw new IllegalStudyAreaException(EMPTY_COMMAND);
+        } else {
+            switch (command) {
+            case END_COMMAND:
+                System.out.println(formatMessage(END_MESSAGE, MAX_LINE_LENGTH));
+                return false;
+            case HELP_COMMAND:
+                System.out.println(FLAGS);
+                break;
+            default:
+                try {
+                    ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
+                    printList(availStudyAreas);
+                    System.out.println(formatMessage(PROMPT_USER, MAX_LINE_LENGTH));
+                } catch (IllegalStudyAreaException e) {
+                    System.out.println(formatMessage(e.getMessage(), MAX_LINE_LENGTH));
+                }
             }
+            return true;
         }
-        return true;
     }
 
     /**
