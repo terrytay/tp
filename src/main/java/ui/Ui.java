@@ -12,4 +12,7 @@ public class Ui {
         System.out.println("____________________________________________________________________________________");
     }
 
+    public void printWithIndentation(String line) {
+        System.out.println("    " + line);
+    }
 }
