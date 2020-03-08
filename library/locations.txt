@@ -1,2 +1,8 @@
-MacCommons  2 College Ave West Education Resource Centre  -  true  true  5
-OCBC  2 College Ave West, Stephen Riady Centre  -  true  false  2
+MacCommons~2 College Ave West Education Resource Centre~Utown~true~true~5
+OCBC~2 College Ave West, Stephen Riady Centre~Utown~true~false~2
+EA Level 3~9 Engineering Drive 1,EA~Engineering~true~true~4
+EA Level 2~9 Engineering Drive 1~Engineering~true~true~4
+EA Level 1~9 Engineering Drive 1~Engineering~true~true~4
+EA Level 4~9 Engineering Drive 1, Outside Staff Offices~Engineering~true~false~6
+EA Level 5~9 Engineering Drive 1, Outside of the door beside EA05~Engineering~true~false~4
+EA Level 6~9 Engineering Drive 1, EA06-23~Engineering~true~true~4
