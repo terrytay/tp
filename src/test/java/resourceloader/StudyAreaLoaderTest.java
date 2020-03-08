@@ -1,17 +1,18 @@
 package resourceloader;
 
 import org.junit.jupiter.api.Test;
+import studyarea.StudyArea;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LocationLoaderTest {
+class StudyAreaLoaderTest {
 
-    LocationLoader locationLoader = new LocationLoader("library/locations.txt");
+    StudyAreaLoader locationLoader = new StudyAreaLoader("library/locations.txt");
 
-    LocationLoaderTest() throws FileNotFoundException {
+    StudyAreaLoaderTest() throws FileNotFoundException {
     }
 
     @Test
