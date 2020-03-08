@@ -1,3 +1,5 @@
+package studyarea;
+
 public class Location {
     private String name;
     private String address;
