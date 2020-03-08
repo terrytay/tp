@@ -3,6 +3,8 @@ package studyarea;
 import resourceloader.StudyAreaLoader;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import static studyarea.Utility.DUPLICATE_FLAGS;
 import static studyarea.Utility.FLAG;
 import static studyarea.Utility.INDOOR_FLAG;
@@ -67,6 +69,7 @@ public class StudyAreaList {
                     if (flags[0] == null) {
                         flags[0] = SIZE_FLAG;
                         flags[1] = Integer.toString(size);
+                        i++;
                     } else {
                         throw new IllegalStudyAreaException(DUPLICATE_FLAGS);
                     }
@@ -74,8 +77,6 @@ public class StudyAreaList {
                     throw new IllegalStudyAreaException(NOT_INTEGER);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     throw new IllegalStudyAreaException(NO_SIZE_INDICATED);
-                } finally {
-                    i++;
                 }
             } else if (commands[i].contains(FLAG)) {
                 isNotFlag = false;
@@ -145,17 +146,17 @@ public class StudyAreaList {
                 if (flag != null && isAvail) {
                     switch (flag) {
                     case PORTS_FLAG:
-                        isAvail = isAvail && studyArea.hasPort();
+                        isAvail = studyArea.hasPort();
                         break;
                     case INDOOR_FLAG:
-                        isAvail = isAvail && studyArea.isIndoor();
+                        isAvail = studyArea.isIndoor();
                         break;
                     case SIZE_FLAG:
-                        boolean isMaxPax = flags[1].equals(studyArea.getMaxPax().toString());
-                        isAvail = isAvail && isMaxPax;
+                        isAvail = Integer.toString(studyArea.getMaxPax()).equals(flags[1]);
+                        flags[1] = null; //so as to skip iteration on flags[1].
                         break;
                     default:
-                        isAvail = isAvail && containsKey(studyArea.getName(), studyArea.getFaculty(), flags[4]);
+                        isAvail = containsKey(studyArea.getName(), studyArea.getFaculty(), flags[4]);
                         break;
                     }
                 }
