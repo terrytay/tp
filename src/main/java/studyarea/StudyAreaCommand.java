@@ -58,10 +58,9 @@ public class StudyAreaCommand {
             try {
                 ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
                 printList(availStudyAreas);
+                System.out.println(formatMessage(PROMPT_USER, MAX_LINE_LENGTH));
             } catch (IllegalStudyAreaException e) {
                 System.out.println(formatMessage(e.getMessage(), MAX_LINE_LENGTH));
-            } finally {
-                System.out.println(formatMessage(PROMPT_USER, MAX_LINE_LENGTH));
             }
         }
         return true;
