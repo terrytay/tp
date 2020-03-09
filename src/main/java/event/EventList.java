@@ -14,13 +14,17 @@ public class EventList {
     Ui ui = new Ui();
 
     /** Stores the event information. */
-    private ArrayList<Event> events;
+    public ArrayList<Event> events;
 
     /**
      * Constructor for the EventList class.
      */
     public EventList() {
         events = new ArrayList<Event>();
+    }
+
+    public EventList(ArrayList<Event> events) {
+        this.events = events;
     }
 
     /**
@@ -30,10 +34,9 @@ public class EventList {
      */
     public void addEvent(Event newEvent) {
         ui.printLine();
-       
         events.add(newEvent);
-        System.out.println("A new event with the following information has been added.");
-        System.out.println(newEvent.getEventInformation());
+        ui.printWithIndentation("A new event with the following information has been added.");
+        ui.printWithIndentation(newEvent.getEventInformation());
         ui.printLine();
     }
 
@@ -45,7 +48,7 @@ public class EventList {
         System.out.println("Here is the list of events added so far:");
         int eventNumber = 1;
         for (Event event: events) {
-            System.out.println(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
         ui.printLine();
@@ -60,11 +63,11 @@ public class EventList {
         try {
             events.remove(index - 1);
             ui.printLine();
-            System.out.println("The event at the mentioned index has been deleted");
+            ui.printWithIndentation("The event at the mentioned index has been deleted");
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
             ui.printLine();
-            System.out.println("Enter a valid index");
+            ui.printWithIndentation("Enter a valid index");
             ui.printLine();
         }
 
@@ -76,7 +79,7 @@ public class EventList {
     public void clearEvents() {
         events.clear();
         ui.printLine();
-        System.out.println("The list of events is cleared.");
+        ui.printWithIndentation("The list of events is cleared.");
         ui.printLine();
     }
 
@@ -90,11 +93,11 @@ public class EventList {
         ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByPriority) {
-            System.out.println(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
         if (eventNumber == 1) {
-            System.out.println("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
@@ -108,11 +111,11 @@ public class EventList {
         ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByDate) {
-            System.out.println(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
         if (eventNumber == 1) {
-            System.out.println("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
@@ -126,13 +129,17 @@ public class EventList {
         ui.printLine();
         int eventNumber = 1;
         for (Event event:events) {
-            if (event.hasKeyword(keyword)) {
-                System.out.println(eventNumber + ") " + event.getEventInformation());
-                eventNumber++;
+            try {
+                if (event.hasKeyword(keyword)) {
+                    ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
+                    eventNumber++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         if (eventNumber == 1) {
-            System.out.println("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
@@ -156,7 +163,11 @@ public class EventList {
             addEvent(newEvent);
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
             ui.printLine();
-            System.out.println("Wrong format to add events");
+            ui.printWithIndentation("Wrong format to add events");
+            ui.printLine();
+        } catch (Exception e) {
+            ui.printLine();
+            ui.printWithIndentation(e.getMessage());
             ui.printLine();
         }
     }
