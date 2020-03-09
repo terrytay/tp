@@ -1,6 +1,9 @@
 package seedu.duke;
 
 import driver.Driver;
+import studyarea.IllegalStudyAreaException;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Duke {
@@ -9,7 +12,7 @@ public class Duke {
      * Main entry-point for the java.duke.Duke application.
      * @param args this is an optional argument.
      */
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws FileNotFoundException, IllegalStudyAreaException {
         String logo = "_______/\\\\\\\\\\_____________________________________________________/\\\\\\\\\\_____/\\\\\\__"
                 + "__________________________________________/\\\\\\____________\n"
                 + "______/\\\\\\///\\\\\\__________________________________________________\\/\\\\\\\\\\\\___\\/\\\\\\_"
