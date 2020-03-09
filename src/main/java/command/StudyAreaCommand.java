@@ -40,7 +40,7 @@ public class StudyAreaCommand {
 
     public static boolean filterCommand(String command, StudyAreaList studyAreaList) {
         switch (command) {
-        case Ui.END_COMMAND :
+        case Ui.BYE_COMMAND :
             System.out.println(Ui.formatMessage(Ui.END_MESSAGE, Ui.MAX_LINE_LENGTH));
             return false;
         case Ui.HELP_COMMAND :
@@ -62,19 +62,16 @@ public class StudyAreaCommand {
      * Executes the Study Area search feature.
      * @param studyAreaList studyAreaList object that holds information on studyAreas available.
      */
-    public static void runCommands(StudyAreaList studyAreaList) {
-
-        Ui ui = new Ui();
+    public static void runCommands(StudyAreaList studyAreaList, Ui ui) {
         ui.printLine();
-        System.out.println(Ui.formatMessage(Ui.START_STUDY_AREA_SEARCH, Ui.MAX_LINE_LENGTH));
-        Scanner in = new Scanner(System.in);
+        ui.printMessage(Ui.START_STUDY_AREA_SEARCH);
         boolean status = true;
         while (status) {
-            Ui.printLine();
-            String command = in.nextLine();
-            Ui.printLine();
+            ui.printLine();
+            String command = ui.getUserIn();
+            ui.printLine();
             status = filterCommand(command, studyAreaList);
         }
-        Ui.printLine();
+        ui.printLine();
     }
 }
