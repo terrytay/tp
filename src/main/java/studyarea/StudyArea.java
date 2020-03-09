@@ -1,9 +1,9 @@
 package studyarea;
 
+import ui.Ui;
+
 import static java.lang.System.lineSeparator;
-import static studyarea.Utility.ADDRESS_MAX_LENGTH;
-import static studyarea.Utility.TAB;
-import static studyarea.Utility.formatMessage;
+
 
 /**
  * This is the Study Area class. All study area is stored as a Study Area object.
@@ -32,7 +32,7 @@ public class StudyArea {
     public StudyArea(String name, String address, String faculty, boolean hasPort,
                     boolean isIndoor, int maxPax) {
         this.name = name;
-        this.address = formatMessage(address, ADDRESS_MAX_LENGTH).trim();
+        this.address = Ui.formatMessage(address, Ui.ADDRESS_MAX_LENGTH).trim();
         this.faculty = faculty;
         this.hasPort = hasPort;
         this.isIndoor = isIndoor;
@@ -68,13 +68,13 @@ public class StudyArea {
      * @return String value of all the attributes of the specific StudyArea.
      */
     public String toString() {
-        String text = TAB + "Name: " + this.name + lineSeparator() + TAB
-                 + "Address: " + this.address + lineSeparator() + TAB
-                 + "Faculty: " + this.faculty + lineSeparator() + TAB
-                 + "Port: " + this.hasPort + lineSeparator() + TAB
-                 + "Indoor: " + this.isIndoor + lineSeparator() + TAB
+        String text = Ui.TAB + "Name: " + this.name + lineSeparator() + Ui.TAB
+                 + "Address: " + this.address + lineSeparator() + Ui.TAB
+                 + "Faculty: " + this.faculty + lineSeparator() + Ui.TAB
+                 + "Port: " + this.hasPort + lineSeparator() + Ui.TAB
+                 + "Indoor: " + this.isIndoor + lineSeparator() + Ui.TAB
                  + "Average number of Pax: " + this.maxPax;
-        String line = TAB + "__________________________________________________________";
+        String line = Ui.TAB + "__________________________________________________________";
         return line + lineSeparator() + text + lineSeparator() + line;
     }
 
