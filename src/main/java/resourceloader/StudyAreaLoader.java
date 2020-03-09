@@ -2,19 +2,18 @@ package resourceloader;
 
 import studyarea.IllegalStudyAreaException;
 import studyarea.StudyArea;
+import ui.Ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static studyarea.Utility.INCONSISTENT_DATA_STORAGE;
-
 /**
  * This class loads all the required information of Study Areas that is stored in location.txt.
  */
 
-public class StudyAreaLoader implements Loader {
+public class StudyAreaLoader {
     private static final String DIVIDER = "~";
     private final String url;
     private File file;
@@ -24,7 +23,11 @@ public class StudyAreaLoader implements Loader {
         loadFile();
     }
 
-    @Override
+    /**
+     * Loads url into file.
+     *
+     * @throws FileNotFoundException if file is not present error
+     */
     public void loadFile() throws FileNotFoundException {
         try {
             file = new File(url);
@@ -33,17 +36,13 @@ public class StudyAreaLoader implements Loader {
         }
     }
 
-    @Override
-    public File getFile() {
-        return this.file;
-    }
-
     /**
      * Return the imported study area file as an ArrayList for the main controller
      * to add it to its database.
      *
      * @return buffer ArrayList of Location from study area file
      * @throws FileNotFoundException if location.txt does not exist.
+     * @throws IllegalStudyAreaException if data stored is inconsistent
      */
 
     public ArrayList<StudyArea> pushToDatabase() throws FileNotFoundException, IllegalStudyAreaException {
@@ -53,7 +52,7 @@ public class StudyAreaLoader implements Loader {
             String detailsOfLocation = input.nextLine();
             String[] detailsBuffer = detailsOfLocation.split(DIVIDER);
             if (detailsBuffer.length != 6) {
-                throw new IllegalStudyAreaException(INCONSISTENT_DATA_STORAGE);
+                throw new IllegalStudyAreaException(Ui.INCONSISTENT_DATA_STORAGE);
             }
             StudyArea studyArea = new StudyArea(detailsBuffer[0], detailsBuffer[1], detailsBuffer[2],
                     Boolean.parseBoolean(detailsBuffer[3]), Boolean.parseBoolean(detailsBuffer[4]),
