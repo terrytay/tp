@@ -1,6 +1,7 @@
 package ui;
 
 import studyarea.IllegalStudyAreaException;
+import studyarea.StudyArea;
 
 import java.io.File;
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import static java.lang.System.lineSeparator;
 
 /**
  * Contains functions used to interact with the user.
+ *
  */
 public class Ui {
     private final Scanner in;
@@ -67,74 +69,118 @@ public class Ui {
     public static final String EVENT_COMMAND = "event";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "Goodbye! Hope to see you again!";
-    public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or" +
-            " \"study\" to continue with your study area list. To leave, enter \"bye\".";
-    public static final String DAB = "\t ``````````````````````````````````````````````````````````\n" +
-            "\t ````````````````````````````````:v(v'`````````````````````\n" +
-            "\t ```````````````````````````,)4|ex` `L}````````````````````\n" +
-            "\t `````````````````````````!s\"'h `M:   ^z_;)T```````````````\n" +
-            "\t `````````````````````````Z   u|}Z:        \"}``````````````\n" +
-            "\t ``````````````````````:=?)                'B?L'```````````\n" +
-            "\t `````````````````````'Z                    ;Yp\"```````````\n" +
-            "\t `````````````````````.e                      ?_```````````\n" +
-            "\t ```````````````````'QDGH                    .5````````````\n" +
-            "\t ````````````````````I#g'         '_`        ||````````````\n" +
-            "\t ```````````:mX_``````YhL`      `'q!`   ?     h````````````\n" +
-            "\t ```````````'Qbs)|L=_V\" 'Y}     ^'q@&b=c=_`  ,Z````````````\n" +
-            "\t ````````````q>     'T,   ,o\"    ;\"@c.   .sVx~`````````````\n" +
-            "\t ````````````c!             \"bh` `,p       z:``````````````\n" +
-            "\t `````````````q.              ngDQmh8s     X'``````````````\n" +
-            "\t ``````````````LY\"             :n}>``b;   _V```````````````\n" +
-            "\t ````````````````q?,                ?;   \"V````````````````\n" +
-            "\t ``````````````KvR                  '  )x_`````````````````\n" +
-            "\t ``````````````zjL                  GLY\"```````````````````\n" +
-            "\t ```````````````M                 .I)``````````````````````\n" +
-            "\t ```````````````Lz                `D:``````````````````````\n" +
-            "\t ``````````````vu`    (I)_;\"\".      P.`````````````````````\n" +
-            "\t ``````````````p     :X.':^,\"=n    \"q``````````````````````\n" +
-            "\t `````````````)0X?^:)I````````m'   :j``````````````````````\n" +
-            "\t `````````````.IGD8k'`````````<&G55M```````````````````````\n" +
-            "\t ``````````````````````````````````````````````````````````";
+    public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or"
+            + " \"study\" to continue with your study area list. To leave, enter \"bye\".";
+    public static final String EMPTY_LOCATION = "Location entered is empty! Please type a location to search for "
+            + "StudyAreas!";
+
+    //@@author NizarMohd-reused
+    //Reused from https://www.netclipart.com/isee/iRwmhJb_bt21-rj-transparent-background/ and https://asciiart.club/
+    //Image for public static final String DAB is obtained from the first link and then generated in second link.
+    public static final String DAB = "\t ``````````````````````````````````````````````````````````\n"
+            + "\t ````````````````````````````````:v(v'`````````````````````\n"
+            + "\t ```````````````````````````,)4|ex` `L}````````````````````\n"
+            + "\t `````````````````````````!s\"'h `M:   ^z_;)T```````````````\n"
+            + "\t `````````````````````````Z   u|}Z:        \"}``````````````\n"
+            + "\t ``````````````````````:=?)                'B?L'```````````\n"
+            + "\t `````````````````````'Z                    ;Yp\"```````````\n"
+            + "\t `````````````````````.e                      ?_```````````\n"
+            + "\t ```````````````````'QDGH                    .5````````````\n"
+            + "\t ````````````````````I#g'         '_`        ||````````````\n"
+            + "\t ```````````:mX_``````YhL`      `'q!`   ?     h````````````\n"
+            + "\t ```````````'Qbs)|L=_V\" 'Y}     ^'q@&b=c=_`  ,Z````````````\n"
+            + "\t ````````````q>     'T,   ,o\"    ;\"@c.   .sVx~`````````````\n"
+            + "\t ````````````c!             \"bh` `,p       z:``````````````\n"
+            + "\t `````````````q.              ngDQmh8s     X'``````````````\n"
+            + "\t ``````````````LY\"             :n}>``b;   _V```````````````\n"
+            + "\t ````````````````q?,                ?;   \"V````````````````\n"
+            + "\t ``````````````KvR                  '  )x_`````````````````\n"
+            + "\t ``````````````zjL                  GLY\"```````````````````\n"
+            + "\t ```````````````M                 .I)``````````````````````\n"
+            + "\t ```````````````Lz                `D:``````````````````````\n"
+            + "\t ``````````````vu`    (I)_;\"\".      P.`````````````````````\n"
+            + "\t ``````````````p     :X.':^,\"=n    \"q``````````````````````\n"
+            + "\t `````````````)0X?^:)I````````m'   :j``````````````````````\n"
+            + "\t `````````````.IGD8k'`````````<&G55M```````````````````````\n"
+            + "\t ``````````````````````````````````````````````````````````";
+    //@@author
 
 
+    /**
+     * This is the constructor used to create the Ui class in Duke.run().
+     */
     public Ui() {
         this(System.in, System.out);
     }
 
+    /**
+     * This constructor assigns IO stream to the attributes of Ui.
+     *
+     * @param in This is the Input Stream for Ui.
+     * @param out This is the Output Stream for Ui.
+     */
     public Ui(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
     }
 
+    /**
+     * Returns the mode (event features or StudyArea features or exit) based on User input.
+     *
+     * @return an integer which is assigned to each mode.
+     */
     public int getMode() {
         String userIn = this.in.nextLine().toLowerCase();
-       switch (userIn) {
-           case EVENT_COMMAND :
-               return 1;
-           case STUDY_COMMAND :
-               return 2;
-           case BYE_COMMAND :
-               return -1;
-           default :
-               return 0;
-       }
+        switch (userIn) {
+        case EVENT_COMMAND :
+            return 1;
+        case STUDY_COMMAND :
+            return 2;
+        case BYE_COMMAND :
+            return -1;
+        default :
+            return 0;
+        }
     }
 
-    public String getUserIn(){
+    /**
+     * This method allows for other class to get User input.
+     *
+     * @return String input from User.
+     */
+    public String getUserIn() {
         return this.in.nextLine();
     }
 
+    /**
+     * This method closes the Input Stream after usage is completed.
+     */
     public void close() {
         this.in.close();
     }
 
-    public void printMessage(String message){
-        if(message.equals(GOODBYE_MESSAGE+DAB)){
+    /**
+     * This method allows other classes to print messages to interact with User.
+     *
+     * @param message This is the message that is intended to be printed to Users.
+     */
+    public void printMessage(String message) {
+        if (message.equals(GOODBYE_MESSAGE + DAB)) {
             this.out.println(formatMessage(GOODBYE_MESSAGE, MAX_LINE_LENGTH));
             this.out.println(DAB);
-        }else {
+        } else {
             this.out.println(formatMessage(message, MAX_LINE_LENGTH));
         }
+    }
+
+    /**
+     * This method allows for StudyAreaCommand to print StudyArea based on its actual format,
+     * so that formatMessage method does not interfere with the initial format.
+     *
+     * @param studyArea This is the StudyArea to be printed.
+     */
+    public void printStudyArea(StudyArea studyArea) {
+        this.out.println(studyArea.toString());
     }
 
     /**
@@ -143,7 +189,10 @@ public class Ui {
     public void printLine() {
         System.out.println(LINE);
     }
+
     /**
+     * This is a modification of a code from Stack Overflow to format strings into a standard length. Minor edition is
+     * made to ensure suitability with the program.
      * This method ensures that the message printed is within the standard<br>
      * length.
      * @param message is the String that we intend to format to a standard length<br>
@@ -152,6 +201,9 @@ public class Ui {
      * @return String of standard length per line
      */
 
+    //@@author NizarMohd-reused
+    //Reused from https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java
+    // with minor modification.
     public static String formatMessage(String message, int maxLength) {
         StringTokenizer token = new StringTokenizer(message, SPACE);
         StringBuilder standardLengthMessage = new StringBuilder(message.length());
@@ -167,11 +219,17 @@ public class Ui {
         }
         return TAB + standardLengthMessage.toString().stripTrailing();
     }
+    //@@author
 
     /**
      * Prints the welcome message and starts interaction with user.
      */
-    public void printWelcomeMessage(){
+    public void printWelcomeMessage() {
+
+        //@@author NizarMohd-reused
+        //Reused logo from http://patorjk.com/software/taag/#p=display&f=Graffiti&t=TypeSomething with minor
+        // modifications. The website above allows for generation of fonts in ascii format. Therefore, logo is
+        // generated from the service provided by the website.
         String logo = "_______/\\\\\\\\\\_____________________________________________________/\\\\\\\\\\_____/\\\\\\__"
                 + "__________________________________________/\\\\\\____________\n"
                 + "______/\\\\\\///\\\\\\__________________________________________________\\/\\\\\\\\\\\\___\\/\\\\\\_"
@@ -195,6 +253,7 @@ public class Ui {
                 + "_/\\\\\\_____\n"
                 + "______________\\/////________\\///____________\\////////_____\\////////\\//___\\///_____\\/////__"
                 +  "_\\///______\\////////_____\\//////////______\\///_____";
+        //@@author
         this.out.println("Hello from\n" + logo);
         this.out.println("What is your name?");
         printLine();
@@ -204,4 +263,5 @@ public class Ui {
         this.out.println(formatMessage(START_MESSAGE, MAX_LINE_LENGTH));
         printLine();
     }
+
 }

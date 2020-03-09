@@ -11,7 +11,9 @@ public class EventCommand {
     /**
      * Commands for Events.
      *
-     * @param eventList evenList
+     * @param eventList this is the evenList.
+     * @param ui allows for interaction with the User.
+     * @param eventLoader allows for saving of data after every execution of commands.
      */
     public static void runCommands(EventList eventList, Ui ui, EventLoader eventLoader) {
         Scanner in = new Scanner(System.in);

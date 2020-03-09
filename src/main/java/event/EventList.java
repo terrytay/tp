@@ -140,7 +140,7 @@ public class EventList {
 
     /**
      * Adds a new event to the list by parsing information from the user given string
-     * and calling {@link #addEvent(Event)} if the information is given in the correct format
+     * and calling {@link #addEvent(Event, Ui)} if the information is given in the correct format
      * to add the event.
      *
      * @param ui This allows Event List class to interact with User.
