@@ -23,9 +23,9 @@ public class Deadline {
      * @param date Date of specified Deadline
      * @param dueTime Due time of specified deadline.
      * @param priority Priority of specified deadline.
-     * @throws DateTimeParseException If wrong format is used for date, time fields.
+     * @throws Exception If wrong format is used for date, time fields.
      */
-    public Deadline(String description, String date, String dueTime, String priority) throws Exception{
+    public Deadline(String description, String date, String dueTime, String priority) throws Exception {
         parseDescription(description);
         parseDate(date);
         parseDueTime(dueTime);
@@ -95,6 +95,7 @@ public class Deadline {
      *
      * @param keyword The keyword to be matched with the description.
      * @return containsKeyword Indicates the presence/absence of keyword in the deadline's description.
+     * @throws Exception If no keyword is entered.
      */
     public boolean hasKeyword(String keyword) throws Exception {
         if (keyword.equals("")) {
