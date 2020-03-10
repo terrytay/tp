@@ -30,14 +30,14 @@ public class Driver {
 
         studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
         StudyAreaList studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
-
+        Ui ui = new Ui();
         if (mode == 1) {
             EventCommand eventCommand = new EventCommand();
-            eventCommand.runCommands(eventList);
+            eventCommand.runCommands(eventList, ui, eventLoader);
             eventLoader.saveEvents(eventList.events);
         } else {
             StudyAreaCommand studyAreaCommand = new StudyAreaCommand();
-            studyAreaCommand.runCommands(studyAreaList);
+            studyAreaCommand.runCommands(studyAreaList, ui);
         }
     }
 }
