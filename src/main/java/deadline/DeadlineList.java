@@ -11,6 +11,7 @@ import ui.Ui;
  */
 public class DeadlineList {
 
+    Ui ui = new Ui();
 
     /** Stores the deadline information. */
     public ArrayList<Deadline> deadlines;
@@ -30,26 +31,24 @@ public class DeadlineList {
      * Adds a new deadline to the list.
      *
      * @param newDeadline Deadline represents the new deadline tot be added.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void addDeadline(Deadline newDeadline, Ui ui) {
+    public void addDeadline(Deadline newDeadline) {
         ui.printLine();
         deadlines.add(newDeadline);
-        ui.printMessage("A new deadline with the following information has been added.");
-        ui.printMessage(newDeadline.getDeadlineInformation());
+        ui.printWithIndentation("A new deadline with the following information has been added.");
+        ui.printWithIndentation(newDeadline.getDeadlineInformation());
         ui.printLine();
     }
 
     /**
      * Displays the current list of deadlines.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void listDeadlines(Ui ui) {
+    public void listDeadlines() {
         ui.printLine();
         System.out.println("Here is the list of deadlines added so far:");
         int deadlineNumber = 1;
         for (Deadline deadline: deadlines) {
-            ui.printMessage(deadlineNumber + ") " + deadline.getDeadlineInformation());
+            ui.printWithIndentation(deadlineNumber + ") " + deadline.getDeadlineInformation());
             deadlineNumber++;
         }
         ui.printLine();
@@ -59,17 +58,16 @@ public class DeadlineList {
      * Deletes the deadline at the specified index.
      *
      * @param index The index (1-based) of the deadline to be deleted.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void deleteDeadline(int index, Ui ui) {
+    public void deleteDeadline(int index) {
         try {
             deadlines.remove(index - 1);
             ui.printLine();
-            ui.printMessage("The deadline at the mentioned index has been deleted");
+            ui.printWithIndentation("The deadline at the mentioned index has been deleted");
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
             ui.printLine();
-            ui.printMessage("Enter a valid index");
+            ui.printWithIndentation("Enter a valid index");
             ui.printLine();
         }
 
@@ -77,50 +75,47 @@ public class DeadlineList {
 
     /**
      * Clears all the deadlines currently stored.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void clearDeadlines(Ui ui) {
+    public void clearDeadlines() {
         deadlines.clear();
         ui.printLine();
-        ui.printMessage("The list of deadlines is cleared.");
+        ui.printWithIndentation("The list of deadlines is cleared.");
         ui.printLine();
     }
 
     /**
      * Lists all the tasks sorted by their priority.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void priorityView(Ui ui) {
+    public void priorityView() {
         ArrayList<Deadline> deadlinesSortedByPriority = deadlines;
         deadlinesSortedByPriority.sort(Comparator.comparingInt(Deadline::getPriority));
         Collections.reverse(deadlinesSortedByPriority);
         ui.printLine();
         int deadlineNumber = 1;
         for (Deadline deadline:deadlinesSortedByPriority) {
-            ui.printMessage(deadlineNumber + ") " + deadline.getDeadlineInformation());
+            ui.printWithIndentation(deadlineNumber + ") " + deadline.getDeadlineInformation());
             deadlineNumber++;
         }
         if (deadlineNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
 
     /**
      * Lists all the tasks sorted by date along with the days remaining.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void countdownView(Ui ui) {
+    public void countdownView() {
         ArrayList<Deadline> deadlinesSortedByDate = deadlines;
         deadlinesSortedByDate.sort(Comparator.comparing(Deadline::getDate));
         ui.printLine();
         int deadlineNumber = 1;
         for (Deadline deadline:deadlinesSortedByDate) {
-            ui.printMessage(deadlineNumber + ") " + deadline.getDeadlineInformation());
+            ui.printWithIndentation(deadlineNumber + ") " + deadline.getDeadlineInformation());
             deadlineNumber++;
         }
         if (deadlineNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
@@ -129,15 +124,14 @@ public class DeadlineList {
      * Displays the list of deadlines containing the keyword.
      *
      * @param keyword The keyword to be searched for.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void searchDeadlines(String keyword, Ui ui) {
+    public void searchDeadlines(String keyword) {
         ui.printLine();
         int deadlineNumber = 1;
         for (Deadline deadline:deadlines) {
             try {
                 if (deadline.hasKeyword(keyword)) {
-                    ui.printMessage(deadlineNumber + ") " + deadline.getDeadlineInformation());
+                    ui.printWithIndentation(deadlineNumber + ") " + deadline.getDeadlineInformation());
                     deadlineNumber++;
                 }
             } catch (Exception e) {
@@ -145,20 +139,19 @@ public class DeadlineList {
             }
         }
         if (deadlineNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
         ui.printLine();
     }
 
     /**
      * Adds a new deadline to the list by parsing information from the user given string
-     * and calling {@link #addDeadline(Deadline, Ui)} if the information is given in the correct format
+     * and calling {@link #addDeadline(Deadline)} if the information is given in the correct format
      * to add the deadline.
      *
      * @param deadlineDetails Contains all the information related to the deadline as provided by the user.
-     * @param ui This allows for the deadline class to interact with Users.
      */
-    public void add(String deadlineDetails, Ui ui) {
+    public void add(String deadlineDetails) {
         try {
             String[] details = deadlineDetails.split(" ",2)[1].split("/");
             String description = details[0];
@@ -166,14 +159,14 @@ public class DeadlineList {
             String dueTime = details[2].substring(2);
             String priority = details[3].substring(2);
             Deadline newDeadline =  new Deadline(description,date,dueTime, priority);
-            addDeadline(newDeadline, ui);
+            addDeadline(newDeadline);
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
             ui.printLine();
-            ui.printMessage("Wrong format to add deadlines");
+            ui.printWithIndentation("Wrong format to add deadlines");
             ui.printLine();
         } catch (Exception e) {
             ui.printLine();
-            ui.printMessage(e.getMessage());
+            ui.printWithIndentation(e.getMessage());
             ui.printLine();
         }
     }

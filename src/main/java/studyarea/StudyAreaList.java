@@ -1,6 +1,8 @@
 package studyarea;
 
 import ui.Ui;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
