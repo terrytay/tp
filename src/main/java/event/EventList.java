@@ -11,6 +11,7 @@ import ui.Ui;
  */
 public class EventList {
 
+    Ui ui = new Ui();
 
     /** Stores the event information. */
     public ArrayList<Event> events;
@@ -29,104 +30,108 @@ public class EventList {
     /**
      * Adds a new event to the list.
      *
-     * @param ui This allows Event List class to interact with User.
      * @param newEvent Event represents the new event tot be added.
      */
-    public void addEvent(Event newEvent, Ui ui) {
+    public void addEvent(Event newEvent) {
+        ui.printLine();
         events.add(newEvent);
-        ui.printMessage("A new event with the following information has been added.");
-        ui.printMessage(newEvent.getEventInformation());
+        ui.printWithIndentation("A new event with the following information has been added.");
+        ui.printWithIndentation(newEvent.getEventInformation());
+        ui.printLine();
     }
 
     /**
      * Displays the current list of events.
-     *
-     * @param ui This allows Event List class to interact with User.
      */
-    public void listEvents(Ui ui) {
-        ui.printMessage("Here is the list of events added so far:");
+    public void listEvents() {
+        ui.printLine();
+        System.out.println("Here is the list of events added so far:");
         int eventNumber = 1;
         for (Event event: events) {
-            ui.printMessage(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
+        ui.printLine();
     }
 
     /**
      * Deletes the event at the specified index.
      *
-     * @param ui This allows Event List class to interact with User.
      * @param index The index (1-based) of the event to be deleted.
      */
-    public void deleteEvent(int index, Ui ui) {
+    public void deleteEvent(int index) {
         try {
             events.remove(index - 1);
-            ui.printMessage("The event at the mentioned index has been deleted");
+            ui.printLine();
+            ui.printWithIndentation("The event at the mentioned index has been deleted");
+            ui.printLine();
         } catch (IndexOutOfBoundsException e) {
-            ui.printMessage("Enter a valid index");
+            ui.printLine();
+            ui.printWithIndentation("Enter a valid index");
+            ui.printLine();
         }
 
     }
 
     /**
      * Clears all the events currently stored.
-     *
-     * @param ui This allows Event List class to interact with User.
      */
-    public void clearEvents(Ui ui) {
+    public void clearEvents() {
         events.clear();
-        ui.printMessage("The list of events is cleared.");
+        ui.printLine();
+        ui.printWithIndentation("The list of events is cleared.");
+        ui.printLine();
     }
 
     /**
      * Lists all the tasks sorted by their priority.
-     *
-     * @param ui This allows Event List class to interact with User.
      */
-    public void priorityView(Ui ui) {
+    public void priorityView() {
         ArrayList<Event> eventsSortedByPriority = events;
         eventsSortedByPriority.sort(Comparator.comparingInt(Event::getPriority));
         Collections.reverse(eventsSortedByPriority);
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByPriority) {
-            ui.printMessage(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
         if (eventNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
      * Lists all the tasks sorted by date along with the days remaining.
-     *
-     * @param ui This allows Event List class to interact with User.
      */
-    public void countdownView(Ui ui) {
+    public void countdownView() {
         ArrayList<Event> eventsSortedByDate = events;
         eventsSortedByDate.sort(Comparator.comparing(Event::getDate));
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByDate) {
-            ui.printMessage(eventNumber + ") " + event.getEventInformation());
+            ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
         if (eventNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
      * Displays the list of events containing the keyword.
      *
-     * @param ui This allows Event List class to interact with User.
      * @param keyword The keyword to be searched for.
      */
-    public void searchEvents(String keyword, Ui ui) {
+    public void searchEvents(String keyword) {
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:events) {
             try {
                 if (event.hasKeyword(keyword)) {
-                    ui.printMessage(eventNumber + ") " + event.getEventInformation());
+                    ui.printWithIndentation(eventNumber + ") " + event.getEventInformation());
                     eventNumber++;
                 }
             } catch (Exception e) {
@@ -134,19 +139,19 @@ public class EventList {
             }
         }
         if (eventNumber == 1) {
-            ui.printMessage("The list is empty.");
+            ui.printWithIndentation("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
      * Adds a new event to the list by parsing information from the user given string
-     * and calling {@link #addEvent(Event, Ui)} if the information is given in the correct format
+     * and calling {@link #addEvent(Event)} if the information is given in the correct format
      * to add the event.
      *
-     * @param ui This allows Event List class to interact with User.
      * @param eventDetails Contains all the information related to the event as provided by the user.
      */
-    public void add(String eventDetails, Ui ui) {
+    public void add(String eventDetails) {
         try {
             String[] details = eventDetails.split(" ",2)[1].split("/");
             String description = details[0];
@@ -155,11 +160,15 @@ public class EventList {
             String endTime = details[3].substring(2);
             String priority = details[4].substring(2);
             Event newEvent =  new Event(description,date,startTime,endTime,priority);
-            addEvent(newEvent, ui);
+            addEvent(newEvent);
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
-            ui.printMessage("Wrong format to add events");
+            ui.printLine();
+            ui.printWithIndentation("Wrong format to add events");
+            ui.printLine();
         } catch (Exception e) {
-            ui.printMessage(e.getMessage());
+            ui.printLine();
+            ui.printWithIndentation(e.getMessage());
+            ui.printLine();
         }
     }
 }

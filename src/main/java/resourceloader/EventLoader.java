@@ -2,6 +2,7 @@ package resourceloader;
 
 import event.Event;
 import ui.Ui;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -57,7 +58,7 @@ public class EventLoader {
             createNewDataFile();
         } catch (Exception e) {
             ui.printLine();
-            ui.printMessage(e.getMessage());
+            ui.printWithIndentation(e.getMessage());
             ui.printLine();
         }
         return events;

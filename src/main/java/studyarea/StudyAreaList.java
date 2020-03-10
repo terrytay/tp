@@ -1,6 +1,8 @@
 package studyarea;
 
 import ui.Ui;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -108,7 +110,6 @@ public class StudyAreaList {
      *
      * @param userIn This is the requirement entered by User
      * @return ArrayList of StudyAreas
-     * @throws IllegalStudyAreaException if User enters invalid commands.
      */
 
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
