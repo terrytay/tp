@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import driver.Driver;
 import event.EventList;
 import parser.Parser;
 import command.EventCommand;
@@ -11,9 +10,6 @@ import studyarea.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import ui.Ui;
 import java.io.FileNotFoundException;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 
 /**
