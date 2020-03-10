@@ -1,63 +1,45 @@
 package command;
 
 import event.EventList;
+import parser.Parser;
 import ui.Ui;
 
 import java.util.Scanner;
 
+import static ui.Ui.BYE_COMMAND;
+
+/**
+ * Used to run all the functions related to events.
+ */
 public class EventCommand {
 
     /**
-     * Commands for Events.
+     * Runs all the command for events.
      *
-     * @param eventList evenList
+     * @param eventList Refers to the current list of events.
+     * @param ui UI object used to interact with user.
+     * @param parser Object used to parse the user input into commands.
      */
-    public static void runCommands(EventList eventList) {
-        Scanner in = new Scanner(System.in);
-        String command;
-        command = in.nextLine();
-        while (!command.equals(Ui.BYE_COMMAND)) {
+    public void runCommands(EventList eventList, Ui ui, Parser parser) {
+        eventList.printHelp();
+        Scanner sc = new Scanner(System.in);
+        String fullCommand;
+        Command command;
+
+        fullCommand = sc.nextLine();
+        while (!fullCommand.equals(BYE_COMMAND)) {
             try {
-                String commandType = command.split(" ")[0];
-                switch (commandType) {
-                case Ui.ADD_COMMAND:
-                    eventList.add(command);
-                    break;
-                case Ui.VIEW_COMMAND:
-                    eventList.listEvents();
-                    break;
-                case Ui.PRIORITY_VIEW_COMMAND:
-                    eventList.priorityView();
-                    break;
-                case Ui.COUNTDOWN_VIEW_COMMAND:
-                    eventList.countdownView();
-                    break;
-                case Ui.CLEAR_COMMAND:
-                    eventList.clearEvents();
-                    break;
-                case Ui.SEARCH_COMMAND:
-                    eventList.searchEvents(command.split(" ", 2)[1]);
-                    break;
-                case Ui.DELETE_COMMAND:
-                    eventList.deleteEvent(Integer.parseInt(command.split(" ", 2)[1]));
-                    break;
-                default:
-                    Ui.printLine();
-                    System.out.println(Ui.INVALID_COMMAND_MESSAGE);
-                    Ui.printLine();
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                Ui.printLine();
-                System.out.println(Ui.INVALID_INDEX_MESSAGE);
-                Ui.printLine();
-            } catch (IndexOutOfBoundsException e) {
-                Ui.printLine();
-                System.out.println(Ui.INVALID_COMMAND_MESSAGE);
-                Ui.printLine();
+                command = parser.parseCommand(fullCommand, ui);
+                command.executeCommand(eventList);
+            } catch (Exception exception) {
+                ui.printLine();
+                ui.printWithIndentation(exception.getMessage());
+                ui.printLine();
             }
-            command = in.nextLine();
+            ui.printEmptyLine();
+            fullCommand = sc.nextLine();
         }
-        System.out.println(Ui.BYE_MESSAGE);
+        ui.printByeMessage();
     }
+
 }
