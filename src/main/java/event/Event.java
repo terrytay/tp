@@ -112,7 +112,6 @@ public class Event {
      *
      * @param keyword The keyword to be matched with the description.
      * @return containsKeyword Indicates the presence/absence of keyword in the event's description.
-     * @throws Exception to be edited
      */
     public boolean hasKeyword(String keyword) throws Exception {
         if (keyword.equals("")) {
