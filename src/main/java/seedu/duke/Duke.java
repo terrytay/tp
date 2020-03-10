@@ -12,7 +12,7 @@ public class Duke {
 
     /**
      * Main entry-point for the java.duke.Duke application.
-     * @param args
+     * @param args Commandline argument
      */
     public static void main(String[] args) throws Exception {
         ui.printWelcomeMessage();
