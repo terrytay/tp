@@ -32,16 +32,15 @@ public class Duke {
      */
     public Duke()  {
         try {
+            ui = new Ui();
+            parser = new Parser();
             eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
             eventList = new EventList(eventLoader.loadFile());
             studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
             studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
-            ui = new Ui();
-            parser = new Parser();
         } catch (FileNotFoundException | IllegalStudyAreaException e) {
             Ui ui = new Ui();
             ui.printMessage(e.getMessage());
-            ui.close();
         }
     }
 
@@ -68,7 +67,7 @@ public class Duke {
                 ui.printMessage(Ui.WRONG_INPUT);
                 break;
             }
-            ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+            ui.printWithIndentation(Ui.INTERMEDIATE_MESSAGE);
             ui.printLine();
         }
         eventLoader.saveEvents(eventList.events);

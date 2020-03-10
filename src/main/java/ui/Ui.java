@@ -50,15 +50,16 @@ public class Ui {
     public static final String TAB = "\t ";
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
-    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"event\" to start your event"
-            + " list! If you are in the mood to mug and you want to start your study area list, enter \"study\" !"
-            + "If you want to exit, enter \"bye\" !";
+    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"event\" to start\n"
+            + "    your event list! If you are in the mood to mug and you\n"
+            + "    want to start your study area list, enter \"study\" !If\n"
+            + "    you want to exit, enter \"bye\" !";
     public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
     public static final String EVENT_COMMAND = "event";
     public static final String STUDY_COMMAND = "study";
-    public static final String GOODBYE_MESSAGE = "Goodbye! Hope to see you again!";
-    public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or"
-            + " \"study\" to continue with your study area list. To leave, enter \"bye\".";
+    public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
+    public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or\n"
+            + "    \"study\" to continue with your study area list. To leave, enter \"bye\".";
     public static final String EMPTY_LOCATION = "Location entered is empty! Please type a location to search for "
             + "StudyAreas!";
 
@@ -171,10 +172,10 @@ public class Ui {
      */
     public void printMessage(String message) {
         if (message.equals(GOODBYE_MESSAGE + DAB)) {
-            this.out.println(formatMessage(GOODBYE_MESSAGE, MAX_LINE_LENGTH));
+            this.out.println(GOODBYE_MESSAGE);
             this.out.println(DAB);
         } else {
-            this.out.println(formatMessage(message, MAX_LINE_LENGTH));
+            this.out.println(message);
         }
     }
 
@@ -187,37 +188,6 @@ public class Ui {
     public void printStudyArea(StudyArea studyArea) {
         this.out.println(studyArea.toString());
     }
-
-    /**
-     * This is a modification of a code from Stack Overflow to format strings into a standard length. Minor edition is
-     * made to ensure suitability with the program.
-     * This method ensures that the message printed is within the standard<br>
-     * length.
-     * @param message is the String that we intend to format to a standard length<br>
-     *                per line.<br>
-     * @param maxLength This is the standard length intended to be formatted.
-     * @return String of standard length per line
-     */
-
-    //@@author NizarMohd-reused
-    //Reused from https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java
-    // with minor modification.
-    public static String formatMessage(String message, int maxLength) {
-        StringTokenizer token = new StringTokenizer(message, SPACE);
-        StringBuilder standardLengthMessage = new StringBuilder(message.length());
-        int lineLength = 0;
-        while (token.hasMoreTokens()) {
-            String word = token.nextToken();
-            if (lineLength + word.length() > maxLength) {
-                standardLengthMessage.append("\n\t ");
-                lineLength = 0;
-            }
-            standardLengthMessage.append(word).append(SPACE);
-            lineLength += word.length() + 1;
-        }
-        return TAB + standardLengthMessage.toString().stripTrailing();
-    }
-    //@@author
 
     /**
      * Display welcome message.
@@ -258,7 +228,7 @@ public class Ui {
         String name = this.in.nextLine();
         printLine();
         this.out.println(TAB + "Hello " + name + "!");
-        this.out.println(formatMessage(START_MESSAGE, MAX_LINE_LENGTH));
+        printWithIndentation(START_MESSAGE);
         printLine();
     }
 
