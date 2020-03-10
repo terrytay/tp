@@ -70,11 +70,11 @@ public class StudyAreaCommand {
         Scanner in = new Scanner(System.in);
         boolean status = true;
         while (status) {
-            Ui.printLine();
+            ui.printLine();
             String command = in.nextLine();
-            Ui.printLine();
+            ui.printLine();
             status = filterCommand(command, studyAreaList);
         }
-        Ui.printLine();
+        ui.printLine();
     }
 }

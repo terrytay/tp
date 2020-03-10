@@ -110,6 +110,7 @@ public class StudyAreaList {
      *
      * @param userIn This is the requirement entered by User
      * @return ArrayList of StudyAreas
+     * @throws IllegalStudyAreaException If error is encountered during execution.
      */
 
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
