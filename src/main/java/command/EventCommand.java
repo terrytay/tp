@@ -20,7 +20,7 @@ public class EventCommand {
      * @param ui UI object used to interact with user.
      * @param parser Object used to parse the user input into commands.
      */
-    public void runCommands(EventList eventList, Ui ui, Parser parser) {
+    public static void runCommands(EventList eventList, Ui ui, Parser parser) {
         eventList.printHelp();
         Scanner sc = new Scanner(System.in);
         String fullCommand;

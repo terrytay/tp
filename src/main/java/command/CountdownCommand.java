@@ -22,6 +22,6 @@ public class CountdownCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.countdownView();
+        eventList.countdownView(ui);
     }
 }

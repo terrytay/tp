@@ -34,7 +34,7 @@ public class AddCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) {
-        eventList.addEvent(newEvent);
+        eventList.addEvent(newEvent, ui);
     }
 
 }

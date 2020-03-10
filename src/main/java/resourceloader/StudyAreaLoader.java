@@ -42,7 +42,7 @@ public class StudyAreaLoader {
      *
      * @return buffer ArrayList of Location from study area file
      * @throws FileNotFoundException if location.txt does not exist.
-     * @throws IllegalStudyAreaException If error is encountered during execution.
+     * @throws IllegalStudyAreaException if data stored is inconsistent
      */
 
     public ArrayList<StudyArea> pushToDatabase() throws FileNotFoundException, IllegalStudyAreaException {

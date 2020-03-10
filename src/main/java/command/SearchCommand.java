@@ -27,6 +27,6 @@ public class SearchCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.searchEvents(keyword);
+        eventList.searchEvents(keyword, ui);
     }
 }

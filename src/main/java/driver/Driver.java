@@ -40,7 +40,7 @@ public class Driver {
             eventLoader.saveEvents(eventList.events);
         } else {
             StudyAreaCommand studyAreaCommand = new StudyAreaCommand();
-            studyAreaCommand.runCommands(studyAreaList);
+            studyAreaCommand.runCommands(studyAreaList, ui);
         }
     }
 }

@@ -32,6 +32,6 @@ public class DeleteCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.deleteEvent(indexToDelete);
+        eventList.deleteEvent(indexToDelete, ui);
     }
 }

@@ -22,6 +22,6 @@ public class PriorityViewCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.priorityView();
+        eventList.priorityView(ui);
     }
 }

@@ -22,6 +22,6 @@ public class ViewCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.listEvents();
+        eventList.listEvents(ui);
     }
 }

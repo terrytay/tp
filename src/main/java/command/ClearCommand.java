@@ -22,6 +22,6 @@ public class ClearCommand extends Command {
 
     @Override
     public void executeCommand(EventList eventList) throws Exception {
-        eventList.clearEvents();
+        eventList.clearEvents(ui);
     }
 }
