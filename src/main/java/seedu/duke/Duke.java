@@ -1,59 +1,77 @@
 package seedu.duke;
 
-import driver.Driver;
+import command.EventCommand;
+import command.StudyAreaCommand;
+import event.EventList;
+import resourceloader.EventLoader;
+import resourceloader.StudyAreaLoader;
 import studyarea.IllegalStudyAreaException;
-
+import studyarea.StudyAreaList;
+import ui.Ui;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
+/**
+ * This is Duke class, which forms the main class of the program.
+ */
 public class Duke {
+    private static EventLoader eventLoader;
+    protected static StudyAreaLoader studyAreaLoader;
+    private static EventList eventList;
+    private static StudyAreaList studyAreaList;
+
+    /**
+     * This is the constructor to create a new Duke program every time user runs the main loop.
+     */
+    public Duke()  {
+        try {
+            eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
+            eventList = new EventList(eventLoader.loadFile());
+            studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
+            studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
+        } catch (FileNotFoundException | IllegalStudyAreaException e) {
+            Ui ui = new Ui();
+            ui.printMessage(e.getMessage());
+            ui.close();
+        }
+    }
+
+    /**
+     * This method runs the program.
+     */
+    public void run() {
+        Ui ui = new Ui();
+        ui.printWelcomeMessage();
+        boolean status = true;
+        while (status) {
+            int mode = ui.getMode();
+            switch (mode) {
+            case -1:
+                status = false;
+                break;
+            case 1:
+                EventCommand.runCommands(eventList, ui, eventLoader);
+                eventLoader.saveEvents(eventList.events);
+                break;
+            case 2:
+                StudyAreaCommand.runCommands(studyAreaList, ui);
+                break;
+            default:
+                ui.printLine();
+                ui.printMessage(Ui.WRONG_INPUT);
+                break;
+            }
+            ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+            ui.printLine();
+        }
+        ui.printMessage(Ui.GOODBYE_MESSAGE + Ui.DAB);
+        ui.close();
+    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
      * @param args this is an optional argument.
      */
-    public static void main(String[] args) throws FileNotFoundException, IllegalStudyAreaException {
-        String logo = "_______/\\\\\\\\\\_____________________________________________________/\\\\\\\\\\_____/\\\\\\__"
-                + "__________________________________________/\\\\\\____________\n"
-                + "______/\\\\\\///\\\\\\__________________________________________________\\/\\\\\\\\\\\\___\\/\\\\\\_"
-                + "_________________________________________/\\\\\\\\\\\\\\_________\n"
-                + "_____/\\\\\\/__\\///\\\\\\____________________/\\\\\\\\\\\\\\\\___________________\\/\\\\\\/\\\\\\_"
-                + "_\\/\\\\\\___/\\\\\\__________________________________/\\\\\\\\\\\\\\\\\\_______\n"
-                + "_____/\\\\\\______\\//\\\\\\___/\\\\/\\\\\\\\\\\\\\____/\\\\\\////\\\\\\___/\\\\\\\\\\\\\\\\\\___"
-                + "__\\/\\\\\\//\\\\\\_\\/\\\\\\__\\///_______/\\\\\\\\\\\\\\\\______/\\\\\\\\\\\\\\\\__"
-                + "_\\//\\\\\\\\\\\\\\_______\n"
-                + "_____\\/\\\\\\_______\\/\\\\\\__\\/\\\\\\/////\\\\\\__\\//\\\\\\\\\\\\\\\\\\__\\////////\\\\\\___"
-                + "_\\/\\\\\\\\//\\\\\\\\/\\\\\\___/\\\\\\____/\\\\\\//////_____/\\\\\\/////\\\\\\___\\//\\\\\\\\\\____"
-                + "___\n"
-                + "______\\//\\\\\\______/\\\\\\___\\/\\\\\\___\\///____\\///////\\\\\\____/\\\\\\\\\\\\\\\\\\\\__"
-                + "_\\/\\\\\\_\\//\\\\\\/\\\\\\__\\/\\\\\\___/\\\\\\___________/\\\\\\\\\\\\\\\\\\\\\\_____\\//\\\\\\__"
-                + "_____\n"
-                + "________\\///\\\\\\__/\\\\\\_____\\/\\\\\\___________/\\\\_____\\\\\\___/\\\\\\/////\\\\\\__"
-                + "_\\/\\\\\\__\\//\\\\\\\\\\\\__\\/\\\\\\__\\//\\\\\\_________\\//\\\\///////_______\\///_______\n"
-                + "____________\\///\\\\\\\\\\/______\\/\\\\\\__________\\//\\\\\\\\\\\\\\\\__"
-                + "_\\//\\\\\\\\\\\\\\\\/\\\\"
-                + "_\\/\\\\\\___\\//\\\\\\\\\\__\\/\\\\\\___\\///\\\\\\\\\\\\\\\\___\\//\\\\\\\\\\\\\\\\\\\\_____"
-                + "_/\\\\\\_____\n"
-                + "______________\\/////________\\///____________\\////////_____\\////////\\//___\\///_____\\/////__"
-                +  "_\\///______\\////////_____\\//////////______\\///_____";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
-
-        /**
-         * To run:
-         * events: enter 1
-         * study areas: enter 0
-         * To end events loop: enter bye in events prog
-         * To end study areas loop: enter end in study area loop
-         * To end overall prog, enter ctrl+c or ctrl+z
-         * Take note: this is still temporary
-         */
-        while (true) {
-            Scanner mode = new Scanner(System.in);
-            Driver driver = new Driver(mode.nextInt());
-        }
+    public static void main(String[] args) {
+        new Duke().run();
     }
 }
