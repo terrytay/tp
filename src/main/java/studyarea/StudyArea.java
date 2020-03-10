@@ -32,7 +32,7 @@ public class StudyArea {
     public StudyArea(String name, String address, String faculty, boolean hasPort,
                      boolean isIndoor, int maxPax) {
         this.name = name;
-        this.address = Ui.formatMessage(address, Ui.ADDRESS_MAX_LENGTH).trim();
+        this.address = address.trim();
         this.faculty = faculty;
         this.hasPort = hasPort;
         this.isIndoor = isIndoor;
