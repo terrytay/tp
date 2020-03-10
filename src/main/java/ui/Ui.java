@@ -48,7 +48,7 @@ public class Ui {
             + "Enter \"help\" for a list of supported flags. Flags should only come after location, if a criteria for"
             + " location is entered. When you are done with the search, enter \"bye\".";
     public static final String PROMPT_USER = "Please enter the location for your desired study area.";
-    public static final String FLAGS = "\t Here is a list of supported flags!\n\t -p for study areas with ports\n\t"
+    public static final String FLAGS = "Here is a list of supported flags!\n\t -p for study areas with ports\n\t"
             + " -i for study areas that are indoors\n\t -s {size} for maximum number of pax";
     public static final String AVAILABLE_STUDY_AREAS = "Here are the available study areas!";
     public static final String EMPTY_LIST = "Oops! Based on your criteria we were not able to find a compatible study"

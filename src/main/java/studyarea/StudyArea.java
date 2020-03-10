@@ -30,7 +30,7 @@ public class StudyArea {
      */
 
     public StudyArea(String name, String address, String faculty, boolean hasPort,
-                    boolean isIndoor, int maxPax) {
+                     boolean isIndoor, int maxPax) {
         this.name = name;
         this.address = Ui.formatMessage(address, Ui.ADDRESS_MAX_LENGTH).trim();
         this.faculty = faculty;
@@ -99,11 +99,11 @@ public class StudyArea {
      */
     public String toString() {
         String text = Ui.TAB + "Name: " + this.name + lineSeparator() + Ui.TAB
-                 + "Address: " + this.address + lineSeparator() + Ui.TAB
-                 + "Faculty: " + this.faculty + lineSeparator() + Ui.TAB
-                 + "Port: " + this.hasPort + lineSeparator() + Ui.TAB
-                 + "Indoor: " + this.isIndoor + lineSeparator() + Ui.TAB
-                 + "Average number of Pax: " + this.maxPax;
+                + "Address: " + this.address + lineSeparator() + Ui.TAB
+                + "Faculty: " + this.faculty + lineSeparator() + Ui.TAB
+                + "Port: " + this.hasPort + lineSeparator() + Ui.TAB
+                + "Indoor: " + this.isIndoor + lineSeparator() + Ui.TAB
+                + "Average number of Pax: " + this.maxPax;
         String line = Ui.TAB + "__________________________________________________________";
         return line + lineSeparator() + text + lineSeparator() + line;
     }
