@@ -9,8 +9,10 @@ import java.util.Scanner;
 public class Duke {
 
     private static Ui ui = new Ui();
+
     /**
      * Main entry-point for the java.duke.Duke application.
+     * @param args
      */
     public static void main(String[] args) throws Exception {
         ui.printWelcomeMessage();

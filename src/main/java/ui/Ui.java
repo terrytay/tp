@@ -64,10 +64,8 @@ public class Ui {
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
 
     /**
-     * This method ensures that the message printed is within the standard<br>
-     * length.
-     * @param message is the String that we intend to format to a standard length<br>
-     *                per line.<br>
+     * This method ensures that the message printed is within the standard length.
+     * @param message is the String that we intend to format to a standard length per line.
      * @param maxLength This is the standard length intended to be formatted.
      * @return String of standard length per line
      */
@@ -88,6 +86,9 @@ public class Ui {
         return TAB + standardLengthMessage.toString().stripTrailing();
     }
 
+    /**
+     * Display the list of supported commands.
+     */
     public void printHelp() {
         printLine();
         System.out.println("OrgaNice! Supports the following commands");
@@ -98,16 +99,21 @@ public class Ui {
         System.out.println("priority_view ----------------------------- View existing events based on priority");
         System.out.println("countdown --------------------------------- View existing events based on days left");
         System.out.println("clear ------------------------------------- Delete all events");
-        System.out.println("search <keyword found in event> ----------- View existing events that contains the keyword");
+        System.out.println("search <keyword found in event> ----------- View existing events that contains "
+                + "the keyword");
         System.out.println("delete <index number of event> ------------ Delete the event");
         System.out.println("bye --------------------------------------- Terminate program");
         System.out.println("Notes:");
         System.out.println("*All dates should follow YYYY-MM-DD format");
         System.out.println("*All timing should follow 24 hour clock");
-        System.out.println("*There are 4 levels of priority, with 1 being the most urgent, and 4 being the least urgent");
+        System.out.println("*There are 4 levels of priority, with 1 being the most urgent, and 4 being the "
+                + "least urgent");
         printLine();
     }
 
+    /**
+     * Display welcome message.
+     */
     public void printWelcomeMessage() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
