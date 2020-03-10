@@ -58,7 +58,7 @@ public class EventLoader {
             createNewDataFile();
         } catch (Exception e) {
             ui.printLine();
-            ui.printMessage(e.getMessage());
+            ui.printWithIndentation(e.getMessage());
             ui.printLine();
         }
         return events;

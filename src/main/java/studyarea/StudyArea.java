@@ -6,7 +6,7 @@ import static java.lang.System.lineSeparator;
 
 
 /**
- * This is the StudyArea class. All study area is stored as a Study Area object.
+ * This is the Study Area class. All study area is stored as a Study Area object.
  */
 
 public class StudyArea {
@@ -18,15 +18,15 @@ public class StudyArea {
     private int maxPax;
 
     /**
-     * Constructs a StudyArea class for a study area with its information
+     * Constructs a Location class for a study area location with its information
      * Precondition: 'All variables have to be filled.
      *
-     * @param name name of StudyArea
-     * @param address address of StudyArea
-     * @param faculty faculty of StudyArea
+     * @param name name of study location
+     * @param address address of study location
+     * @param faculty faculty of study location
      * @param hasPort true for availability of ports, else false
      * @param isIndoor true for indoor, else false
-     * @param maxPax maximum number of seats for this StudyArea
+     * @param maxPax maximum number of seats for this study area
      */
 
     public StudyArea(String name, String address, String faculty, boolean hasPort,
@@ -39,56 +39,26 @@ public class StudyArea {
         this.maxPax = maxPax;
     }
 
-    /**
-     * This is the getter for the name attribute.
-     *
-     * @return general name of the StudyArea.
-     */
     public String getName() {
         return this.name;
     }
 
-    /**
-     * This is the getter for the address attribute.
-     *
-     * @return physical address of the StudyArea.
-     */
     public String getAddress() {
         return this.address;
     }
 
-    /**
-     * This is the getter for the faculty attribute.
-     *
-     * @return the name of the faculty that the StudyArea is located at.
-     */
     public String getFaculty() {
         return this.faculty;
     }
 
-    /**
-     * This is the getter for the hasPort attribute.
-     *
-     * @return true if the StudyArea has ports and false if otherwise.
-     */
     public boolean hasPort() {
         return this.hasPort;
     }
 
-    /**
-     * This is the getter for the isIndoor attribute.
-     *
-     * @return true if StudyArea is indoors and false if otherwise.
-     */
     public boolean isIndoor() {
         return this.isIndoor;
     }
 
-    /**
-     * This is the getter for the maxPax attribute.
-     *
-     * @return maximum number of pax the StudyArea can hold.
-     */
     public Integer getMaxPax() {
         return this.maxPax;
     }
