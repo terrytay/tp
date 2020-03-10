@@ -1,39 +1,12 @@
 package seedu.duke;
 
-import command.EventCommand;
-import command.StudyAreaCommand;
-import event.EventList;
-import resourceloader.EventLoader;
-import resourceloader.StudyAreaLoader;
-import studyarea.IllegalStudyAreaException;
-import studyarea.StudyAreaList;
-import ui.Ui;
-import java.io.FileNotFoundException;
-
-/**
- * This is Duke class, which forms the main class of the program.
- */
 public class Duke {
     private static EventLoader eventLoader;
     protected static StudyAreaLoader studyAreaLoader;
     private static EventList eventList;
     private static StudyAreaList studyAreaList;
 
-    /**
-     * This is the constructor to create a new Duke program every time user runs the main loop.
-     */
-    public Duke()  {
-        try {
-            eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
-            eventList = new EventList(eventLoader.loadFile());
-            studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
-            studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
-        } catch (FileNotFoundException | IllegalStudyAreaException e) {
-            Ui ui = new Ui();
-            ui.printMessage(e.getMessage());
-            ui.close();
-        }
-    }
+    private static Ui ui = new Ui();
 
     /**
      * This method runs the program.
