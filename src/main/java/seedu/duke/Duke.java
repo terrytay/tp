@@ -1,10 +1,14 @@
 package seedu.duke;
 
 import driver.Driver;
+import ui.Ui;
+
 import java.util.Scanner;
+
 
 public class Duke {
 
+    private static Ui ui = new Ui();
     /**
      * Main entry-point for the java.duke.Duke application.
      */

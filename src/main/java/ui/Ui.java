@@ -86,6 +86,7 @@ public class Ui {
             lineLength += word.length() + 1;
         }
         return TAB + standardLengthMessage.toString().stripTrailing();
+    }
 
     public void printHelp() {
         printLine();

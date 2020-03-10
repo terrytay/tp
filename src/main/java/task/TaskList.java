@@ -2,7 +2,7 @@ package task;
 
 abstract public class TaskList {
     /**
-     * Tasklist is an abstract class that oversees all task-related classes.
+     * TaskList is an abstract class that oversees all task-related classes.
      * The current task-related classes are events, deadlines, assignments
      * TaskList stores all tasks in one large array, allowing the user to access the priorityView and countdownView of all tasks
      */
