@@ -39,8 +39,7 @@ public class Duke {
             studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
             studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
         } catch (FileNotFoundException | IllegalStudyAreaException e) {
-            Ui ui = new Ui();
-            ui.printMessage(e.getMessage());
+            // Handle issue later
         }
     }
 
