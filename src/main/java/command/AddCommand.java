@@ -2,6 +2,7 @@ package command;
 
 import event.Event;
 import event.EventList;
+import ui.Ui;
 
 /**
  * This command is used to add new events to the event list.
@@ -21,8 +22,9 @@ public class AddCommand extends Command {
      */
     public AddCommand(String[] eventDetails, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("Wrong format used to add an event");
+            throw new Exception("Event details are not provided");
         }
+      
         String[] details = eventDetails[1].split("/");
         String description = details[0];
         String date = details[1].substring(2);
@@ -33,7 +35,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.addEvent(newEvent, ui);
     }
 

@@ -22,8 +22,22 @@ public class EventList {
         events = new ArrayList<Event>();
     }
 
+    /**
+     * Overloaded constructor for EventList class.
+     *
+     * @param events The list of events the class's list of events is initialised with.
+     */
     public EventList(ArrayList<Event> events) {
         this.events = events;
+    }
+
+    /**
+     * Returns the number of events currently stored.
+     *
+     * @return The number of events stored currently.
+     */
+    public int getEventListSize() {
+        return events.size();
     }
 
     /**
@@ -61,15 +75,20 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param index The index (1-based) of the event to be deleted.
+     * @throws Exception If the index specified is invalid.
      */
     public void deleteEvent(int index, Ui ui) {
         ui.printLine();
         try {
+            if (index > events.size() | index <= 0) {
+                throw new IndexOutOfBoundsException();
+            }
             events.remove(index - 1);
+            ui.printLine();
             ui.printMessage("The event at the mentioned index has been deleted");
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
-            ui.printMessage("Enter a valid index");
+            ui.printMessage("Invalid index entered. Please enter a valid index to be deleted");
             ui.printLine();
         }
 
@@ -133,18 +152,15 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param keyword The keyword to be searched for.
+     * @throws Exception If the keyword is empty.
      */
-    public void searchEvents(String keyword, Ui ui) {
+    public void searchEvents(String keyword, Ui ui) throws Exception {
         int eventNumber = 1;
         ui.printLine();
         for (Event event:events) {
-            try {
-                if (event.hasKeyword(keyword)) {
-                    ui.printMessage(eventNumber + ") " + event.getEventInformation());
-                    eventNumber++;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (event.hasKeyword(keyword)) {
+                ui.printMessage(eventNumber + ") " + event.getEventInformation());
+                eventNumber++;
             }
         }
         if (eventNumber == 1) {
@@ -182,34 +198,6 @@ public class EventList {
         }
     }
 
-    /**
-     * Display the list of supported commands.
-     */
-    public void printHelp() {
-        Ui ui = new Ui();
-        ui.printLine();
-        ui.printWithIndentation("OrgaNice! Supports the following commands");
-        ui.printWithIndentation("Please enter the keywords followed by the information shown in the brackets");
-        ui.printWithIndentation("add <event details> /d <date> /s <start time> /e <end time> /p <priority "
-                + "of event>");
-        ui.printWithIndentation("------------------------------------------- Create a new event");
-        ui.printWithIndentation("view -------------------------------------- View existing events");
-        ui.printWithIndentation("priority_view ----------------------------- View existing events based "
-                + "on priority");
-        ui.printWithIndentation("countdown --------------------------------- View existing events based on"
-                + " days left");
-        ui.printWithIndentation("clear ------------------------------------- Delete all events");
-        ui.printWithIndentation("search <keyword found in event> ----------- View existing events that contains "
-                + "the keyword");
-        ui.printWithIndentation("delete <index number of event> ------------ Delete the event");
-        ui.printWithIndentation("help -------------------------------------- View List Of Commands Supported");
-        ui.printWithIndentation("bye --------------------------------------- Terminate program");
-        ui.printWithIndentation("Notes:");
-        ui.printWithIndentation("*All dates should follow YYYY-MM-DD format");
-        ui.printWithIndentation("*All timing should follow 24 hour clock");
-        ui.printWithIndentation("*There are 4 levels of priority, with 1 being the most urgent, and 4 being the "
-                + "least urgent");
-        ui.printLine();
-    }
+
 
 }

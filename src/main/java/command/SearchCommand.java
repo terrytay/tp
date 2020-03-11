@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import ui.Ui;
 
 /**
  * Command used to perform a search of events whose description contain the keyword mentioned.
@@ -26,7 +27,7 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
         eventList.searchEvents(keyword, ui);
     }
 }

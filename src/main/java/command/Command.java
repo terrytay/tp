@@ -8,15 +8,13 @@ import ui.Ui;
  */
 public abstract class Command {
 
-    /** Object used to handle user interactions. */
-    Ui ui = new Ui();
-
     /**
      * Executes the command based on the information provided by the user.
      *
      * @param eventList Contains the list of tasks on which the commands are executed on.
+     * @param ui This handles the interaction with Users.
      * @throws Exception If issues are found during execution of command.
      */
-    public abstract void executeCommand(EventList eventList) throws Exception;
+    public abstract void executeCommand(EventList eventList, Ui ui) throws Exception;
 
 }

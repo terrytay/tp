@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import ui.Ui;
 
 /**
  * Command is used to print the list of commands supported.
@@ -21,7 +22,7 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
-        eventList.printHelp();
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
+        ui.printHelp();
     }
 }

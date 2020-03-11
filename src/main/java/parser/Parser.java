@@ -9,7 +9,6 @@ import command.HelpCommand;
 import command.PriorityViewCommand;
 import command.SearchCommand;
 import command.ViewCommand;
-import ui.Ui;
 
 /**
  * This class is used to parse the user input into executable commands.
@@ -28,13 +27,11 @@ public class Parser {
 
     /**
      * This method takes in the user input parses it and returns the command to be executed.
-     *
      * @param fullCommand THe entire line of command entered by the user.
-     * @param ui Object used to handle interactions with user.
      * @return command The command parsed form the user input.
      * @throws Exception If the wrong command/ wrong format is given by the user as an input.
      */
-    public Command parseCommand(String fullCommand, Ui ui) throws Exception {
+    public Command parseCommand(String fullCommand) throws Exception {
 
         String[] commandSplit = fullCommand.split(" ",2);
         String commandType = commandSplit[0];
