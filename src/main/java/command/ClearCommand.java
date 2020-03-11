@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import exception.command.MisuseOfClearCommandException;
 import ui.Ui;
 
 /**
@@ -17,7 +18,7 @@ public class ClearCommand extends Command {
      */
     public ClearCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command clear events (Should be :clear )");
+            throw new MisuseOfClearCommandException();
         }
     }
 
