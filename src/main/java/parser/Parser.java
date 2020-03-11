@@ -28,7 +28,6 @@ public class Parser {
 
     /**
      * This method takes in the user input parses it and returns the command to be executed.
-     *
      * @param fullCommand THe entire line of command entered by the user.
      * @param ui Object used to handle interactions with user.
      * @return command The command parsed form the user input.

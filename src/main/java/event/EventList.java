@@ -22,8 +22,22 @@ public class EventList {
         events = new ArrayList<Event>();
     }
 
+    /**
+     * Overloaded constructor for EventList class.
+     *
+     * @param events The list of events the class's list of events is initialised with.
+     */
     public EventList(ArrayList<Event> events) {
         this.events = events;
+    }
+
+    /**
+     * Returns the number of events currently stored.
+     *
+     * @return The number of events stored currently.
+     */
+    public int getEventListSize() {
+        return events.size();
     }
 
     /**
@@ -61,11 +75,13 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param index The index (1-based) of the event to be deleted.
+     * @throws Exception If the index specified is invalid.
      */
     public void deleteEvent(int index, Ui ui) {
         ui.printLine();
         try {
             events.remove(index - 1);
+            ui.printLine();
             ui.printMessage("The event at the mentioned index has been deleted");
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
@@ -133,18 +149,15 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param keyword The keyword to be searched for.
+     * @throws Exception If the keyword is empty.
      */
-    public void searchEvents(String keyword, Ui ui) {
+    public void searchEvents(String keyword, Ui ui) throws Exception {
         int eventNumber = 1;
         ui.printLine();
         for (Event event:events) {
-            try {
-                if (event.hasKeyword(keyword)) {
-                    ui.printMessage(eventNumber + ") " + event.getEventInformation());
-                    eventNumber++;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (event.hasKeyword(keyword)) {
+                ui.printMessage(eventNumber + ") " + event.getEventInformation());
+                eventNumber++;
             }
         }
         if (eventNumber == 1) {

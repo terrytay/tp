@@ -23,6 +23,7 @@ public class AddCommand extends Command {
         if (isOneWordCommand) {
             throw new Exception("Wrong format used to add an event");
         }
+      
         String[] details = eventDetails[1].split("/");
         String description = details[0];
         String date = details[1].substring(2);
