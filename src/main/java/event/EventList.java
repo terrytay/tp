@@ -182,34 +182,6 @@ public class EventList {
         }
     }
 
-    /**
-     * Display the list of supported commands.
-     */
-    public void printHelp() {
-        Ui ui = new Ui();
-        ui.printLine();
-        ui.printWithIndentation("OrgaNice! Supports the following commands");
-        ui.printWithIndentation("Please enter the keywords followed by the information shown in the brackets");
-        ui.printWithIndentation("add <event details> /d <date> /s <start time> /e <end time> /p <priority "
-                + "of event>");
-        ui.printWithIndentation("------------------------------------------- Create a new event");
-        ui.printWithIndentation("view -------------------------------------- View existing events");
-        ui.printWithIndentation("priority_view ----------------------------- View existing events based "
-                + "on priority");
-        ui.printWithIndentation("countdown --------------------------------- View existing events based on"
-                + " days left");
-        ui.printWithIndentation("clear ------------------------------------- Delete all events");
-        ui.printWithIndentation("search <keyword found in event> ----------- View existing events that contains "
-                + "the keyword");
-        ui.printWithIndentation("delete <index number of event> ------------ Delete the event");
-        ui.printWithIndentation("help -------------------------------------- View List Of Commands Supported");
-        ui.printWithIndentation("bye --------------------------------------- Terminate program");
-        ui.printWithIndentation("Notes:");
-        ui.printWithIndentation("*All dates should follow YYYY-MM-DD format");
-        ui.printWithIndentation("*All timing should follow 24 hour clock");
-        ui.printWithIndentation("*There are 4 levels of priority, with 1 being the most urgent, and 4 being the "
-                + "least urgent");
-        ui.printLine();
-    }
+
 
 }

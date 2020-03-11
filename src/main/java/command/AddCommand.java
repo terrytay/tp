@@ -2,6 +2,7 @@ package command;
 
 import event.Event;
 import event.EventList;
+import ui.Ui;
 
 /**
  * This command is used to add new events to the event list.
@@ -33,7 +34,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.addEvent(newEvent, ui);
     }
 
