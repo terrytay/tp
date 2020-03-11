@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import ui.Ui;
 
 /**
  * Command is used to delete an event at a specific index.
@@ -32,7 +33,7 @@ public class DeleteCommand extends Command {
 
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
         eventList.deleteEvent(indexToDelete, ui);
     }
 }

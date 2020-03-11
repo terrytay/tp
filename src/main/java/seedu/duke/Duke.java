@@ -20,7 +20,7 @@ public class Duke {
     protected static StudyAreaLoader studyAreaLoader;
     private static EventList eventList = new EventList();
     private static StudyAreaList studyAreaList;
-    private static Ui ui;
+    private static Ui ui = new Ui();
     private static Parser parser;
 
     /**
@@ -28,14 +28,15 @@ public class Duke {
      */
     public Duke()  {
         try {
-            ui = new Ui();
             parser = new Parser();
             eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
             eventList = new EventList(eventLoader.loadFile());
             studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
             studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
         } catch (FileNotFoundException | IllegalStudyAreaException e) {
-            // Handle issue later
+            ui.printLine();
+            ui.printMessage(e.getMessage());
+            ui.printLine();
         }
     }
 
@@ -53,16 +54,17 @@ public class Duke {
                 break;
             case 1:
                 EventCommand.runCommands(eventList, ui, parser);
+                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
                 break;
             case 2:
                 StudyAreaCommand.runCommands(studyAreaList, ui);
+                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
                 break;
             default:
                 ui.printLine();
                 ui.printMessage(Ui.WRONG_INPUT);
                 break;
             }
-            ui.printWithIndentation(Ui.INTERMEDIATE_MESSAGE);
             ui.printLine();
         }
         eventLoader.saveEvents(eventList.events);

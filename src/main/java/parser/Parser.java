@@ -27,8 +27,7 @@ public class Parser {
 
     /**
      * This method takes in the user input parses it and returns the command to be executed.
-     *
-     * @param fullCommand The entire line of command entered by the user.
+     * @param fullCommand THe entire line of command entered by the user.
      * @return command The command parsed form the user input.
      * @throws Exception If the wrong command/ wrong format is given by the user as an input.
      */
