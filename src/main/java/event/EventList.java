@@ -80,12 +80,15 @@ public class EventList {
     public void deleteEvent(int index, Ui ui) {
         ui.printLine();
         try {
+            if (index > events.size() | index <= 0) {
+                throw new IndexOutOfBoundsException();
+            }
             events.remove(index - 1);
             ui.printLine();
             ui.printMessage("The event at the mentioned index has been deleted");
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
-            ui.printMessage("Enter a valid index");
+            ui.printMessage("Invalid index entered. Please enter a valid index to be deleted");
             ui.printLine();
         }
 

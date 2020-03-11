@@ -3,8 +3,7 @@ package event;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Contains all the test related to EventList class.
@@ -21,13 +20,12 @@ class EventListTest {
     }
 
     @Test
-    void deleteEvent_invalidIndex_throwException() throws Exception {
+    void deleteEvent_invalidIndex_throwException() {
         try {
             eventList.deleteEvent(2,ui);
-            fail("Illegal delete not found");
-        } catch (Exception exception) {
+        } catch (Exception e) {
             assertEquals("Invalid index entered. Please enter a valid index to be deleted",
-                    exception.getMessage());
+                    e.getMessage());
         }
     }
 
