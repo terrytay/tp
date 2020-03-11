@@ -3,7 +3,8 @@ package event;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Contains all the test related to EventList class.
