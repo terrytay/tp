@@ -4,7 +4,8 @@ import command.Command;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Contains all test regarding the Parser Class.
