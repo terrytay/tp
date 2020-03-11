@@ -147,6 +147,7 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param keyword The keyword to be searched for.
+     * @throws Exception If the keyword is empty.
      */
     public void searchEvents(String keyword, Ui ui) throws Exception {
         int eventNumber = 1;
