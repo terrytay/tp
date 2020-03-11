@@ -1,66 +1,43 @@
 package command;
 
 import event.EventList;
-import resourceloader.EventLoader;
+import parser.Parser;
 import ui.Ui;
+import static ui.Ui.BYE_COMMAND;
 
-import java.util.Scanner;
-
+/**
+ * Used to run all the functions related to events.
+ */
 public class EventCommand {
 
     /**
-     * Commands for Events.
+     * Runs all the command for events.
      *
-     * @param eventList this is the evenList.
-     * @param ui allows for interaction with the User.
-     * @param eventLoader allows for saving of data after every execution of commands.
+     * @param eventList Refers to the current list of events.
+     * @param ui UI object used to interact with user.
+     * @param parser Object used to parse the user input into commands.
      */
-    public static void runCommands(EventList eventList, Ui ui, EventLoader eventLoader) {
-        Scanner in = new Scanner(System.in);
-        String command;
-        ui.printLine();
-        command = in.nextLine();
-        while (!command.equals(Ui.BYE_COMMAND)) {
-            ui.printLine();
+    public static void runCommands(EventList eventList, Ui ui, Parser parser) {
+        ui.printHelp();
+        String fullCommand;
+        Command command;
+
+        fullCommand = ui.getUserIn();
+        while (!fullCommand.equals(BYE_COMMAND)) {
             try {
-                String commandType = command.split(" ")[0];
-                switch (commandType) {
-                case Ui.ADD_COMMAND:
-                    eventList.add(command, ui);
-                    break;
-                case Ui.VIEW_COMMAND:
-                    eventList.listEvents(ui);
-                    break;
-                case Ui.PRIORITY_VIEW_COMMAND:
-                    eventList.priorityView(ui);
-                    break;
-                case Ui.COUNTDOWN_VIEW_COMMAND:
-                    eventList.countdownView(ui);
-                    break;
-                case Ui.CLEAR_COMMAND:
-                    eventList.clearEvents(ui);
-                    break;
-                case Ui.SEARCH_COMMAND:
-                    eventList.searchEvents(command.split(" ", 2)[1], ui);
-                    break;
-                case Ui.DELETE_COMMAND:
-                    eventList.deleteEvent(Integer.parseInt(command.split(" ", 2)[1]), ui);
-                    break;
-                default:
-                    ui.printMessage(Ui.INVALID_COMMAND_MESSAGE);
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                ui.printMessage(Ui.INVALID_INDEX_MESSAGE);
-            } catch (IndexOutOfBoundsException e) {
-                ui.printMessage(Ui.INVALID_COMMAND_MESSAGE);
+                command = parser.parseCommand(fullCommand);
+                command.executeCommand(eventList, ui);
+            } catch (Exception exception) {
+                ui.printLine();
+                ui.printMessage(exception.getMessage());
+                ui.printLine();
             }
-            ui.printLine();
-            eventLoader.saveEvents(eventList.events);
-            command = in.nextLine();
+            fullCommand = ui.getUserIn();
+
         }
         ui.printLine();
         ui.printMessage(Ui.BYE_MESSAGE);
         ui.printLine();
     }
+
 }
