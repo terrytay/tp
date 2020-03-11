@@ -3,7 +3,6 @@ package resourceloader;
 import studyarea.IllegalStudyAreaException;
 import studyarea.StudyArea;
 import ui.Ui;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,24 +14,22 @@ import java.util.Scanner;
 
 public class StudyAreaLoader {
     private static final String DIVIDER = "~";
-    private final String url;
+    private String url;
     private File file;
 
-    public StudyAreaLoader(String url) throws FileNotFoundException {
+    public StudyAreaLoader(String url) throws IllegalStudyAreaException {
         this.url = url;
         loadFile();
     }
 
     /**
      * Loads url into file.
-     *
-     * @throws FileNotFoundException if file is not present error
      */
-    public void loadFile() throws FileNotFoundException {
+    public void loadFile() throws IllegalStudyAreaException{
         try {
-            file = new File(url);
+            this.file = new File(this.url);
         } catch (Exception e) {
-            throw new FileNotFoundException("File not found.");
+            throw new IllegalStudyAreaException(Ui.MISSING_STUDY_AREA_DATA);
         }
     }
 
@@ -45,9 +42,9 @@ public class StudyAreaLoader {
      * @throws IllegalStudyAreaException if data stored is inconsistent
      */
 
-    public ArrayList<StudyArea> pushToDatabase() throws FileNotFoundException, IllegalStudyAreaException {
+    public ArrayList<StudyArea> pushToDatabase() throws IllegalStudyAreaException, FileNotFoundException {
         ArrayList<StudyArea> buffer = new ArrayList<>();
-        Scanner input = new Scanner(file);
+        Scanner input = new Scanner(this.file);
         while (input.hasNextLine()) {
             String detailsOfLocation = input.nextLine();
             String[] detailsBuffer = detailsOfLocation.split(DIVIDER);
@@ -59,8 +56,8 @@ public class StudyAreaLoader {
                     Integer.parseInt(detailsBuffer[5]));
             buffer.add(studyArea);
         }
+        input.close();
         return buffer;
     }
-
-
 }
+
