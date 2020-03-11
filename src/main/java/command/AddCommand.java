@@ -22,7 +22,7 @@ public class AddCommand extends Command {
      */
     public AddCommand(String[] eventDetails, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("Wrong format used to add an event");
+            throw new Exception("Event details are not provided");
         }
       
         String[] details = eventDetails[1].split("/");
