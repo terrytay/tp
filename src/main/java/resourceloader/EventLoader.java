@@ -85,7 +85,6 @@ public class EventLoader {
      * Creates a new data file when the application is run for the first time.
      */
     private void createNewDataFile() {
-
         try {
             Files.createDirectories(fileDirectory);
             Files.createFile(Paths.get(filePath));
