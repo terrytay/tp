@@ -25,7 +25,8 @@ public class DeleteCommand extends Command {
         try {
             indexToDelete = Integer.parseInt(commandSplit[1]);
         } catch (NumberFormatException e) {
-            throw new Exception("Enter a valid index (1-based) to delete the corresponding event");
+            throw new Exception("Enter a valid integer index (1-based) to delete the corresponding event "
+                    + "(format: delete index)");
         }
     }
 
