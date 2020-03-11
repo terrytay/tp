@@ -25,7 +25,7 @@ public class StudyAreaLoader {
     /**
      * Loads url into file.
      */
-    public void loadFile() throws IllegalStudyAreaException{
+    public void loadFile() throws IllegalStudyAreaException {
         try {
             this.file = new File(this.url);
         } catch (Exception e) {
