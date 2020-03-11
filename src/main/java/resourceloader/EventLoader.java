@@ -88,6 +88,7 @@ public class EventLoader {
         try {
             Files.createDirectories(fileDirectory);
             Files.createFile(Paths.get(filePath));
+            Files.createFile(Paths.get(Ui.FILE_PATH_STUDYAREAS));
         } catch (IOException e) {
             e.printStackTrace();
         }

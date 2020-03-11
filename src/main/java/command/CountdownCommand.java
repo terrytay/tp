@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import ui.Ui;
 
 /**
  * Displays the list of events added so far in increasing order of their dates.
@@ -21,7 +22,7 @@ public class CountdownCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
         eventList.countdownView(ui);
     }
 }

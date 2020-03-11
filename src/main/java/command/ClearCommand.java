@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import ui.Ui;
 
 /**
  * This command is used to clear all the events in the list.
@@ -21,7 +22,7 @@ public class ClearCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
         eventList.clearEvents(ui);
     }
 }
