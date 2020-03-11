@@ -34,8 +34,10 @@ public class EventList {
      */
     public void addEvent(Event newEvent, Ui ui) {
         events.add(newEvent);
+        ui.printLine();
         ui.printMessage("A new event with the following information has been added.");
         ui.printMessage(newEvent.getEventInformation());
+        ui.printLine();
     }
 
     /**
@@ -44,12 +46,14 @@ public class EventList {
      * @param ui This allows Event List class to interact with User.
      */
     public void listEvents(Ui ui) {
+        ui.printLine();
         ui.printMessage("Here is the list of events added so far:");
         int eventNumber = 1;
         for (Event event: events) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
+        ui.printLine();
     }
 
     /**
@@ -59,11 +63,14 @@ public class EventList {
      * @param index The index (1-based) of the event to be deleted.
      */
     public void deleteEvent(int index, Ui ui) {
+        ui.printLine();
         try {
             events.remove(index - 1);
             ui.printMessage("The event at the mentioned index has been deleted");
+            ui.printLine();
         } catch (IndexOutOfBoundsException e) {
             ui.printMessage("Enter a valid index");
+            ui.printLine();
         }
 
     }
@@ -75,7 +82,9 @@ public class EventList {
      */
     public void clearEvents(Ui ui) {
         events.clear();
+        ui.printLine();
         ui.printMessage("The list of events is cleared.");
+        ui.printLine();
     }
 
     /**
@@ -87,6 +96,7 @@ public class EventList {
         ArrayList<Event> eventsSortedByPriority = events;
         eventsSortedByPriority.sort(Comparator.comparingInt(Event::getPriority));
         Collections.reverse(eventsSortedByPriority);
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByPriority) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
@@ -95,6 +105,7 @@ public class EventList {
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -105,6 +116,7 @@ public class EventList {
     public void countdownView(Ui ui) {
         ArrayList<Event> eventsSortedByDate = events;
         eventsSortedByDate.sort(Comparator.comparing(Event::getDate));
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByDate) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
@@ -113,6 +125,7 @@ public class EventList {
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -123,6 +136,7 @@ public class EventList {
      */
     public void searchEvents(String keyword, Ui ui) {
         int eventNumber = 1;
+        ui.printLine();
         for (Event event:events) {
             try {
                 if (event.hasKeyword(keyword)) {
@@ -136,6 +150,7 @@ public class EventList {
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -157,9 +172,44 @@ public class EventList {
             Event newEvent =  new Event(description,date,startTime,endTime,priority);
             addEvent(newEvent, ui);
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
+            ui.printLine();
             ui.printMessage("Wrong format to add events");
+            ui.printLine();
         } catch (Exception e) {
+            ui.printLine();
             ui.printMessage(e.getMessage());
+            ui.printLine();
         }
     }
+
+    /**
+     * Display the list of supported commands.
+     */
+    public void printHelp() {
+        Ui ui = new Ui();
+        ui.printLine();
+        ui.printWithIndentation("OrgaNice! Supports the following commands");
+        ui.printWithIndentation("Please enter the keywords followed by the information shown in the brackets");
+        ui.printWithIndentation("add <event details> /d <date> /s <start time> /e <end time> /p <priority "
+                + "of event>");
+        ui.printWithIndentation("------------------------------------------- Create a new event");
+        ui.printWithIndentation("view -------------------------------------- View existing events");
+        ui.printWithIndentation("priority_view ----------------------------- View existing events based "
+                + "on priority");
+        ui.printWithIndentation("countdown --------------------------------- View existing events based on"
+                + " days left");
+        ui.printWithIndentation("clear ------------------------------------- Delete all events");
+        ui.printWithIndentation("search <keyword found in event> ----------- View existing events that contains "
+                + "the keyword");
+        ui.printWithIndentation("delete <index number of event> ------------ Delete the event");
+        ui.printWithIndentation("help -------------------------------------- View List Of Commands Supported");
+        ui.printWithIndentation("bye --------------------------------------- Terminate program");
+        ui.printWithIndentation("Notes:");
+        ui.printWithIndentation("*All dates should follow YYYY-MM-DD format");
+        ui.printWithIndentation("*All timing should follow 24 hour clock");
+        ui.printWithIndentation("*There are 4 levels of priority, with 1 being the most urgent, and 4 being the "
+                + "least urgent");
+        ui.printLine();
+    }
+
 }
