@@ -11,7 +11,7 @@ public class StudyAreaList {
     private ArrayList<StudyArea> studyAreaList;
 
     // Assigns studyAreaList into object's studyAreaList.
-    public StudyAreaList(ArrayList<StudyArea>  studyAreaList) {
+    public StudyAreaList(ArrayList<StudyArea> studyAreaList) {
         this.studyAreaList = studyAreaList;
     }
 
@@ -30,7 +30,7 @@ public class StudyAreaList {
      * @param index this is the index referring to the specific flag to check for duplicate.
      * @throws IllegalStudyAreaException if flag is not null, ie: if flag has already been mentioned.
      */
-    public void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
+    public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
         if (flag[index] != null) {
             throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
         }
@@ -43,7 +43,7 @@ public class StudyAreaList {
      * @throws IllegalStudyAreaException if only flag is entered by user.
      */
 
-    public void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
+    public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
         if (commands[index].length() == 1) {
             throw new IllegalStudyAreaException(Ui.ONLY_FLAG);
         }
