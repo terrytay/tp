@@ -24,6 +24,7 @@ public class StudyAreaLoader {
 
     /**
      * Loads url into file.
+     * @throws IllegalStudyAreaException If study area data file is missing.
      */
     public void loadFile() throws IllegalStudyAreaException {
         try {
