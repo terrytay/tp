@@ -1,6 +1,9 @@
 package command;
 
 import event.EventList;
+import exception.command.DeleteCommandMissingIndexException;
+import exception.command.IndexNotIntegerException;
+import ui.Ui;
 
 /**
  * Command is used to delete an event at a specific index.
@@ -20,18 +23,18 @@ public class DeleteCommand extends Command {
      */
     public DeleteCommand(String[] commandSplit, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("Index to delete not mentioned");
+            throw new DeleteCommandMissingIndexException();
         }
         try {
             indexToDelete = Integer.parseInt(commandSplit[1]);
         } catch (NumberFormatException e) {
-            throw new Exception("Enter a valid index (1-based) to delete the corresponding event");
+            throw new IndexNotIntegerException();
         }
     }
 
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) throws Exception {
         eventList.deleteEvent(indexToDelete, ui);
     }
 }

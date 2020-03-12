@@ -1,6 +1,8 @@
 package command;
 
 import event.EventList;
+import exception.command.MisuseOfClearCommandException;
+import ui.Ui;
 
 /**
  * This command is used to clear all the events in the list.
@@ -16,12 +18,12 @@ public class ClearCommand extends Command {
      */
     public ClearCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command clear events (Should be :clear )");
+            throw new MisuseOfClearCommandException();
         }
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.clearEvents(ui);
     }
 }

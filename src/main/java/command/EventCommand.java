@@ -3,9 +3,6 @@ package command;
 import event.EventList;
 import parser.Parser;
 import ui.Ui;
-
-import java.util.Scanner;
-
 import static ui.Ui.BYE_COMMAND;
 
 /**
@@ -21,25 +18,26 @@ public class EventCommand {
      * @param parser Object used to parse the user input into commands.
      */
     public static void runCommands(EventList eventList, Ui ui, Parser parser) {
-        eventList.printHelp();
-        Scanner sc = new Scanner(System.in);
+        ui.printHelp();
         String fullCommand;
         Command command;
 
-        fullCommand = sc.nextLine();
+        fullCommand = ui.getUserIn();
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
-                command = parser.parseCommand(fullCommand, ui);
-                command.executeCommand(eventList);
+                command = parser.parseCommand(fullCommand);
+                command.executeCommand(eventList, ui);
             } catch (Exception exception) {
                 ui.printLine();
-                ui.printWithIndentation(exception.getMessage());
+                ui.printMessage(exception.getMessage());
                 ui.printLine();
             }
-            ui.printEmptyLine();
-            fullCommand = sc.nextLine();
+            fullCommand = ui.getUserIn();
+
         }
-        ui.printByeMessage();
+        ui.printLine();
+        ui.printMessage(Ui.BYE_MESSAGE);
+        ui.printLine();
     }
 
 }
