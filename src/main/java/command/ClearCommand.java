@@ -23,7 +23,7 @@ public class ClearCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.clearEvents(ui);
     }
 }
