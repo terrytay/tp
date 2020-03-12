@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import exception.command.MisuseOfCountdownCommandException;
 import ui.Ui;
 
 /**
@@ -17,12 +18,12 @@ public class CountdownCommand extends Command {
      */
     public CountdownCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command used to view countdown of events (Should be :countdown )");
+            throw new MisuseOfCountdownCommandException();
         }
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.countdownView(ui);
     }
 }
