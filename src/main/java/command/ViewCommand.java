@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import exception.command.MisuseOfViewCommandException;
 import ui.Ui;
 
 /**
@@ -17,12 +18,12 @@ public class ViewCommand extends Command {
      */
     public ViewCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command used to view events (Should be :view )");
+            throw new MisuseOfViewCommandException();
         }
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
+    public void executeCommand(EventList eventList, Ui ui) {
         eventList.listEvents(ui);
     }
 }
