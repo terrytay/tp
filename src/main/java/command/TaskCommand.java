@@ -8,7 +8,7 @@ import static ui.Ui.BYE_COMMAND;
 /**
  * Used to run all the functions related to tasks.
  */
-public class EventCommand {
+public class TaskCommand {
 
     /**
      * Runs all the command for tasks.

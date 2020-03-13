@@ -1,7 +1,7 @@
 package seedu.duke;
 
 import parser.Parser;
-import command.EventCommand;
+import command.TaskCommand;
 import command.StudyAreaCommand;
 import resourceloader.TaskLoader;
 import resourceloader.StudyAreaLoader;
@@ -58,7 +58,7 @@ public class Duke {
                 status = false;
                 break;
             case 1:
-                EventCommand.runCommands(taskList, ui, parser);
+                TaskCommand.runCommands(taskList, ui, parser);
                 ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
                 break;
             case 2:
