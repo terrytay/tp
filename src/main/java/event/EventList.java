@@ -22,8 +22,22 @@ public class EventList {
         events = new ArrayList<Event>();
     }
 
+    /**
+     * Overloaded constructor for EventList class.
+     *
+     * @param events The list of events the class's list of events is initialised with.
+     */
     public EventList(ArrayList<Event> events) {
         this.events = events;
+    }
+
+    /**
+     * Returns the number of events currently stored.
+     *
+     * @return The number of events stored currently.
+     */
+    public int getEventListSize() {
+        return events.size();
     }
 
     /**
@@ -34,8 +48,10 @@ public class EventList {
      */
     public void addEvent(Event newEvent, Ui ui) {
         events.add(newEvent);
+        ui.printLine();
         ui.printMessage("A new event with the following information has been added.");
         ui.printMessage(newEvent.getEventInformation());
+        ui.printLine();
     }
 
     /**
@@ -44,12 +60,14 @@ public class EventList {
      * @param ui This allows Event List class to interact with User.
      */
     public void listEvents(Ui ui) {
+        ui.printLine();
         ui.printMessage("Here is the list of events added so far:");
         int eventNumber = 1;
         for (Event event: events) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
             eventNumber++;
         }
+        ui.printLine();
     }
 
     /**
@@ -57,13 +75,21 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param index The index (1-based) of the event to be deleted.
+     * @throws Exception If the index specified is invalid.
      */
     public void deleteEvent(int index, Ui ui) {
+        ui.printLine();
         try {
+            if (index > events.size() | index <= 0) {
+                throw new IndexOutOfBoundsException();
+            }
             events.remove(index - 1);
+            ui.printLine();
             ui.printMessage("The event at the mentioned index has been deleted");
+            ui.printLine();
         } catch (IndexOutOfBoundsException e) {
-            ui.printMessage("Enter a valid index");
+            ui.printMessage("Invalid index entered. Please enter a valid index to be deleted");
+            ui.printLine();
         }
 
     }
@@ -75,7 +101,9 @@ public class EventList {
      */
     public void clearEvents(Ui ui) {
         events.clear();
+        ui.printLine();
         ui.printMessage("The list of events is cleared.");
+        ui.printLine();
     }
 
     /**
@@ -87,6 +115,7 @@ public class EventList {
         ArrayList<Event> eventsSortedByPriority = events;
         eventsSortedByPriority.sort(Comparator.comparingInt(Event::getPriority));
         Collections.reverse(eventsSortedByPriority);
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByPriority) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
@@ -95,6 +124,7 @@ public class EventList {
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -105,6 +135,7 @@ public class EventList {
     public void countdownView(Ui ui) {
         ArrayList<Event> eventsSortedByDate = events;
         eventsSortedByDate.sort(Comparator.comparing(Event::getDate));
+        ui.printLine();
         int eventNumber = 1;
         for (Event event:eventsSortedByDate) {
             ui.printMessage(eventNumber + ") " + event.getEventInformation());
@@ -113,6 +144,7 @@ public class EventList {
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -120,22 +152,21 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param keyword The keyword to be searched for.
+     * @throws Exception If the keyword is empty.
      */
-    public void searchEvents(String keyword, Ui ui) {
+    public void searchEvents(String keyword, Ui ui) throws Exception {
         int eventNumber = 1;
+        ui.printLine();
         for (Event event:events) {
-            try {
-                if (event.hasKeyword(keyword)) {
-                    ui.printMessage(eventNumber + ") " + event.getEventInformation());
-                    eventNumber++;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (event.hasKeyword(keyword)) {
+                ui.printMessage(eventNumber + ") " + event.getEventInformation());
+                eventNumber++;
             }
         }
         if (eventNumber == 1) {
             ui.printMessage("The list is empty.");
         }
+        ui.printLine();
     }
 
     /**
@@ -157,9 +188,16 @@ public class EventList {
             Event newEvent =  new Event(description,date,startTime,endTime,priority);
             addEvent(newEvent, ui);
         } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
+            ui.printLine();
             ui.printMessage("Wrong format to add events");
+            ui.printLine();
         } catch (Exception e) {
+            ui.printLine();
             ui.printMessage(e.getMessage());
+            ui.printLine();
         }
     }
+
+
+
 }

@@ -11,7 +11,7 @@ public class StudyAreaList {
     private ArrayList<StudyArea> studyAreaList;
 
     // Assigns studyAreaList into object's studyAreaList.
-    public StudyAreaList(ArrayList<StudyArea>  studyAreaList) {
+    public StudyAreaList(ArrayList<StudyArea> studyAreaList) {
         this.studyAreaList = studyAreaList;
     }
 
@@ -25,6 +25,72 @@ public class StudyAreaList {
     }
 
     /**
+     * This method checks for duplicate flags.
+     * @param flag this is the array of flags in the system.
+     * @param index this is the index referring to the specific flag to check for duplicate.
+     * @throws IllegalStudyAreaException if flag is not null, ie: if flag has already been mentioned.
+     */
+    public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
+        if (flag[index] != null) {
+            throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
+        }
+    }
+
+    /**
+     * This method check if command entered is only flags.
+     * @param commands This is the string of commands entered by User.
+     * @param index This is the index in which the method is check if only flag exist.
+     * @throws IllegalStudyAreaException if only flag is entered by user.
+     */
+
+    public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
+        if (commands[index].length() == 1) {
+            throw new IllegalStudyAreaException(Ui.ONLY_FLAG);
+        }
+    }
+
+    /**
+     * This method assigns flags based on User input.
+     *
+     * @param flags this is the array of flags.
+     * @param commands this is the full command entered by Users.
+     * @param index this is the index which the method is assigning the commands into the flags array.
+     * @param isNotFlag this is the boolean value that checks if the command entered is a flag.
+     * @throws IllegalStudyAreaException if user enters command wrongly.
+     */
+    public void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
+            IllegalStudyAreaException {
+
+        if (commands[index].equals(Ui.SIZE_FLAG)) {
+            checkDuplicate(flags, 0);
+            try {
+                int size = Integer.parseInt(commands[index + 1]);
+            } catch (NumberFormatException e) {
+                throw new IllegalStudyAreaException(Ui.NOT_INTEGER);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new IllegalStudyAreaException(Ui.NO_SIZE_INDICATED);
+            }
+        } else if (commands[index].contains(Ui.FLAG)) {
+            checkOnlyFlag(commands, index);
+            switch (commands[index].charAt(1)) {
+            case 'p':
+                checkDuplicate(flags, 2);
+                break;
+            case 'i':
+            case 'o':
+                checkDuplicate(flags, 3);
+                break;
+            default:
+                throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
+            }
+        } else {
+            if (!isNotFlag) {
+                throw new IllegalStudyAreaException(Ui.WRONG_FLAG_ARGUMENT_POSITION);
+            }
+        }
+    }
+
+    /**
      * Obtains all the supported flags in this organiser app.
      *
      * @param commands This is the User commands that has been split by spaces.
@@ -32,56 +98,42 @@ public class StudyAreaList {
      * @throws IllegalStudyAreaException when arguments for flags are invalid.
      */
     public String[] getFlagsInfo(String[] commands) throws IllegalStudyAreaException {
+
         String[] flags = new String[5];
         StringBuilder name = new StringBuilder();
         boolean isNotFlag = true;
         for (int i = 0; i < commands.length; i++) {
             if (commands[i].equals(Ui.SIZE_FLAG)) {
-                isNotFlag = false;
-                try {
-                    int size = Integer.parseInt(commands[i + 1]);
-                    if (flags[0] == null) {
-                        flags[0] = Ui.SIZE_FLAG;
-                        flags[1] = Integer.toString(size);
-                        i++;
-                    } else {
-                        throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
-                    }
-                } catch (NumberFormatException e) {
-                    throw new IllegalStudyAreaException(Ui.NOT_INTEGER);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new IllegalStudyAreaException(Ui.NO_SIZE_INDICATED);
-                }
+                isNotFlag = false;                              // update isNotFlag as false because command is a flag
+                checkFlag(flags, commands, i, false); // pass false instead of isNotFlag as only boolean logic
+                flags[0] = Ui.SIZE_FLAG;
+                flags[1] = Integer.toString(Integer.parseInt(commands[i + 1]));
+                i++;
             } else if (commands[i].contains(Ui.FLAG)) {
                 isNotFlag = false;
-                if (commands[i].length() == 1) {
-                    throw new IllegalStudyAreaException(Ui.ONLY_FLAG);
-                }
+                checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
                 case 'p':
-                    if (flags[2] == null) {
-                        flags[2] = Ui.PORTS_FLAG;
-                    } else {
-                        throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
-                    }
+                    flags[2] = Ui.PORTS_FLAG;
                     break;
                 case 'i':
-                    if (flags[3] == null) {
-                        flags[3] = Ui.INDOOR_FLAG;
-                    } else {
-                        throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
-                    }
+                    flags[3] = Ui.INDOOR_FLAG;
+                    break;
+                case 'o':
+                    flags[3] = Ui.OUTDOOR_FLAG;
                     break;
                 default:
                     throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
                 }
             } else {
                 if (isNotFlag) {
+                    checkFlag(flags, commands, i, true);
                     name.append(commands[i]).append(Ui.SPACE);
                     flags[4] = name.toString().trim();
                 } else {
-                    throw new IllegalStudyAreaException(Ui.WRONG_FLAG_ARGUMENT_POSITION);
+                    checkFlag(flags, commands, i, false);
                 }
+
             }
         }
         return flags;
@@ -126,6 +178,9 @@ public class StudyAreaList {
                             break;
                         case Ui.INDOOR_FLAG:
                             isAvail = studyArea.isIndoor();
+                            break;
+                        case Ui.OUTDOOR_FLAG:
+                            isAvail = !studyArea.isIndoor();
                             break;
                         case Ui.SIZE_FLAG:
                             isAvail = Integer.toString(studyArea.getMaxPax()).equals(flags[1]);

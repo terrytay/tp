@@ -77,7 +77,7 @@ public class StudyAreaCommand {
         boolean status = true;
         while (status) {
             ui.printLine();
-            String command = ui.getUserIn();
+            String command = ui.getUserIn().toLowerCase();
             ui.printLine();
             try {
                 status = filterCommand(command, studyAreaList, ui);
