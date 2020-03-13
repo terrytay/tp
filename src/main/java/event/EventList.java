@@ -75,7 +75,6 @@ public class EventList {
      *
      * @param ui This allows Event List class to interact with User.
      * @param index The index (1-based) of the event to be deleted.
-     * @throws Exception If the index specified is invalid.
      */
     public void deleteEvent(int index, Ui ui) {
         ui.printLine();
