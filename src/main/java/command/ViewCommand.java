@@ -1,11 +1,11 @@
 package command;
 
-import event.EventList;
 import exception.command.MisuseOfViewCommandException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * Displays the list of events added so far.
+ * Displays the list of tasks added so far.
  */
 public class ViewCommand extends Command {
 
@@ -23,7 +23,7 @@ public class ViewCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) {
-        eventList.listEvents(ui);
+    public void executeCommand(TaskList taskList, Ui ui) {
+        taskList.listTasks(ui);
     }
 }

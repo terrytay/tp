@@ -1,11 +1,11 @@
 package command;
 
-import event.EventList;
 import exception.command.SearchMissingTermsException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * Command used to perform a search of events whose description contain the keyword mentioned.
+ * Command used to perform a search of tasks whose description contain the keyword mentioned.
  */
 public class SearchCommand extends Command {
 
@@ -28,7 +28,7 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
-        eventList.searchEvents(keyword, ui);
+    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+        taskList.searchTasks(keyword, ui);
     }
 }

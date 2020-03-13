@@ -1,4 +1,6 @@
-package deadline;
+package task.deadline;
+
+import task.Task;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,7 +10,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Represents an deadline and contains the related functions.
  */
-public class Deadline {
+public class Deadline extends Task {
 
     private String description;
     private LocalDate date;
@@ -66,9 +68,9 @@ public class Deadline {
      *
      * @return deadlineInfo Contains information related to the deadline.
      */
-    public String getDeadlineInformation() {
-        String deadlineInfo = description + " on " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " at "
-                + dueTime.toString();
+    public String getTaskInformation() {
+        String deadlineInfo = "[D] " + description + " on " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+            + " at " + dueTime.toString();
         return deadlineInfo;
     }
 
@@ -80,6 +82,7 @@ public class Deadline {
     public int getPriority() {
         return priority;
     }
+
 
     /**
      * Returns the date of the deadline.
@@ -111,7 +114,7 @@ public class Deadline {
      * @return formattedDeadlineDetails Contains the deadline details in the required format.
      */
     public String getFormattedDetails() {
-        String formattedDeadlineDetails = description + "#" + date + "#" + dueTime + "#" + priority;
+        String formattedDeadlineDetails = "D#" + description + "#" + date + "#" + dueTime + "#" + priority + "\n";
         return formattedDeadlineDetails;
     }
 }

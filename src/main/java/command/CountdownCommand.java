@@ -1,11 +1,11 @@
 package command;
 
-import event.EventList;
 import exception.command.MisuseOfCountdownCommandException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * Displays the list of events added so far in increasing order of their dates.
+ * Displays the list of tasks added so far in increasing order of their dates.
  */
 public class CountdownCommand extends Command {
 
@@ -23,7 +23,7 @@ public class CountdownCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) {
-        eventList.countdownView(ui);
+    public void executeCommand(TaskList taskList, Ui ui) {
+        taskList.countdownView(ui);
     }
 }

@@ -1,6 +1,6 @@
 package command;
 
-import event.EventList;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) {
+    public void executeCommand(TaskList taskList, Ui ui) {
         ui.printHelp();
     }
 }

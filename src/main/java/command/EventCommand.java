@@ -1,23 +1,23 @@
 package command;
 
-import event.EventList;
 import parser.Parser;
+import task.event.TaskList;
 import ui.Ui;
 import static ui.Ui.BYE_COMMAND;
 
 /**
- * Used to run all the functions related to events.
+ * Used to run all the functions related to tasks.
  */
 public class EventCommand {
 
     /**
-     * Runs all the command for events.
+     * Runs all the command for tasks.
      *
-     * @param eventList Refers to the current list of events.
+     * @param taskList Refers to the current list of tasks.
      * @param ui UI object used to interact with user.
      * @param parser Object used to parse the user input into commands.
      */
-    public static void runCommands(EventList eventList, Ui ui, Parser parser) {
+    public static void runCommands(TaskList taskList, Ui ui, Parser parser) {
         ui.printHelp();
         String fullCommand;
         Command command;
@@ -26,7 +26,7 @@ public class EventCommand {
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
                 command = parser.parseCommand(fullCommand);
-                command.executeCommand(eventList, ui);
+                command.executeCommand(taskList, ui);
             } catch (Exception exception) {
                 ui.printLine();
                 ui.printMessage(exception.getMessage());

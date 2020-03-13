@@ -15,15 +15,24 @@ class ParserTest {
     Command command;
 
     @Test
-    void parseCommand_emptyAddCommand_throwException() {
+    void parseCommand_emptyAddEventCommand_throwException() {
         try {
-            command = parser.parseCommand("add");
+            command = parser.parseCommand("event");
             fail("Empty add command not identified");
         } catch (Exception exception) {
             assertEquals("Event details are not provided",exception.getMessage());
         }
     }
 
+    @Test
+    void parseCommand_emptyAddDeadlineCommand_throwException() {
+        try {
+            command = parser.parseCommand("event");
+            fail("Empty add command not identified");
+        } catch (Exception exception) {
+            assertEquals("Event details are not provided",exception.getMessage());
+        }
+    }
 
     @Test
     void parseCommand_emptyCommand_throwException() {

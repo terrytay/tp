@@ -1,12 +1,12 @@
 package command;
 
-import event.EventList;
 import exception.command.DeleteCommandMissingIndexException;
 import exception.command.IndexNotIntegerException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * Command is used to delete an event at a specific index.
+ * Command is used to delete a task at a specific index.
  */
 public class DeleteCommand extends Command {
 
@@ -15,7 +15,7 @@ public class DeleteCommand extends Command {
 
     /**
      * Constructor for the DeleteCommand object.
-     * Creates a new object if the correct command is used.
+     * Creates a new DeleteCommand object if the correct command is used.
      *
      * @param commandSplit Contains information with regards to the index to be deleted at.
      * @param isOneWordCommand Denotes whether the user given input is single or multi worded.
@@ -34,7 +34,7 @@ public class DeleteCommand extends Command {
 
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
-        eventList.deleteEvent(indexToDelete, ui);
+    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+        taskList.deleteTask(indexToDelete, ui);
     }
 }
