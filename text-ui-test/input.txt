@@ -1,2 +1,20 @@
 James Gosling
+task
+clear
+event meeting /d 2020-05-05 /s 12:00 /e 13:00 /p 1
+view
+deadline assignment /d 2020-05-02 /t 14:00 /p 2
+priority_view
+delete 3
+event team meeting
+delete one
+event
+view list
+task
+countdown
+bye
+task
+countdown view
+countdown
+bye
 bye

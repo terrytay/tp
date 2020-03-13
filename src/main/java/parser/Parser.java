@@ -1,6 +1,7 @@
 package parser;
 
-import command.AddCommand;
+import command.AddDeadlineCommand;
+import command.AddEventCommand;
 import command.ClearCommand;
 import command.Command;
 import command.CountdownCommand;
@@ -15,7 +16,8 @@ import command.ViewCommand;
  */
 public class Parser {
 
-    public static final String ADD_COMMAND = "add";
+    public static final String ADD_DEADLINE_COMMAND = "deadline";
+    public static final String ADD_EVENT_COMMAND = "event";
     public static final String VIEW_COMMAND = "view";
     public static final String PRIORITY_VIEW_COMMAND = "priority_view";
     public static final String COUNTDOWN_VIEW_COMMAND = "countdown";
@@ -38,8 +40,11 @@ public class Parser {
         Command command;
         boolean isOneWordCommand = commandSplit.length == 1 || commandSplit[1].isBlank();
         switch (commandType) {
-        case ADD_COMMAND:
-            command = new AddCommand(commandSplit, isOneWordCommand);
+        case ADD_DEADLINE_COMMAND:
+            command = new AddDeadlineCommand(commandSplit, isOneWordCommand);
+            break;
+        case ADD_EVENT_COMMAND:
+            command = new AddEventCommand(commandSplit, isOneWordCommand);
             break;
         case VIEW_COMMAND:
             command = new ViewCommand(isOneWordCommand);

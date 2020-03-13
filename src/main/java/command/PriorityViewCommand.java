@@ -1,10 +1,11 @@
 package command;
 
-import event.EventList;
+import exception.command.MisuseOfPriorityCommandException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * Displays the list of events added so far in decreasing order of their priority.
+ * Displays the list of tasks added so far in decreasing order of their priority.
  */
 public class PriorityViewCommand extends Command {
 
@@ -17,12 +18,12 @@ public class PriorityViewCommand extends Command {
      */
     public PriorityViewCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command used to view events sorted by priority (Should be :priority_view )");
+            throw new MisuseOfPriorityCommandException();
         }
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) throws Exception {
-        eventList.priorityView(ui);
+    public void executeCommand(TaskList taskList, Ui ui) {
+        taskList.priorityView(ui);
     }
 }

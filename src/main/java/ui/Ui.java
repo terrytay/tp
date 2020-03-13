@@ -17,13 +17,11 @@ public class Ui {
     private final Scanner in;
     private final PrintStream out;
 
-    public static final String FILE_PATH_EVENTS = "library" + File.separator + "eventList.txt";
-    public static final String FILE_PATH_STUDYAREAS = "library" + File.separator + "locations.txt";
     public static final String MISSING_STUDY_AREA_DATA = "locations.txt is missing";
     public static final String BYE_COMMAND = "bye";
     public static final String BYE_MESSAGE = "Bye!!!!!!";
     public static final String LINE = "_______________________________________________________________________________"
-            + "_____";
+            + "_________________________";
     public static final int MAX_LINE_LENGTH = 55;
     public static final String FLAG = "-";
     public static final String MULTIPLE_WHITE_SPACES = "\\s+";
@@ -53,12 +51,12 @@ public class Ui {
     public static final String TAB = "\t ";
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
-    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"event\" to start\n"
-            + " your event list! If you are in the mood to mug and you"
+    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"task\" to start\n"
+            + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
     public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
-    public static final String EVENT_COMMAND = "event";
+    public static final String TASK_COMMAND = "task";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
     public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or"
@@ -124,7 +122,7 @@ public class Ui {
     public int getMode() {
         String userIn = this.in.nextLine().toLowerCase();
         switch (userIn) {
-        case EVENT_COMMAND :
+        case TASK_COMMAND :
             return 1;
         case STUDY_COMMAND :
             return 2;
@@ -240,8 +238,10 @@ public class Ui {
         printLine();
         this.out.println(TAB + "OrgaNice! Supports the following commands");
         this.out.println(TAB + "Please enter the keywords followed by the information shown in the brackets");
-        this.out.println(TAB + "add <event details> /d <date> /s <start time> /e <end time> /p <priority "
+        this.out.println(TAB + "event <event details> /d <date> /s <start time> /e <end time> /p <priority "
                 + "of event>");
+        this.out.println(TAB + "deadline <deadline details> /d <date> /t <due time> /p <priority "
+                + "of deadline>");
         this.out.println(TAB + "------------------------------------------- Create a new event");
         this.out.println(TAB + "view -------------------------------------- View existing events");
         this.out.println(TAB + "priority_view ----------------------------- View existing events based "

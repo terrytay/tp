@@ -1,13 +1,14 @@
 package command;
 
-import event.Event;
-import event.EventList;
+import task.event.Event;
+import exception.command.EventDetailsNotProvidedException;
+import task.event.TaskList;
 import ui.Ui;
 
 /**
- * This command is used to add new events to the event list.
+ * This command is used to add new events to the Tasklist.
  */
-public class AddCommand extends Command {
+public class AddEventCommand extends Command {
 
     /** The new event to be added. */
     Event newEvent;
@@ -20,11 +21,11 @@ public class AddCommand extends Command {
      * @param isOneWordCommand Denotes whether the user given input is single or multi worded.
      * @throws Exception If the wrong format is used to create an event.
      */
-    public AddCommand(String[] eventDetails, boolean isOneWordCommand) throws Exception {
+    public AddEventCommand(String[] eventDetails, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("Event details are not provided");
+            throw new EventDetailsNotProvidedException();
         }
-      
+
         String[] details = eventDetails[1].split("/");
         String description = details[0];
         String date = details[1].substring(2);
@@ -35,8 +36,8 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) {
-        eventList.addEvent(newEvent, ui);
+    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+        taskList.addTask(newEvent, ui);
     }
 
 }

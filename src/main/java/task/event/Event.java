@@ -1,4 +1,6 @@
-package event;
+package task.event;
+
+import task.Task;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,7 +10,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Represents an event and contains the related functions.
  */
-public class Event {
+public class Event extends Task {
 
     private String description;
     private LocalDate date;
@@ -83,9 +85,9 @@ public class Event {
      *
      * @return eventInfo Contains information related to the event.
      */
-    public String getEventInformation() {
-        String eventInfo = description + " at " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + " from "
-                + startTime.toString() + " to " + endTime.toString();
+    public String getTaskInformation() {
+        String eventInfo = "[E] " + description + " at " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + " from " + startTime.toString() + " to " + endTime.toString();
         return eventInfo;
     }
 
@@ -128,7 +130,8 @@ public class Event {
      * @return formattedEventDetails Contains the event details in the required format.
      */
     public String getFormattedDetails() {
-        String formattedEventDetails = description + "#" + date + "#" + startTime + "#" + endTime + "#" + priority;
+        String formattedEventDetails = "E#" + description + "#" + date + "#" + startTime + "#" + endTime + "#"
+                + priority + "\n";
         return formattedEventDetails;
     }
 }
