@@ -2,7 +2,6 @@ package resourceloader;
 
 import event.Event;
 import ui.Ui;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -58,7 +57,7 @@ public class EventLoader {
             createNewDataFile();
         } catch (Exception e) {
             ui.printLine();
-            ui.printWithIndentation(e.getMessage());
+            ui.printMessage(e.getMessage());
             ui.printLine();
         }
         return events;
@@ -86,10 +85,10 @@ public class EventLoader {
      * Creates a new data file when the application is run for the first time.
      */
     private void createNewDataFile() {
-
         try {
             Files.createDirectories(fileDirectory);
             Files.createFile(Paths.get(filePath));
+            Files.createFile(Paths.get(Ui.FILE_PATH_STUDYAREAS));
         } catch (IOException e) {
             e.printStackTrace();
         }

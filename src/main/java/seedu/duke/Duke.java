@@ -1,96 +1,84 @@
 package seedu.duke;
 
 import event.EventList;
+import parser.Parser;
+import command.EventCommand;
+import command.StudyAreaCommand;
 import resourceloader.EventLoader;
+import resourceloader.StudyAreaLoader;
+import studyarea.IllegalStudyAreaException;
+import studyarea.StudyAreaList;
 import ui.Ui;
+import java.io.FileNotFoundException;
 
-import java.io.File;
-import java.util.Scanner;
 
+/**
+ * This is Duke class, which forms the main class of the program.
+ */
 public class Duke {
+    private static EventLoader eventLoader;
+    protected static StudyAreaLoader studyAreaLoader;
+    private static EventList eventList = new EventList();
+    private static StudyAreaList studyAreaList;
+    private static Ui ui = new Ui();
+    private static Parser parser;
 
-    private static final String FILE_PATH = "library" + File.separator + "eventList.txt";
-    public static Ui ui = new Ui();
-    public static EventLoader eventLoader;
-    public static final String ADD_COMMAND = "add";
-    public static final String VIEW_COMMAND = "view";
-    public static final String PRIORITY_VIEW_COMMAND = "priority_view";
-    public static final String COUNTDOWN_VIEW_COMMAND = "countdown";
-    public static final String CLEAR_COMMAND = "clear";
-    public static final String SEARCH_COMMAND = "search";
-    public static final String DELETE_COMMAND = "delete";
-    public static final String INVALID_INDEX_MESSAGE = "Enter a valid index";
-    public static final String INVALID_COMMAND_MESSAGE = "Enter a valid command";
-    public static final String BYE_COMMAND = "bye";
-    public static final String BYE_MESSAGE = "Bye!!!!!!";
-    static EventList eventList;
+    /**
+     * This is the constructor to create a new Duke program every time user runs the main loop.
+     */
+    public Duke()  {
+        try {
+            parser = new Parser();
+            eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
+            eventList = new EventList(eventLoader.loadFile());
+            studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
+            studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
+        } catch (FileNotFoundException | IllegalStudyAreaException e) {
+            ui.printLine();
+            ui.printMessage(e.getMessage());
+            ui.printLine();
+        }
+    }
+
+    /**
+     * This method runs the program.
+     */
+    public void run() {
+        ui.printWelcomeMessage();
+        boolean status = true;
+        while (status) {
+            int mode = ui.getMode();
+            switch (mode) {
+            case -1:
+                status = false;
+                break;
+            case 1:
+                EventCommand.runCommands(eventList, ui, parser);
+                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+                break;
+            case 2:
+                StudyAreaCommand.runCommands(studyAreaList, ui);
+                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+                break;
+            default:
+                ui.printLine();
+                ui.printMessage(Ui.WRONG_INPUT);
+                break;
+            }
+            ui.printLine();
+        }
+        eventLoader.saveEvents(eventList.events);
+        ui.printMessage(Ui.GOODBYE_MESSAGE + Ui.DAB);
+        ui.close();
+    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
+     *
+     * @param args this is an optional argument.
      */
-    public static void main(String[] args) throws Exception {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
-        eventLoader = new EventLoader(FILE_PATH);
-        eventList = new EventList(eventLoader.loadFile());
-        runCommands();
-        eventLoader.saveEvents(eventList.events);
+    public static void main(String[] args) {
+        new Duke().run();
     }
 
-    private static void runCommands() {
-        Scanner in = new Scanner(System.in);
-        String command;
-        command = in.nextLine();
-        while (!command.equals(BYE_COMMAND)) {
-            try {
-                String commandType = command.split(" ")[0];
-                switch (commandType) {
-                case ADD_COMMAND:
-                    eventList.add(command);
-                    break;
-                case VIEW_COMMAND:
-                    eventList.listEvents();
-                    break;
-                case PRIORITY_VIEW_COMMAND:
-                    eventList.priorityView();
-                    break;
-                case COUNTDOWN_VIEW_COMMAND:
-                    eventList.countdownView();
-                    break;
-                case CLEAR_COMMAND:
-                    eventList.clearEvents();
-                    break;
-                case SEARCH_COMMAND:
-                    eventList.searchEvents(command.split(" ", 2)[1]);
-                    break;
-                case DELETE_COMMAND:
-                    eventList.deleteEvent(Integer.parseInt(command.split(" ", 2)[1]));
-                    break;
-                default:
-                    ui.printLine();
-                    System.out.println(INVALID_COMMAND_MESSAGE);
-                    ui.printLine();
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                ui.printLine();
-                System.out.println(INVALID_INDEX_MESSAGE);
-                ui.printLine();
-            } catch (IndexOutOfBoundsException e) {
-                ui.printLine();
-                System.out.println(INVALID_COMMAND_MESSAGE);
-                ui.printLine();
-            }
-            command = in.nextLine();
-        }
-        System.out.println(BYE_MESSAGE);
-    }
 }
