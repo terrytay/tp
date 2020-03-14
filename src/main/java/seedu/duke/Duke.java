@@ -44,7 +44,7 @@ public class Duke {
     private static StudyAreaList studyAreaList;
     private static Ui ui = new Ui();
     private static Parser parser;
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * This is the constructor to create a new Duke program every time user runs the main loop.
