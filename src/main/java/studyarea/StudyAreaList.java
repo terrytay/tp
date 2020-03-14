@@ -1,7 +1,20 @@
 package studyarea;
 
-import ui.Ui;
 import java.util.ArrayList;
+import static ui.Constants.DUPLICATE_FLAGS;
+import static ui.Constants.FLAG;
+import static ui.Constants.INDOOR_FLAG;
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
+import static ui.Constants.NON_POSITIVE_INTEGER;
+import static ui.Constants.NOT_INTEGER;
+import static ui.Constants.NO_SIZE_INDICATED;
+import static ui.Constants.ONLY_FLAG;
+import static ui.Constants.OUTDOOR_FLAG;
+import static ui.Constants.PORTS_FLAG;
+import static ui.Constants.SIZE_FLAG;
+import static ui.Constants.SPACE;
+import static ui.Constants.WRONG_FLAG_ARGUMENT_POSITION;
+import static ui.Constants.WRONG_FLAG_USAGE;
 
 /**
  * This is the class that stores and manages all of the Study Areas in location.txt
@@ -33,7 +46,7 @@ public class StudyAreaList {
      */
     public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
         if (flag[index] != null) {
-            throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
+            throw new IllegalStudyAreaException(DUPLICATE_FLAGS);
         }
     }
 
@@ -46,8 +59,29 @@ public class StudyAreaList {
 
     public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
         if (commands[index].length() == 1) {
-            throw new IllegalStudyAreaException(Ui.ONLY_FLAG);
+            throw new IllegalStudyAreaException(ONLY_FLAG);
         }
+    }
+
+    /**
+     * This method checks if the command after the size flag is a valid integer.
+     * @param commands this is the array of commands entered.
+     * @param index this is the index where the size flag is.
+     * @throws IllegalStudyAreaException if command entered is not a valid integer.
+     */
+    public static void checkInteger(String[] commands, int index) throws IllegalStudyAreaException {
+
+        try {                                     // try block is to test if command is integer
+            int size = Integer.parseInt(commands[index + 1]);
+            if (size <= 0) {                     // check if integer is positive, else throw exception.
+                throw new IllegalStudyAreaException(NON_POSITIVE_INTEGER);
+            }
+        } catch (NumberFormatException e) {       // catch if command is not integer then throw exception
+            throw new IllegalStudyAreaException(NOT_INTEGER);
+        } catch (ArrayIndexOutOfBoundsException e) {   // catch if no string exist after "-s" and throw exception
+            throw new IllegalStudyAreaException(NO_SIZE_INDICATED);
+        }
+
     }
 
     /**
@@ -59,19 +93,13 @@ public class StudyAreaList {
      * @param isNotFlag this is the boolean value that checks if the command entered is a flag.
      * @throws IllegalStudyAreaException if user enters command wrongly.
      */
-    private void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
+    public static void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
             IllegalStudyAreaException {                //isNotFlag is used to track previous instances of "-"
 
-        if (commands[index].equals(Ui.SIZE_FLAG)) {   // for instances of "-s", check if next string is integer or null.
+        if (commands[index].equals(SIZE_FLAG)) {   // for instances of "-s", check if next string is integer or null.
             checkDuplicate(flags, 0);
-            try {                                     // try block is to test if command is integer
-                int size = Integer.parseInt(commands[index + 1]);
-            } catch (NumberFormatException e) {       // catch if command is not integer then throw exception
-                throw new IllegalStudyAreaException(Ui.NOT_INTEGER);
-            } catch (ArrayIndexOutOfBoundsException e) {   // catch if no string exist after "-s" and throw exception
-                throw new IllegalStudyAreaException(Ui.NO_SIZE_INDICATED);
-            }
-        } else if (commands[index].contains(Ui.FLAG)) { // for instances "-" ,
+            checkInteger(commands, index);         // check if subsequent command is a valid integer.
+        } else if (commands[index].contains(FLAG)) { // for instances "-" ,
             checkOnlyFlag(commands, index);             // check if only "-" exist, if true, then throw exception
             switch (commands[index].charAt(1)) {        // if "-p", "-i" , "-o" then check if duplicate. Else, throw
             case 'p':                               // exception for wrong usage of flag
@@ -82,11 +110,11 @@ public class StudyAreaList {
                 checkDuplicate(flags, 3);
                 break;
             default:
-                throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
+                throw new IllegalStudyAreaException(WRONG_FLAG_USAGE);
             }
         } else {                                         // if no instances of "-" or "-s"
             if (!isNotFlag) {                            // and if there exist previous instances of "-" (i.e: -p EA)
-                throw new IllegalStudyAreaException(Ui.WRONG_FLAG_ARGUMENT_POSITION);  // throw exception
+                throw new IllegalStudyAreaException(WRONG_FLAG_ARGUMENT_POSITION);  // throw exception
             }
         }
     }
@@ -109,31 +137,31 @@ public class StudyAreaList {
         StringBuilder name = new StringBuilder();
         boolean isNotFlag = true;                             // to keep track of instance "-" is input.
         for (int i = 0; i < commands.length; i++) {
-            if (commands[i].equals(Ui.SIZE_FLAG)) {
+            if (commands[i].equals(SIZE_FLAG)) {
                 isNotFlag = false;                              // update isNotFlag as false because command is a flag
                 checkFlag(flags, commands, i, false); // pass false instead of isNotFlag as only boolean logic
-                flags[0] = Ui.SIZE_FLAG;
+                flags[0] = SIZE_FLAG;
                 flags[1] = Integer.toString(Integer.parseInt(commands[i + 1]));
                 i++;
-            } else if (commands[i].contains(Ui.FLAG)) {
+            } else if (commands[i].contains(FLAG)) {
                 isNotFlag = false;
                 checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
                 case 'p':
-                    flags[2] = Ui.PORTS_FLAG;
+                    flags[2] = PORTS_FLAG;
                     break;
                 case 'i':
-                    flags[3] = Ui.INDOOR_FLAG;
+                    flags[3] = INDOOR_FLAG;
                     break;
                 case 'o':
-                    flags[3] = Ui.OUTDOOR_FLAG;
+                    flags[3] = OUTDOOR_FLAG;
                     break;
                 default:
-                    throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
+                    throw new IllegalStudyAreaException(WRONG_FLAG_USAGE);
                 }
             } else {                                              // if no previous instances of "-"
                 if (isNotFlag) {                                  // and if input is not a flag
-                    name.append(commands[i]).append(Ui.SPACE);    // concatenate subsequent input that pass the control
+                    name.append(commands[i]).append(SPACE);    // concatenate subsequent input that pass the control
                     flags[4] = name.toString().trim();            // flag
                 } else {
                     checkFlag(flags, commands, i, false); // if has previous instances of "-" and input is not
@@ -170,34 +198,33 @@ public class StudyAreaList {
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
-        String[] temp = userIn.split(Ui.MULTIPLE_WHITE_SPACES);
+        String[] temp = userIn.split(MULTIPLE_WHITE_SPACES);
         String[] flags = getFlagsInfo(temp);
         ArrayList<StudyArea> availStudyAreas = new ArrayList<>();
         for (StudyArea studyArea : this.studyAreaList) {
             boolean isAvail = true;
+            int index = 0;
             for (String flag : flags) {
-                if (flag != null && isAvail) {
+                if (flag != null && isAvail && index != 1) {
                     switch (flag) {
-                    case Ui.PORTS_FLAG:
+                    case PORTS_FLAG:
                         isAvail = studyArea.hasPort();
                         break;
-                    case Ui.INDOOR_FLAG:
+                    case INDOOR_FLAG:
                         isAvail = studyArea.isIndoor();
                         break;
-                    case Ui.OUTDOOR_FLAG:
+                    case OUTDOOR_FLAG:
                         isAvail = !studyArea.isIndoor();
                         break;
-                    case Ui.SIZE_FLAG:  // allows user to find by capacity <= MaxPax
-                        if (flags[1] != null) {
-                            isAvail = Integer.parseInt(flags[1]) >= studyArea.getMaxPax();
-                        }
-                        flags[1] = null; //so as to skip iteration on flags[1].
+                    case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
+                        isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
                         break;
                     default:      // toLowerCase() so casing does not affect matching
                         isAvail = containsKey(studyArea.getName().toLowerCase(), studyArea.getAddress().toLowerCase(),
                                 studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
                         break;
                     }
+                    index++;
                 }
             }
             if (isAvail) {
