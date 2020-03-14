@@ -21,15 +21,15 @@ public class Dictionary {
 
     public static void loadDictionary() throws FileNotFoundException {
         Scanner in = new Scanner(new File(FILEPATH));
-        while(in.hasNextLine()){
+        while (in.hasNextLine()) {
             String userIn = in.nextLine();
             String[] buffer = userIn.split(DELIMITER);
             int i = 0;
             String out = null;
-            for(String value : buffer){
-                if (i==0) {
+            for (String value : buffer) {
+                if (i == 0) {
                     out = value;
-                }else{
+                } else {
                     dictionary.put(value, out);
                 }
                 i++;
@@ -44,9 +44,9 @@ public class Dictionary {
      * @return either StudyArea's name, address, or faculty if mapping is found, else return null.
      */
 
-    public static String parseKey(String key){ //this method will be used within String.contains() method
+    public static String parseKey(String key) { //this method will be used within String.contains() method
         String out = DELIMITER;                // Since .contains() cannot have null as an argument, out is initialised
-        if(dictionary.containsKey(key)) {      // with delimiter because mapped data does not contain delimiter.
+        if (dictionary.containsKey(key)) {      // with delimiter because mapped data does not contain delimiter.
             out = dictionary.get(key);
         }
         return out;

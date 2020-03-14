@@ -25,8 +25,9 @@ public class StudyAreaLoader {
 
     /**
      * Loads content from location.txt and dictionary.txt.
+     * @throws IllegalStudyAreaException if file is not found.
      */
-    public void loadFile() throws IllegalStudyAreaException{
+    public void loadFile() throws IllegalStudyAreaException {
         try {
             this.file = new File(this.url);
             Dictionary.loadDictionary();

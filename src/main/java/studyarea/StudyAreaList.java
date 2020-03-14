@@ -31,7 +31,7 @@ public class StudyAreaList {
      * @param index this is the index referring to the specific flag to check for duplicate.
      * @throws IllegalStudyAreaException if flag is not null, ie: if flag has already been mentioned.
      */
-    public void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
+    public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
         if (flag[index] != null) {
             throw new IllegalStudyAreaException(Ui.DUPLICATE_FLAGS);
         }
@@ -44,7 +44,7 @@ public class StudyAreaList {
      * @throws IllegalStudyAreaException if only flag is entered by user.
      */
 
-    public void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
+    public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
         if (commands[index].length() == 1) {
             throw new IllegalStudyAreaException(Ui.ONLY_FLAG);
         }
@@ -74,15 +74,15 @@ public class StudyAreaList {
         } else if (commands[index].contains(Ui.FLAG)) { // for instances "-" ,
             checkOnlyFlag(commands, index);             // check if only "-" exist, if true, then throw exception
             switch (commands[index].charAt(1)) {        // if "-p", "-i" , "-o" then check if duplicate. Else, throw
-                case 'p':                               // exception for wrong usage of flag
-                    checkDuplicate(flags, 2);
-                    break;
-                case 'i':
-                case 'o':
-                    checkDuplicate(flags, 3);
-                    break;
-                default:
-                    throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
+            case 'p':                               // exception for wrong usage of flag
+                checkDuplicate(flags, 2);
+                break;
+            case 'i':
+            case 'o':
+                checkDuplicate(flags, 3);
+                break;
+            default:
+                throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
             }
         } else {                                         // if no instances of "-" or "-s"
             if (!isNotFlag) {                            // and if there exist previous instances of "-" (i.e: -p EA)
@@ -95,7 +95,12 @@ public class StudyAreaList {
      * Obtains all the supported flags in this organiser app.
      *
      * @param commands This is the User commands that has been split by spaces.
-     * @return String Array of a fixed size of 5
+     * @return special purpose String Array of a fixed size of 5 and fixed values where :<br>
+     *          index 0 : "-s"<br>
+     *          index 1 : Integer value of the size indicated.<br>
+     *          index 2 : "-p"<br>
+     *          index 3 : "-i" or "-o" , depends on user input<br>
+     *          index 4: search key entered by User<br>
      * @throws IllegalStudyAreaException when arguments for flags are invalid.
      */
     public String[] getFlagsInfo(String[] commands) throws IllegalStudyAreaException {
@@ -114,17 +119,17 @@ public class StudyAreaList {
                 isNotFlag = false;
                 checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
-                    case 'p':
-                        flags[2] = Ui.PORTS_FLAG;
-                        break;
-                    case 'i':
-                        flags[3] = Ui.INDOOR_FLAG;
-                        break;
-                    case 'o':
-                        flags[3] = Ui.OUTDOOR_FLAG;
-                        break;
-                    default:
-                        throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
+                case 'p':
+                    flags[2] = Ui.PORTS_FLAG;
+                    break;
+                case 'i':
+                    flags[3] = Ui.INDOOR_FLAG;
+                    break;
+                case 'o':
+                    flags[3] = Ui.OUTDOOR_FLAG;
+                    break;
+                default:
+                    throw new IllegalStudyAreaException(Ui.WRONG_FLAG_USAGE);
                 }
             } else {                                              // if no previous instances of "-"
                 if (isNotFlag) {                                  // and if input is not a flag
@@ -147,9 +152,9 @@ public class StudyAreaList {
      * @return True if can be found in either case. False if not found in both cases.
      */
 
-    public static boolean containsKey(String name, String address ,String faculty, String key) {
+    public static boolean containsKey(String name, String address, String faculty, String key) {
         if (name.contains(key) || name.contains(Dictionary.parseKey(key))) {
-        return true;
+            return true;
         }
         if (address.contains(key) || address.contains(Dictionary.parseKey(key))) {
             return true;
@@ -165,40 +170,40 @@ public class StudyAreaList {
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
-            String[] temp = userIn.split(Ui.MULTIPLE_WHITE_SPACES);
-            String[] flags = getFlagsInfo(temp);
-            ArrayList<StudyArea> availStudyAreas = new ArrayList<>();
-            for (StudyArea studyArea : this.studyAreaList) {
-                boolean isAvail = true;
-                for (String flag : flags) {
-                    if (flag != null && isAvail) {
-                        switch (flag) {
-                            case Ui.PORTS_FLAG:
-                                isAvail = studyArea.hasPort();
-                                break;
-                            case Ui.INDOOR_FLAG:
-                                isAvail = studyArea.isIndoor();
-                                break;
-                            case Ui.OUTDOOR_FLAG:
-                                isAvail = !studyArea.isIndoor();
-                                break;
-                            case Ui.SIZE_FLAG:                   // allows user to find by capacity <= MaxPax
-                                isAvail = studyArea.getMaxPax()>=Integer.parseInt(flags[1]);
-                                flags[1] = null; //so as to skip iteration on flags[1].
-                                break;
-                            default:
-                                isAvail = containsKey(studyArea.getName().toLowerCase(),// toLowerCase() so casing does
-                                studyArea.getAddress().toLowerCase(),                   // not affect matching
-                                        studyArea.getFaculty().toLowerCase(),
-                                        flags[4].toLowerCase());
-                                break;
+        String[] temp = userIn.split(Ui.MULTIPLE_WHITE_SPACES);
+        String[] flags = getFlagsInfo(temp);
+        ArrayList<StudyArea> availStudyAreas = new ArrayList<>();
+        for (StudyArea studyArea : this.studyAreaList) {
+            boolean isAvail = true;
+            for (String flag : flags) {
+                if (flag != null && isAvail) {
+                    switch (flag) {
+                    case Ui.PORTS_FLAG:
+                        isAvail = studyArea.hasPort();
+                        break;
+                    case Ui.INDOOR_FLAG:
+                        isAvail = studyArea.isIndoor();
+                        break;
+                    case Ui.OUTDOOR_FLAG:
+                        isAvail = !studyArea.isIndoor();
+                        break;
+                    case Ui.SIZE_FLAG:  // allows user to find by capacity <= MaxPax
+                        if (flags[1] != null) {
+                            isAvail = Integer.parseInt(flags[1]) >= studyArea.getMaxPax();
                         }
+                        flags[1] = null; //so as to skip iteration on flags[1].
+                        break;
+                    default:      // toLowerCase() so casing does not affect matching
+                        isAvail = containsKey(studyArea.getName().toLowerCase(), studyArea.getAddress().toLowerCase(),
+                                studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
+                        break;
                     }
                 }
-                if (isAvail) {
-                    availStudyAreas.add(studyArea);
-                }
             }
-            return availStudyAreas;
+            if (isAvail) {
+                availStudyAreas.add(studyArea);
+            }
+        }
+        return availStudyAreas;
     }
 }
