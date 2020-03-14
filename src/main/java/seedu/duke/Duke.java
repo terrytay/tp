@@ -1,14 +1,16 @@
 package seedu.duke;
 
-import event.EventList;
 import parser.Parser;
-import command.EventCommand;
+import command.TaskCommand;
 import command.StudyAreaCommand;
-import resourceloader.EventLoader;
+import resourceloader.TaskLoader;
 import resourceloader.StudyAreaLoader;
 import studyarea.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
+import task.TaskList;
 import ui.Ui;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 
 
@@ -16,9 +18,12 @@ import java.io.FileNotFoundException;
  * This is Duke class, which forms the main class of the program.
  */
 public class Duke {
-    private static EventLoader eventLoader;
+
+    public static final String FILE_PATH_EVENTS = "library" + File.separator + "taskList.txt";
+    public static final String FILE_PATH_STUDYAREAS = "library" + File.separator + "locations.txt";
+    private static TaskLoader taskLoader;
     protected static StudyAreaLoader studyAreaLoader;
-    private static EventList eventList = new EventList();
+    private static TaskList taskList = new TaskList();
     private static StudyAreaList studyAreaList;
     private static Ui ui = new Ui();
     private static Parser parser;
@@ -29,9 +34,9 @@ public class Duke {
     public Duke()  {
         try {
             parser = new Parser();
-            eventLoader = new EventLoader(Ui.FILE_PATH_EVENTS);
-            eventList = new EventList(eventLoader.loadFile());
-            studyAreaLoader = new StudyAreaLoader(Ui.FILE_PATH_STUDYAREAS);
+            taskLoader = new TaskLoader(FILE_PATH_EVENTS);
+            taskList = new TaskList(taskLoader.loadFile());
+            studyAreaLoader = new StudyAreaLoader(FILE_PATH_STUDYAREAS);
             studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
         } catch (FileNotFoundException | IllegalStudyAreaException e) {
             ui.printLine();
@@ -53,7 +58,7 @@ public class Duke {
                 status = false;
                 break;
             case 1:
-                EventCommand.runCommands(eventList, ui, parser);
+                TaskCommand.runCommands(taskList, ui, parser);
                 ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
                 break;
             case 2:
@@ -67,7 +72,7 @@ public class Duke {
             }
             ui.printLine();
         }
-        eventLoader.saveEvents(eventList.events);
+        taskLoader.saveTasks(taskList.tasks);
         ui.printMessage(Ui.GOODBYE_MESSAGE + Ui.DAB);
         ui.close();
     }
