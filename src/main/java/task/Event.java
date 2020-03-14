@@ -273,7 +273,7 @@ public class Event extends Task {
      */
     public Event editEvent(Ui ui) {
         printOptionsToEdit(ui);
-        int fieldToBeEdited = 0;
+        int fieldToBeEdited;
         fieldToBeEdited = getFieldToBeEdited(ui);
         switch (fieldToBeEdited) {
         case EDIT_DESCRIPTION:
