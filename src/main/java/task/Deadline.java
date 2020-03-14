@@ -12,8 +12,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static task.Event.AT;
+import static task.Event.DATE_AFTER_CURRENT_DATE;
 import static task.Event.DATE_PATTERN;
 import static task.Event.DELIMITER;
 import static task.Event.EDIT_DATE;
@@ -24,11 +27,19 @@ import static task.Event.ENTER_NEW_DESCRIPTION_MESSAGE;
 import static task.Event.ENTER_NEW_PRIORITY_MESSAGE;
 import static task.Event.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
 import static task.Event.ERROR_MESSAGE;
+import static task.Event.INVALID_DATE;
+import static task.Event.INVALID_DATE_ENTERED;
+import static task.Event.INVALID_OPTION_ENTERED;
+import static task.Event.INVALID_PRIORITY_VALUE;
 import static task.Event.NEW_LINE_CHARACTER;
 import static task.Event.OPTION_TO_EDIT_DATE;
 import static task.Event.OPTION_TO_EDIT_DESCRIPTION;
+import static task.Event.PRIORITY_NOT_INTEGER;
+import static task.Event.SEARCH_KEYWORD_EMPTY;
 import static task.Event.UPDATED_DETAILS;
 import static task.Event.WITH_PRIORITY;
+import static task.Event.WRONG_OPTION;
+
 
 /**
  * Represents an deadline and contains the related functions.
@@ -46,10 +57,13 @@ public class Deadline extends Task {
             + "Number)";
     public static final String OPTION_TO_EDIT_DUE_TIME = "3. Due Time";
     public static final String OPTION_TO_EDIT_PRIORITY = "4. Priority";
+    private static final String INVALID_DUE_TIME = "Invalid due time entered by user";
+    private static final String INVALID_DUE_TIME_ENTERED = "Invalid due time entered by the user";
     private String description;
     private LocalDate date;
     private LocalTime dueTime;
     private int priority;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * Setter for priority of the deadline.
@@ -98,6 +112,7 @@ public class Deadline extends Task {
         try {
             this.priority = Integer.parseInt(priority.strip());
         } catch (NumberFormatException e) {
+            LOGGER.log(Level.INFO, PRIORITY_NOT_INTEGER);
             throw new TaskPriorityNotIntegerException();
         }
     }
@@ -112,6 +127,7 @@ public class Deadline extends Task {
         try {
             this.dueTime = LocalTime.parse(dueTime.strip());
         } catch (DateTimeParseException e) {
+            LOGGER.log(Level.INFO, INVALID_DUE_TIME);
             throw new InvalidDueTimeException();
         }
     }
@@ -126,9 +142,11 @@ public class Deadline extends Task {
         try {
             this.date = LocalDate.parse(date.strip());
         } catch (DateTimeParseException e) {
+            LOGGER.log(Level.INFO, INVALID_DATE);
             throw new InvalidDateException();
         }
         if (this.date.isBefore(LocalDate.now())) {
+            LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
             throw new TaskDateBeforeCurrentDateException();
         }
     }
@@ -182,6 +200,7 @@ public class Deadline extends Task {
      */
     public boolean hasKeyword(String keyword) throws Exception {
         if (keyword.equals(EMPTY_STRING)) {
+            LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
         boolean containsKeyword = description.contains(keyword);
@@ -207,7 +226,7 @@ public class Deadline extends Task {
      */
     public Deadline editDeadline(Ui ui) {
         printOptionsToEdit(ui);
-        int fieldToBeEdited = 0;
+        int fieldToBeEdited;
         fieldToBeEdited = getFieldToBeEdited(ui);
         switch (fieldToBeEdited) {
         case EDIT_DESCRIPTION:
@@ -223,6 +242,7 @@ public class Deadline extends Task {
             editPriority(ui);
             break;
         default:
+            LOGGER.log(Level.SEVERE, WRONG_OPTION);
             ui.printMessage(ERROR_MESSAGE);
             break;
         }
@@ -244,6 +264,7 @@ public class Deadline extends Task {
             try {
                 parsePriority(newPriorityString);
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_PRIORITY_VALUE);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -264,6 +285,7 @@ public class Deadline extends Task {
             try {
                 parseDueTime(newStartTimeString);
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_DUE_TIME_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -284,9 +306,11 @@ public class Deadline extends Task {
             try {
                 parseDate(newDateString);
                 if (this.date.isBefore(LocalDate.now())) {
+                    LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
                     throw new TaskDateBeforeCurrentDateException();
                 }
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_DATE_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -322,6 +346,7 @@ public class Deadline extends Task {
                     throw new Exception();
                 }
             } catch (Exception exception) {
+                LOGGER.log(Level.INFO, INVALID_OPTION_ENTERED);
                 ui.printMessage(ENTER_VALID_NUMBER_FROM_LIST_MESSAGE);
                 exceptionEncountered = true;
             }
