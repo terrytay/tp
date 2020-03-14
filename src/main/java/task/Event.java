@@ -332,6 +332,9 @@ public class Event extends Task {
             String newStartTimeString = ui.getUserIn();
             try {
                 parseStartTime(newStartTimeString);
+                if (this.endTime.isBefore(this.startTime)) {
+                    throw new EventStartTimeAfterEndTimeException();
+                }
             } catch (Exception e) {
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;

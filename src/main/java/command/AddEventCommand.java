@@ -15,7 +15,8 @@ public class AddEventCommand extends Command {
 
     public static final String START_TIME_AFTER_END_TIME_ERROR_MESSAGE = "Start time after end time exception "
             + "not thrown";
-    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Past event exception not thrown";
+    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Date past current day exception not thrown";
+    public static final String SLASH_SYMBOL = "/";
 
     /** The new event to be added. */
     Event newEvent;
@@ -32,7 +33,7 @@ public class AddEventCommand extends Command {
         if (isOneWordCommand) {
             throw new EventDetailsNotProvidedException();
         }
-        String[] details = eventDetails[1].split("/");
+        String[] details = eventDetails[1].split(SLASH_SYMBOL);
         if (details.length != 5) {
             throw new EventCreationFormatNotFollowedException();
         }
