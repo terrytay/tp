@@ -58,7 +58,7 @@ public class StudyAreaList {
      * @param isNotFlag this is the boolean value that checks if the command entered is a flag.
      * @throws IllegalStudyAreaException if user enters command wrongly.
      */
-    public void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
+    public static void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
             IllegalStudyAreaException {
 
         if (commands[index].equals(Ui.SIZE_FLAG)) {
