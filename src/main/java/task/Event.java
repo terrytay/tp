@@ -44,7 +44,8 @@ public class Event extends Task {
     public static final String ENTER_VALID_NUMBER_FROM_LIST_MESSAGE = "Please enter a valid number from the list";
     public static final String UPDATED_DETAILS = "Updated Details:";
     public static final String EVENT_DETAILS_AS_FOLLOWS_MESSAGE = "The event details are as follows:";
-    public static final String ENTER_OPTION_MESSAGE = "Which field of the event to edit? (Enter Corresponding Number)";
+    public static final String ASK_FOR_OPTION_MESSAGE = "Which field of the event to edit?"
+            + " (Enter Corresponding Number)";
     public static final String OPTION_TO_EDIT_DESCRIPTION = "1. Description";
     public static final String OPTION_TO_EDIT_DATE = "2. Date";
     public static final String OPTION_TO_EDIT_START_TIME = "3. Start Time";
@@ -385,7 +386,8 @@ public class Event extends Task {
             exceptionEncountered = false;
             try {
                 fieldToBeEdited = Integer.parseInt(ui.getUserIn());
-                if (fieldToBeEdited > 5 || fieldToBeEdited < 0) {
+                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited < 0;
+                if (isInvalidOption) {
                     throw new Exception();
                 }
             } catch (Exception exception) {
@@ -416,7 +418,7 @@ public class Event extends Task {
         ui.printLine();
         ui.printMessage(EVENT_DETAILS_AS_FOLLOWS_MESSAGE);
         ui.printMessage(this.getTaskInformation());
-        ui.printMessage(ENTER_OPTION_MESSAGE);
+        ui.printMessage(ASK_FOR_OPTION_MESSAGE);
         ui.printMessage(OPTION_TO_EDIT_DESCRIPTION);
         ui.printMessage(OPTION_TO_EDIT_DATE);
         ui.printMessage(OPTION_TO_EDIT_START_TIME);

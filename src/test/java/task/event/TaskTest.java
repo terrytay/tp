@@ -45,7 +45,8 @@ class TaskTest {
                     "17:00", "1");
             fail("Invalid start time not rejected");
         } catch (Exception e) {
-            assertEquals("Start time provided is invalid or in wrong format (Should be HH:MM)",e.getMessage());
+            assertEquals("Start time provided is invalid or in wrong format (Should be HH:MM) 24 Hr format",
+                    e.getMessage());
         }
     }
 
@@ -56,7 +57,8 @@ class TaskTest {
                     "10:70", "1");
             fail("Invalid end time not rejected");
         } catch (Exception e) {
-            assertEquals("End time provided is invalid or in wrong format (Should be HH:MM)",e.getMessage());
+            assertEquals("End time provided is invalid or in wrong format (Should be HH:MM) 24 Hr format",
+                    e.getMessage());
         }
     }
 

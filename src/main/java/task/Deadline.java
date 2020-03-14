@@ -1,5 +1,10 @@
 package task;
 
+import exception.command.InvalidDateException;
+import exception.command.InvalidDueTimeException;
+import exception.command.SearchKeywordEmptyException;
+import exception.command.TaskDateBeforeCurrentDateException;
+import exception.command.TaskPriorityNotIntegerException;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -8,9 +13,22 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
+import static task.Event.AT;
+import static task.Event.DATE_PATTERN;
+import static task.Event.DELIMITER;
 import static task.Event.EDIT_DATE;
 import static task.Event.EDIT_DESCRIPTION;
+import static task.Event.EMPTY_STRING;
+import static task.Event.ENTER_NEW_DATE_MESSAGE;
+import static task.Event.ENTER_NEW_DESCRIPTION_MESSAGE;
+import static task.Event.ENTER_NEW_PRIORITY_MESSAGE;
+import static task.Event.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
 import static task.Event.ERROR_MESSAGE;
+import static task.Event.NEW_LINE_CHARACTER;
+import static task.Event.OPTION_TO_EDIT_DATE;
+import static task.Event.OPTION_TO_EDIT_DESCRIPTION;
+import static task.Event.UPDATED_DETAILS;
+import static task.Event.WITH_PRIORITY;
 
 /**
  * Represents an deadline and contains the related functions.
@@ -19,6 +37,15 @@ public class Deadline extends Task {
 
     private static final int EDIT_DUE_TIME = 3;
     public static final int EDIT_PRIORITY = 4;
+    public static final String DEADLINE_IDENTIFIER = "D";
+    public static final String DEADLINE_SYMBOL = "[D] ";
+    public static final String ON = " on ";
+    public static final String ENTER_NEW_DUE_TIME_MESSAGE = "Enter new due Time:";
+    public static final String DEADLINE_DETAILS_AS_FOLLOWS_MESSAGE = "The deadline details are as follows:";
+    public static final String ASK_FOR_OPTION_MESSAGE = "Which field of the deadline to edit? (Enter Corresponding "
+            + "Number)";
+    public static final String OPTION_TO_EDIT_DUE_TIME = "3. Due Time";
+    public static final String OPTION_TO_EDIT_PRIORITY = "4. Priority";
     private String description;
     private LocalDate date;
     private LocalTime dueTime;
@@ -48,9 +75,6 @@ public class Deadline extends Task {
         parseDate(date);
         parseDueTime(dueTime);
         parsePriority(priority);
-        if (this.date.isBefore(LocalDate.now())) {
-            throw new Exception("Date specified must be a current or a future date");
-        }
     }
 
 
@@ -64,31 +88,56 @@ public class Deadline extends Task {
         return ChronoUnit.DAYS.between(LocalDate.now(),this.date);
     }
 
+    /**
+     * Parses the priority from the string entered by user for the priority field.
+     *
+     * @param priority String entered by user for the priority field.
+     * @throws Exception If the provided priority isn't an integer.
+     */
     private void parsePriority(String priority) throws Exception {
         try {
             this.priority = Integer.parseInt(priority.strip());
         } catch (NumberFormatException e) {
-            throw new Exception("Priority should be an integer");
+            throw new TaskPriorityNotIntegerException();
         }
     }
 
+    /**
+     * Parses the Due time from the string entered by user for the dueTime field.
+     *
+     * @param dueTime String entered by user for the dueTime field.
+     * @throws Exception If the provided end time isn't valid.
+     */
     private void parseDueTime(String dueTime) throws Exception {
         try {
             this.dueTime = LocalTime.parse(dueTime.strip());
         } catch (DateTimeParseException e) {
-            throw new Exception("Due time provided is invalid or in wrong format (Should be HH:MM)");
+            throw new InvalidDueTimeException();
         }
     }
 
+    /**
+     * Parses the Date from the string entered by user for the date field.
+     *
+     * @param date String entered by user for the date field.
+     * @throws Exception If the provided date isn't valid or is a past date.
+     */
     private void parseDate(String date) throws Exception {
         try {
             this.date = LocalDate.parse(date.strip());
         } catch (DateTimeParseException e) {
-            throw new Exception("Date provided is invalid or is in wrong format (Should be YYYY-MM-DD)");
+            throw new InvalidDateException();
         }
-
+        if (this.date.isBefore(LocalDate.now())) {
+            throw new TaskDateBeforeCurrentDateException();
+        }
     }
 
+    /**
+     * Parses the description from the string entered by user for the description field.
+     *
+     * @param description String entered by user for the description field.
+     */
     private void parseDescription(String description) {
         this.description = description;
     }
@@ -99,8 +148,9 @@ public class Deadline extends Task {
      * @return deadlineInfo Contains information related to the deadline.
      */
     public String getTaskInformation() {
-        String deadlineInfo = "[D] " + description + " on " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-            + " at " + dueTime.toString() + " with priority " + priority;
+        String deadlineInfo = DEADLINE_SYMBOL + description + ON
+                + date.format(DateTimeFormatter.ofPattern(DATE_PATTERN)) + AT + dueTime.toString()
+                + WITH_PRIORITY + priority;
         return deadlineInfo;
     }
 
@@ -131,8 +181,8 @@ public class Deadline extends Task {
      * @throws Exception If no keyword is entered.
      */
     public boolean hasKeyword(String keyword) throws Exception {
-        if (keyword.equals("")) {
-            throw new Exception("Keyword is empty");
+        if (keyword.equals(EMPTY_STRING)) {
+            throw new SearchKeywordEmptyException();
         }
         boolean containsKeyword = description.contains(keyword);
         return containsKeyword;
@@ -144,7 +194,8 @@ public class Deadline extends Task {
      * @return formattedDeadlineDetails Contains the deadline details in the required format.
      */
     public String getFormattedDetails() {
-        String formattedDeadlineDetails = "D#" + description + "#" + date + "#" + dueTime + "#" + priority + "\n";
+        String formattedDeadlineDetails = DEADLINE_IDENTIFIER + DELIMITER + description + DELIMITER + date + DELIMITER
+                + dueTime + DELIMITER + priority + NEW_LINE_CHARACTER;
         return formattedDeadlineDetails;
     }
 
@@ -157,7 +208,7 @@ public class Deadline extends Task {
     public Deadline editDeadline(Ui ui) {
         printOptionsToEdit(ui);
         int fieldToBeEdited = 0;
-        fieldToBeEdited = getFieldToBeEdited(ui, false, fieldToBeEdited);
+        fieldToBeEdited = getFieldToBeEdited(ui);
         switch (fieldToBeEdited) {
         case EDIT_DESCRIPTION:
             editDescription(ui);
@@ -179,11 +230,16 @@ public class Deadline extends Task {
         return this;
     }
 
+    /**
+     * Used to edit the priority field of the deadline.
+     *
+     * @param ui Used to interact with the user.
+     */
     private void editPriority(Ui ui) {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage("Enter new priority:");
+            ui.printMessage(ENTER_NEW_PRIORITY_MESSAGE);
             String newPriorityString = ui.getUserIn();
             try {
                 parsePriority(newPriorityString);
@@ -194,11 +250,16 @@ public class Deadline extends Task {
         } while (exceptionEncountered);
     }
 
+    /**
+     * Used to edit the dueTime field of the deadline.
+     *
+     * @param ui Used to interact with the user.
+     */
     private void editDueTime(Ui ui) {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage("Enter new due Time:");
+            ui.printMessage(ENTER_NEW_DUE_TIME_MESSAGE);
             String newStartTimeString = ui.getUserIn();
             try {
                 parseDueTime(newStartTimeString);
@@ -209,16 +270,21 @@ public class Deadline extends Task {
         } while (exceptionEncountered);
     }
 
+    /**
+     * Used to edit the date field of the deadline.
+     *
+     * @param ui Used to interact with the user.
+     */
     private void editDate(Ui ui) {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage("Enter new Date:");
+            ui.printMessage(ENTER_NEW_DATE_MESSAGE);
             String newDateString = ui.getUserIn();
             try {
                 parseDate(newDateString);
                 if (this.date.isBefore(LocalDate.now())) {
-                    throw new Exception("Date specified must be a current or a future date");
+                    throw new TaskDateBeforeCurrentDateException();
                 }
             } catch (Exception e) {
                 ui.printMessage(e.getMessage());
@@ -227,43 +293,67 @@ public class Deadline extends Task {
         } while (exceptionEncountered);
     }
 
+    /**
+     * Used to edit the description field of the deadline.
+     *
+     * @param ui Used to interact with the user.
+     */
     private void editDescription(Ui ui) {
-        ui.printMessage("Enter new description:");
+        ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
         String newDescription = ui.getUserIn();
         parseDescription(newDescription);
     }
 
-    private int getFieldToBeEdited(Ui ui, boolean exceptionEncountered, int fieldToBeEdited) {
+    /**
+     * Returns an integer denoting the field selected to be edited later.
+     *
+     * @param ui Used to interact with the user.
+     * @return fieldToBeEdited Corresponds to the field to be edited.
+     */
+    private int getFieldToBeEdited(Ui ui) {
+        boolean exceptionEncountered;
+        int fieldToBeEdited = 0;
         do {
             exceptionEncountered = false;
             try {
                 fieldToBeEdited = Integer.parseInt(ui.getUserIn());
-                if (fieldToBeEdited > 4 || fieldToBeEdited < 0) {
+                boolean isInvalidOption = fieldToBeEdited > 4 || fieldToBeEdited < 0;
+                if (isInvalidOption) {
                     throw new Exception();
                 }
             } catch (Exception exception) {
-                ui.printMessage("Please enter a valid number");
+                ui.printMessage(ENTER_VALID_NUMBER_FROM_LIST_MESSAGE);
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
         return fieldToBeEdited;
     }
 
+    /**
+     * Prints the updated details of the deadline after an edit command.
+     *
+     * @param ui Used to interact with user.
+     */
     private void printUpdatedDetails(Ui ui) {
-        ui.printMessage("Updated Details:");
+        ui.printMessage(UPDATED_DETAILS);
         ui.printMessage(this.getTaskInformation());
         ui.printLine();
     }
 
+    /**
+     * Prints the list of fields that could be edited as a list.
+     *
+     * @param ui Used to interact with user.
+     */
     private void printOptionsToEdit(Ui ui) {
         ui.printLine();
-        ui.printMessage("The deadline details are as follows:");
+        ui.printMessage(DEADLINE_DETAILS_AS_FOLLOWS_MESSAGE);
         ui.printMessage(this.getTaskInformation());
-        ui.printMessage("Which field of the event to edit? (Enter Corresponding Number)");
-        ui.printMessage("1. Description");
-        ui.printMessage("2. Date");
-        ui.printMessage("3. Due Time");
-        ui.printMessage("4. Priority");
+        ui.printMessage(ASK_FOR_OPTION_MESSAGE);
+        ui.printMessage(OPTION_TO_EDIT_DESCRIPTION);
+        ui.printMessage(OPTION_TO_EDIT_DATE);
+        ui.printMessage(OPTION_TO_EDIT_DUE_TIME);
+        ui.printMessage(OPTION_TO_EDIT_PRIORITY);
         ui.printEmptyLine();
     }
 }
