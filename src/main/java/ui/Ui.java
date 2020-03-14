@@ -2,7 +2,6 @@ package ui;
 
 
 import studyarea.StudyArea;
-import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -17,13 +16,11 @@ public class Ui {
     private final Scanner in;
     private final PrintStream out;
 
-    public static final String FILE_PATH_EVENTS = "library" + File.separator + "eventList.txt";
-    public static final String FILE_PATH_STUDYAREAS = "library" + File.separator + "locations.txt";
     public static final String MISSING_STUDY_AREA_DATA = "locations.txt is missing";
     public static final String BYE_COMMAND = "bye";
-    public static final String BYE_MESSAGE = "Bye!!!!!!";
+    public static final String BYE_MESSAGE = "Exiting task interface";
     public static final String LINE = "_______________________________________________________________________________"
-            + "_____";
+            + "_________________________";
     public static final int MAX_LINE_LENGTH = 55;
     public static final String FLAG = "-";
     public static final String MULTIPLE_WHITE_SPACES = "\\s+";
@@ -51,14 +48,47 @@ public class Ui {
     public static final String INCONSISTENT_DATA_STORAGE = "Data is wrongly stored in locations.txt";
     public static final String HELP_COMMAND = "help";
     public static final String TAB = "\t ";
+    public static final String HELP_DESCRIPTION_20 = TAB + "*There are 4 levels of priority, with 1 being the most "
+            + "urgent, and 4 being the least urgent";
+    public static final String HELP_DESCRIPTION_19 = TAB + "*All timing should follow 24 hour clock";
+    public static final String HELP_DESCRIPTION_18 = TAB + "*All dates should follow YYYY-MM-DD format";
+    public static final String HELP_DESCRIPTION_17 = TAB + "Notes:";
+    public static final String HELP_DESCRIPTION_16 = TAB + "bye --------------------------------------- Terminate task"
+            + " interface";
+    public static final String HELP_DESCRIPTION_15 = TAB + "help -------------------------------------- View List Of "
+            + "Commands Supported";
+    public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of task> --------------- Edit the task";
+    public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of task> ------------- Delete the "
+            + "task";
+    public static final String HELP_DESCRIPTION_12 = TAB + "search <keyword found in task> ------------ View existing "
+            + "task that contains the keyword";
+    public static final String HELP_DESCRIPTION_11 = TAB + "clear ------------------------------------- Delete"
+            + " all tasks";
+    public static final String HELP_DESCRIPTION_10 = TAB + "countdown --------------------------------- View existing"
+            + " tasks based on days left";
+    public static final String HELP_DESCRIPTION_9 = TAB + "priority_view ----------------------------- View existing "
+            + "tasks based on priority";
+    public static final String HELP_DESCRIPTION_8 = TAB + "view -------------------------------------- View existing"
+            + " events";
+    public static final String HELP_DESCRIPTION_7 = TAB + "------------------------------------------- Create a new "
+            + "deadline";
+    public static final String HELP_DESCRIPTION_5 = TAB + "deadline <deadline details> /d <date> /t <due time> /p "
+            + "<priority of deadline>";
+    public static final String HELP_DESCRIPTION_4 = TAB + "------------------------------------------- Create a new "
+            + "event";
+    public static final String HELP_DESCRIPTION_3 = TAB + "event <event details> /d <date> /s <start time> "
+            + "/e <end time> /p <priority of event>";
+    public static final String HELP_DESCRIPTION_2 = TAB + "Please enter the keywords followed by the information"
+            + " shown in the brackets";
+    public static final String HELP_DESCRIPTION_1 = TAB + "OrgaNice! Supports the following commands";
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
-    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"event\" to start\n"
-            + " your event list! If you are in the mood to mug and you"
+    public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"task\" to start\n"
+            + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
-    public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
-    public static final String EVENT_COMMAND = "event";
+    public static final String WRONG_INPUT = "Wrong input! Please enter either \"task\" or \"study\" only!";
+    public static final String TASK_COMMAND = "task";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
     public static final String INTERMEDIATE_MESSAGE = "Please enter \"event\" to continue with your event list or"
@@ -124,7 +154,7 @@ public class Ui {
     public int getMode() {
         String userIn = this.in.nextLine().toLowerCase();
         switch (userIn) {
-        case EVENT_COMMAND :
+        case TASK_COMMAND :
             return 1;
         case STUDY_COMMAND :
             return 2;
@@ -143,6 +173,16 @@ public class Ui {
     public String getUserIn() {
         return this.in.nextLine();
     }
+
+    /**
+     * This method allows for other classes to get the integer given by the User as input.
+     *
+     * @return int input from user.
+     */
+    public int getIntegerInput() {
+        return this.in.nextInt();
+    }
+
 
     /**
      * This method closes the Input Stream after usage is completed.
@@ -238,27 +278,25 @@ public class Ui {
      */
     public void printHelp() {
         printLine();
-        this.out.println(TAB + "OrgaNice! Supports the following commands");
-        this.out.println(TAB + "Please enter the keywords followed by the information shown in the brackets");
-        this.out.println(TAB + "add <event details> /d <date> /s <start time> /e <end time> /p <priority "
-                + "of event>");
-        this.out.println(TAB + "------------------------------------------- Create a new event");
-        this.out.println(TAB + "view -------------------------------------- View existing events");
-        this.out.println(TAB + "priority_view ----------------------------- View existing events based "
-                + "on priority");
-        this.out.println(TAB + "countdown --------------------------------- View existing events based on"
-                + " days left");
-        this.out.println(TAB + "clear ------------------------------------- Delete all events");
-        this.out.println(TAB + "search <keyword found in event> ----------- View existing events that contains "
-                + "the keyword");
-        this.out.println(TAB + "delete <index number of event> ------------ Delete the event");
-        this.out.println(TAB + "help -------------------------------------- View List Of Commands Supported");
-        this.out.println(TAB + "bye --------------------------------------- Terminate program");
-        this.out.println(TAB + "Notes:");
-        this.out.println(TAB + "*All dates should follow YYYY-MM-DD format");
-        this.out.println(TAB + "*All timing should follow 24 hour clock");
-        this.out.println(TAB + "*There are 4 levels of priority, with 1 being the most urgent, and 4 being the "
-                + "least urgent");
+        this.out.println(HELP_DESCRIPTION_1);
+        this.out.println(HELP_DESCRIPTION_2);
+        this.out.println(HELP_DESCRIPTION_3);
+        this.out.println(HELP_DESCRIPTION_4);
+        this.out.println(HELP_DESCRIPTION_5);
+        this.out.println(HELP_DESCRIPTION_7);
+        this.out.println(HELP_DESCRIPTION_8);
+        this.out.println(HELP_DESCRIPTION_9);
+        this.out.println(HELP_DESCRIPTION_10);
+        this.out.println(HELP_DESCRIPTION_11);
+        this.out.println(HELP_DESCRIPTION_12);
+        this.out.println(HELP_DESCRIPTION_13);
+        this.out.println(HELP_DESCRIPTION_14);
+        this.out.println(HELP_DESCRIPTION_15);
+        this.out.println(HELP_DESCRIPTION_16);
+        this.out.println(HELP_DESCRIPTION_17);
+        this.out.println(HELP_DESCRIPTION_18);
+        this.out.println(HELP_DESCRIPTION_19);
+        this.out.println(HELP_DESCRIPTION_20);
         printLine();
     }
 
