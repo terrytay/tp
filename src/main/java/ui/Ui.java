@@ -57,10 +57,10 @@ public class Ui {
             + " interface";
     public static final String HELP_DESCRIPTION_15 = TAB + "help -------------------------------------- View List Of "
             + "Commands Supported";
-    public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of event> -------------- Edit the task";
-    public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of event> ------------ Delete the "
+    public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of task> --------------- Edit the task";
+    public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of task> ------------- Delete the "
             + "task";
-    public static final String HELP_DESCRIPTION_12 = TAB + "search <keyword found in event> ----------- View existing "
+    public static final String HELP_DESCRIPTION_12 = TAB + "search <keyword found in task> ------------ View existing "
             + "task that contains the keyword";
     public static final String HELP_DESCRIPTION_11 = TAB + "clear ------------------------------------- Delete"
             + " all tasks";
