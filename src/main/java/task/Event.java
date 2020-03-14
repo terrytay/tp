@@ -14,6 +14,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Represents an event and contains the related functions.
@@ -51,12 +53,26 @@ public class Event extends Task {
     public static final String OPTION_TO_EDIT_START_TIME = "3. Start Time";
     public static final String OPTION_TO_EDIT_END_TIME = "4. End Time";
     public static final String OPTION_TO_EDIT_PRIORITY = "5. Priority";
+    public static final String START_TIME_AFTER_END_TIME = "Event start time after end time exception thrown";
+    public static final String PRIORITY_NOT_INTEGER = "Task priority not integer exception thrown";
+    public static final String INVALID_END_TIME = "Invalid end time exception thrown";
+    public static final String INVALID_START_TIME = "Invalid start time exception thrown";
+    public static final String INVALID_DATE = "Invalid date exception thrown";
+    public static final String DATE_AFTER_CURRENT_DATE = "Date after current date exception thrown";
+    public static final String SEARCH_KEYWORD_EMPTY = "Search keyword empty exception thrown";
+    public static final String WRONG_OPTION = "Wrong option entered not handled by getFieldToBeEdited";
+    public static final String INVALID_PRIORITY_VALUE = "Invalid priority value entered by user";
+    public static final String INVALID_END_TIME_ENTERED = "Invalid end time entered by the user";
+    public static final String INVALID_START_TIME_ENTERED = "Invalid start time entered by user";
+    public static final String INVALID_DATE_ENTERED = "Invalid date entered by user";
+    public static final String INVALID_OPTION_ENTERED = "Invalid option entered by user";
 
     private String description;
     private LocalDate date;
     private LocalTime startTime;
     private LocalTime endTime;
     private int priority;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * Setter for priority of the deadline.
@@ -104,6 +120,7 @@ public class Event extends Task {
         parseStartTime(startTime);
         parseEndTime(endTime);
         if (this.startTime.isAfter(this.endTime)) {
+            LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
             throw new EventStartTimeAfterEndTimeException();
         }
         parsePriority(priority);
@@ -119,6 +136,7 @@ public class Event extends Task {
         try {
             this.priority = Integer.parseInt(priority.strip());
         } catch (NumberFormatException e) {
+            LOGGER.log(Level.INFO, PRIORITY_NOT_INTEGER);
             throw new TaskPriorityNotIntegerException();
         }
     }
@@ -133,6 +151,7 @@ public class Event extends Task {
         try {
             this.endTime = LocalTime.parse(endTime.strip());
         } catch (DateTimeParseException e) {
+            LOGGER.log(Level.INFO, INVALID_END_TIME);
             throw new InvalidEndTimeException();
         }
     }
@@ -147,6 +166,7 @@ public class Event extends Task {
         try {
             this.startTime = LocalTime.parse(startTime.strip());
         } catch (DateTimeParseException e) {
+            LOGGER.log(Level.INFO, INVALID_START_TIME);
             throw new InvalidStartTimeException();
         }
     }
@@ -161,9 +181,11 @@ public class Event extends Task {
         try {
             this.date = LocalDate.parse(date.strip());
         } catch (DateTimeParseException e) {
+            LOGGER.log(Level.INFO, INVALID_DATE);
             throw new InvalidDateException();
         }
         if (this.date.isBefore(LocalDate.now())) {
+            LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
             throw new TaskDateBeforeCurrentDateException();
         }
     }
@@ -225,6 +247,7 @@ public class Event extends Task {
      */
     public boolean hasKeyword(String keyword) throws Exception {
         if (keyword.equals(EMPTY_STRING)) {
+            LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
         boolean containsKeyword = description.contains(keyword);
@@ -269,6 +292,7 @@ public class Event extends Task {
             editPriority(ui);
             break;
         default:
+            LOGGER.log(Level.SEVERE, WRONG_OPTION);
             ui.printMessage(ERROR_MESSAGE);
             break;
         }
@@ -290,6 +314,7 @@ public class Event extends Task {
             try {
                 parsePriority(newPriorityString);
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_PRIORITY_VALUE);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -310,9 +335,11 @@ public class Event extends Task {
             try {
                 parseEndTime(newEndTimeString);
                 if (this.endTime.isBefore(this.startTime)) {
+                    LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
                     throw new EventStartTimeAfterEndTimeException();
                 }
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_END_TIME_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -333,9 +360,11 @@ public class Event extends Task {
             try {
                 parseStartTime(newStartTimeString);
                 if (this.endTime.isBefore(this.startTime)) {
+                    LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
                     throw new EventStartTimeAfterEndTimeException();
                 }
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_START_TIME_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -356,9 +385,11 @@ public class Event extends Task {
             try {
                 parseDate(newDateString);
                 if (this.date.isBefore(LocalDate.now())) {
+                    LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
                     throw new TaskDateBeforeCurrentDateException();
                 }
             } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_DATE_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -394,6 +425,7 @@ public class Event extends Task {
                     throw new Exception();
                 }
             } catch (Exception exception) {
+                LOGGER.log(Level.INFO, INVALID_OPTION_ENTERED);
                 ui.printMessage(ENTER_VALID_NUMBER_FROM_LIST_MESSAGE);
                 exceptionEncountered = true;
             }
