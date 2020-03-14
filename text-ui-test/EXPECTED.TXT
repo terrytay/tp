@@ -88,7 +88,9 @@ ________________________________________________________________________________
 	 deleted
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 Index 1 out of bounds for length 1
+	 Please follow the correct format to add a new event
+	 event <event details> /d <date> /s <start time> /e <end
+	 time> /p <priority of event>
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 Enter a valid integer index (1-based) to delete/edit
@@ -114,8 +116,8 @@ ________________________________________________________________________________
 	 4. End Time
 	 5. Priority
 
-	 Please enter a valid number
-	 Please enter a valid number
+	 Please enter a valid number from the list
+	 Please enter a valid number from the list
 	 Enter new description:
 	 Updated Details:
 	 [E] team meeting at May 5 2020 from 12:00 to 13:00 with
