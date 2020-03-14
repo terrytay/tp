@@ -6,8 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
-import static task.Event.*;
+import static task.Event.EDIT_DATE;
+import static task.Event.EDIT_DESCRIPTION;
+import static task.Event.ERROR_MESSAGE;
 
 /**
  * Represents an deadline and contains the related functions.
@@ -45,6 +48,20 @@ public class Deadline extends Task {
         parseDate(date);
         parseDueTime(dueTime);
         parsePriority(priority);
+        if (this.date.isBefore(LocalDate.now())) {
+            throw new Exception("Date specified must be a current or a future date");
+        }
+    }
+
+
+    /**
+     * Returns the number of days left till the event.
+     *
+     * @return Number of days till deadline.
+     */
+    @Override
+    public long numberOfDaysLeft() {
+        return ChronoUnit.DAYS.between(LocalDate.now(),this.date);
     }
 
     private void parsePriority(String priority) throws Exception {
@@ -200,6 +217,9 @@ public class Deadline extends Task {
             String newDateString = ui.getUserIn();
             try {
                 parseDate(newDateString);
+                if (this.date.isBefore(LocalDate.now())) {
+                    throw new Exception("Date specified must be a current or a future date");
+                }
             } catch (Exception e) {
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;

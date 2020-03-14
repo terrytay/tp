@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Represents an event and contains the related functions.
@@ -105,6 +106,16 @@ public class Event extends Task {
         String eventInfo = "[E] " + description + " at " + date.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
                 + " from " + startTime.toString() + " to " + endTime.toString() + " with priority " + priority;
         return eventInfo;
+    }
+
+    /**
+     * Returns the number of days left till the event.
+     *
+     * @return Number of days till event.
+     */
+    @Override
+    public long numberOfDaysLeft() {
+        return ChronoUnit.DAYS.between(LocalDate.now(),this.date);
     }
 
     /**
@@ -241,6 +252,9 @@ public class Event extends Task {
             String newDateString = ui.getUserIn();
             try {
                 parseDate(newDateString);
+                if (this.date.isBefore(LocalDate.now())) {
+                    throw new Exception("Date specified must be a current or a future date");
+                }
             } catch (Exception e) {
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;

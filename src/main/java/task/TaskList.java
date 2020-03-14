@@ -1,12 +1,10 @@
-package task.event;
+package task;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import task.Event;
-import task.Task;
-import task.Deadline;
 import ui.Ui;
 
 /**
@@ -66,11 +64,15 @@ public class TaskList {
      */
     public void listTasks(Ui ui) {
         ui.printLine();
-        ui.printMessage("Here is the list of events added so far:");
-        int eventNumber = 1;
-        for (Task task : tasks) {
-            ui.printMessage(eventNumber + ") " + task.getTaskInformation());
-            eventNumber++;
+        if (tasks.size() > 0) {
+            ui.printMessage("Here is the list of events added so far:");
+            int eventNumber = 1;
+            for (Task task : tasks) {
+                ui.printMessage(eventNumber + ") " + task.getTaskInformation());
+                eventNumber++;
+            }
+        } else {
+            ui.printMessage("The list is empty.");
         }
         ui.printLine();
     }
@@ -169,15 +171,21 @@ public class TaskList {
         tasksSortedByPriority.sort(Comparator.comparingInt(Task::getPriority));
         Collections.reverse(tasksSortedByPriority);
         ui.printLine();
+        if (tasks.size() > 0) {
+            printTasksSortedByPriority(ui, tasksSortedByPriority);
+        } else {
+            ui.printMessage("The list is empty.");
+        }
+        ui.printLine();
+    }
+
+    private void printTasksSortedByPriority(Ui ui, ArrayList<Task> tasksSortedByPriority) {
         int taskNumber = 1;
+        ui.printMessage("Here is the list of tasks added so far displayed in decreasing order of priority:");
         for (Task task : tasksSortedByPriority) {
             ui.printMessage(taskNumber + ") " + task.getTaskInformation());
             taskNumber++;
         }
-        if (taskNumber == 1) {
-            ui.printMessage("The list is empty.");
-        }
-        ui.printLine();
     }
 
     /**
@@ -189,15 +197,24 @@ public class TaskList {
         ArrayList<Task> tasksSortedByDate = tasks;
         tasksSortedByDate.sort(Comparator.comparing(Task::getDate));
         ui.printLine();
-        int taskNumber = 1;
-        for (Task task : tasksSortedByDate) {
-            ui.printMessage(taskNumber + ") " + task.getTaskInformation());
-            taskNumber++;
-        }
-        if (taskNumber == 1) {
+        if (tasks.size() > 0) {
+            printTasksSortedByDate(ui, tasksSortedByDate);
+        } else {
             ui.printMessage("The list is empty.");
         }
         ui.printLine();
+    }
+
+    private void printTasksSortedByDate(Ui ui, ArrayList<Task> tasksSortedByDate) {
+        int taskNumber = 1;
+        ui.printMessage("Here is the list of tasks with sorted based on the number of days left:");
+        for (Task task : tasksSortedByDate) {
+            if (!task.getDate().isBefore(LocalDate.now())) {
+                ui.printMessage(taskNumber + ") " + task.getTaskInformation() + " ---> " + task.numberOfDaysLeft()
+                    + " day(s) left");
+                taskNumber++;
+            }
+        }
     }
 
     /**
