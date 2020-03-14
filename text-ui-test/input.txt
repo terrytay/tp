@@ -27,10 +27,8 @@ edit 2
 event
 view list
 task
-countdown
 bye
 task
 countdown view
-countdown
 bye
 bye
