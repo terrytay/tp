@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Dictionary {
 
-    private static final String FILEPATH = "library\\dictionary.txt";
+    private static final String FILEPATH = "library" + File.separator + "dictionary.txt";
     private static final String DELIMITER = "~";
     private static HashMap<String, String> dictionary = new HashMap<>();
 
