@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 class TaskListTest {
 
     Ui ui = new Ui();
-    task.event.TaskList taskList;
+    task.TaskList taskList;
 
     public TaskListTest() throws Exception {
-        taskList = new task.event.TaskList();
+        taskList = new task.TaskList();
         taskList.addTask(new Event("Team Meeting", "2020-03-21", "09:00",
                 "17:00", "1"),ui);
     }

@@ -1,6 +1,6 @@
 package command;
 
-import task.event.TaskList;
+import task.TaskList;
 import ui.Ui;
 
 /**

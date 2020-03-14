@@ -1,6 +1,16 @@
 package parser;
 
-import command.*;
+import command.AddDeadlineCommand;
+import command.AddEventCommand;
+import command.ClearCommand;
+import command.Command;
+import command.CountdownCommand;
+import command.DeleteCommand;
+import command.EditCommand;
+import command.HelpCommand;
+import command.PriorityViewCommand;
+import command.SearchCommand;
+import command.ViewCommand;
 
 /**
  * This class is used to parse the user input into executable commands.
