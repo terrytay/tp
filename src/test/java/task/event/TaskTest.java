@@ -20,7 +20,7 @@ class TaskTest {
 
     @Test
     void formattedDetails() throws Exception {
-        assertEquals("E#Team Meeting#2020-03-21#09:00#17:00#1\n",
+        assertEquals("E#Team Meeting#2020-03-21#09:00#17:00#1" + System.lineSeparator(),
                 new Event("Team Meeting", "2020-03-21", "09:00",
                         "17:00", "1").getFormattedDetails());
     }

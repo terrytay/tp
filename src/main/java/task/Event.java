@@ -36,7 +36,7 @@ public class Event extends Task {
     public static final String WITH_PRIORITY = " with priority ";
     public static final String EMPTY_STRING = "";
     public static final String DELIMITER = "#";
-    public static final String NEW_LINE_CHARACTER = "\n";
+    public static final String NEW_LINE_CHARACTER = System.lineSeparator();
     public static final String EVENT_IDENTIFIER = "E";
     public static final String ENTER_NEW_PRIORITY_MESSAGE = "Enter new priority:";
     public static final String ENTER_NEW_END_TIME_MESSAGE = "Enter new End Time:";
