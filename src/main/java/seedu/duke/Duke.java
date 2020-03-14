@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 public class Duke {
 
     public static final String FILE_PATH_EVENTS = "library" + File.separator + "taskList.txt";
-    public static final String FILE_PATH_STUDYAREAS = "library" + File.separator + "locations.txt";
+    public static final String FILE_PATH_STUDY_AREAS = "library" + File.separator + "locations.txt";
     private static TaskLoader taskLoader;
     protected static StudyAreaLoader studyAreaLoader;
     private static TaskList taskList = new TaskList();
@@ -36,7 +36,7 @@ public class Duke {
             parser = new Parser();
             taskLoader = new TaskLoader(FILE_PATH_EVENTS);
             taskList = new TaskList(taskLoader.loadFile());
-            studyAreaLoader = new StudyAreaLoader(FILE_PATH_STUDYAREAS);
+            studyAreaLoader = new StudyAreaLoader(FILE_PATH_STUDY_AREAS);
             studyAreaList = new StudyAreaList(studyAreaLoader.pushToDatabase());
         } catch (FileNotFoundException | IllegalStudyAreaException e) {
             ui.printLine();

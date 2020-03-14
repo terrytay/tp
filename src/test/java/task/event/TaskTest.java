@@ -100,7 +100,7 @@ class TaskTest {
                     "17:00", "1").hasKeyword("");
             fail("Empty keyword not detected");
         } catch (Exception e) {
-            assertEquals("Keyword is empty", e.getMessage());
+            assertEquals("Keyword to be used for search is empty", e.getMessage());
         }
     }
 
