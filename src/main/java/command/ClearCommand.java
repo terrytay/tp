@@ -1,11 +1,11 @@
 package command;
 
-import event.EventList;
 import exception.command.MisuseOfClearCommandException;
+import task.TaskList;
 import ui.Ui;
 
 /**
- * This command is used to clear all the events in the list.
+ * This command is used to clear all the tasks in the list.
  */
 public class ClearCommand extends Command {
 
@@ -23,7 +23,7 @@ public class ClearCommand extends Command {
     }
 
     @Override
-    public void executeCommand(EventList eventList, Ui ui) {
-        eventList.clearEvents(ui);
+    public void executeCommand(TaskList taskList, Ui ui) {
+        taskList.clearTasks(ui);
     }
 }
