@@ -225,18 +225,34 @@ public class TaskList {
      * @throws Exception If the keyword is empty.
      */
     public void searchTasks(String keyword, Ui ui) throws Exception {
-        int taskNumber = 1;
+        boolean hasMatchedTask = checkForMatchedTasks(keyword);
+        if (hasMatchedTask) {
+            printMatchedTasks(keyword, ui);
+        } else {
+            ui.printMessage("The list is empty.");
+        }
         ui.printLine();
+    }
+
+    private boolean checkForMatchedTasks(String keyword) throws Exception {
+        boolean hasMatchedTask = false;
+        for (Task task : tasks) {
+            if (task.hasKeyword(keyword)) {
+                hasMatchedTask = true;
+                break;
+            }
+        }
+        return hasMatchedTask;
+    }
+
+    private void printMatchedTasks(String keyword, Ui ui) throws Exception {
+        int taskNumber = 1;
         for (Task task : tasks) {
             if (task.hasKeyword(keyword)) {
                 ui.printMessage(taskNumber + ") " + task.getTaskInformation());
                 taskNumber++;
             }
         }
-        if (taskNumber == 1) {
-            ui.printMessage("The list is empty.");
-        }
-        ui.printLine();
     }
 
 }
