@@ -4,7 +4,9 @@ import studyarea.IllegalStudyAreaException;
 import studyarea.StudyArea;
 import studyarea.StudyAreaList;
 import ui.Ui;
+
 import java.util.ArrayList;
+
 
 /**
  * This is the StudyAreaCommand class. It executes the StudyArea Search function and interact with Users accordingly.
@@ -46,26 +48,25 @@ public class StudyAreaCommand {
             throw new IllegalStudyAreaException(Ui.EMPTY_LOCATION);
         } else {
             switch (command) {
-            case Ui.BYE_COMMAND:
-                ui.printMessage(Ui.END_MESSAGE);
-                return false;
-            case Ui.HELP_COMMAND:
-                ui.printMessage(Ui.FLAGS);
-                break;
-            default:
-                try {
-                    ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
-                    printList(availStudyAreas, ui);
-                    ui.printMessage(Ui.PROMPT_USER);
-                } catch (IllegalStudyAreaException e) {
-                    ui.printMessage(e.getMessage());
-                }
-                break;
+                case Ui.BYE_COMMAND:
+                    ui.printMessage(Ui.END_MESSAGE);
+                    return false;
+                case Ui.HELP_COMMAND:
+                    ui.printMessage(Ui.FLAGS);
+                    break;
+                default:
+                    try {
+                        ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
+                        printList(availStudyAreas, ui);
+                        ui.printMessage(Ui.PROMPT_USER);
+                    } catch (IllegalStudyAreaException e) {
+                        ui.printMessage(e.getMessage());
+                    }
+                    break;
             }
         }
         return true;
     }
-
     /**
      * Executes the StudyArea search feature.
      * @param ui This allows for StudyAreaCommand to interact with Users.
