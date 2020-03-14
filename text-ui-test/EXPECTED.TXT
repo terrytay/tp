@@ -21,16 +21,18 @@ ________________________________________________________________________________
 	 OrgaNice! Supports the following commands
 	 Please enter the keywords followed by the information shown in the brackets
 	 event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
-	 deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
 	 ------------------------------------------- Create a new event
+	 deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
+	 ------------------------------------------- Create a new deadline
 	 view -------------------------------------- View existing events
-	 priority_view ----------------------------- View existing events based on priority
-	 countdown --------------------------------- View existing events based on days left
-	 clear ------------------------------------- Delete all events
-	 search <keyword found in event> ----------- View existing events that contains the keyword
-	 delete <index number of event> ------------ Delete the event
+	 priority_view ----------------------------- View existing tasks based on priority
+	 countdown --------------------------------- View existing tasks based on days left
+	 clear ------------------------------------- Delete all tasks
+	 search <keyword found in event> ----------- View existing task that contains the keyword
+	 delete <index number of event> ------------ Delete the task
+	 edit <index number of event> -------------- Edit the task
 	 help -------------------------------------- View List Of Commands Supported
-	 bye --------------------------------------- Terminate program
+	 bye --------------------------------------- Terminate task interface
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
@@ -42,20 +44,26 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 A new event with the following information has been
 	 added.
-	 [E] meeting at May 5 2020 from 12:00 to 13:00
+	 [E] meeting at May 5 2020 from 12:00 to 13:00 with
+	 priority 1
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 Here is the list of events added so far:
-	 1) [E] meeting at May 5 2020 from 12:00 to 13:00
+	 1) [E] meeting at May 5 2020 from 12:00 to 13:00 with
+	 priority 1
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 A new event with the following information has been
 	 added.
-	 [D] assignment on May 2 2020 at 14:00
+	 [D] assignment on May 2 2020 at 14:00 with priority 2
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 1) [D] assignment on May 2 2020 at 14:00
-	 2) [E] meeting at May 5 2020 from 12:00 to 13:00
+	 Here is the list of tasks added so far displayed in
+	 decreasing order of priority:
+	 1) [D] assignment on May 2 2020 at 14:00 with priority
+	 2
+	 2) [E] meeting at May 5 2020 from 12:00 to 13:00 with
+	 priority 1
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 Invalid index entered. Please enter a valid index to be
@@ -65,8 +73,8 @@ ________________________________________________________________________________
 	 Index 1 out of bounds for length 1
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 Enter a valid integer index (1-based) to delete the
-	 corresponding event (format: delete index)
+	 Enter a valid integer index (1-based) to delete/edit
+	 the corresponding event (format: delete/edit index)
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
 	 Event details are not provided
@@ -78,11 +86,15 @@ ________________________________________________________________________________
 	 Invalid command entered, Please enter a valid command
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 1) [D] assignment on May 2 2020 at 14:00
-	 2) [E] meeting at May 5 2020 from 12:00 to 13:00
+	 Here is the list of tasks with sorted based on the
+	 number of days left:
+	 1) [D] assignment on May 2 2020 at 14:00 with priority
+	 2 ---> 49 day(s) left
+	 2) [E] meeting at May 5 2020 from 12:00 to 13:00 with
+	 priority 1 ---> 52 day(s) left
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 Bye!!!!!!
+	 Exiting task interface
 ________________________________________________________________________________________________________
 	 Please enter "event" to continue with your event list
 	 or "study" to continue with your study area list. To
@@ -92,16 +104,18 @@ ________________________________________________________________________________
 	 OrgaNice! Supports the following commands
 	 Please enter the keywords followed by the information shown in the brackets
 	 event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
-	 deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
 	 ------------------------------------------- Create a new event
+	 deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
+	 ------------------------------------------- Create a new deadline
 	 view -------------------------------------- View existing events
-	 priority_view ----------------------------- View existing events based on priority
-	 countdown --------------------------------- View existing events based on days left
-	 clear ------------------------------------- Delete all events
-	 search <keyword found in event> ----------- View existing events that contains the keyword
-	 delete <index number of event> ------------ Delete the event
+	 priority_view ----------------------------- View existing tasks based on priority
+	 countdown --------------------------------- View existing tasks based on days left
+	 clear ------------------------------------- Delete all tasks
+	 search <keyword found in event> ----------- View existing task that contains the keyword
+	 delete <index number of event> ------------ Delete the task
+	 edit <index number of event> -------------- Edit the task
 	 help -------------------------------------- View List Of Commands Supported
-	 bye --------------------------------------- Terminate program
+	 bye --------------------------------------- Terminate task interface
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
@@ -112,11 +126,15 @@ ________________________________________________________________________________
 	 be :countdown )
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 1) [D] assignment on May 2 2020 at 14:00
-	 2) [E] meeting at May 5 2020 from 12:00 to 13:00
+	 Here is the list of tasks with sorted based on the
+	 number of days left:
+	 1) [D] assignment on May 2 2020 at 14:00 with priority
+	 2 ---> 49 day(s) left
+	 2) [E] meeting at May 5 2020 from 12:00 to 13:00 with
+	 priority 1 ---> 52 day(s) left
 ________________________________________________________________________________________________________
 ________________________________________________________________________________________________________
-	 Bye!!!!!!
+	 Exiting task interface
 ________________________________________________________________________________________________________
 	 Please enter "event" to continue with your event list
 	 or "study" to continue with your study area list. To

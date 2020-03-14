@@ -6,6 +6,7 @@ import command.ClearCommand;
 import command.Command;
 import command.CountdownCommand;
 import command.DeleteCommand;
+import command.EditCommand;
 import command.HelpCommand;
 import command.PriorityViewCommand;
 import command.SearchCommand;
@@ -24,6 +25,7 @@ public class Parser {
     public static final String CLEAR_COMMAND = "clear";
     public static final String SEARCH_COMMAND = "search";
     public static final String DELETE_COMMAND = "delete";
+    public static final String EDIT_COMMAND = "edit";
     public static final String EMPTY_COMMAND = "";
     public static final String HELP_COMMAND = "help";
 
@@ -45,6 +47,9 @@ public class Parser {
             break;
         case ADD_EVENT_COMMAND:
             command = new AddEventCommand(commandSplit, isOneWordCommand);
+            break;
+        case EDIT_COMMAND:
+            command = new EditCommand(commandSplit, isOneWordCommand);
             break;
         case VIEW_COMMAND:
             command = new ViewCommand(isOneWordCommand);

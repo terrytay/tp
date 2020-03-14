@@ -1,7 +1,7 @@
 package command;
 
 import exception.command.SearchMissingTermsException;
-import task.event.TaskList;
+import task.TaskList;
 import ui.Ui;
 
 /**

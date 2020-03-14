@@ -1,7 +1,7 @@
 package command;
 
 import parser.Parser;
-import task.event.TaskList;
+import task.TaskList;
 import ui.Ui;
 import static ui.Ui.BYE_COMMAND;
 

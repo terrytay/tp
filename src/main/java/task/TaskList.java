@@ -1,13 +1,10 @@
-package task.event;
+package task;
 
-import java.time.format.DateTimeParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import task.Task;
-import task.TaskType;
-import task.deadline.Deadline;
 import ui.Ui;
 
 /**
@@ -67,11 +64,15 @@ public class TaskList {
      */
     public void listTasks(Ui ui) {
         ui.printLine();
-        ui.printMessage("Here is the list of events added so far:");
-        int eventNumber = 1;
-        for (Task task : tasks) {
-            ui.printMessage(eventNumber + ") " + task.getTaskInformation());
-            eventNumber++;
+        if (tasks.size() > 0) {
+            ui.printMessage("Here is the list of events added so far:");
+            int eventNumber = 1;
+            for (Task task : tasks) {
+                ui.printMessage(eventNumber + ") " + task.getTaskInformation());
+                eventNumber++;
+            }
+        } else {
+            ui.printMessage("The list is empty.");
         }
         ui.printLine();
     }
@@ -96,8 +97,57 @@ public class TaskList {
             ui.printMessage("Invalid index entered. Please enter a valid index to be deleted");
             ui.printLine();
         }
-
     }
+
+    /**
+     * Calls a helper function to edit the task at the specified index.
+     *
+     * @param ui    This allows TaskList class to interact with User.
+     * @param index The index (1-based) of the task to be deleted.
+     */
+    public void editTask(int index, Ui ui) {
+        ui.printLine();
+        try {
+            if (index > tasks.size() | index <= 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            /* Converting to '0' based index */
+            editTaskAtIndex(index - 1, ui);
+            ui.printLine();
+            ui.printMessage("The task at the mentioned index has been edited successfully");
+            ui.printLine();
+        } catch (IndexOutOfBoundsException e) {
+            ui.printMessage("Invalid index entered. Please enter a valid index to be edited");
+            ui.printLine();
+        }
+    }
+
+
+    /**
+     * Edits the task at the specified index.
+     *
+     * @param index The index of the task to be edited.
+     * @param ui This allows TaskList class to interact with User.
+     * @throws IndexOutOfBoundsException If the index provided is invalid (i.e, out of bounds).
+     */
+    private void editTaskAtIndex(int index, Ui ui) throws IndexOutOfBoundsException {
+        switch (tasks.get(index).taskType) {
+        case Event:
+            Event oldEvent = (Event) tasks.get(index);
+            Event updatedEvent = oldEvent.editEvent(ui);
+            tasks.set(index, updatedEvent);
+            break;
+        case Deadline:
+            Deadline oldDeadline = (Deadline) tasks.get(index);
+            Deadline updatedDeadline = oldDeadline.editDeadline(ui);
+            tasks.set(index, updatedDeadline);
+            break;
+        default:
+            ui.printMessage("Error encountered during execution");
+            break;
+        }
+    }
+
 
     /**
      * Clears all the tasks currently stored.
@@ -121,15 +171,21 @@ public class TaskList {
         tasksSortedByPriority.sort(Comparator.comparingInt(Task::getPriority));
         Collections.reverse(tasksSortedByPriority);
         ui.printLine();
+        if (tasks.size() > 0) {
+            printTasksSortedByPriority(ui, tasksSortedByPriority);
+        } else {
+            ui.printMessage("The list is empty.");
+        }
+        ui.printLine();
+    }
+
+    private void printTasksSortedByPriority(Ui ui, ArrayList<Task> tasksSortedByPriority) {
         int taskNumber = 1;
+        ui.printMessage("Here is the list of tasks added so far displayed in decreasing order of priority:");
         for (Task task : tasksSortedByPriority) {
             ui.printMessage(taskNumber + ") " + task.getTaskInformation());
             taskNumber++;
         }
-        if (taskNumber == 1) {
-            ui.printMessage("The list is empty.");
-        }
-        ui.printLine();
     }
 
     /**
@@ -141,15 +197,24 @@ public class TaskList {
         ArrayList<Task> tasksSortedByDate = tasks;
         tasksSortedByDate.sort(Comparator.comparing(Task::getDate));
         ui.printLine();
-        int taskNumber = 1;
-        for (Task task : tasksSortedByDate) {
-            ui.printMessage(taskNumber + ") " + task.getTaskInformation());
-            taskNumber++;
-        }
-        if (taskNumber == 1) {
+        if (tasks.size() > 0) {
+            printTasksSortedByDate(ui, tasksSortedByDate);
+        } else {
             ui.printMessage("The list is empty.");
         }
         ui.printLine();
+    }
+
+    private void printTasksSortedByDate(Ui ui, ArrayList<Task> tasksSortedByDate) {
+        int taskNumber = 1;
+        ui.printMessage("Here is the list of tasks with sorted based on the number of days left:");
+        for (Task task : tasksSortedByDate) {
+            if (!task.getDate().isBefore(LocalDate.now())) {
+                ui.printMessage(taskNumber + ") " + task.getTaskInformation() + " ---> " + task.numberOfDaysLeft()
+                    + " day(s) left");
+                taskNumber++;
+            }
+        }
     }
 
     /**
@@ -175,64 +240,3 @@ public class TaskList {
     }
 
 }
-
-
-/*
-
-    public void add(String taskDetails, Ui ui, TaskType taskType) {
-        switch (taskType) {
-        case Deadline:
-            addNewDeadline(taskDetails,ui);
-            break;
-        case Event:
-            addNewEvent(taskDetails, ui);
-            break;
-        default:
-            ui.printMessage("Error encountered during execution");
-            break;
-        }
-    }
-
-    private void addNewEvent(String eventDetails, Ui ui) {
-        try {
-            String[] details = eventDetails.split(" ",2)[1].split("/");
-            String description = details[0];
-            String date = details[1].substring(2);
-            String startTime = details[2].substring(2);
-            String endTime = details[3].substring(2);
-            String priority = details[4].substring(2);
-            Event newEvent =  new Event(description,date,startTime,endTime,priority);
-            addTask(newEvent, ui);
-        } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
-            ui.printLine();
-            ui.printMessage("Wrong format to add events");
-            ui.printLine();
-        } catch (Exception e) {
-            ui.printLine();
-            ui.printMessage(e.getMessage());
-            ui.printLine();
-        }
-    }
-
-    private void addNewDeadline(String deadlineDetails, Ui ui) {
-        try {
-            String[] details = deadlineDetails.split(" ",2)[1].split("/");
-            String description = details[0];
-            String date = details[1].substring(2);
-            String dueTime = details[2].substring(2);
-            String priority = details[3].substring(2);
-            Deadline newDeadline =  new Deadline(description,date,dueTime, priority);
-            addTask(newDeadline, ui);
-        } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
-            ui.printLine();
-            ui.printMessage("Wrong format to add deadlines");
-            ui.printLine();
-        } catch (Exception e) {
-            ui.printLine();
-            ui.printMessage(e.getMessage());
-            ui.printLine();
-        }
-    }
-
-}
-*/

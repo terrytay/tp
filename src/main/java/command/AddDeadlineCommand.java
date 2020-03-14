@@ -1,9 +1,8 @@
 package command;
 
 import exception.command.EventDetailsNotProvidedException;
-import task.deadline.Deadline;
-import task.event.Event;
-import task.event.TaskList;
+import task.Deadline;
+import task.TaskList;
 import ui.Ui;
 
 /**

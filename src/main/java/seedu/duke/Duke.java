@@ -7,7 +7,7 @@ import resourceloader.TaskLoader;
 import resourceloader.StudyAreaLoader;
 import studyarea.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
-import task.event.TaskList;
+import task.TaskList;
 import ui.Ui;
 
 import java.io.File;
