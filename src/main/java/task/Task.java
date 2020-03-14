@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public abstract class Task {
 
+    public TaskType taskType;
+
     public abstract int getPriority();
 
     public abstract LocalDate getDate();

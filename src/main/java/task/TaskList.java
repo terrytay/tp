@@ -1,13 +1,12 @@
 package task.event;
 
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import task.Event;
 import task.Task;
-import task.TaskType;
-import task.deadline.Deadline;
+import task.Deadline;
 import ui.Ui;
 
 /**
@@ -96,8 +95,57 @@ public class TaskList {
             ui.printMessage("Invalid index entered. Please enter a valid index to be deleted");
             ui.printLine();
         }
-
     }
+
+    /**
+     * Calls a helper function to edit the task at the specified index.
+     *
+     * @param ui    This allows TaskList class to interact with User.
+     * @param index The index (1-based) of the task to be deleted.
+     */
+    public void editTask(int index, Ui ui) {
+        ui.printLine();
+        try {
+            if (index > tasks.size() | index <= 0) {
+                throw new IndexOutOfBoundsException();
+            }
+            /* Converting to '0' based index */
+            editTaskAtIndex(index - 1, ui);
+            ui.printLine();
+            ui.printMessage("The task at the mentioned index has been edited successfully");
+            ui.printLine();
+        } catch (IndexOutOfBoundsException e) {
+            ui.printMessage("Invalid index entered. Please enter a valid index to be edited");
+            ui.printLine();
+        }
+    }
+
+
+    /**
+     * Edits the task at the specified index.
+     *
+     * @param index The index of the task to be edited.
+     * @param ui This allows TaskList class to interact with User.
+     * @throws IndexOutOfBoundsException If the index provided is invalid (i.e, out of bounds).
+     */
+    private void editTaskAtIndex(int index, Ui ui) throws IndexOutOfBoundsException {
+        switch (tasks.get(index).taskType) {
+        case Event:
+            Event oldEvent = (Event) tasks.get(index);
+            Event updatedEvent = oldEvent.editEvent(ui);
+            tasks.set(index, updatedEvent);
+            break;
+        case Deadline:
+            Deadline oldDeadline = (Deadline) tasks.get(index);
+            Deadline updatedDeadline = oldDeadline.editDeadline(ui);
+            tasks.set(index, updatedDeadline);
+            break;
+        default:
+            ui.printMessage("Error encountered during execution");
+            break;
+        }
+    }
+
 
     /**
      * Clears all the tasks currently stored.
@@ -175,64 +223,3 @@ public class TaskList {
     }
 
 }
-
-
-/*
-
-    public void add(String taskDetails, Ui ui, TaskType taskType) {
-        switch (taskType) {
-        case Deadline:
-            addNewDeadline(taskDetails,ui);
-            break;
-        case Event:
-            addNewEvent(taskDetails, ui);
-            break;
-        default:
-            ui.printMessage("Error encountered during execution");
-            break;
-        }
-    }
-
-    private void addNewEvent(String eventDetails, Ui ui) {
-        try {
-            String[] details = eventDetails.split(" ",2)[1].split("/");
-            String description = details[0];
-            String date = details[1].substring(2);
-            String startTime = details[2].substring(2);
-            String endTime = details[3].substring(2);
-            String priority = details[4].substring(2);
-            Event newEvent =  new Event(description,date,startTime,endTime,priority);
-            addTask(newEvent, ui);
-        } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
-            ui.printLine();
-            ui.printMessage("Wrong format to add events");
-            ui.printLine();
-        } catch (Exception e) {
-            ui.printLine();
-            ui.printMessage(e.getMessage());
-            ui.printLine();
-        }
-    }
-
-    private void addNewDeadline(String deadlineDetails, Ui ui) {
-        try {
-            String[] details = deadlineDetails.split(" ",2)[1].split("/");
-            String description = details[0];
-            String date = details[1].substring(2);
-            String dueTime = details[2].substring(2);
-            String priority = details[3].substring(2);
-            Deadline newDeadline =  new Deadline(description,date,dueTime, priority);
-            addTask(newDeadline, ui);
-        } catch (IndexOutOfBoundsException | DateTimeParseException | NullPointerException e) {
-            ui.printLine();
-            ui.printMessage("Wrong format to add deadlines");
-            ui.printLine();
-        } catch (Exception e) {
-            ui.printLine();
-            ui.printMessage(e.getMessage());
-            ui.printLine();
-        }
-    }
-
-}
-*/

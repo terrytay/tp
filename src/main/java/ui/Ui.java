@@ -55,7 +55,7 @@ public class Ui {
             + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
-    public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
+    public static final String WRONG_INPUT = "Wrong input! Please enter either \"task\" or \"study\" only!";
     public static final String TASK_COMMAND = "task";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
@@ -143,6 +143,16 @@ public class Ui {
     }
 
     /**
+     * This method allows for other classes to get the integer given by the User as input.
+     *
+     * @return int input from user.
+     */
+    public int getIntegerInput() {
+        return this.in.nextInt();
+    }
+
+
+    /**
      * This method closes the Input Stream after usage is completed.
      */
     public void close() {
@@ -222,6 +232,14 @@ public class Ui {
         this.out.println(TAB + "Hello " + name + "!");
         printMessage(START_MESSAGE);
         printLine();
+    }
+
+    /**
+     * Prints the string without a new line character.
+     * @param line The line to be printed.
+     */
+    public void print(String line) {
+        this.out.print(line);
     }
 
     /**

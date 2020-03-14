@@ -1,8 +1,8 @@
 package resourceloader;
 
 import task.Task;
-import task.deadline.Deadline;
-import task.event.Event;
+import task.Deadline;
+import task.Event;
 import ui.Ui;
 import java.io.File;
 import java.io.FileNotFoundException;

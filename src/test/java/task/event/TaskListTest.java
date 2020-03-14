@@ -1,6 +1,7 @@
 package task.event;
 
 import org.junit.jupiter.api.Test;
+import task.Event;
 import ui.Ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,6 +1,6 @@
 package command;
 
-import exception.command.DeleteCommandMissingIndexException;
+import exception.command.EditCommandMissingIndexException;
 import exception.command.IndexNotIntegerException;
 import task.event.TaskList;
 import ui.Ui;
@@ -8,10 +8,10 @@ import ui.Ui;
 /**
  * Command is used to delete a task at a specific index.
  */
-public class DeleteCommand extends Command {
+public class EditCommand extends Command {
 
-    /** Denotes the index at which the task should be deleted at. */
-    int indexToDelete;
+    /** Denotes the index at which the task should be edited at. */
+    int indexToEdit;
 
     /**
      * Constructor for the DeleteCommand object.
@@ -21,12 +21,12 @@ public class DeleteCommand extends Command {
      * @param isOneWordCommand Denotes whether the user given input is single or multi worded.
      * @throws Exception If the index specified is invalid/ The wrong format is used for the command.
      */
-    public DeleteCommand(String[] commandSplit, boolean isOneWordCommand) throws Exception {
+    public EditCommand(String[] commandSplit, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new DeleteCommandMissingIndexException();
+            throw new EditCommandMissingIndexException();
         }
         try {
-            indexToDelete = Integer.parseInt(commandSplit[1]);
+            indexToEdit = Integer.parseInt(commandSplit[1]);
         } catch (NumberFormatException e) {
             throw new IndexNotIntegerException();
         }
@@ -35,6 +35,6 @@ public class DeleteCommand extends Command {
 
     @Override
     public void executeCommand(TaskList taskList, Ui ui) throws Exception {
-        taskList.deleteTask(indexToDelete, ui);
+        taskList.editTask(indexToEdit, ui);
     }
 }
