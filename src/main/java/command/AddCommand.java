@@ -2,6 +2,7 @@ package command;
 
 import event.Event;
 import event.EventList;
+import exception.command.EventDetailsNotProvidedException;
 import ui.Ui;
 
 /**
@@ -22,8 +23,9 @@ public class AddCommand extends Command {
      */
     public AddCommand(String[] eventDetails, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("Wrong format used to add an event");
+            throw new EventDetailsNotProvidedException();
         }
+
         String[] details = eventDetails[1].split("/");
         String description = details[0];
         String date = details[1].substring(2);

@@ -1,6 +1,7 @@
 package command;
 
 import event.EventList;
+import exception.command.SearchMissingTermsException;
 import ui.Ui;
 
 /**
@@ -21,7 +22,7 @@ public class SearchCommand extends Command {
      */
     public SearchCommand(String[] commandSplit, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new Exception("The search string entered is empty.");
+            throw new SearchMissingTermsException();
         }
         this.keyword = commandSplit[1];
     }
