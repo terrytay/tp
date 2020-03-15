@@ -60,7 +60,7 @@ public class StudyAreaCommand {
                 ui.printMessage(END_MESSAGE);
                 return false;
             case HELP_COMMAND:
-                ui.printMessage(FLAGS);
+                ui.printStudyAreaHelp();
                 break;
             default:
                 try {
