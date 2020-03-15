@@ -5,13 +5,11 @@ import exception.command.EventDetailsNotProvidedException;
 import task.Deadline;
 import task.TaskList;
 import ui.Ui;
-
 import java.time.LocalDate;
-
 import static command.AddEventCommand.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
 
 /**
- * This command is used to add new deadlines to the Tasklist.
+ * This command is used to add new deadlines to the TaskList.
  */
 public class AddDeadlineCommand extends Command {
 

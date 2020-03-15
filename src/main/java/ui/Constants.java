@@ -30,8 +30,9 @@ public class Constants {
             + "Enter \"help\" for a list of supported flags. Flags should only come after location, if a criteria for"
             + " location is entered. When you are done with the search, enter \"bye\".";
     public static final String PROMPT_USER = "Please enter the location for your desired study area.";
-    public static final String FLAGS = "Here is a list of supported flags!\n\t -p for study areas with ports\n\t"
-            + " -i for study areas that are indoors\n\t -i for study areas that are outdoors\n\t "
+    public static final String FLAGS = "Here is a list of supported flags!" + System.lineSeparator() + "\t -p for study"
+            + " areas with ports" + System.lineSeparator() + "\t -i for study areas that are indoors"
+            + System.lineSeparator() + "\t -o for study areas that are outdoors" + System.lineSeparator() + "\t "
             + "-s {size} for maximum number of pax";
     public static final String AVAILABLE_STUDY_AREAS = "Here are the available study areas!";
     public static final String EMPTY_LIST = "Oops! Based on your criteria we were not able to find a compatible study"
@@ -43,7 +44,7 @@ public class Constants {
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
     public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"task\" to start"
-            + " your event list! If you are in the mood to mug and you"
+            + System.lineSeparator() + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
     public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
@@ -91,31 +92,32 @@ public class Constants {
     //@@author NizarMohd-reused
     //Reused from https://www.netclipart.com/isee/iRwmhJb_bt21-rj-transparent-background/ and https://asciiart.club/
     //Image for public static final String DAB is obtained from the first link and then generated in second link.
-    public static final String DAB = "\t ``````````````````````````````````````````````````````````\n"
-            + "\t ````````````````````````````````:v(v'`````````````````````\n"
-            + "\t ```````````````````````````,)4|ex` `L}````````````````````\n"
-            + "\t `````````````````````````!s\"'h `M:   ^z_;)T```````````````\n"
-            + "\t `````````````````````````Z   u|}Z:        \"}``````````````\n"
-            + "\t ``````````````````````:=?)                'B?L'```````````\n"
-            + "\t `````````````````````'Z                    ;Yp\"```````````\n"
-            + "\t `````````````````````.e                      ?_```````````\n"
-            + "\t ```````````````````'QDGH                    .5````````````\n"
-            + "\t ````````````````````I#g'         '_`        ||````````````\n"
-            + "\t ```````````:mX_``````YhL`      `'q!`   ?     h````````````\n"
-            + "\t ```````````'Qbs)|L=_V\" 'Y}     ^'q@&b=c=_`  ,Z````````````\n"
-            + "\t ````````````q>     'T,   ,o\"    ;\"@c.   .sVx~`````````````\n"
-            + "\t ````````````c!             \"bh` `,p       z:``````````````\n"
-            + "\t `````````````q.              ngDQmh8s     X'``````````````\n"
-            + "\t ``````````````LY\"             :n}>``b;   _V```````````````\n"
-            + "\t ````````````````q?,                ?;   \"V````````````````\n"
-            + "\t ``````````````KvR                  '  )x_`````````````````\n"
-            + "\t ``````````````zjL                  GLY\"```````````````````\n"
-            + "\t ```````````````M                 .I)``````````````````````\n"
-            + "\t ```````````````Lz                `D:``````````````````````\n"
-            + "\t ``````````````vu`    (I)_;\"\".      P.`````````````````````\n"
-            + "\t ``````````````p     :X.':^,\"=n    \"q``````````````````````\n"
-            + "\t `````````````)0X?^:)I````````m'   :j``````````````````````\n"
-            + "\t `````````````.IGD8k'`````````<&G55M```````````````````````\n"
+    public static final String DAB = "\t ``````````````````````````````````````````````````````````"
+            + System.lineSeparator()
+            + "\t ````````````````````````````````:v(v'`````````````````````" + System.lineSeparator()
+            + "\t ```````````````````````````,)4|ex` `L}````````````````````" + System.lineSeparator()
+            + "\t `````````````````````````!s\"'h `M:   ^z_;)T```````````````" + System.lineSeparator()
+            + "\t `````````````````````````Z   u|}Z:        \"}``````````````" + System.lineSeparator()
+            + "\t ``````````````````````:=?)                'B?L'```````````" + System.lineSeparator()
+            + "\t `````````````````````'Z                    ;Yp\"```````````" + System.lineSeparator()
+            + "\t `````````````````````.e                      ?_```````````" + System.lineSeparator()
+            + "\t ```````````````````'QDGH                    .5````````````" + System.lineSeparator()
+            + "\t ````````````````````I#g'         '_`        ||````````````" + System.lineSeparator()
+            + "\t ```````````:mX_``````YhL`      `'q!`   ?     h````````````" + System.lineSeparator()
+            + "\t ```````````'Qbs)|L=_V\" 'Y}     ^'q@&b=c=_`  ,Z````````````" + System.lineSeparator()
+            + "\t ````````````q>     'T,   ,o\"    ;\"@c.   .sVx~`````````````" + System.lineSeparator()
+            + "\t ````````````c!             \"bh` `,p       z:``````````````" + System.lineSeparator()
+            + "\t `````````````q.              ngDQmh8s     X'``````````````" + System.lineSeparator()
+            + "\t ``````````````LY\"             :n}>``b;   _V```````````````" + System.lineSeparator()
+            + "\t ````````````````q?,                ?;   \"V````````````````" + System.lineSeparator()
+            + "\t ``````````````KvR                  '  )x_`````````````````" + System.lineSeparator()
+            + "\t ``````````````zjL                  GLY\"```````````````````" + System.lineSeparator()
+            + "\t ```````````````M                 .I)``````````````````````" + System.lineSeparator()
+            + "\t ```````````````Lz                `D:``````````````````````" + System.lineSeparator()
+            + "\t ``````````````vu`    (I)_;\"\".      P.`````````````````````" + System.lineSeparator()
+            + "\t ``````````````p     :X.':^,\"=n    \"q``````````````````````" + System.lineSeparator()
+            + "\t `````````````)0X?^:)I````````m'   :j``````````````````````" + System.lineSeparator()
+            + "\t `````````````.IGD8k'`````````<&G55M```````````````````````" + System.lineSeparator()
             + "\t ``````````````````````````````````````````````````````````";
             //@@author
 
@@ -125,27 +127,30 @@ public class Constants {
     // generated from the service provided by the website.
      public static final String LOGO = "_______/\\\\\\\\\\___________________________________________________"
             + "__/\\\\\\\\\\_____/\\\\\\__"
-            + "__________________________________________/\\\\\\____________\n"
+            + "__________________________________________/\\\\\\____________" +  System.lineSeparator()
             + "______/\\\\\\///\\\\\\__________________________________________________\\/\\\\\\\\\\\\___\\/\\\\\\_"
-            + "_________________________________________/\\\\\\\\\\\\\\_________\n"
+            + "_________________________________________/\\\\\\\\\\\\\\_________" +  System.lineSeparator()
             + "_____/\\\\\\/__\\///\\\\\\____________________/\\\\\\\\\\\\\\\\___________________\\/\\\\\\/\\\\\\_"
-            + "_\\/\\\\\\___/\\\\\\__________________________________/\\\\\\\\\\\\\\\\\\_______\n"
+            + "_\\/\\\\\\___/\\\\\\__________________________________/\\\\\\\\\\\\\\\\\\_______"
+            +  System.lineSeparator()
             + "_____/\\\\\\______\\//\\\\\\___/\\\\/\\\\\\\\\\\\\\____/\\\\\\////\\\\\\___/\\\\\\\\\\\\\\\\\\___"
             + "__\\/\\\\\\//\\\\\\_\\/\\\\\\__\\///_______/\\\\\\\\\\\\\\\\______/\\\\\\\\\\\\\\\\__"
-            + "_\\//\\\\\\\\\\\\\\_______\n"
+            + "_\\//\\\\\\\\\\\\\\_______" +  System.lineSeparator()
             + "_____\\/\\\\\\_______\\/\\\\\\__\\/\\\\\\/////\\\\\\__\\//\\\\\\\\\\\\\\\\\\__\\////////\\\\\\___"
             + "_\\/\\\\\\\\//\\\\\\\\/\\\\\\___/\\\\\\____/\\\\\\//////_____/\\\\\\/////\\\\\\___\\//\\\\\\\\\\____"
-            + "___\n"
+            + "___" +  System.lineSeparator()
             + "______\\//\\\\\\______/\\\\\\___\\/\\\\\\___\\///____\\///////\\\\\\____/\\\\\\\\\\\\\\\\\\\\__"
             + "_\\/\\\\\\_\\//\\\\\\/\\\\\\__\\/\\\\\\___/\\\\\\___________/\\\\\\\\\\\\\\\\\\\\\\_____\\//\\\\\\__"
-            + "_____\n"
+            + "_____" +  System.lineSeparator()
             + "________\\///\\\\\\__/\\\\\\_____\\/\\\\\\___________/\\\\_____\\\\\\___/\\\\\\/////\\\\\\__"
-            + "_\\/\\\\\\__\\//\\\\\\\\\\\\__\\/\\\\\\__\\//\\\\\\_________\\//\\\\///////_______\\///_______\n"
+            + "_\\/\\\\\\__\\//\\\\\\\\\\\\__\\/\\\\\\__\\//\\\\\\_________\\//\\\\///////_______\\///_______"
+            +  System.lineSeparator()
             + "____________\\///\\\\\\\\\\/______\\/\\\\\\__________\\//\\\\\\\\\\\\\\\\__"
             + "_\\//\\\\\\\\\\\\\\\\/\\\\"
             + "_\\/\\\\\\___\\//\\\\\\\\\\__\\/\\\\\\___\\///\\\\\\\\\\\\\\\\___\\//\\\\\\\\\\\\\\\\\\\\_____"
-            + "_/\\\\\\_____\n"
+            + "_/\\\\\\_____" +  System.lineSeparator()
             + "______________\\/////________\\///____________\\////////_____\\////////\\//___\\///_____\\/////__"
             +  "_\\///______\\////////_____\\//////////______\\///_____";
             //@@author
+
 }

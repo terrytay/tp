@@ -106,7 +106,7 @@ public class Ui {
      * Display welcome message.
      */
     public void printWelcomeMessage() {
-        this.out.println("Hello from\n" + LOGO);
+        this.out.println("Hello from" + System.lineSeparator() + LOGO);
         this.out.println("What is your name?");
         printLine();
         String name = this.in.nextLine();
