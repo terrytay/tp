@@ -14,13 +14,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static seedu.duke.Duke.FILE_PATH_STUDYAREAS;
+import static seedu.duke.Duke.FILE_PATH_STUDY_AREAS;
 
 
 /**
  * Handles the task of loading and storing events.
  */
 public class TaskLoader {
+
+    public static final String INVALID_TASK_TYPE_MESSAGE = "Invalid task type identified when parsing tasks from "
+            + "taskList.txt";
 
     /** Location of data file. */
     private String filePath;
@@ -85,7 +88,8 @@ public class TaskLoader {
             newTask = parseEventDetails(taskDetails);
             break;
         default:
-            // Error handling
+            assert false : INVALID_TASK_TYPE_MESSAGE;
+            break;
         }
         return newTask;
     }
@@ -134,7 +138,7 @@ public class TaskLoader {
         try {
             Files.createDirectories(fileDirectory);
             Files.createFile(Paths.get(filePath));
-            Files.createFile(Paths.get(FILE_PATH_STUDYAREAS));
+            Files.createFile(Paths.get(FILE_PATH_STUDY_AREAS));
         } catch (IOException e) {
             e.printStackTrace();
         }
