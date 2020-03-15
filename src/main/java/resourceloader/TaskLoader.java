@@ -1,5 +1,7 @@
 package resourceloader;
 
+import studyarea.IllegalStudyAreaException;
+import studyarea.StudyArea;
 import task.Task;
 import task.Deadline;
 import task.Event;
@@ -13,6 +15,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static ui.Constants.FILE_PATH_DICTIONARY;
+import static ui.Constants.FILE_PATH_STUDYAREAS;
 
 /**
  * Handles the task of loading and storing events.
@@ -136,9 +141,12 @@ public class TaskLoader {
         try {
             Files.createDirectories(fileDirectory);
             Files.createFile(Paths.get(filePath));
-            StudyAreaLoader.createNewStudyAreaData();
+            StudyAreaLoader.createNewStudyAreaData(FILE_PATH_STUDYAREAS);
+            StudyAreaLoader.createNewStudyAreaData(FILE_PATH_DICTIONARY);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStudyAreaException e) {
+            System.out.println(e.getMessage());
         }
     }
 
