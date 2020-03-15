@@ -12,10 +12,10 @@ What is your name?
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Hello James Gosling!
-	 Welcome to OrgaNice! To start, enter "task" to start
-	 your task list! If you are in the mood to mug and you want
-	 to start your study area list, enter "study" !If you want
-	 to exit, enter "bye" !
+	 Welcome to OrgaNice! To start, enter "task" to start your
+	 task list! If you are in the mood to mug and you want to
+	 start your study area list, enter "study" !If you want to
+	 exit, enter "bye" !
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 OrgaNice! Supports the following commands

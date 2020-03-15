@@ -45,7 +45,7 @@ public class Constants {
     public static final String NO_SIZE_INDICATED = "Max Size is not indicated. Please indicate accordingly!";
     public static final String END_MESSAGE = "Thank you for using our study area search service!";
     public static final String START_MESSAGE = "Welcome to OrgaNice! To start, enter \"task\" to start"
-            + System.lineSeparator() + " your task list! If you are in the mood to mug and you"
+            + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
     public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";

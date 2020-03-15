@@ -1,22 +1,22 @@
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application started Execution
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application transitioning to task mode
-Mar 15, 2020 5:00:52 PM task.Event getFieldToBeEdited
+Mar 15, 2020 5:10:13 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 15, 2020 5:00:52 PM task.Event getFieldToBeEdited
+Mar 15, 2020 5:10:13 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 15, 2020 5:00:52 PM task.Event parseDate
+Mar 15, 2020 5:10:13 PM task.Event parseDate
 INFO: Date after current date exception thrown
-Mar 15, 2020 5:00:52 PM task.Event editDate
+Mar 15, 2020 5:10:13 PM task.Event editDate
 INFO: Invalid date entered by user
-Mar 15, 2020 5:00:52 PM task.Deadline getFieldToBeEdited
+Mar 15, 2020 5:10:13 PM task.Deadline getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application transitioning to task mode
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application transitioning to study area mode
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application is going to exit
-Mar 15, 2020 5:00:52 PM seedu.duke.Duke run
+Mar 15, 2020 5:10:13 PM seedu.duke.Duke run
 INFO: Application closed successfully
