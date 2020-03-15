@@ -37,7 +37,7 @@ class TaskListTest {
             taskList.searchTasks("",ui);
             fail("Empty string search not identified");
         } catch (Exception exception) {
-            assertEquals("Keyword is empty", exception.getMessage());
+            assertEquals("Keyword to be used for search is empty", exception.getMessage());
         }
     }
 

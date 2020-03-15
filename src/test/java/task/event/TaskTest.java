@@ -20,7 +20,7 @@ class TaskTest {
 
     @Test
     void formattedDetails() throws Exception {
-        assertEquals("E#Team Meeting#2020-03-21#09:00#17:00#1\n",
+        assertEquals("E#Team Meeting#2020-03-21#09:00#17:00#1" + System.lineSeparator(),
                 new Event("Team Meeting", "2020-03-21", "09:00",
                         "17:00", "1").getFormattedDetails());
     }
@@ -45,7 +45,8 @@ class TaskTest {
                     "17:00", "1");
             fail("Invalid start time not rejected");
         } catch (Exception e) {
-            assertEquals("Start time provided is invalid or in wrong format (Should be HH:MM)",e.getMessage());
+            assertEquals("Start time provided is invalid or in wrong format (Should be HH:MM) 24 Hr format",
+                    e.getMessage());
         }
     }
 
@@ -56,7 +57,8 @@ class TaskTest {
                     "10:70", "1");
             fail("Invalid end time not rejected");
         } catch (Exception e) {
-            assertEquals("End time provided is invalid or in wrong format (Should be HH:MM)",e.getMessage());
+            assertEquals("End time provided is invalid or in wrong format (Should be HH:MM) 24 Hr format",
+                    e.getMessage());
         }
     }
 
@@ -100,7 +102,7 @@ class TaskTest {
                     "17:00", "1").hasKeyword("");
             fail("Empty keyword not detected");
         } catch (Exception e) {
-            assertEquals("Keyword is empty", e.getMessage());
+            assertEquals("Keyword to be used for search is empty", e.getMessage());
         }
     }
 
