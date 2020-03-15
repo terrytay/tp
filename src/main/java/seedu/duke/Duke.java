@@ -9,9 +9,12 @@ import studyarea.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
-
 import java.io.File;
 import java.io.FileNotFoundException;
+import static ui.Constants.DAB;
+import static ui.Constants.GOODBYE_MESSAGE;
+import static ui.Constants.INTERMEDIATE_MESSAGE;
+import static ui.Constants.WRONG_INPUT;
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -19,7 +22,6 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
 
 /**
  * This is Duke class, which forms the main class of the program.
@@ -37,7 +39,6 @@ public class Duke {
     public static final String STUDY_AREA_MODE = "Application transitioning to study area mode";
     public static final String WRONG_COMMAND = "Wrong command entered by user";
     public static final String APPLICATION_CLOSED_SUCCESSFULLY = "Application closed successfully";
-
     private static TaskLoader taskLoader;
     protected static StudyAreaLoader studyAreaLoader;
     private static TaskList taskList = new TaskList();
@@ -82,12 +83,13 @@ public class Duke {
         }
     }
 
+
     /**
      * This method runs the program.
      */
     public void run() {
-        LOGGER.log(Level.INFO, APPLICATION_STARTED_EXECUTION);
         ui.printWelcomeMessage();
+        LOGGER.log(Level.INFO, APPLICATION_STARTED_EXECUTION);
         boolean status = true;
         while (status) {
             int mode = ui.getMode();
@@ -99,23 +101,23 @@ public class Duke {
             case 1:
                 LOGGER.log(Level.INFO, TASK_MODE);
                 TaskCommand.runCommands(taskList, ui, parser);
-                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+                ui.printMessage(INTERMEDIATE_MESSAGE);
                 break;
             case 2:
                 LOGGER.log(Level.INFO, STUDY_AREA_MODE);
                 StudyAreaCommand.runCommands(studyAreaList, ui);
-                ui.printMessage(Ui.INTERMEDIATE_MESSAGE);
+                ui.printMessage(INTERMEDIATE_MESSAGE);
                 break;
             default:
                 LOGGER.log(Level.INFO, WRONG_COMMAND);
                 ui.printLine();
-                ui.printMessage(Ui.WRONG_INPUT);
+                ui.printMessage(WRONG_INPUT);
                 break;
             }
             ui.printLine();
         }
         taskLoader.saveTasks(taskList.tasks);
-        ui.printMessage(Ui.GOODBYE_MESSAGE + Ui.DAB);
+        ui.printMessage(GOODBYE_MESSAGE + DAB);
         ui.close();
         LOGGER.log(Level.INFO, APPLICATION_CLOSED_SUCCESSFULLY);
     }

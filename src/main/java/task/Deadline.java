@@ -6,7 +6,6 @@ import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
 import ui.Ui;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +13,6 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static task.Event.AT;
 import static task.Event.DATE_AFTER_CURRENT_DATE;
 import static task.Event.DATE_PATTERN;
@@ -41,6 +39,7 @@ import static task.Event.WITH_PRIORITY;
 import static task.Event.WRONG_OPTION;
 
 
+
 /**
  * Represents an deadline and contains the related functions.
  */
@@ -64,6 +63,7 @@ public class Deadline extends Task {
     private LocalTime dueTime;
     private int priority;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
 
     /**
      * Setter for priority of the deadline.
