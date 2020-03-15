@@ -48,7 +48,7 @@ public class Constants {
             + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
-    public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
+    public static final String WRONG_INPUT = "Wrong input! Please enter either \"task\" or \"study\" only!";
     public static final String TASK_COMMAND = "task";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
@@ -152,6 +152,35 @@ public class Constants {
         + "_/\\\\\\_____" +  System.lineSeparator()
         + "______________\\/////________\\///____________\\////////_____\\////////\\//___\\///_____\\/////__"
         +  "_\\///______\\////////_____\\//////////______\\///_____";
-        //@@author
+    //@@author
 
+    public static final String NON_POSITIVE_INTEGER_LOG = "User entered a non positive integer";
+    public static final String NON_INTEGER_LOG = "User entered an invalid number for integer input";
+
+    public static final String DUPLICATE_FLAGS_LOG = "Duplicate flags entered by user";
+    public static final String IDENTIFIER_MISSING_LOG = "Identifier not entered with flag by user";
+    public static final String NO_SIZE_INDICATED_LOG = "no string exist after \"-s\"";
+    public static final String WRONG_FLAG_LOG = "Wrong flag used by user while searching for study areas";
+    public static final String FLAG_MISPLACED_LOG = "Flag is placed in the wrong position in the user input";
+    public static final String NEW_TASK_ADDED_MESSAGE = "A new task with the following information has been added.";
+    public static final String TASK_LIST_AS_FOLLOWS = "Here is the list of tasks added so far:";
+    public static final String CLOSING_BRACKET = ") ";
+    public static final String LIST_EMPTY_MESSAGE = "The list is empty.";
+    public static final String TASK_AT_INDEX_DELETED_MESSAGE = "The task at the mentioned index has been deleted";
+    public static final String INDEX_TO_BE_DELETED_OUT_OF_BOUNDS_LOG = "Index specified to be deleted is out of bounds";
+    public static final String RE_ENTER_VALID_INDEX_TO_DELETE_MESSAGE = "Invalid index entered. Please enter a valid"
+            + " index to be deleted";
+    public static final String TASK_AT_INDEX_EDITED_MESSAGE = "The task at the mentioned index has been "
+            + "edited successfully";
+    public static final String RE_ENTER_VALID_INDEX_TO_EDIT_MESSAGE = "Invalid index entered. Please enter a"
+            + " valid index to be edited";
+    public static final String INVALID_TASK_TYPE_LOG = "Task type of the task to be edited not recognized";
+    public static final String ERROR_ENCOUNTERED_DURING_EXECUTION_MESSAGE = "Error encountered during execution";
+    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared.";
+    public static final String LIST_SORTED_BY_PRIORITY_MESSAGE = "Here is the list of tasks added so far displayed "
+            + "in decreasing order of priority:";
+    public static final String LIST_SORTED_ON_DAYS_LEFT_MESSAGE = "Here is the list of tasks with sorted based"
+            + " on the number of days left:";
+    public static final String ARROW_SYMBOL = " ---> ";
+    public static final String DAYS_LEFT = " day(s) left";
 }
