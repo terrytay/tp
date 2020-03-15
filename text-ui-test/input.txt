@@ -24,13 +24,32 @@ edit 2
 2
 2020-01-01
 2020-06-06
+edit 1
+5
+1
+assignment
 event
 view list
 task
-countdown
 bye
 task
 countdown view
-countdown
+bye
+study
+
+help
+erc
+src
+sbux
+-i -i
+-i -o
+-i
+-p
+-s
+-s wegf
+-s 8
+-s 1
+-
+-qef
 bye
 bye
