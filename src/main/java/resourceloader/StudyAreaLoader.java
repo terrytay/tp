@@ -78,6 +78,7 @@ public class StudyAreaLoader {
      * This method creates a new data file for locations.txt and dictionary.txt.
      * @param filePath this is the path of the data file to be created.
      * @throws IOException if cannot create file.
+     * @throws IllegalStudyAreaException if the data files cannot be set to read-only.
      */
     public static void createNewStudyAreaData(String filePath) throws IOException, IllegalStudyAreaException {
         Files.createFile(Paths.get(filePath));
@@ -88,7 +89,7 @@ public class StudyAreaLoader {
             dataBuffer.println(BackUpData.BACKUP_DICTIONARY);
         }
         dataBuffer.close();
-        File dataFile = new File (filePath);
+        File dataFile = new File(filePath);
         boolean isLocked = dataFile.setWritable(false);
         if (!isLocked) {
             throw new IllegalStudyAreaException("Cannot make read-only");
