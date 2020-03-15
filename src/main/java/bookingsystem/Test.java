@@ -1,6 +1,5 @@
 package bookingsystem;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 class Test {
@@ -9,10 +8,10 @@ class Test {
      * Commands available are: book, check, cancel
      * @param args not in use
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         BookingSystem studyArea = new BookingSystem("MacCommons", "ERC", "nil", true,
                 true, 5);
-
+        assert true;
         String command = null;
         String userId = null;
         Scanner input = new Scanner(System.in);

@@ -2,6 +2,8 @@ package bookingsystem;
 
 import studyarea.StudyArea;
 
+import java.util.logging.Logger;
+
 public class BookingSystem extends StudyArea {
     private boolean isAvailable = true;
     private String bookedBy = null;
@@ -19,6 +21,8 @@ public class BookingSystem extends StudyArea {
      */
     public BookingSystem(String name, String address, String faculty, boolean hasPort, boolean isIndoor, int maxPax) {
         super(name, address, faculty, hasPort, isIndoor, maxPax);
+        Logger logger = Logger.getLogger(BookingSystem.class.getName());
+        logger.warning("This is a warning");
     }
 
     /**
