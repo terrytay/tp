@@ -232,13 +232,10 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Here is a list of supported flags!
-	 -p for study areas
-	 with ports
+	 -p for study areas with ports
 	 -i for study areas that are indoors
-	 -o
-	 for study areas that are outdoors
-	 -s {size} for maximum
-	 number of pax
+	 -o for study areas that are outdoors
+	 -s {size} for maximum number of pax
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Here are the available study areas!

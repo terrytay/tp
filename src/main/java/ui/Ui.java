@@ -7,36 +7,7 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import static java.lang.System.lineSeparator;
-import static ui.Constants.BYE_COMMAND;
-import static ui.Constants.DAB;
-import static ui.Constants.GOODBYE_MESSAGE;
-import static ui.Constants.HELP_DESCRIPTION_1;
-import static ui.Constants.HELP_DESCRIPTION_10;
-import static ui.Constants.HELP_DESCRIPTION_11;
-import static ui.Constants.HELP_DESCRIPTION_12;
-import static ui.Constants.HELP_DESCRIPTION_13;
-import static ui.Constants.HELP_DESCRIPTION_14;
-import static ui.Constants.HELP_DESCRIPTION_15;
-import static ui.Constants.HELP_DESCRIPTION_16;
-import static ui.Constants.HELP_DESCRIPTION_17;
-import static ui.Constants.HELP_DESCRIPTION_18;
-import static ui.Constants.HELP_DESCRIPTION_19;
-import static ui.Constants.HELP_DESCRIPTION_2;
-import static ui.Constants.HELP_DESCRIPTION_20;
-import static ui.Constants.HELP_DESCRIPTION_3;
-import static ui.Constants.HELP_DESCRIPTION_4;
-import static ui.Constants.HELP_DESCRIPTION_5;
-import static ui.Constants.HELP_DESCRIPTION_7;
-import static ui.Constants.HELP_DESCRIPTION_8;
-import static ui.Constants.HELP_DESCRIPTION_9;
-import static ui.Constants.LINE;
-import static ui.Constants.LOGO;
-import static ui.Constants.MAX_LINE_LENGTH;
-import static ui.Constants.SPACE;
-import static ui.Constants.START_MESSAGE;
-import static ui.Constants.STUDY_COMMAND;
-import static ui.Constants.TAB;
-import static ui.Constants.TASK_COMMAND;
+import static ui.Constants.*;
 
 /**
  * Contains functions used to interact with the user.
@@ -143,6 +114,14 @@ public class Ui {
         this.out.println(TAB + "Hello " + name + "!");
         printMessage(START_MESSAGE);
         printLine();
+    }
+
+    /**
+     * This method prints the list of supported flags for the User.
+     */
+
+    public void printStudyAreaHelp(){
+        this.out.println(FLAGS);
     }
 
     /**

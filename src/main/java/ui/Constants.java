@@ -30,7 +30,8 @@ public class Constants {
             + "Enter \"help\" for a list of supported flags. Flags should only come after location, if a criteria for"
             + " location is entered. When you are done with the search, enter \"bye\".";
     public static final String PROMPT_USER = "Please enter the location for your desired study area.";
-    public static final String FLAGS = "Here is a list of supported flags!" + System.lineSeparator() + "\t -p for study"
+    public static final String FLAGS = "\t Here is a list of supported flags!" + System.lineSeparator()
+            + "\t -p for study"
             + " areas with ports" + System.lineSeparator() + "\t -i for study areas that are indoors"
             + System.lineSeparator() + "\t -o for study areas that are outdoors" + System.lineSeparator() + "\t "
             + "-s {size} for maximum number of pax";
