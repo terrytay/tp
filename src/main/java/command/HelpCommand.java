@@ -1,6 +1,8 @@
 package command;
 
-import event.EventList;
+import exception.command.InvalidHelpCommandException;
+import task.TaskList;
+import ui.Ui;
 
 /**
  * Command is used to print the list of commands supported.
@@ -16,12 +18,12 @@ public class HelpCommand extends Command {
      */
     public HelpCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new Exception("Wrong command used to view command list (Should be :help )");
+            throw new InvalidHelpCommandException();
         }
     }
 
     @Override
-    public void executeCommand(EventList eventList) throws Exception {
-        eventList.printHelp();
+    public void executeCommand(TaskList taskList, Ui ui) {
+        ui.printHelp();
     }
 }
