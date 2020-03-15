@@ -161,7 +161,7 @@ public class TaskList {
     }
 
     /**
-     * Lists all the tasks sorted by their priority.
+     * Lists all the tasks sorted by their priority by calling a helper function.
      *
      * @param ui This allows TaskList class to interact with User.
      */
@@ -178,6 +178,12 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     * Prints the tasks sorted by their priority.
+     *
+     * @param ui This allows TaskList class to interact with User.
+     * @param tasksSortedByPriority The sorted list of tasks.
+     */
     private void printTasksSortedByPriority(Ui ui, ArrayList<Task> tasksSortedByPriority) {
         int taskNumber = 1;
         ui.printMessage("Here is the list of tasks added so far displayed in decreasing order of priority:");
@@ -188,7 +194,7 @@ public class TaskList {
     }
 
     /**
-     * Lists all the tasks sorted by date along with the days remaining.
+     * Lists all the tasks sorted by date along with the days remaining by calling a helper function.
      *
      * @param ui This allows TaskList class to interact with User.
      */
@@ -204,6 +210,12 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     * Prints the tasks sorted by date along with the days remaining.
+     *
+     * @param ui This allows TaskList class to interact with User.
+     * @param tasksSortedByDate The sorted list of tasks.
+     */
     private void printTasksSortedByDate(Ui ui, ArrayList<Task> tasksSortedByDate) {
         int taskNumber = 1;
         ui.printMessage("Here is the list of tasks with sorted based on the number of days left:");
@@ -233,6 +245,13 @@ public class TaskList {
         ui.printLine();
     }
 
+    /**
+     * Used to check if there is at least one task containing the keyword in it's description.
+     *
+     * @param keyword The word used for search.
+     * @return true if at least one task has a description containing the keyword and false otherwise
+     * @throws Exception If keyword used is empty.
+     */
     private boolean checkForMatchedTasks(String keyword) throws Exception {
         boolean hasMatchedTask = false;
         for (Task task : tasks) {
@@ -244,6 +263,13 @@ public class TaskList {
         return hasMatchedTask;
     }
 
+    /**
+     * Displays the list of tasks containing the keyword in their descriptions.
+     *
+     * @param keyword The word used for search.
+     * @param ui Used to interact with the user.
+     * @throws Exception If the keyword is empty.
+     */
     private void printMatchedTasks(String keyword, Ui ui) throws Exception {
         int taskNumber = 1;
         for (Task task : tasks) {

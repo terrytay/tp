@@ -3,7 +3,6 @@ package task.event;
 import org.junit.jupiter.api.Test;
 import task.Event;
 import ui.Ui;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -37,7 +36,7 @@ class TaskListTest {
             taskList.searchTasks("",ui);
             fail("Empty string search not identified");
         } catch (Exception exception) {
-            assertEquals("Keyword is empty", exception.getMessage());
+            assertEquals("Keyword to be used for search is empty", exception.getMessage());
         }
     }
 
