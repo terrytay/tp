@@ -48,7 +48,7 @@ public class Constants {
             + " your task list! If you are in the mood to mug and you"
             + " want to start your study area list, enter \"study\" !If"
             + " you want to exit, enter \"bye\" !";
-    public static final String WRONG_INPUT = "Wrong input! Please enter either \"event\" or \"study\" only!";
+    public static final String WRONG_INPUT = "Wrong input! Please enter either \"task\" or \"study\" only!";
     public static final String TASK_COMMAND = "task";
     public static final String STUDY_COMMAND = "study";
     public static final String GOODBYE_MESSAGE = "  Goodbye! Hope to see you again!";
