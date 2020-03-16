@@ -224,30 +224,31 @@ public class StudyAreaList {
         String[] flags = getFlagsInfo(temp);
         ArrayList<StudyArea> availStudyAreas = new ArrayList<>();
         for (StudyArea studyArea : this.studyAreaList) {
-            boolean isAvail = true;
             int index = 0;
+            boolean isAvail = true;
             for (String flag : flags) {
-                if (flag != null && isAvail && index != 1) {
+                if (flag != null && isAvail && index!=1) {
                     switch (flag) {
-                    case PORTS_FLAG:
-                        isAvail = studyArea.hasPort();
-                        break;
-                    case INDOOR_FLAG:
-                        isAvail = studyArea.isIndoor();
-                        break;
-                    case OUTDOOR_FLAG:
-                        isAvail = !studyArea.isIndoor();
-                        break;
-                    case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
-                        isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
-                        break;
-                    default:      // toLowerCase() so casing does not affect matching
-                        isAvail = containsKey(studyArea.getName().toLowerCase(), studyArea.getAddress().toLowerCase(),
-                                studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
-                        break;
+                        case PORTS_FLAG:
+                            isAvail = studyArea.hasPort();
+                            break;
+                        case INDOOR_FLAG:
+                            isAvail = studyArea.isIndoor();
+                            break;
+                        case OUTDOOR_FLAG:
+                            isAvail = !studyArea.isIndoor();
+                            break;
+                        case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
+                            isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
+                            break;
+                        default:      // toLowerCase() so casing does not affect matching
+                            isAvail = containsKey(studyArea.getName().toLowerCase(),
+                                    studyArea.getAddress().toLowerCase(),
+                                    studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
+                            break;
                     }
-                    index++;
                 }
+                index++;
             }
             if (isAvail) {
                 availStudyAreas.add(studyArea);
