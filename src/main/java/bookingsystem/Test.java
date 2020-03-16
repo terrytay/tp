@@ -1,8 +1,12 @@
 package bookingsystem;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 class Test {
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     /**
      * Demonstrates a booking system for a study area.
      * Commands available are: book, check, cancel
@@ -11,7 +15,6 @@ class Test {
     public static void main(String[] args) {
         BookingSystem studyArea = new BookingSystem("MacCommons", "ERC", "nil", true,
                 true, 5);
-        assert true;
         String command = null;
         String userId = null;
         Scanner input = new Scanner(System.in);
@@ -60,6 +63,8 @@ class Test {
                 }
                 break;
             default:
+                LOGGER.log(Level.INFO, "Uncaught scenario");
+                assert false;
                 break;
             }
         }

@@ -45,7 +45,7 @@ public class BookingSystem extends StudyArea {
 
     /**
      * Check if study area is available.
-     * @return
+     * @return true if available
      */
     public boolean isBooked() {
         return !(isAvailable);
