@@ -145,8 +145,6 @@ public class TaskLoader {
             StudyAreaLoader.createNewStudyAreaData(FILE_PATH_DICTIONARY);
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (IllegalStudyAreaException e) {
-            System.out.println(e.getMessage());
         }
     }
 
