@@ -234,4 +234,5 @@ public class Constants {
     public static final String INVALID_START_TIME_ENTERED = "Invalid start time entered by user";
     public static final String INVALID_DATE_ENTERED = "Invalid date entered by user";
     public static final String INVALID_OPTION_ENTERED = "Invalid option entered by user";
+    public static final String FROM_PLAIN = " from ";
 }

@@ -160,8 +160,9 @@ public class Event extends Task {
      * @return eventInfo Contains information related to the event.
      */
     public String getTaskInformation() {
-        String eventInfo = Constants.EVENT_SYMBOL + description + Constants.AT + date.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN))
-                + Constants.FROM + startTime.toString() + Constants.TO + endTime.toString() + Constants.WITH_PRIORITY + priority;
+        String eventInfo = Constants.EVENT_SYMBOL + description + Constants.AT
+                + date.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN)) + Constants.FROM_PLAIN
+                + startTime.toString() + Constants.TO + endTime.toString() + Constants.WITH_PRIORITY + priority;
         return eventInfo;
     }
 
@@ -215,8 +216,9 @@ public class Event extends Task {
      * @return formattedEventDetails Contains the event details in the required format.
      */
     public String getFormattedDetails() {
-        String formattedEventDetails = Constants.EVENT_IDENTIFIER + Constants.DELIMITER + description + Constants.DELIMITER + date + Constants.DELIMITER
-                + startTime + Constants.DELIMITER + endTime + Constants.DELIMITER + priority + Constants.NEW_LINE_CHARACTER;
+        String formattedEventDetails = Constants.EVENT_IDENTIFIER + Constants.DELIMITER + description
+                + Constants.DELIMITER + date + Constants.DELIMITER + startTime + Constants.DELIMITER + endTime
+                + Constants.DELIMITER + priority + Constants.NEW_LINE_CHARACTER;
         return formattedEventDetails;
     }
 
