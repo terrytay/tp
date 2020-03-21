@@ -57,15 +57,14 @@ public class Constants {
     public static final String EMPTY_LOCATION = "Location entered is empty! Please type a location to search for "
             + "StudyAreas!";
     public static final String NON_POSITIVE_INTEGER = "Integer entered cannot be zero or negative!";
-    public static final String HELP_DESCRIPTION_20 = TAB + "*There are 4 levels of priority, with 1 being the most "
-            + "urgent, and 4 being the least urgent";
-    public static final String HELP_DESCRIPTION_19 = TAB + "*All timing should follow 24 hour clock";
-    public static final String HELP_DESCRIPTION_18 = TAB + "*All dates should follow YYYY-MM-DD format";
-    public static final String HELP_DESCRIPTION_17 = TAB + "Notes:";
-    public static final String HELP_DESCRIPTION_16 = TAB + "bye --------------------------------------- Terminate task"
+    public static final String HELP_DESCRIPTION_20 = TAB + "*All timing should follow 24 hour clock";
+    public static final String HELP_DESCRIPTION_19 = TAB + "*All dates should follow YYYY-MM-DD format";
+    public static final String HELP_DESCRIPTION_18 = TAB + "Notes:";
+    public static final String HELP_DESCRIPTION_17 = TAB + "bye --------------------------------------- Terminate task"
             + " interface";
-    public static final String HELP_DESCRIPTION_15 = TAB + "help -------------------------------------- View List Of "
+    public static final String HELP_DESCRIPTION_16 = TAB + "help -------------------------------------- View List Of "
             + "Commands Supported";
+    public static final String HELP_DESCRIPTION_15 = TAB + "schedule <number of task to be scheduled> - Schedule tasks";
     public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of task> --------------- Edit the task";
     public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of task> ------------- Delete the "
             + "task";
@@ -183,4 +182,14 @@ public class Constants {
             + " on the number of days left:";
     public static final String ARROW_SYMBOL = " ---> ";
     public static final String DAYS_LEFT = " day(s) left";
+    public static final String FROM = " is scheduled from ";
+    public static final String TO = " to ";
+    public static final String WRONG_FORMAT_MESSAGE = "Please follow the format specified. Renter details:";
+    public static final String ENTER_DETAILS = "Enter details for task ";
+    public static final String COLON = ":";
+    public static final String FORWARD_SLASH = "/";
+    public static final String SCHEDULABLE_TASK_FORMAT = "<task name> /f <Time to finish task in days>"
+            + " /d <Number of days left from current day to finish it>";
+    public static final String ENTER_TASKS_IN_THE_FOLLOWING_FORMAT = "Enter tasks in the following format:";
+    public static final String DETAILS_CAPTURED_SUCCESSFULLY = "Details captured successfully.";
 }
