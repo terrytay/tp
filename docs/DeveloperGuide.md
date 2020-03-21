@@ -1,34 +1,85 @@
-# Developer Guide
 
-## Design & Implementation
+  
+# Developer Guide    
+ ## Design & Implementation    
+ {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
+## 1.1 Architecture  
+  
+  
+The architecture diagram shown above gives a overview of the various components used.  
+  
+## 1.2 Task Component  
+  
+The Task component depends on 3 other components,  
+  
+ 1. Command Component - The Command component issues instructions for the Task component to execute based on the user's input. 
+ 
+ 2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to the Task Component.
+ 
+ 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored perviously when the application is started and is also used to store the current list of tasks to the local storage upon exit.  
+ 
+![Task Component](images/Task_Component.jpg)  
+  
+The task component contains 8 separate classes. They are as follows:  
+ 
+  1. Task : Abstract class used to model a generic task.
+   
+  2. Event : Specialized task class used to model events. 
+  
+  3. Deadline : Specialized task class used to model a deadline.  
+   
+  4. TaskType : Enumeration class used to denote the various task types.  
+  
+  5. TaskList : Container class used to store list of tasks and handle related operations.
+   
+  6. SchedulableTask : Class used to model a task which is scheduled based on user's requirements. 
+  
+  7. TaskComparator : Contains a custom comparator used to compare two schedulable tasks based on their numberOfDaysLeft attribute. 
+  
+  8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.    
+ 
+ ## 2.1 Scheduling Tasks
+ ### 2.1.1 Implementation
+ Inorder to schedule tasks based on the user's requirement a sepaarate SchedulableTask class was created.
+ The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled.
+ The requirements captured are stored in the SchedulableTask object.
+ Then, the TaskScheduler finds the optimum schedule based on the user's requirements using the EDF (Early Deadline First) algorithm.
+ Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement.
+ If a feasible schedule is found it is displayed, else a message stating that a schedule based on the user's  requirements can't
+ be made is displayed.
+ 
+### 2.1.2 Alternatives
+Aspect : How to capture user's requirements
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+ - Alternative 1 (Current Choice) : Create a seperate SchedulableTask object to store user's requirements for each task to be scheduled
+	  - Pros : New class object can be customised without affecting core functionalities if the attributes provided by the user changes
+	  - Cons : New methods similar to previously implemented methods have to be created instead of being reused.
+  - Alternative 2 : Modify existing event or deadline class to model user's requirements
+	  - Pros : Led to reuse of methods and reduce coupling between classes in the TaskComponent.
+	  - Cons : Major changes would be required throughout various components to accomodate the new feature. 
 
+Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to the user's requirements (e.g. Changes to the number of parameters provided by the user).
 
-## Product Scope
-### Target user profile
-
-{Describe the target user profile}
-
-### Value proposition
-
-{Describe the value proposition: what problem does it solve?}
-
-## User Stories
-
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-
-## Non-Functional Requirements
-
-{Give non-functional requirements}
-
-## Glossary
-
-* *glossary item* - Definition
-
-## Instructions for Manual Testing
-
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+##  Product Scope 
+### Target user profile    
+ Our target users are mainly NUS students.  
+    
+### Value proposition    
+ {Describe the value proposition: what problem does it solve?}    
+    
+## User Stories    
+ |Version| As a ... | I want to ... | So that I can ...| 
+|--|--|--|--| 
+|v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
+|v1.0|user|add a new task|keep track of it|  
+|v1.0|user|edit a task|change it's details if required| |v1.0|user|delete a task|remove tasks that are cancelled| |v1.0|user|view my list of tasks sorted based on their date|be aware of all the tasks that are due/happening soon|  
+|v1.0|user|view my list of tasks sorted based on their priority|be aware of the more important tasks|  
+|v1.0|user|find a task by name|locate a task without having to go through the entire list|    
+ ## Non-Functional Requirements    
+ {Give non-functional requirements}    
+    
+## Glossary    
+ * *glossary item* - Definition    
+    
+## Instructions for Manual Testing    
+ {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}

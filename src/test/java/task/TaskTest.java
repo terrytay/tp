@@ -1,4 +1,4 @@
-package task.event;
+package task;
 
 import org.junit.jupiter.api.Test;
 import task.Event;
