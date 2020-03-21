@@ -7,6 +7,7 @@ import exception.command.InvalidStartTimeException;
 import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
+import ui.Constants;
 import ui.Ui;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,51 +21,6 @@ import java.util.logging.Logger;
  * Represents an event and contains the related functions.
  */
 public class Event extends Task {
-
-    public static final int EDIT_DESCRIPTION = 1;
-    public static final int EDIT_DATE = 2;
-    public static final int EDIT_START_TIME = 3;
-    public static final int EDIT_END_TIME = 4;
-    public static final int EDIT_PRIORITY = 5;
-    public static final String ERROR_MESSAGE = "Error encountered during execution";
-    public static final String DATE_PATTERN = "MMM d yyyy";
-    public static final String EVENT_SYMBOL = "[E] ";
-    public static final String AT = " at ";
-    public static final String FROM = " from ";
-    public static final String TO = " to ";
-    public static final String WITH_PRIORITY = " with priority ";
-    public static final String EMPTY_STRING = "";
-    public static final String DELIMITER = "#";
-    public static final String NEW_LINE_CHARACTER = System.lineSeparator();
-    public static final String EVENT_IDENTIFIER = "E";
-    public static final String ENTER_NEW_PRIORITY_MESSAGE = "Enter new priority:";
-    public static final String ENTER_NEW_END_TIME_MESSAGE = "Enter new End Time:";
-    public static final String ENTER_NEW_START_TIME_MESSAGE = "Enter new Start Time:";
-    public static final String ENTER_NEW_DATE_MESSAGE = "Enter new Date:";
-    public static final String ENTER_NEW_DESCRIPTION_MESSAGE = "Enter new description:";
-    public static final String ENTER_VALID_NUMBER_FROM_LIST_MESSAGE = "Please enter a valid number from the list";
-    public static final String UPDATED_DETAILS = "Updated Details:";
-    public static final String EVENT_DETAILS_AS_FOLLOWS_MESSAGE = "The event details are as follows:";
-    public static final String ASK_FOR_OPTION_MESSAGE = "Which field of the event to edit?"
-            + " (Enter Corresponding Number)";
-    public static final String OPTION_TO_EDIT_DESCRIPTION = "1. Description";
-    public static final String OPTION_TO_EDIT_DATE = "2. Date";
-    public static final String OPTION_TO_EDIT_START_TIME = "3. Start Time";
-    public static final String OPTION_TO_EDIT_END_TIME = "4. End Time";
-    public static final String OPTION_TO_EDIT_PRIORITY = "5. Priority";
-    public static final String START_TIME_AFTER_END_TIME = "Event start time after end time exception thrown";
-    public static final String PRIORITY_NOT_INTEGER = "Task priority not integer exception thrown";
-    public static final String INVALID_END_TIME = "Invalid end time exception thrown";
-    public static final String INVALID_START_TIME = "Invalid start time exception thrown";
-    public static final String INVALID_DATE = "Invalid date exception thrown";
-    public static final String DATE_AFTER_CURRENT_DATE = "Date after current date exception thrown";
-    public static final String SEARCH_KEYWORD_EMPTY = "Search keyword empty exception thrown";
-    public static final String WRONG_OPTION = "Wrong option entered not handled by getFieldToBeEdited";
-    public static final String INVALID_PRIORITY_VALUE = "Invalid priority value entered by user";
-    public static final String INVALID_END_TIME_ENTERED = "Invalid end time entered by the user";
-    public static final String INVALID_START_TIME_ENTERED = "Invalid start time entered by user";
-    public static final String INVALID_DATE_ENTERED = "Invalid date entered by user";
-    public static final String INVALID_OPTION_ENTERED = "Invalid option entered by user";
 
     private String description;
     private LocalDate date;
@@ -119,7 +75,7 @@ public class Event extends Task {
         parseStartTime(startTime);
         parseEndTime(endTime);
         if (this.startTime.isAfter(this.endTime)) {
-            LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
+            LOGGER.log(Level.INFO, Constants.START_TIME_AFTER_END_TIME);
             throw new EventStartTimeAfterEndTimeException();
         }
         parsePriority(priority);
@@ -135,7 +91,7 @@ public class Event extends Task {
         try {
             this.priority = Integer.parseInt(priority.strip());
         } catch (NumberFormatException e) {
-            LOGGER.log(Level.INFO, PRIORITY_NOT_INTEGER);
+            LOGGER.log(Level.INFO, Constants.PRIORITY_NOT_INTEGER);
             throw new TaskPriorityNotIntegerException();
         }
     }
@@ -150,7 +106,7 @@ public class Event extends Task {
         try {
             this.endTime = LocalTime.parse(endTime.strip());
         } catch (DateTimeParseException e) {
-            LOGGER.log(Level.INFO, INVALID_END_TIME);
+            LOGGER.log(Level.INFO, Constants.INVALID_END_TIME);
             throw new InvalidEndTimeException();
         }
     }
@@ -165,7 +121,7 @@ public class Event extends Task {
         try {
             this.startTime = LocalTime.parse(startTime.strip());
         } catch (DateTimeParseException e) {
-            LOGGER.log(Level.INFO, INVALID_START_TIME);
+            LOGGER.log(Level.INFO, Constants.INVALID_START_TIME);
             throw new InvalidStartTimeException();
         }
     }
@@ -180,11 +136,11 @@ public class Event extends Task {
         try {
             this.date = LocalDate.parse(date.strip());
         } catch (DateTimeParseException e) {
-            LOGGER.log(Level.INFO, INVALID_DATE);
+            LOGGER.log(Level.INFO, Constants.INVALID_DATE);
             throw new InvalidDateException();
         }
         if (this.date.isBefore(LocalDate.now())) {
-            LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
+            LOGGER.log(Level.INFO, Constants.DATE_AFTER_CURRENT_DATE);
             throw new TaskDateBeforeCurrentDateException();
         }
     }
@@ -204,8 +160,8 @@ public class Event extends Task {
      * @return eventInfo Contains information related to the event.
      */
     public String getTaskInformation() {
-        String eventInfo = EVENT_SYMBOL + description + AT + date.format(DateTimeFormatter.ofPattern(DATE_PATTERN))
-                + FROM + startTime.toString() + TO + endTime.toString() + WITH_PRIORITY + priority;
+        String eventInfo = Constants.EVENT_SYMBOL + description + Constants.AT + date.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN))
+                + Constants.FROM + startTime.toString() + Constants.TO + endTime.toString() + Constants.WITH_PRIORITY + priority;
         return eventInfo;
     }
 
@@ -245,8 +201,8 @@ public class Event extends Task {
      * @throws Exception If keyword entered is empty.
      */
     public boolean hasKeyword(String keyword) throws Exception {
-        if (keyword.equals(EMPTY_STRING)) {
-            LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
+        if (keyword.equals(Constants.EMPTY_STRING)) {
+            LOGGER.log(Level.INFO, Constants.SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
         boolean containsKeyword = description.contains(keyword);
@@ -259,8 +215,8 @@ public class Event extends Task {
      * @return formattedEventDetails Contains the event details in the required format.
      */
     public String getFormattedDetails() {
-        String formattedEventDetails = EVENT_IDENTIFIER + DELIMITER + description + DELIMITER + date + DELIMITER
-                + startTime + DELIMITER + endTime + DELIMITER + priority + NEW_LINE_CHARACTER;
+        String formattedEventDetails = Constants.EVENT_IDENTIFIER + Constants.DELIMITER + description + Constants.DELIMITER + date + Constants.DELIMITER
+                + startTime + Constants.DELIMITER + endTime + Constants.DELIMITER + priority + Constants.NEW_LINE_CHARACTER;
         return formattedEventDetails;
     }
 
@@ -275,24 +231,24 @@ public class Event extends Task {
         int fieldToBeEdited;
         fieldToBeEdited = getFieldToBeEdited(ui);
         switch (fieldToBeEdited) {
-        case EDIT_DESCRIPTION:
+        case Constants.EDIT_DESCRIPTION:
             editDescription(ui);
             break;
-        case EDIT_DATE:
+        case Constants.EDIT_DATE:
             editDate(ui);
             break;
-        case EDIT_START_TIME:
+        case Constants.EDIT_START_TIME:
             editStartTime(ui);
             break;
-        case EDIT_END_TIME:
+        case Constants.EDIT_END_TIME:
             editEndTime(ui);
             break;
-        case EDIT_PRIORITY:
+        case Constants.EDIT_PRIORITY:
             editPriority(ui);
             break;
         default:
-            LOGGER.log(Level.SEVERE, WRONG_OPTION);
-            ui.printMessage(ERROR_MESSAGE);
+            LOGGER.log(Level.SEVERE, Constants.WRONG_OPTION);
+            ui.printMessage(Constants.ERROR_MESSAGE);
             break;
         }
         printUpdatedDetails(ui);
@@ -308,12 +264,12 @@ public class Event extends Task {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage(ENTER_NEW_PRIORITY_MESSAGE);
+            ui.printMessage(Constants.ENTER_NEW_PRIORITY_MESSAGE);
             String newPriorityString = ui.getUserIn();
             try {
                 parsePriority(newPriorityString);
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, INVALID_PRIORITY_VALUE);
+                LOGGER.log(Level.INFO, Constants.INVALID_PRIORITY_VALUE);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -329,16 +285,16 @@ public class Event extends Task {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage(ENTER_NEW_END_TIME_MESSAGE);
+            ui.printMessage(Constants.ENTER_NEW_END_TIME_MESSAGE);
             String newEndTimeString = ui.getUserIn();
             try {
                 parseEndTime(newEndTimeString);
                 if (this.endTime.isBefore(this.startTime)) {
-                    LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
+                    LOGGER.log(Level.INFO, Constants.START_TIME_AFTER_END_TIME);
                     throw new EventStartTimeAfterEndTimeException();
                 }
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, INVALID_END_TIME_ENTERED);
+                LOGGER.log(Level.INFO, Constants.INVALID_END_TIME_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -354,16 +310,16 @@ public class Event extends Task {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage(ENTER_NEW_START_TIME_MESSAGE);
+            ui.printMessage(Constants.ENTER_NEW_START_TIME_MESSAGE);
             String newStartTimeString = ui.getUserIn();
             try {
                 parseStartTime(newStartTimeString);
                 if (this.endTime.isBefore(this.startTime)) {
-                    LOGGER.log(Level.INFO, START_TIME_AFTER_END_TIME);
+                    LOGGER.log(Level.INFO, Constants.START_TIME_AFTER_END_TIME);
                     throw new EventStartTimeAfterEndTimeException();
                 }
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, INVALID_START_TIME_ENTERED);
+                LOGGER.log(Level.INFO, Constants.INVALID_START_TIME_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -379,16 +335,16 @@ public class Event extends Task {
         boolean exceptionEncountered;
         do {
             exceptionEncountered = false;
-            ui.printMessage(ENTER_NEW_DATE_MESSAGE);
+            ui.printMessage(Constants.ENTER_NEW_DATE_MESSAGE);
             String newDateString = ui.getUserIn();
             try {
                 parseDate(newDateString);
                 if (this.date.isBefore(LocalDate.now())) {
-                    LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
+                    LOGGER.log(Level.INFO, Constants.DATE_AFTER_CURRENT_DATE);
                     throw new TaskDateBeforeCurrentDateException();
                 }
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, INVALID_DATE_ENTERED);
+                LOGGER.log(Level.INFO, Constants.INVALID_DATE_ENTERED);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -401,7 +357,7 @@ public class Event extends Task {
      * @param ui Used to interact with the user.
      */
     private void editDescription(Ui ui) {
-        ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
+        ui.printMessage(Constants.ENTER_NEW_DESCRIPTION_MESSAGE);
         String newDescription = ui.getUserIn();
         parseDescription(newDescription);
     }
@@ -424,8 +380,8 @@ public class Event extends Task {
                     throw new Exception();
                 }
             } catch (Exception exception) {
-                LOGGER.log(Level.INFO, INVALID_OPTION_ENTERED);
-                ui.printMessage(ENTER_VALID_NUMBER_FROM_LIST_MESSAGE);
+                LOGGER.log(Level.INFO, Constants.INVALID_OPTION_ENTERED);
+                ui.printMessage(Constants.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE);
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
@@ -438,7 +394,7 @@ public class Event extends Task {
      * @param ui Used to interact with user.
      */
     private void printUpdatedDetails(Ui ui) {
-        ui.printMessage(UPDATED_DETAILS);
+        ui.printMessage(Constants.UPDATED_DETAILS);
         ui.printMessage(this.getTaskInformation());
         ui.printLine();
     }
@@ -450,14 +406,14 @@ public class Event extends Task {
      */
     private void printOptionsToEdit(Ui ui) {
         ui.printLine();
-        ui.printMessage(EVENT_DETAILS_AS_FOLLOWS_MESSAGE);
+        ui.printMessage(Constants.EVENT_DETAILS_AS_FOLLOWS_MESSAGE);
         ui.printMessage(this.getTaskInformation());
-        ui.printMessage(ASK_FOR_OPTION_MESSAGE);
-        ui.printMessage(OPTION_TO_EDIT_DESCRIPTION);
-        ui.printMessage(OPTION_TO_EDIT_DATE);
-        ui.printMessage(OPTION_TO_EDIT_START_TIME);
-        ui.printMessage(OPTION_TO_EDIT_END_TIME);
-        ui.printMessage(OPTION_TO_EDIT_PRIORITY);
+        ui.printMessage(Constants.ASK_FOR_OPTION_MESSAGE);
+        ui.printMessage(Constants.OPTION_TO_EDIT_DESCRIPTION);
+        ui.printMessage(Constants.OPTION_TO_EDIT_DATE);
+        ui.printMessage(Constants.OPTION_TO_EDIT_START_TIME);
+        ui.printMessage(Constants.OPTION_TO_EDIT_END_TIME);
+        ui.printMessage(Constants.OPTION_TO_EDIT_PRIORITY);
         ui.printEmptyLine();
     }
 }
