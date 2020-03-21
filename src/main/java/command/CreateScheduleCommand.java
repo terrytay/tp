@@ -10,19 +10,19 @@ import ui.Ui;
 /**
  * This command is used to create schedule based on user input if its feasible.
  */
-public class CreateSchedule extends Command {
+public class CreateScheduleCommand extends Command {
 
     TaskScheduler taskScheduler;
 
     /**
-     * Constructor for the CreateSchedule Object.
+     * Constructor for the CreateScheduleCommand Object.
      * Checks if the user given input follows the correct format and creates a new object.
      *
      * @param isOneWordCommand Denotes whether the user given input is single or multi worded.
      * @param commandSplit Contains the information regarding the number of tasks to be scheduled.
      * @throws Exception If the wrong format is used.
      */
-    public CreateSchedule(boolean isOneWordCommand, String[] commandSplit) throws Exception {
+    public CreateScheduleCommand(boolean isOneWordCommand, String[] commandSplit) throws Exception {
         if (isOneWordCommand) {
             throw new MisuseOfScheduleCommandException();
         }
@@ -40,10 +40,12 @@ public class CreateSchedule extends Command {
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
         taskScheduler.getTasks(ui);
-        if(taskScheduler.scheduleTasks(ui)) {
+        if (taskScheduler.scheduleTasks(ui)) {
             ui.printMessage("Tasks successfully scheduled.");
+            taskScheduler.addScheduleToList(taskList, ui);
         } else {
             ui.printMessage("Tasks couldn't be scheduled.");
         }
+        ui.printLine();
     }
 }

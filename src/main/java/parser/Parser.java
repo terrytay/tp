@@ -1,6 +1,17 @@
 package parser;
 
-import command.*;
+import command.AddDeadlineCommand;
+import command.AddEventCommand;
+import command.ClearCommand;
+import command.Command;
+import command.CountdownCommand;
+import command.CreateScheduleCommand;
+import command.DeleteCommand;
+import command.EditCommand;
+import command.HelpCommand;
+import command.PriorityViewCommand;
+import command.SearchCommand;
+import command.ViewCommand;
 
 /**
  * This class is used to parse the user input into executable commands.
@@ -64,7 +75,7 @@ public class Parser {
             command = new HelpCommand(isOneWordCommand);
             break;
         case CREATE_SCHEDULE_COMMAND:
-            command = new CreateSchedule(isOneWordCommand, commandSplit);
+            command = new CreateScheduleCommand(isOneWordCommand, commandSplit);
             break;
         case EMPTY_COMMAND:
             throw new Exception("Empty Line entered, Please enter a valid line");

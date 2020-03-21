@@ -182,4 +182,14 @@ public class Constants {
             + " on the number of days left:";
     public static final String ARROW_SYMBOL = " ---> ";
     public static final String DAYS_LEFT = " day(s) left";
+    public static final String FROM = " is scheduled from ";
+    public static final String TO = " to ";
+    public static final String WRONG_FORMAT_MESSAGE = "Please follow the format specified. Renter details:";
+    public static final String ENTER_DETAILS = "Enter details for task ";
+    public static final String COLON = ":";
+    public static final String FORWARD_SLASH = "/";
+    public static final String SCHEDULABLE_TASK_FORMAT = "<task name> /f <Time to finish task in days>"
+            + " /d <Number of days left from current day to finish it>";
+    public static final String ENTER_TASKS_IN_THE_FOLLOWING_FORMAT = "Enter tasks in the following format:";
+    public static final String DETAILS_CAPTURED_SUCCESSFULLY = "Details captured successfully.";
 }
