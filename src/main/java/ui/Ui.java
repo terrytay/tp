@@ -149,7 +149,6 @@ public class Ui {
     /**
      * This method prints the list of supported flags for the User.
      */
-
     public void printStudyAreaHelp() {
         this.out.println(FLAGS);
     }
@@ -159,6 +158,13 @@ public class Ui {
      */
     public void printEmptyLine() {
         System.out.println();
+    }
+
+    /**
+     * Prints the closing message.
+     */
+    public void printByeMessage() {
+        printMessage(GOODBYE_MESSAGE + DAB);
     }
 
     /**

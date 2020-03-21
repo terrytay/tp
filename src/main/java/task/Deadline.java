@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.EmptyDescriptionException;
 import exception.command.InvalidDateException;
 import exception.command.InvalidDueTimeException;
 import exception.command.SearchKeywordEmptyException;
@@ -13,12 +14,14 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static task.Event.AT;
 import static task.Event.DATE_AFTER_CURRENT_DATE;
 import static task.Event.DATE_PATTERN;
 import static task.Event.DELIMITER;
 import static task.Event.EDIT_DATE;
 import static task.Event.EDIT_DESCRIPTION;
+import static task.Event.EMPTY_DESCRIPTION_MESSAGE;
 import static task.Event.EMPTY_STRING;
 import static task.Event.ENTER_NEW_DATE_MESSAGE;
 import static task.Event.ENTER_NEW_DESCRIPTION_MESSAGE;
@@ -37,7 +40,6 @@ import static task.Event.SEARCH_KEYWORD_EMPTY;
 import static task.Event.UPDATED_DETAILS;
 import static task.Event.WITH_PRIORITY;
 import static task.Event.WRONG_OPTION;
-
 
 
 /**
@@ -155,8 +157,12 @@ public class Deadline extends Task {
      * Parses the description from the string entered by user for the description field.
      *
      * @param description String entered by user for the description field.
+     * @throws EmptyDescriptionException If the description of the task provided is empty.
      */
-    private void parseDescription(String description) {
+    private void parseDescription(String description) throws EmptyDescriptionException {
+        if (description.trim().equals(Event.EMPTY_STRING)) {
+            throw new EmptyDescriptionException();
+        }
         this.description = description;
     }
 
@@ -323,9 +329,19 @@ public class Deadline extends Task {
      * @param ui Used to interact with the user.
      */
     private void editDescription(Ui ui) {
-        ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
-        String newDescription = ui.getUserIn();
-        parseDescription(newDescription);
+        boolean exceptionEncountered;
+        do {
+            exceptionEncountered = false;
+            ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
+            String newDescription = ui.getUserIn();
+            try {
+                parseDescription(newDescription);
+            } catch (Exception e) {
+                LOGGER.log(Level.INFO, EMPTY_DESCRIPTION_MESSAGE);
+                ui.printMessage(e.getMessage());
+                exceptionEncountered = true;
+            }
+        } while (exceptionEncountered);
     }
 
     /**
