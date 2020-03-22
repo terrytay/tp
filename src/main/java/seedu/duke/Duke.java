@@ -94,7 +94,7 @@ public class Duke {
                 break;
             case Constants.STUDY_AREA_MODE_SELECTED:
                 LOGGER.log(Level.INFO, Constants.STUDY_AREA_MODE);
-                StudyAreaCommand.runCommands(studyAreaList, ui);
+                StudyAreaCommand.runCommands(studyAreaList,ui);
                 ui.printMessage(INTERMEDIATE_MESSAGE);
                 break;
             default:

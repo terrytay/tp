@@ -1,4 +1,10 @@
-Mar 22, 2020 11:05:25 AM seedu.duke.Duke run
+Mar 22, 2020 3:55:48 PM seedu.duke.Duke run
 INFO: Application started Execution
-Mar 22, 2020 11:05:26 AM seedu.duke.Duke run
+Mar 22, 2020 3:55:49 PM seedu.duke.Duke run
 INFO: Application transitioning to study area mode
+Mar 22, 2020 3:56:03 PM studyarea.StudyAreaList checkDuplicate
+INFO: Duplicate flags entered by user
+Mar 22, 2020 3:56:05 PM seedu.duke.Duke run
+INFO: Application is going to exit
+Mar 22, 2020 3:56:05 PM seedu.duke.Duke run
+INFO: Application closed successfully

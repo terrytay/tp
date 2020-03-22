@@ -41,13 +41,13 @@ public class StudyAreaCommand {
     /**
      * Filters command based on User Input.
      * @param command This is the command entered by User.
-     * @param studyAreaList This is the list of all StudyAreas in location.txt.
      * @param ui This allows for StudyAreaCommand to interact with Users.
+     * @param studyAreaList This contains all existing study areas.
      * @return boolean status. False if User enters "end" , else will always return true;
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
 
-    public static boolean filterCommand(String command, StudyAreaList studyAreaList, Ui ui) throws
+    public static boolean filterCommand(String command,StudyAreaList studyAreaList, Ui ui) throws
             IllegalStudyAreaException {
 
         command = command.trim();
@@ -77,8 +77,8 @@ public class StudyAreaCommand {
     
     /**
      * Executes the StudyArea search feature.
+     * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
-     * @param studyAreaList studyAreaList object that holds information on studyAreas available.
      */
     public static void runCommands(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
@@ -89,7 +89,7 @@ public class StudyAreaCommand {
             String command = ui.getUserIn().toLowerCase();
             ui.printLine();
             try {
-                status = filterCommand(command, studyAreaList, ui);
+                status = filterCommand(command, studyAreaList,  ui);
             } catch (IllegalStudyAreaException e) {
                 ui.printMessage(e.getMessage());
             }
