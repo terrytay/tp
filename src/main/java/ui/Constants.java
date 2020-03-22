@@ -57,15 +57,14 @@ public class Constants {
     public static final String EMPTY_LOCATION = "Location entered is empty! Please type a location to search for "
             + "StudyAreas!";
     public static final String NON_POSITIVE_INTEGER = "Integer entered cannot be zero or negative!";
-    public static final String HELP_DESCRIPTION_20 = TAB + "*There are 4 levels of priority, with 1 being the most "
-            + "urgent, and 4 being the least urgent";
-    public static final String HELP_DESCRIPTION_19 = TAB + "*All timing should follow 24 hour clock";
-    public static final String HELP_DESCRIPTION_18 = TAB + "*All dates should follow YYYY-MM-DD format";
-    public static final String HELP_DESCRIPTION_17 = TAB + "Notes:";
-    public static final String HELP_DESCRIPTION_16 = TAB + "bye --------------------------------------- Terminate task"
+    public static final String HELP_DESCRIPTION_20 = TAB + "*All timing should follow 24 hour clock";
+    public static final String HELP_DESCRIPTION_19 = TAB + "*All dates should follow YYYY-MM-DD format";
+    public static final String HELP_DESCRIPTION_18 = TAB + "Notes:";
+    public static final String HELP_DESCRIPTION_17 = TAB + "bye --------------------------------------- Terminate task"
             + " interface";
-    public static final String HELP_DESCRIPTION_15 = TAB + "help -------------------------------------- View List Of "
+    public static final String HELP_DESCRIPTION_16 = TAB + "help -------------------------------------- View List Of "
             + "Commands Supported";
+    public static final String HELP_DESCRIPTION_15 = TAB + "schedule <number of task to be scheduled> - Schedule tasks";
     public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of task> --------------- Edit the task";
     public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of task> ------------- Delete the "
             + "task";
@@ -183,6 +182,59 @@ public class Constants {
             + " on the number of days left:";
     public static final String ARROW_SYMBOL = " ---> ";
     public static final String DAYS_LEFT = " day(s) left";
+    public static final String FROM = " is scheduled from ";
+    public static final String TO = " to ";
+    public static final String WRONG_FORMAT_MESSAGE = "Please follow the format specified. Renter details:";
+    public static final String ENTER_DETAILS = "Enter details for task ";
+    public static final String COLON = ":";
+    public static final String FORWARD_SLASH = "/";
+    public static final String SCHEDULABLE_TASK_FORMAT = "<task name> /f <Time to finish task in days>"
+            + " /d <Number of days left from current day to finish it>";
+    public static final String ENTER_TASKS_IN_THE_FOLLOWING_FORMAT = "Enter tasks in the following format:";
+    public static final String DETAILS_CAPTURED_SUCCESSFULLY = "Details captured successfully.";
+    public static final int EDIT_DESCRIPTION = 1;
+    public static final int EDIT_DATE = 2;
+    public static final int EDIT_START_TIME = 3;
+    public static final int EDIT_END_TIME = 4;
+    public static final int EDIT_PRIORITY = 5;
+    public static final String ERROR_MESSAGE = "Error encountered during execution";
+    public static final String DATE_PATTERN = "MMM d yyyy";
+    public static final String EVENT_SYMBOL = "[E] ";
+    public static final String AT = " at ";
+    public static final String WITH_PRIORITY = " with priority ";
+    public static final String EMPTY_STRING = "";
+    public static final String DELIMITER = "#";
+    public static final String NEW_LINE_CHARACTER = System.lineSeparator();
+    public static final String EVENT_IDENTIFIER = "E";
+    public static final String ENTER_NEW_PRIORITY_MESSAGE = "Enter new priority:";
+    public static final String ENTER_NEW_END_TIME_MESSAGE = "Enter new End Time:";
+    public static final String ENTER_NEW_START_TIME_MESSAGE = "Enter new Start Time:";
+    public static final String ENTER_NEW_DATE_MESSAGE = "Enter new Date:";
+    public static final String ENTER_NEW_DESCRIPTION_MESSAGE = "Enter new description:";
+    public static final String ENTER_VALID_NUMBER_FROM_LIST_MESSAGE = "Please enter a valid number from the list";
+    public static final String UPDATED_DETAILS = "Updated Details:";
+    public static final String EVENT_DETAILS_AS_FOLLOWS_MESSAGE = "The event details are as follows:";
+    public static final String ASK_FOR_OPTION_MESSAGE = "Which field of the event to edit?"
+            + " (Enter Corresponding Number)";
+    public static final String OPTION_TO_EDIT_DESCRIPTION = "1. Description";
+    public static final String OPTION_TO_EDIT_DATE = "2. Date";
+    public static final String OPTION_TO_EDIT_START_TIME = "3. Start Time";
+    public static final String OPTION_TO_EDIT_END_TIME = "4. End Time";
+    public static final String OPTION_TO_EDIT_PRIORITY = "5. Priority";
+    public static final String START_TIME_AFTER_END_TIME = "Event start time after end time exception thrown";
+    public static final String PRIORITY_NOT_INTEGER = "Task priority not integer exception thrown";
+    public static final String INVALID_END_TIME = "Invalid end time exception thrown";
+    public static final String INVALID_START_TIME = "Invalid start time exception thrown";
+    public static final String INVALID_DATE = "Invalid date exception thrown";
+    public static final String DATE_AFTER_CURRENT_DATE = "Date after current date exception thrown";
+    public static final String SEARCH_KEYWORD_EMPTY = "Search keyword empty exception thrown";
+    public static final String WRONG_OPTION = "Wrong option entered not handled by getFieldToBeEdited";
+    public static final String INVALID_PRIORITY_VALUE = "Invalid priority value entered by user";
+    public static final String INVALID_END_TIME_ENTERED = "Invalid end time entered by the user";
+    public static final String INVALID_START_TIME_ENTERED = "Invalid start time entered by user";
+    public static final String INVALID_DATE_ENTERED = "Invalid date entered by user";
+    public static final String INVALID_OPTION_ENTERED = "Invalid option entered by user";
+    public static final String FROM_PLAIN = " from ";
     public static final String FILE_PATH_EVENTS = "library" + File.separator + "taskList.txt";
     public static final String FILE_PATH_STUDY_AREAS = "library" + File.separator + "locations.txt";
     public static final String EXCEPTION_ENCOUNTERED_MESSAGE = "Exception encountered when Duke was constructed";

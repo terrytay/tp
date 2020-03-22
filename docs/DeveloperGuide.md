@@ -11,15 +11,12 @@ The architecture diagram shown above gives a overview of the various components 
   
 The Task component depends on 3 other components,  
   
- 1. Command Component - The Command component issues instructions for the Task component to execute based on the user's 
- input. 
+ 1. Command Component - The Command component issues instructions for the Task component to execute based on the user's input. 
  
- 2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to 
- the Task Component.
+ 2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to the Task Component.
  
- 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored perviously when 
- the application is started and is also used to store the current list of tasks to the local storage upon exit.  
- 
+ 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored perviously when the application is started and is also used to store the current list of tasks to the local storage upon exit.  
+
 ![Task Component](images/Task_Component.jpg)  
   
 The task component contains 8 separate classes. They are as follows:  
@@ -67,16 +64,13 @@ The task component contains 8 separate classes. They are as follows:
   
  ## 2.1 Scheduling Tasks
  ### 2.1.1 Implementation
- In order to schedule tasks based on the user's requirement a separate SchedulableTask class was created.
+ Inorder to schedule tasks based on the user's requirement a sepaarate SchedulableTask class was created.
  The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled.
  The requirements captured are stored in the SchedulableTask object.
  Then, the TaskScheduler finds the optimum schedule based on the user's requirements using the EDF 
- (Early Deadline First) algorithm.
- Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid 
- schedule based on the user's requirement.
- If a feasible schedule is found it is displayed, else a message stating that a schedule based on the user's  
- requirements can't
- be made is displayed.
+ (Early Deadline First) algorithm. Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that 
+ it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
+ displayed, else a message stating that a schedule based on the user's  requirements can't be made is displayed.
  
 ### 2.1.2 Alternatives
 Aspect : How to capture user's requirements
@@ -123,6 +117,7 @@ To do as mentioned above, the StudyAreaList class implements the following main 
 Below would be a sequence diagram to demonstrate how the search algorithm is operated.
 
 ![Study Area Sequence_Diagram](images/studyAreaSequenceDiagram.png)  
+
 ### 2.2.2 Alternative 
 Aspect: How to search based on User input.
 
@@ -151,14 +146,15 @@ conducting the search.
 
 ##  Product Scope 
 ### Target user profile    
- Our target users are mainly NUS students. Albeit, professors can use the Study Area feature to find a suitable spot to
- carry consultation, should they require one. 
-    
+  Our target users are mainly NUS students. Albeit, professors can use the Study Area feature to find a suitable spot to
+  carry consultation, should they require one.  
+
 ### Value proposition    
  {Describe the value proposition: what problem does it solve?}    
     
 ## User Stories    
  |Version| As a ... | I want to ... | So that I can ...| 
+
 |--------|----------|---------------|------------------|
 |v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
 |v1.0|user|add a new task|keep track of it|  
@@ -169,13 +165,15 @@ conducting the search.
 |v1.0|user|find a task by name|locate a task without having to go through the entire list|    
 |v1.0|student|find a study area based on location and environment|have a conducive space to study|
 |v1.0|professor|locate a study area that is outdoors| conduct consultations without worrying of making noise|
+
  ## Non-Functional Requirements    
  {Give non-functional requirements}    
     
 ## Glossary    
+
  * *flag* - criteria that is supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate. 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage.
-    
+
 ## Instructions for Manual Testing    
  {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
