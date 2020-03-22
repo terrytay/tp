@@ -235,4 +235,18 @@ public class Constants {
     public static final String INVALID_DATE_ENTERED = "Invalid date entered by user";
     public static final String INVALID_OPTION_ENTERED = "Invalid option entered by user";
     public static final String FROM_PLAIN = " from ";
+    public static final String FILE_PATH_EVENTS = "library" + File.separator + "taskList.txt";
+    public static final String FILE_PATH_STUDY_AREAS = "library" + File.separator + "locations.txt";
+    public static final String EXCEPTION_ENCOUNTERED_MESSAGE = "Exception encountered when Duke was constructed";
+    public static final String DUKE_LOGGER_LOG = "dukeLogger.log";
+    public static final String FILE_LOGGER_NOT_WORKING_MESSAGE = "File Logger not working";
+    public static final String APPLICATION_STARTED_EXECUTION = "Application started Execution";
+    public static final String APPLICATION_GOING_TO_EXIT = "Application is going to exit";
+    public static final String TASK_MODE = "Application transitioning to task mode";
+    public static final String STUDY_AREA_MODE = "Application transitioning to study area mode";
+    public static final String WRONG_COMMAND = "Wrong command entered by user";
+    public static final String APPLICATION_CLOSED_SUCCESSFULLY = "Application closed successfully";
+    public static final int TASK_MODE_SELECTED = 1;
+    public static final int STUDY_AREA_MODE_SELECTED = 2;
+    public static final int EXIT = -1;
 }
