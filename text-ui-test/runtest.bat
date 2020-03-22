@@ -7,7 +7,7 @@ if exist ..\library del ..\library
 cd ..
 call gradlew shadowJar
 
-if exist ..\library del ..\library
+if exist ..\library del ..\library /Q
 
 cd build\libs
 
