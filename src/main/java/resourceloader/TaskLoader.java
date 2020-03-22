@@ -1,7 +1,5 @@
 package resourceloader;
 
-import studyarea.IllegalStudyAreaException;
-import studyarea.StudyArea;
 import task.Task;
 import task.Deadline;
 import task.Event;

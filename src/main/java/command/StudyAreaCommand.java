@@ -1,6 +1,6 @@
 package command;
 
-import studyarea.IllegalStudyAreaException;
+import exception.IllegalStudyAreaException;
 import studyarea.StudyArea;
 import studyarea.StudyAreaList;
 import ui.Ui;
@@ -10,7 +10,6 @@ import static ui.Constants.BYE_COMMAND;
 import static ui.Constants.EMPTY_LIST;
 import static ui.Constants.EMPTY_LOCATION;
 import static ui.Constants.END_MESSAGE;
-import static ui.Constants.FLAGS;
 import static ui.Constants.HELP_COMMAND;
 import static ui.Constants.PROMPT_USER;
 import static ui.Constants.START_STUDY_AREA_SEARCH;

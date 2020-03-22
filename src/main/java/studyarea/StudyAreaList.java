@@ -1,5 +1,7 @@
 package studyarea;
 
+import exception.IllegalStudyAreaException;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

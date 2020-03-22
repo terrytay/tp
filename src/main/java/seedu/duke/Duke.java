@@ -5,7 +5,7 @@ import command.TaskCommand;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
-import studyarea.IllegalStudyAreaException;
+import exception.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Constants;
