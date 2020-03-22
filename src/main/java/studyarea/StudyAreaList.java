@@ -227,7 +227,7 @@ public class StudyAreaList {
     public static boolean isAvailStudyArea(String flag, boolean isAvail, int index, StudyArea studyArea,
                                             String[] flags) {
         boolean carryOn = flag != null && isAvail && index != 1; // carryOn indicates if current StudyArea iteration
-                                                                 // should continue.
+        // should continue.
         if (carryOn) {
             switch (flag) {
             case PORTS_FLAG:
