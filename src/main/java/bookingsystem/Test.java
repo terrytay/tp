@@ -12,7 +12,7 @@ class Test {
      * Commands available are: book, check, cancel
      * @param args not in use
      */
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         BookingSystem studyArea = new BookingSystem("MacCommons", "ERC", "nil", true,
                 true, 5);
         String command = null;
