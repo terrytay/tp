@@ -1,7 +1,6 @@
-package task.event;
+package task;
 
 import org.junit.jupiter.api.Test;
-import task.Event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -9,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 /**
  * Contains all the tests related to the Event class.
  */
-class TaskTest {
+class EventTest {
 
     @Test
     void eventInformation() throws Exception {
