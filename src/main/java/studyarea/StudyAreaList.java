@@ -3,7 +3,6 @@ package studyarea;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static ui.Constants.DUPLICATE_FLAGS;
 import static ui.Constants.DUPLICATE_FLAGS_LOG;
 import static ui.Constants.FLAG;
@@ -213,6 +212,44 @@ public class StudyAreaList {
     }
 
     /**
+     * This method checks if study area is available based on the current flag.
+     * @param flag This is the current flag.
+     * @param isAvail This is the current incremental availability status of the StudyArea based on previous flags.
+     * @param index This is the index the flag is at in the flags array.
+     * @param studyArea This is the current StudyArea that is inspected by the method.
+     * @param flags This is the flags array that has been entered by the User.
+     * @return The method returns a boolean value, true if the study area meets the criterion stated by the current
+     * flag and false if otherwise.
+     */
+
+    public static boolean isAvailStudyArea( String flag, boolean isAvail, int index, StudyArea studyArea,
+                                            String[] flags) {
+        boolean carryOn = flag != null && isAvail && index != 1;
+        if (carryOn) {
+            switch (flag) {
+                case PORTS_FLAG:
+                    isAvail = studyArea.hasPort();
+                    break;
+                case INDOOR_FLAG:
+                    isAvail = studyArea.isIndoor();
+                    break;
+                case OUTDOOR_FLAG:
+                    isAvail = !studyArea.isIndoor();
+                    break;
+                case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
+                    isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
+                    break;
+                default:      // toLowerCase() so casing does not affect matching
+                    isAvail = containsKey(studyArea.getName().toLowerCase(),
+                            studyArea.getAddress().toLowerCase(),
+                            studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
+                    break;
+            }
+        }
+        return isAvail;
+    }
+
+    /**
      * Finds a list of StudyAreas based on User requirements.
      *
      * @param userIn This is the requirement entered by User
@@ -227,27 +264,7 @@ public class StudyAreaList {
             int index = 0;
             boolean isAvail = true;
             for (String flag : flags) {
-                if (flag != null && isAvail && index != 1) {
-                    switch (flag) {
-                    case PORTS_FLAG:
-                        isAvail = studyArea.hasPort();
-                        break;
-                    case INDOOR_FLAG:
-                        isAvail = studyArea.isIndoor();
-                        break;
-                    case OUTDOOR_FLAG:
-                        isAvail = !studyArea.isIndoor();
-                        break;
-                    case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
-                        isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
-                        break;
-                    default:      // toLowerCase() so casing does not affect matching
-                        isAvail = containsKey(studyArea.getName().toLowerCase(),
-                                studyArea.getAddress().toLowerCase(),
-                                studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
-                        break;
-                    }
-                }
+                isAvail = isAvailStudyArea(flag, isAvail, index, studyArea, flags);
                 index++;
             }
             if (isAvail) {
