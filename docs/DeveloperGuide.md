@@ -68,7 +68,7 @@ The task component contains 8 separate classes. They are as follows:
   
  ## 2.1 Scheduling Tasks
  ### 2.1.1 Implementation
- Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created.
+ In order to schedule tasks based on the user's requirement a separate SchedulableTask class was created.
  The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled.
  The requirements captured are stored in the SchedulableTask object.
  Then, the TaskScheduler finds the optimum schedule based on the user's requirements using the EDF 
@@ -118,12 +118,14 @@ requirement is entered by the user, only the study areas appears in all the rela
 will be added to the output list.
     - Pros : Data is categorised base on attributes
     - Cons : More memory is required as more data structures are used. Since methods invoked during the search are also 
-    linear, time taken to complete the search will be longer if more data are present.
+    linear, time taken to complete the search will be longer if more data are present. Harder to implement.
   
+Therefore, the first alternative is chosen, as it is easier to implement and lesser memory is used while 
+conducting the search.
 
 ##  Product Scope 
 ### Target user profile    
- Our target users are mainly NUS students.  
+ Our target users are mainly NUS students. Albeit, professors  
     
 ### Value proposition    
  {Describe the value proposition: what problem does it solve?}    
