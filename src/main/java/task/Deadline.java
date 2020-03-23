@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.EmptyDescriptionException;
 import exception.command.InvalidDateException;
 import exception.command.InvalidDueTimeException;
 import exception.command.SearchKeywordEmptyException;
@@ -13,31 +14,30 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static task.Event.AT;
-import static task.Event.DATE_AFTER_CURRENT_DATE;
-import static task.Event.DATE_PATTERN;
-import static task.Event.DELIMITER;
-import static task.Event.EDIT_DATE;
-import static task.Event.EDIT_DESCRIPTION;
-import static task.Event.EMPTY_STRING;
-import static task.Event.ENTER_NEW_DATE_MESSAGE;
-import static task.Event.ENTER_NEW_DESCRIPTION_MESSAGE;
-import static task.Event.ENTER_NEW_PRIORITY_MESSAGE;
-import static task.Event.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
-import static task.Event.ERROR_MESSAGE;
-import static task.Event.INVALID_DATE;
-import static task.Event.INVALID_DATE_ENTERED;
-import static task.Event.INVALID_OPTION_ENTERED;
-import static task.Event.INVALID_PRIORITY_VALUE;
-import static task.Event.NEW_LINE_CHARACTER;
-import static task.Event.OPTION_TO_EDIT_DATE;
-import static task.Event.OPTION_TO_EDIT_DESCRIPTION;
-import static task.Event.PRIORITY_NOT_INTEGER;
-import static task.Event.SEARCH_KEYWORD_EMPTY;
-import static task.Event.UPDATED_DETAILS;
-import static task.Event.WITH_PRIORITY;
-import static task.Event.WRONG_OPTION;
-
+import static ui.Constants.AT;
+import static ui.Constants.DATE_AFTER_CURRENT_DATE;
+import static ui.Constants.DATE_PATTERN;
+import static ui.Constants.DELIMITER;
+import static ui.Constants.EDIT_DATE;
+import static ui.Constants.EDIT_DESCRIPTION;
+import static ui.Constants.EMPTY_STRING;
+import static ui.Constants.ENTER_NEW_DATE_MESSAGE;
+import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
+import static ui.Constants.ENTER_NEW_PRIORITY_MESSAGE;
+import static ui.Constants.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
+import static ui.Constants.ERROR_MESSAGE;
+import static ui.Constants.INVALID_DATE;
+import static ui.Constants.INVALID_DATE_ENTERED;
+import static ui.Constants.INVALID_OPTION_ENTERED;
+import static ui.Constants.INVALID_PRIORITY_VALUE;
+import static ui.Constants.NEW_LINE_CHARACTER;
+import static ui.Constants.OPTION_TO_EDIT_DATE;
+import static ui.Constants.OPTION_TO_EDIT_DESCRIPTION;
+import static ui.Constants.PRIORITY_NOT_INTEGER;
+import static ui.Constants.SEARCH_KEYWORD_EMPTY;
+import static ui.Constants.UPDATED_DETAILS;
+import static ui.Constants.WITH_PRIORITY;
+import static ui.Constants.WRONG_OPTION;
 
 
 /**
@@ -58,6 +58,7 @@ public class Deadline extends Task {
     public static final String OPTION_TO_EDIT_PRIORITY = "4. Priority";
     private static final String INVALID_DUE_TIME = "Invalid due time entered by user";
     private static final String INVALID_DUE_TIME_ENTERED = "Invalid due time entered by the user";
+    private static final String EMPTY_DESCRIPTION_MESSAGE = "Description provided is empty";
     private String description;
     private LocalDate date;
     private LocalTime dueTime;
@@ -155,8 +156,12 @@ public class Deadline extends Task {
      * Parses the description from the string entered by user for the description field.
      *
      * @param description String entered by user for the description field.
+     * @throws EmptyDescriptionException If the description of the task provided is empty.
      */
-    private void parseDescription(String description) {
+    private void parseDescription(String description) throws EmptyDescriptionException {
+        if (description.trim().equals(Event.EMPTY_STRING)) {
+            throw new EmptyDescriptionException();
+        }
         this.description = description;
     }
 
@@ -323,9 +328,19 @@ public class Deadline extends Task {
      * @param ui Used to interact with the user.
      */
     private void editDescription(Ui ui) {
-        ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
-        String newDescription = ui.getUserIn();
-        parseDescription(newDescription);
+        boolean exceptionEncountered;
+        do {
+            exceptionEncountered = false;
+            ui.printMessage(ENTER_NEW_DESCRIPTION_MESSAGE);
+            String newDescription = ui.getUserIn();
+            try {
+                parseDescription(newDescription);
+            } catch (Exception e) {
+                LOGGER.log(Level.INFO, EMPTY_DESCRIPTION_MESSAGE);
+                ui.printMessage(e.getMessage());
+                exceptionEncountered = true;
+            }
+        } while (exceptionEncountered);
     }
 
     /**
