@@ -5,7 +5,7 @@ import command.TaskCommand;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
-import studyarea.IllegalStudyAreaException;
+import exception.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Constants;
@@ -76,6 +76,7 @@ public class Duke {
     /**
      * This method runs the program.
      */
+    //@@author NizarMohd and ganapathysanathbalaji
     public void run() {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
@@ -94,7 +95,7 @@ public class Duke {
                 break;
             case Constants.STUDY_AREA_MODE_SELECTED:
                 LOGGER.log(Level.INFO, Constants.STUDY_AREA_MODE);
-                StudyAreaCommand.runCommands(studyAreaList, ui);
+                StudyAreaCommand.runCommands(studyAreaList,ui);
                 ui.printMessage(INTERMEDIATE_MESSAGE);
                 break;
             default:
@@ -111,7 +112,7 @@ public class Duke {
         LOGGER.log(Level.INFO, Constants.APPLICATION_CLOSED_SUCCESSFULLY);
     }
 
-
+    //@@author NizarMohd
     /**
      * Main entry-point for the java.duke.Duke application.
      *

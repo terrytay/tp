@@ -1,9 +1,10 @@
 package studyarea;
 
+import exception.IllegalStudyAreaException;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static ui.Constants.DUPLICATE_FLAGS;
 import static ui.Constants.DUPLICATE_FLAGS_LOG;
 import static ui.Constants.FLAG;
@@ -47,7 +48,6 @@ public class StudyAreaList {
         return this.studyAreaList;
     }
 
-
     /**
      * This method checks for duplicate flags.
      *
@@ -55,6 +55,7 @@ public class StudyAreaList {
      * @param index this is the index referring to the specific flag to check for duplicate.
      * @throws IllegalStudyAreaException if flag is not null, ie: if flag has already been mentioned.
      */
+    //@@author NizarMohd
     public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
         if (flag[index] != null) {
             LOGGER.log(Level.INFO, DUPLICATE_FLAGS_LOG);
@@ -69,7 +70,7 @@ public class StudyAreaList {
      * @param index This is the index in which the method is check if only flag exist.
      * @throws IllegalStudyAreaException if only flag is entered by user.
      */
-
+    //@@author NizarMohd
     public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
         if (commands[index].length() == 1) {
             LOGGER.log(Level.INFO, IDENTIFIER_MISSING_LOG);
@@ -84,6 +85,7 @@ public class StudyAreaList {
      * @param index this is the index where the size flag is.
      * @throws IllegalStudyAreaException if command entered is not a valid integer.
      */
+    //@@author NizarMohd
     public static void checkInteger(String[] commands, int index) throws IllegalStudyAreaException {
 
         try {                                     // try block is to test if command is integer
@@ -111,6 +113,7 @@ public class StudyAreaList {
      * @param isNotFlag this is the boolean value that checks if the command entered is a flag.
      * @throws IllegalStudyAreaException if user enters command wrongly.
      */
+    //@@author NizarMohd
     public static void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
             IllegalStudyAreaException {                //isNotFlag is used to track previous instances of "-"
 
@@ -151,7 +154,8 @@ public class StudyAreaList {
      *          index 4: search key entered by User<br>
      * @throws IllegalStudyAreaException when arguments for flags are invalid.
      */
-    public String[] getFlagsInfo(String[] commands) throws IllegalStudyAreaException {
+    //@@author NizarMohd
+    public static String[] getFlagsInfo(String[] commands) throws IllegalStudyAreaException {
 
         String[] flags = new String[5];
         StringBuilder name = new StringBuilder();
@@ -201,7 +205,7 @@ public class StudyAreaList {
      * @param key This is the search key entered by User.
      * @return True if can be found in either case. False if not found in both cases.
      */
-
+    //@@author NizarMohd
     public static boolean containsKey(String name, String address, String faculty, String key) {
         if (name.contains(key) || name.contains(Dictionary.parseKey(key))) {
             return true;
@@ -213,12 +217,52 @@ public class StudyAreaList {
     }
 
     /**
+     * This method checks if study area is available based on the current flag.
+     * @param flag This is the current flag.
+     * @param isAvail This is the current incremental availability status of the StudyArea based on previous flags.
+     * @param index This is the index the flag is at in the flags array.
+     * @param studyArea This is the current StudyArea that is inspected by the method.
+     * @param flags This is the flags array that has been entered by the User.
+     * @return The method returns a boolean value, true if the study area meets the criterion stated by the current
+     *              flag and false if otherwise.
+     */
+    //@@author NizarMohd
+    public static boolean isAvailStudyArea(String flag, boolean isAvail, int index, StudyArea studyArea,
+                                            String[] flags) {
+        boolean carryOn = flag != null && isAvail && index != 1; // carryOn indicates if current StudyArea iteration
+        // should continue.
+        if (carryOn) {
+            switch (flag) {
+            case PORTS_FLAG:
+                isAvail = studyArea.hasPort();
+                break;
+            case INDOOR_FLAG:
+                isAvail = studyArea.isIndoor();
+                break;
+            case OUTDOOR_FLAG:
+                isAvail = !studyArea.isIndoor();
+                break;
+            case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
+                isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
+                break;
+            default:      // toLowerCase() so casing does not affect matching
+                isAvail = containsKey(studyArea.getName().toLowerCase(),
+                        studyArea.getAddress().toLowerCase(),
+                        studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
+                break;
+            }
+        }
+        return isAvail;
+    }
+
+    /**
      * Finds a list of StudyAreas based on User requirements.
      *
      * @param userIn This is the requirement entered by User
      * @return ArrayList of StudyAreas
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
+    //@@author NizarMohd
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
         String[] temp = userIn.split(MULTIPLE_WHITE_SPACES);
         String[] flags = getFlagsInfo(temp);
@@ -227,27 +271,7 @@ public class StudyAreaList {
             int index = 0;
             boolean isAvail = true;
             for (String flag : flags) {
-                if (flag != null && isAvail && index != 1) {
-                    switch (flag) {
-                    case PORTS_FLAG:
-                        isAvail = studyArea.hasPort();
-                        break;
-                    case INDOOR_FLAG:
-                        isAvail = studyArea.isIndoor();
-                        break;
-                    case OUTDOOR_FLAG:
-                        isAvail = !studyArea.isIndoor();
-                        break;
-                    case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
-                        isAvail = Integer.parseInt(flags[1]) <= studyArea.getMaxPax();
-                        break;
-                    default:      // toLowerCase() so casing does not affect matching
-                        isAvail = containsKey(studyArea.getName().toLowerCase(),
-                                studyArea.getAddress().toLowerCase(),
-                                studyArea.getFaculty().toLowerCase(), flags[4].toLowerCase());
-                        break;
-                    }
-                }
+                isAvail = isAvailStudyArea(flag, isAvail, index, studyArea, flags);
                 index++;
             }
             if (isAvail) {

@@ -50,6 +50,7 @@ public class Ui {
     /**
      * This is the constructor used to create the Ui class in Duke.run().
      */
+    //@@author NizarMohd
     public Ui() {
         this(System.in, System.out);
     }
@@ -60,6 +61,7 @@ public class Ui {
      * @param in This is the Input Stream for Ui.
      * @param out This is the Output Stream for Ui.
      */
+    //@@author NizarMohd
     public Ui(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
@@ -70,6 +72,7 @@ public class Ui {
      *
      * @return an integer which is assigned to each mode.
      */
+    //@@author NizarMohd
     public int getMode() {
         String userIn = this.in.nextLine().toLowerCase();
         switch (userIn) {
@@ -89,6 +92,7 @@ public class Ui {
      *
      * @return String input from User.
      */
+    //@@author NizarMohd
     public String getUserIn() {
         return this.in.nextLine();
     }
@@ -96,6 +100,7 @@ public class Ui {
     /**
      * This method closes the Input Stream after usage is completed.
      */
+    //@@author NizarMohd
     public void close() {
         this.in.close();
     }
@@ -103,6 +108,7 @@ public class Ui {
     /**
      * Prints a line made up of '_'.
      */
+    //@@author NizarMohd
     public void printLine() {
         this.out.println(LINE);
     }
@@ -113,6 +119,7 @@ public class Ui {
      *
      * @param message is the String that we intend to format to a standard length per line.
      */
+    //@@author NizarMohd
     public void printMessage(String message) {
         if (message.equals(GOODBYE_MESSAGE + DAB)) {
             this.out.println(TAB + GOODBYE_MESSAGE);
@@ -128,6 +135,7 @@ public class Ui {
      *
      * @param studyArea This is the StudyArea to be printed.
      */
+    //@@author NizarMohd
     public void printStudyArea(StudyArea studyArea) {
         this.out.println(studyArea.toString());
     }
@@ -135,6 +143,7 @@ public class Ui {
     /**
      * Display welcome message.
      */
+    //@@author NizarMohd
     public void printWelcomeMessage() {
         this.out.println("Hello from" + System.lineSeparator() + LOGO);
         this.out.println("What is your name?");
@@ -149,6 +158,7 @@ public class Ui {
     /**
      * This method prints the list of supported flags for the User.
      */
+    //@@author NizarMohd
     public void printStudyAreaHelp() {
         this.out.println(FLAGS);
     }
@@ -156,6 +166,7 @@ public class Ui {
     /**
      * Prints an empty line.
      */
+    //@@author NizarMohd
     public void printEmptyLine() {
         System.out.println();
     }
@@ -163,6 +174,7 @@ public class Ui {
     /**
      * Prints the closing message.
      */
+    //@@author NizarMohd
     public void printByeMessage() {
         printMessage(GOODBYE_MESSAGE + DAB);
     }
@@ -170,6 +182,7 @@ public class Ui {
     /**
      * Display the list of supported commands.
      */
+    //@@author
     public void printHelp() {
         printLine();
         this.out.println(HELP_DESCRIPTION_1);

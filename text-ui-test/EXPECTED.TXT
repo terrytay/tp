@@ -31,12 +31,12 @@ ________________________________________________________________________________
 	 search <keyword found in task> ------------ View existing task that contains the keyword
 	 delete <index number of task> ------------- Delete the task
 	 edit <index number of task> --------------- Edit the task
+	 schedule <number of task to be scheduled> - Schedule tasks
 	 help -------------------------------------- View List Of Commands Supported
 	 bye --------------------------------------- Terminate task interface
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
-	 *There are 4 levels of priority, with 1 being the most urgent, and 4 being the least urgent
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 The list of tasks is cleared.
@@ -202,12 +202,12 @@ ________________________________________________________________________________
 	 search <keyword found in task> ------------ View existing task that contains the keyword
 	 delete <index number of task> ------------- Delete the task
 	 edit <index number of task> --------------- Edit the task
+	 schedule <number of task to be scheduled> - Schedule tasks
 	 help -------------------------------------- View List Of Commands Supported
 	 bye --------------------------------------- Terminate task interface
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
-	 *There are 4 levels of priority, with 1 being the most urgent, and 4 being the least urgent
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Wrong command used to view countdown of events (Should be

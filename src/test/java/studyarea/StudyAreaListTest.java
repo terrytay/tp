@@ -1,5 +1,6 @@
 package studyarea;
 
+import exception.IllegalStudyAreaException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,18 +13,18 @@ class StudyAreaListTest {
      */
     @Test
     void checkDuplicate_gotDuplicate_raiseException() {
-        String[] flag = {"-a", "-b"};
-        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkDuplicate(flag, 0));
+        String[] flag = { null, null, null, "-i", null};
+        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkDuplicate(flag, 3));
     }
 
     /**
-     * An exception pertaining to flag missing hyphen should be raised when flag has no hyphen.
+     * An exception pertaining to using only hyphen when declaring a flag.
      * A dummy array is made with a flag inside that has no hyphen character. The expected outcome is to return
-     * an exception since the input flag has no hyphen.
+     * an exception since the input flag has only hyphen.
      */
     @Test
-    void checkOnlyFlag_withoutHyphenSign_raiseException() {
-        String[] commands = {"s"};
+    void checkOnlyFlag_onlyHyphenSign_raiseException() {
+        String[] commands = {"-"};
         Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkOnlyFlag(commands, 0));
     }
 
@@ -35,8 +36,35 @@ class StudyAreaListTest {
     @Test
     void checkFlag_FlagDoesNotExist_raiseException() {
         String[] commands = {"MacCommons", "-z"};
-        String[] flags = {};
+        String[] flags = {null, null, null, null, "MacCommons"};
         Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkFlag(flags, commands,
                 1, false));
     }
+
+
+    /**
+     * An exception pertaining to non Integer commands after using "-s".
+     * The expected outcome is to return an exception as the size has to be an integer.
+     */
+    //@@author NizarMohd
+    @Test
+    void checkInteger_nonIntegerSize_raiseException() {
+        String[] commands = { "-s", "nonInteger"};
+        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkInteger(commands,
+                0));
+    }
+
+    /**
+     * An exception pertaining to wrong position of flags when entering commands.
+     * The expected outcome is to return an exception as flags must come after location/name.
+     */
+    //@@author NizarMohd
+    @Test
+    void checkFlag_wrongFlagsPosition_raiseException() {
+        String[] commands = { "-i", "EA"};
+        String[] flags = { null, null, null, "-i", "EA"};
+        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkFlag(flags, commands,
+                1, false));
+    }
+    //@@author
 }

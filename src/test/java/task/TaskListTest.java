@@ -16,7 +16,7 @@ class TaskListTest {
 
     public TaskListTest() throws Exception {
         taskList = new task.TaskList();
-        taskList.addTask(new Event("Team Meeting", "2020-03-21", "09:00",
+        taskList.addTask(new Event("Team Meeting", "2021-03-21", "09:00",
                 "17:00", "1"),ui);
     }
 
