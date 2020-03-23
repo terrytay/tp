@@ -43,14 +43,14 @@ public class StudyAreaCommand {
     /**
      * This method checks if command is empty or short. It also trims the command and returns the trimmed command.
      * @param command This is the command entered by User.
-     * @throws IllegalStudyAreaException when user enters a blank string or string of size 1.
      * @return String which is the trimmed version of the user input.
+     * @throws IllegalStudyAreaException when user enters a blank string or string of size 1.
      */
     public static String validateCommand(String command) throws IllegalStudyAreaException {
         command = command.trim();
         if (command.isBlank()) {
             throw new IllegalStudyAreaException(EMPTY_LOCATION);
-        } else if (command.length()==1) {
+        } else if (command.length() == 1) {
             throw new IllegalStudyAreaException(SHORT_DESCRIPTION);
         }
         return command;
@@ -70,21 +70,21 @@ public class StudyAreaCommand {
 
         command = validateCommand(command);
         switch (command) {
-            case BYE_COMMAND:
-                ui.printMessage(END_MESSAGE);
-                return false;
-            case HELP_COMMAND:
-                ui.printStudyAreaHelp();
-                break;
-            default:
-                try {
-                    ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
-                    printList(availStudyAreas, ui);
-                    ui.printMessage(PROMPT_USER);
-                } catch (IllegalStudyAreaException e) {
-                    ui.printMessage(e.getMessage());
-                }
-                break;
+        case BYE_COMMAND:
+            ui.printMessage(END_MESSAGE);
+            return false;
+        case HELP_COMMAND:
+            ui.printStudyAreaHelp();
+            break;
+        default:
+            try {
+                ArrayList<StudyArea> availStudyAreas = studyAreaList.searchList(command);
+                printList(availStudyAreas, ui);
+                ui.printMessage(PROMPT_USER);
+            } catch (IllegalStudyAreaException e) {
+                ui.printMessage(e.getMessage());
+            }
+            break;
         }
         return true;
     }

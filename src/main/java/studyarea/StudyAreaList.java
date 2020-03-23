@@ -47,6 +47,7 @@ public class StudyAreaList {
     public ArrayList<StudyArea> getStudyAreaList() {
         return this.studyAreaList;
     }
+
     //@@author NizarMohd
     /**
      * This method checks for duplicate flags.
