@@ -13,16 +13,24 @@ public class ModulesList {
         this.modules = new ArrayList<>();
     }
 
-    static public ModulesList getInstance() {
-        if (instance == null)
+    /**
+     * Singleton check for null instance before initializing.
+     * @return ModuleList
+     */
+    public static ModulesList getInstance() {
+        if (instance == null) {
             instance = new ModulesList();
-
+        }
         return instance;
     }
 
+    /**
+     * Create a module with code and name.
+     */
     public void createModule() {
         Scanner input = new Scanner(System.in);
-        String code, name;
+        String code;
+        String name;
         code = input.nextLine().toUpperCase();
         name = input.nextLine();
         Module module = new Module(code, name);
@@ -31,6 +39,9 @@ public class ModulesList {
         System.out.println(success);
     }
 
+    /**
+     * Delete a module using its code.
+     */
     public void deleteModule() {
         Scanner input = new Scanner(System.in);
         String code;

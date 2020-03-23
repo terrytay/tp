@@ -2,6 +2,7 @@ package notes;
 
 public class Notes {
     ModulesList modulesList;
+
     public Notes() {
         modulesList = ModulesList.getInstance();
     }

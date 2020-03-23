@@ -2,13 +2,15 @@ package notes;
 
 import java.util.Scanner;
 
-enum Choices {
-    CREATE, DELETE;
-}
+
 
 public class Example {
-    private static Choices cmd;
 
+    /**
+     * Prototype of note taking feature.
+     * 0: create module, 1: delete module.
+     * @param args just ignore this.
+     */
     public static void main(String[] args) {
         Notes notes = new Notes();
         Scanner input = new Scanner(System.in);
@@ -16,20 +18,9 @@ public class Example {
         while (choice != 2) {
             switch (choice) {
             case 0:
-                cmd = Choices.CREATE;
-                break;
-            case 1:
-                cmd = Choices.DELETE;
-                break;
-            default:
-                break;
-            }
-
-            switch (cmd) {
-            case CREATE:
                 notes.createModule();
                 break;
-            case DELETE:
+            case 1:
                 notes.deleteModule();
                 break;
             default:
