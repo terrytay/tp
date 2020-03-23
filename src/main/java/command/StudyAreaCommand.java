@@ -12,6 +12,7 @@ import static ui.Constants.EMPTY_LOCATION;
 import static ui.Constants.END_MESSAGE;
 import static ui.Constants.HELP_COMMAND;
 import static ui.Constants.PROMPT_USER;
+import static ui.Constants.SHORT_DESCRIPTION;
 import static ui.Constants.START_STUDY_AREA_SEARCH;
 
 
@@ -20,13 +21,13 @@ import static ui.Constants.START_STUDY_AREA_SEARCH;
  */
 
 public class StudyAreaCommand {
-
+    //@@author NizarMohd
     /**
      * List out all the StudyAreas that match with User's preference.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      * @param availStudyAreas this is the list of all study areas in location.txt.
      */
-    //@@author NizarMohd
+
     public static void printList(ArrayList<StudyArea> availStudyAreas, Ui ui) {
         if (availStudyAreas.isEmpty()) {
             ui.printMessage(EMPTY_LIST);
@@ -40,6 +41,23 @@ public class StudyAreaCommand {
 
 
     /**
+     * This method checks if command is empty or short. It also trims the command and returns the trimmed command.
+     * @param command This is the command entered by User.
+     * @throws IllegalStudyAreaException when user enters a blank string or string of size 1.
+     * @return String which is the trimmed version of the user input.
+     */
+    public static String validateCommand(String command) throws IllegalStudyAreaException {
+        command = command.trim();
+        if (command.isBlank()) {
+            throw new IllegalStudyAreaException(EMPTY_LOCATION);
+        } else if (command.length()==1) {
+            throw new IllegalStudyAreaException(SHORT_DESCRIPTION);
+        }
+        return command;
+    }
+
+
+    /**
      * Filters command based on User Input.
      * @param command This is the command entered by User.
      * @param ui This allows for StudyAreaCommand to interact with Users.
@@ -47,15 +65,11 @@ public class StudyAreaCommand {
      * @return boolean status. False if User enters "end" , else will always return true;
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
-    //@@author NizarMohd
     public static boolean filterCommand(String command,StudyAreaList studyAreaList, Ui ui) throws
             IllegalStudyAreaException {
 
-        command = command.trim();
-        if (command.isBlank()) {
-            throw new IllegalStudyAreaException(EMPTY_LOCATION);
-        } else {
-            switch (command) {
+        command = validateCommand(command);
+        switch (command) {
             case BYE_COMMAND:
                 ui.printMessage(END_MESSAGE);
                 return false;
@@ -71,7 +85,6 @@ public class StudyAreaCommand {
                     ui.printMessage(e.getMessage());
                 }
                 break;
-            }
         }
         return true;
     }
@@ -81,7 +94,7 @@ public class StudyAreaCommand {
      * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      */
-    //@@author NizarMohd
+
     public static void runCommands(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
         ui.printMessage(START_STUDY_AREA_SEARCH);
