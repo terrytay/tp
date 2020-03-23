@@ -72,11 +72,11 @@ public class Duke {
         }
     }
 
-
+    //@@author ganapathysanathbalaji and NizarMohd
     /**
      * This method runs the program.
      */
-    //@@author NizarMohd and ganapathysanathbalaji
+
     public void run() {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);

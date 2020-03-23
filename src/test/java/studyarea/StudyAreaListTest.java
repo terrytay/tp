@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 
 class StudyAreaListTest {
     /**
-     * An exception pertaining to duplicate flag should be raised if the location at flag[index] is not null.
-     * A dummy array of flags is created, and the first flag is assessed and used it to check duplicate
-     * in the same location. The expected outcome is to return an exception since the location contains null.
+     * An exception pertaining to duplicate flag should be raised if the string at flag[index] is not null.
+     * A dummy array of flags is created, and the first flag is accessed and used it to check duplicate
+     * in the same location. The expected outcome is to return an exception since the string is not null.
      */
     @Test
     void checkDuplicate_gotDuplicate_raiseException() {
-        String[] flag = { null, null, null, "-i", null};
-        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkDuplicate(flag, 3));
+        String[] flag = { "-a", "-b"};
+        Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkDuplicate(flag, 0));
     }
 
     /**
@@ -41,12 +41,11 @@ class StudyAreaListTest {
                 1, false));
     }
 
-
+    //@@author NizarMohd
     /**
      * An exception pertaining to non Integer commands after using "-s".
      * The expected outcome is to return an exception as the size has to be an integer.
      */
-    //@@author NizarMohd
     @Test
     void checkInteger_nonIntegerSize_raiseException() {
         String[] commands = { "-s", "nonInteger"};
@@ -58,7 +57,6 @@ class StudyAreaListTest {
      * An exception pertaining to wrong position of flags when entering commands.
      * The expected outcome is to return an exception as flags must come after location/name.
      */
-    //@@author NizarMohd
     @Test
     void checkFlag_wrongFlagsPosition_raiseException() {
         String[] commands = { "-i", "EA"};
@@ -66,5 +64,4 @@ class StudyAreaListTest {
         Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkFlag(flags, commands,
                 1, false));
     }
-    //@@author
 }

@@ -49,7 +49,7 @@ sbux
 -s wegf
 -s 8
 -s 1
--
+-i -
 -qef
 bye
 bye
