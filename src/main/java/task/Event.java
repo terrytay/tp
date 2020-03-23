@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
 
+//@@author GanapathySanathBalaji
 /**
  * Represents an event and contains the related functions.
  */

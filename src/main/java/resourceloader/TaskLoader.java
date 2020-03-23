@@ -17,6 +17,7 @@ import java.util.Scanner;
 import static ui.Constants.FILE_PATH_DICTIONARY;
 import static ui.Constants.FILE_PATH_STUDYAREAS;
 
+//@@author GanapathySanathBalaji
 /**
  * Handles the task of loading and storing events.
  */
