@@ -72,10 +72,11 @@ public class Duke {
         }
     }
 
-
+    //@@author ganapathysanathbalaji and NizarMohd
     /**
      * This method runs the program.
      */
+
     public void run() {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
@@ -111,7 +112,7 @@ public class Duke {
         LOGGER.log(Level.INFO, Constants.APPLICATION_CLOSED_SUCCESSFULLY);
     }
 
-
+    //@@author NizarMohd
     /**
      * Main entry-point for the java.duke.Duke application.
      *

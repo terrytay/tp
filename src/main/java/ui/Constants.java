@@ -249,4 +249,5 @@ public class Constants {
     public static final int TASK_MODE_SELECTED = 1;
     public static final int STUDY_AREA_MODE_SELECTED = 2;
     public static final int EXIT = -1;
+    public static final String SHORT_DESCRIPTION = "Description of location is too short!";
 }

@@ -393,7 +393,7 @@ ________________________________________________________________________________
 	 Maximum number of Pax: 5
 	 __________________________________________________________
 	 __________________________________________________________
-	 Name: Town Plaza Seminar Rooms Waiting Area
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
 	 Address: 2 College Ave West, Town Plaza, Level 2
 	 Faculty: Utown
 	 Port: true
@@ -516,7 +516,7 @@ ________________________________________________________________________________
 	 Maximum number of Pax: 5
 	 __________________________________________________________
 	 __________________________________________________________
-	 Name: Town Plaza Seminar Rooms Waiting Area
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
 	 Address: 2 College Ave West, Town Plaza, Level 2
 	 Faculty: Utown
 	 Port: true
@@ -677,7 +677,7 @@ ________________________________________________________________________________
 	 Maximum number of Pax: 5
 	 __________________________________________________________
 	 __________________________________________________________
-	 Name: Town Plaza Seminar Rooms Waiting Area
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
 	 Address: 2 College Ave West, Town Plaza, Level 2
 	 Faculty: Utown
 	 Port: true
