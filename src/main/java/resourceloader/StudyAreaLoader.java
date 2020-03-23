@@ -79,6 +79,7 @@ public class StudyAreaLoader {
      * @param filePath this is the path of the data file to be created.
      * @throws IOException if cannot create file.
      */
+    //@@author NizarMohd
     public static void createNewStudyAreaData(String filePath) throws IOException {
         Files.createFile(Paths.get(filePath));
         PrintWriter dataBuffer = new PrintWriter(new File(filePath));

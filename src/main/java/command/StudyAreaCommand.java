@@ -26,6 +26,7 @@ public class StudyAreaCommand {
      * @param ui This allows for StudyAreaCommand to interact with Users.
      * @param availStudyAreas this is the list of all study areas in location.txt.
      */
+    //@@author NizarMohd
     public static void printList(ArrayList<StudyArea> availStudyAreas, Ui ui) {
         if (availStudyAreas.isEmpty()) {
             ui.printMessage(EMPTY_LIST);
@@ -46,7 +47,7 @@ public class StudyAreaCommand {
      * @return boolean status. False if User enters "end" , else will always return true;
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
-
+    //@@author NizarMohd
     public static boolean filterCommand(String command,StudyAreaList studyAreaList, Ui ui) throws
             IllegalStudyAreaException {
 
@@ -80,6 +81,7 @@ public class StudyAreaCommand {
      * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      */
+    //@@author NizarMohd
     public static void runCommands(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
         ui.printMessage(START_STUDY_AREA_SEARCH);

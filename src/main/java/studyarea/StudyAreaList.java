@@ -48,7 +48,6 @@ public class StudyAreaList {
         return this.studyAreaList;
     }
 
-
     /**
      * This method checks for duplicate flags.
      *
@@ -56,6 +55,7 @@ public class StudyAreaList {
      * @param index this is the index referring to the specific flag to check for duplicate.
      * @throws IllegalStudyAreaException if flag is not null, ie: if flag has already been mentioned.
      */
+    //@@author NizarMohd
     public static void checkDuplicate(String[] flag, int index) throws IllegalStudyAreaException {
         if (flag[index] != null) {
             LOGGER.log(Level.INFO, DUPLICATE_FLAGS_LOG);
@@ -70,7 +70,7 @@ public class StudyAreaList {
      * @param index This is the index in which the method is check if only flag exist.
      * @throws IllegalStudyAreaException if only flag is entered by user.
      */
-
+    //@@author NizarMohd
     public static void checkOnlyFlag(String[] commands, int index) throws IllegalStudyAreaException {
         if (commands[index].length() == 1) {
             LOGGER.log(Level.INFO, IDENTIFIER_MISSING_LOG);
@@ -85,6 +85,7 @@ public class StudyAreaList {
      * @param index this is the index where the size flag is.
      * @throws IllegalStudyAreaException if command entered is not a valid integer.
      */
+    //@@author NizarMohd
     public static void checkInteger(String[] commands, int index) throws IllegalStudyAreaException {
 
         try {                                     // try block is to test if command is integer
@@ -112,6 +113,7 @@ public class StudyAreaList {
      * @param isNotFlag this is the boolean value that checks if the command entered is a flag.
      * @throws IllegalStudyAreaException if user enters command wrongly.
      */
+    //@@author NizarMohd
     public static void checkFlag(String[] flags, String[] commands, int index, boolean isNotFlag) throws
             IllegalStudyAreaException {                //isNotFlag is used to track previous instances of "-"
 
@@ -152,6 +154,7 @@ public class StudyAreaList {
      *          index 4: search key entered by User<br>
      * @throws IllegalStudyAreaException when arguments for flags are invalid.
      */
+    //@@author NizarMohd
     public static String[] getFlagsInfo(String[] commands) throws IllegalStudyAreaException {
 
         String[] flags = new String[5];
@@ -202,7 +205,7 @@ public class StudyAreaList {
      * @param key This is the search key entered by User.
      * @return True if can be found in either case. False if not found in both cases.
      */
-
+    //@@author NizarMohd
     public static boolean containsKey(String name, String address, String faculty, String key) {
         if (name.contains(key) || name.contains(Dictionary.parseKey(key))) {
             return true;
@@ -223,7 +226,7 @@ public class StudyAreaList {
      * @return The method returns a boolean value, true if the study area meets the criterion stated by the current
      *              flag and false if otherwise.
      */
-
+    //@@author NizarMohd
     public static boolean isAvailStudyArea(String flag, boolean isAvail, int index, StudyArea studyArea,
                                             String[] flags) {
         boolean carryOn = flag != null && isAvail && index != 1; // carryOn indicates if current StudyArea iteration
@@ -259,6 +262,7 @@ public class StudyAreaList {
      * @return ArrayList of StudyAreas
      * @throws IllegalStudyAreaException if User enters invalid commands.
      */
+    //@@author NizarMohd
     public ArrayList<StudyArea> searchList(String userIn) throws IllegalStudyAreaException {
         String[] temp = userIn.split(MULTIPLE_WHITE_SPACES);
         String[] flags = getFlagsInfo(temp);

@@ -4,7 +4,9 @@ package resourceloader;
  * This class contains all the back up data for Study Area Loader, in case locations.txt and dictionary.txt
  * does not exist.
  */
+//@@author NizarMohd
 class BackUpData {
+    //@@author NizarMohd
     static final String BACKUP_DICTIONARY = "engineering~eng~engin~engine~foe\n"
             + "utown~university town~u-town~u town\n"
             + "maccommons~mccommons~mac commons\n"
@@ -15,7 +17,7 @@ class BackUpData {
             + "pc commons~pccommons~pccommon\n"
             + "yih~yusof ishak~yusof~ishak\n"
             + "supersnacks~super snacks~super snack";
-
+    //@@author NizarMohd
     static final String BACKUP_LOCATIONS = "Opposite Town Green (Outside Starbucks)~2 College Avenue West Education "
                      + "Resource Centre, Ground Level~Utown~true~false~4\n"
                      + "Starbucks~2 College Avenue West Education Resource Centre, Ground Level~Utown~true~true~5\n"

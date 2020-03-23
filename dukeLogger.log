@@ -1,6 +1,10 @@
-Mar 21, 2020 2:38:11 PM seedu.duke.Duke run
+Mar 23, 2020 11:38:55 AM seedu.duke.Duke run
 INFO: Application started Execution
-Mar 21, 2020 2:38:14 PM seedu.duke.Duke run
+Mar 23, 2020 11:38:57 AM seedu.duke.Duke run
+INFO: Wrong command entered by user
+Mar 23, 2020 11:39:00 AM seedu.duke.Duke run
+INFO: Wrong command entered by user
+Mar 23, 2020 11:39:02 AM seedu.duke.Duke run
 INFO: Application is going to exit
-Mar 21, 2020 2:38:14 PM seedu.duke.Duke run
+Mar 23, 2020 11:39:02 AM seedu.duke.Duke run
 INFO: Application closed successfully
