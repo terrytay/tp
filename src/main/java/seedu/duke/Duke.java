@@ -55,6 +55,7 @@ public class Duke {
         }
     }
 
+    //@@author GanapathySanathBalaji
     private void setupLogger() {
         LogManager.getLogManager().reset();
         LOGGER.setLevel(Level.INFO);
