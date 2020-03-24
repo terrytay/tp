@@ -6,7 +6,7 @@
 ## 1.1 Architecture  
   
 The architecture diagram shown above gives a overview of the various components used.  
-  
+
 ## 1.2 Task Component  
   
 The Task component depends on 3 other components,  
@@ -15,7 +15,7 @@ The Task component depends on 3 other components,
  
  2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to the Task Component.
  
- 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored perviously when the application is started and is also used to store the current list of tasks to the local storage upon exit.  
+ 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.  
 
 ![Task Component](images/Task_Component.jpg)  
   
@@ -37,7 +37,7 @@ The task component contains 8 separate classes. They are as follows:
   numberOfDaysLeft attribute. 
   
   8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.    
- 
+     
  ## 1.3 Study Area Component  
    
  The Study Area component depends on 3 other components,  
@@ -61,10 +61,10 @@ The task component contains 8 separate classes. They are as follows:
    
    3. StudyAreaList : Class that handles the list of available study areas based on User input.  
         
-  
+
  ## 2.1 Scheduling Tasks
  ### 2.1.1 Implementation
- Inorder to schedule tasks based on the user's requirement a sepaarate SchedulableTask class was created.
+ Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created.
  The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled.
  The requirements captured are stored in the SchedulableTask object.
  Then, the TaskScheduler finds the optimum schedule based on the user's requirements using the EDF 
@@ -77,12 +77,12 @@ Aspect : How to capture user's requirements
 
  - Alternative 1 (Current Choice) : Create a separate SchedulableTask object to store user's requirements for each task 
  to be scheduled
-	  - Pros : New class object can be customised without affecting core functionality if the attributes provided by 
-	  the user changes
-	  - Cons : New methods similar to previously implemented methods have to be created instead of being reused.
-  - Alternative 2 : Modify existing event or deadline class to model user's requirements
-	  - Pros : Led to reuse of methods and reduce coupling between classes in the TaskComponent.
-	  - Cons : Major changes would be required throughout various components to accommodate the new feature. 
+      - Pros : New class object can be customised without affecting core functionality if the attributes provided by 
+      the user changes
+      - Cons : New methods similar to previously implemented methods have to be created instead of being reused.
+ - Alternative 2 : Modify existing event or deadline class to model user's requirements
+      - Pros : Led to reuse of methods and reduce coupling between classes in the TaskComponent.
+      - Cons : Major changes would be required throughout various components to accommodate the new feature. 
 
 Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user).
@@ -153,8 +153,7 @@ conducting the search.
  {Describe the value proposition: what problem does it solve?}    
     
 ## User Stories    
- |Version| As a ... | I want to ... | So that I can ...| 
-
+|Version| As a ... | I want to ... | So that I can ...| 
 |--------|----------|---------------|------------------|
 |v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
 |v1.0|user|add a new task|keep track of it|  
