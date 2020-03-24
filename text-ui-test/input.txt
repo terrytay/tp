@@ -1,5 +1,4 @@
 James Gosling
-task
 clear
 event meeting /d 2020-05-05 /s 12:00 /e 13:00 /p 1
 view
