@@ -11,6 +11,7 @@ import command.EditCommand;
 import command.HelpCommand;
 import command.PriorityViewCommand;
 import command.SearchCommand;
+import command.StudyAreaCommand;
 import command.ViewCommand;
 
 /**
@@ -30,6 +31,7 @@ public class Parser {
     public static final String EMPTY_COMMAND = "";
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
+    public static final String STUDY_AREA_COMMAND = "study";
 
     /**
      * This method takes in the user input parses it and returns the command to be executed.
@@ -41,7 +43,7 @@ public class Parser {
 
         String[] commandSplit = fullCommand.split(" ",2);
         String commandType = commandSplit[0];
-        Command command = null;
+        Command command;
         boolean isOneWordCommand = commandSplit.length == 1 || commandSplit[1].isBlank();
         switch (commandType) {
         case ADD_DEADLINE_COMMAND:
@@ -80,6 +82,9 @@ public class Parser {
         case EMPTY_COMMAND:
             throw new Exception("Empty Line entered, Please enter a valid line");
             // Break statement can't be reached if added
+        case STUDY_AREA_COMMAND:
+            command = new StudyAreaCommand();
+            break;
         default:
             throw new Exception("Invalid command entered, Please enter a valid command");
             // Break statement can't be reached if added

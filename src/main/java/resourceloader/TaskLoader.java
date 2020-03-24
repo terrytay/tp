@@ -48,7 +48,7 @@ public class TaskLoader {
      * @return events The list of events stored previously.
      */
     public ArrayList<Task> loadFile() {
-        ArrayList<Task> tasks = new ArrayList<>();;
+        ArrayList<Task> tasks = new ArrayList<>();
         File dataFile;
         Scanner s;
         Ui ui = new Ui();

@@ -1,6 +1,7 @@
 package command;
 
 import exception.command.SearchMissingTermsException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
@@ -25,6 +26,11 @@ public class SearchCommand extends Command {
             throw new SearchMissingTermsException();
         }
         this.keyword = commandSplit[1];
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override

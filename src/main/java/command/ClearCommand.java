@@ -1,6 +1,7 @@
 package command;
 
 import exception.command.MisuseOfClearCommandException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
@@ -20,6 +21,11 @@ public class ClearCommand extends Command {
         if (!isOneWordCommand) {
             throw new MisuseOfClearCommandException();
         }
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override

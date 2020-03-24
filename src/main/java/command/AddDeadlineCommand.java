@@ -2,6 +2,7 @@ package command;
 
 import exception.command.DeadlineCreationFormatNotFollowedException;
 import exception.command.EventDetailsNotProvidedException;
+import studyarea.StudyAreaList;
 import task.Deadline;
 import task.TaskList;
 import ui.Ui;
@@ -43,7 +44,12 @@ public class AddDeadlineCommand extends Command {
     }
 
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
+    }
+
+    @Override
+    public void executeCommand(TaskList taskList, Ui ui)   {
         taskList.addTask(newDeadline, ui);
     }
 
