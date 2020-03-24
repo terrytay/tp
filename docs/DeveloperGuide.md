@@ -154,7 +154,6 @@ conducting the search.
     
 ## User Stories    
  |Version| As a ... | I want to ... | So that I can ...| 
-
 |--------|----------|---------------|------------------|
 |v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
 |v1.0|user|add a new task|keep track of it|  
