@@ -14,6 +14,7 @@ import command.SearchCommand;
 import command.StudyAreaCommand;
 import command.ViewCommand;
 
+//@@author GanapathySanathBalaji
 /**
  * This class is used to parse the user input into executable commands.
  */
