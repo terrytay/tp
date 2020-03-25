@@ -9,34 +9,34 @@ The architecture diagram shown above gives a overview of the various components 
 
 ## 1.2 Task Component  
   
-The Task component depends on 3 other components,  
+The Task component depends on 3 other components,   
   
- 1. Command Component - The Command component issues instructions for the Task component to execute based on the user's input. 
+ 1. Command Component - The Command component issues instructions for the Task component to execute based on the user's input.  
  
- 2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to the Task Component.
+ 2. UI Component - The UI component is used to display the results (and related exceptions) of the commands issued to the Task Component. 
  
- 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.  
+ 3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
 ![Task Component](images/Task_Component.jpg)  
   
 The task component contains 8 separate classes. They are as follows:  
  
-  1. Task : Abstract class used to model a generic task.
+  1. Task : Abstract class used to model a generic task. 
    
-  2. Event : Specialized task class used to model events. 
+  2. Event : Specialized task class used to model events.  
   
-  3. Deadline : Specialized task class used to model a deadline.  
+  3. Deadline : Specialized task class used to model a deadline.   
    
-  4. TaskType : Enumeration class used to denote the various task types.  
+  4. TaskType : Enumeration class used to denote the various task types.   
   
-  5. TaskList : Container class used to store list of tasks and handle related operations.
+  5. TaskList : Container class used to store list of tasks and handle related operations. 
    
-  6. SchedulableTask : Class used to model a task which is scheduled based on user's requirements. 
+  6. SchedulableTask : Class used to model a task which is scheduled based on user's requirements.  
   
   7. TaskComparator : Contains a custom comparator used to compare two schedulable tasks based on their 
-  numberOfDaysLeft attribute. 
+  numberOfDaysLeft attribute.  
   
-  8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.    
+  8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.     
      
  ## 1.3 Study Area Component  
    
@@ -62,30 +62,31 @@ The task component contains 8 separate classes. They are as follows:
    3. StudyAreaList : Class that handles the list of available study areas based on User input.  
         
 
- ## 2.1 Scheduling Tasks
- ### 2.1.1 Implementation
- Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created.
- The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled.
- The requirements captured are stored in the SchedulableTask object.
- Then, the TaskScheduler finds the optimum schedule based on the user's requirements using the EDF 
- (Early Deadline First) algorithm. Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that 
- it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
- displayed, else a message stating that a schedule based on the user's  requirements can't be made is displayed.
+ ## 2.1 Scheduling Tasks 
+ ### 2.1.1 Implementation 
+   Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
+ The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
+ The requirements captured are stored in the SchedulableTask object. 
+ Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
+ (Early Deadline First) algorithm.
+    Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
+ displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 ### 2.1.2 Alternatives
-Aspect : How to capture user's requirements
+Aspect : How to capture user's requirements and handle it.
 
  - Alternative 1 (Current Choice) : Create a separate SchedulableTask object to store user's requirements for each task 
- to be scheduled
-      - Pros : New class object can be customised without affecting core functionality if the attributes provided by 
-      the user changes
+                                    to be scheduled.
+      - Pros : New class object can be customised without affecting core functionality of the product if the attributes provided by 
+      the user (to tasks to be scheduled) changes.
       - Cons : New methods similar to previously implemented methods have to be created instead of being reused.
- - Alternative 2 : Modify existing event or deadline class to model user's requirements
-      - Pros : Led to reuse of methods and reduce coupling between classes in the TaskComponent.
-      - Cons : Major changes would be required throughout various components to accommodate the new feature. 
+      
+ - Alternative 2 : Modify existing event or deadline class to model user's requirements.
+      - Pros : It reuses methods and reduces coupling between classes in the TaskComponent.
+      - Cons : Major changes would be required throughout various components of the application to accommodate the new feature. 
 
-Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
-the user's requirements (e.g. Changes to the number of parameters provided by the user).
+     Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
+the user's requirements (e.g. Changes to the number of parameters provided by the user). 
 
 ## 2.2 Listing Study Areas 
 ### 2.2.1 Implementation 
