@@ -2,9 +2,16 @@ package notes.modules.command;
 
 import java.util.ArrayList;
 
-public class ExitCommand extends Command {
+public class ExitCommand implements Command {
 
-    public void execute(ArrayList<String> messages) {
+    public void execute() {
+    }
+
+    public void undo() {
+
+    }
+
+    public void redo() {
 
     }
 

@@ -1,11 +1,9 @@
 package notes.modules;
 
-
-
 import notes.modules.command.AddCommand;
 import notes.modules.command.Command;
+import notes.modules.command.CommandStack;
 import notes.modules.command.ExitCommand;
-import notes.modules.command.ListCommand;
 import notes.modules.parser.Parser;
 
 import java.util.ArrayList;
@@ -14,6 +12,7 @@ import java.util.Scanner;
 public class ModuleManager {
     private String code;
     private ArrayList<String> messages;
+    private CommandStack commandStack;
 
     /**
      * Manages the module e.g. overall commands and control.
@@ -23,22 +22,48 @@ public class ModuleManager {
     public ModuleManager(String code, ArrayList<String> messages) {
         this.code = code;
         this.messages = messages;
+        commandStack = new CommandStack();
         runInstance();
     }
 
     private void runInstance() {
-        System.out.println(String.format("Notes for %s", code));
-        Command command;
-        do {
-            showMenu();
-            Scanner input = new Scanner(System.in);
-            String userInput = input.nextLine();
-            command = new Parser().parseCommand(userInput);
-            command.execute(messages);
-        } while (!ExitCommand.isExit(command));
+        try {
+            System.out.println(String.format("Notes for %s", code));
+            Command command;
+            do {
+                showMenu();
+                Scanner input = new Scanner(System.in);
+                String userInput = input.nextLine();
+                command = new Parser().parseCommand(userInput, this);
+                if (command.equals(null)) {
+                    throw new NullPointerException();
+                }
+                executeCommand(command);
+            } while (!ExitCommand.isExit(command));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
+    public void executeCommand(Command command) {
+        if (command instanceof AddCommand) {
+            switch(((AddCommand) command).getUserCommandType()) {
+            case "add":
+                commandStack.execute(command);
+                break;
+            case "undo":
+                commandStack.undo();
+                break;
+            case "redo":
+                commandStack.redo();
+                break;
+            }
+        } else {
+            command.execute();
+        }
+
+    }
 
     private void showMenu() {
         System.out.println("[add] to add a note");
@@ -48,4 +73,16 @@ public class ModuleManager {
         System.out.println("[exit] to exit");
     }
 
+    public void addMessage(String message) {
+        messages.add(message);
+    }
+
+    public ArrayList<String> getMessages() {
+        return this.messages;
+    }
+
+    public void removeMessage(String message) {
+        messages.remove(message);
+        System.out.println("SUCCESS");
+    }
 }

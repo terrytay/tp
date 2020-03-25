@@ -13,28 +13,17 @@ public class Notes {
     /**
      * Creates a module.
      */
-    public void createModule() {
-        System.out.println("Please enter the module code: ");
+    public void createModule(String code) {
+        code = code.toUpperCase();
 
-        Scanner input = new Scanner(System.in);
-        String code;
-        String name;
-        code = input.nextLine().toUpperCase();
-        System.out.println("Please enter the module name: ");
-        name = input.nextLine();
-
-        modulesList.createModule(code, name);
+        modulesList.createModule(code);
     }
 
     /**
      * Deletes a module.
      */
-    public void deleteModule() {
-        System.out.println("Please enter the module code: ");
-
-        Scanner input = new Scanner(System.in);
-        String code;
-        code = input.nextLine().toUpperCase();
+    public void deleteModule(String code) {
+        code = code.toUpperCase();
 
         modulesList.deleteModule(code);
     }
@@ -42,11 +31,8 @@ public class Notes {
     /**
      * To enter into the module notes.
      */
-    public void enterModule() {
-        System.out.println("Please enter the module code: ");
-
-        Scanner input = new Scanner(System.in);
-        String code = input.nextLine().toUpperCase();
+    public void enterModule(String code) {
+        code = code.toUpperCase();
 
         modulesList.enterModule(code);
 

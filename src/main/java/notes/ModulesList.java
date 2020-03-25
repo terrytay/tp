@@ -25,12 +25,12 @@ public class ModulesList {
     }
 
     /**
-     * Create a module with code and name.
+     * Create a module with code.
      */
-    public void createModule(String code, String name) {
+    public void createModule(String code) {
         modules.putIfAbsent(code, new ArrayList<>());
 
-        String success = String.format("%s %s has been created\n", code, name);
+        String success = String.format("%s has been created\n", code);
         System.out.println(success);
     }
 
