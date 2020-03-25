@@ -2,9 +2,11 @@ package command;
 
 import exception.command.DeleteCommandMissingIndexException;
 import exception.command.IndexNotIntegerException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
+//@@author GanapathySanathBalaji
 /**
  * Command is used to delete a task at a specific index.
  */
@@ -34,7 +36,12 @@ public class DeleteCommand extends Command {
 
 
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
+    }
+
+    @Override
+    public void executeCommand(TaskList taskList, Ui ui) {
         taskList.deleteTask(indexToDelete, ui);
     }
 }

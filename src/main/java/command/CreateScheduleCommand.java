@@ -3,10 +3,12 @@ package command;
 import exception.command.MisuseOfScheduleCommandException;
 import exception.command.NumberOfTasksToBeScheduledNotAnIntegerException;
 import exception.command.NumberOfTasksToBeScheduledNotPositiveException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import task.TaskScheduler;
 import ui.Ui;
 
+//@@author GanapathySanathBalaji
 /**
  * This command is used to create schedule based on user input if its feasible.
  */
@@ -35,6 +37,11 @@ public class CreateScheduleCommand extends Command {
         } catch (NumberFormatException e) {
             throw new NumberOfTasksToBeScheduledNotAnIntegerException();
         }
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override

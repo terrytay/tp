@@ -73,12 +73,13 @@ public class StudyAreaLoader {
         return buffer;
     }
 
-
+    //@@author NizarMohd
     /**
      * This method creates a new data file for locations.txt and dictionary.txt.
      * @param filePath this is the path of the data file to be created.
      * @throws IOException if cannot create file.
      */
+
     public static void createNewStudyAreaData(String filePath) throws IOException {
         Files.createFile(Paths.get(filePath));
         PrintWriter dataBuffer = new PrintWriter(new File(filePath));

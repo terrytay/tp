@@ -1,9 +1,11 @@
 package command;
 
 import exception.command.MisuseOfClearCommandException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
+//@@author GanapathySanathBalaji
 /**
  * This command is used to clear all the tasks in the list.
  */
@@ -20,6 +22,11 @@ public class ClearCommand extends Command {
         if (!isOneWordCommand) {
             throw new MisuseOfClearCommandException();
         }
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override
