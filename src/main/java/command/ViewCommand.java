@@ -1,9 +1,11 @@
 package command;
 
 import exception.command.MisuseOfViewCommandException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
+//@@author GanapathySanathBalaji
 /**
  * Displays the list of tasks added so far.
  */
@@ -20,6 +22,11 @@ public class ViewCommand extends Command {
         if (!isOneWordCommand) {
             throw new MisuseOfViewCommandException();
         }
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override

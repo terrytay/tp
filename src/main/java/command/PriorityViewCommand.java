@@ -1,9 +1,11 @@
 package command;
 
 import exception.command.MisuseOfPriorityCommandException;
+import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
+//@@author GanapathySanathBalaji
 /**
  * Displays the list of tasks added so far in decreasing order of their priority.
  */
@@ -20,6 +22,11 @@ public class PriorityViewCommand extends Command {
         if (!isOneWordCommand) {
             throw new MisuseOfPriorityCommandException();
         }
+    }
+
+    @Override
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
     }
 
     @Override

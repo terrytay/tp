@@ -99,6 +99,7 @@ public class StudyArea {
      * Prints the StudyArea into a standard String format.
      * @return String value of all the attributes of the specific StudyArea.
      */
+    //@@author NizarMohd
     public String toString() {
         String text = TAB + "Name: " + this.name + lineSeparator()
                 + Ui.formatMessage("Address: " + this.address, MAX_LINE_LENGTH)
