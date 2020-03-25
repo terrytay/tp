@@ -5,7 +5,9 @@ import exception.command.EventDetailsNotProvidedException;
 import task.Deadline;
 import task.TaskList;
 import ui.Ui;
+
 import java.time.LocalDate;
+
 import static command.AddEventCommand.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
 
 //@@author GanapathySanathBalaji
@@ -44,7 +46,7 @@ public class AddDeadlineCommand extends Command {
     }
 
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(TaskList taskList, Ui ui)   {
         taskList.addTask(newDeadline, ui);
     }
 

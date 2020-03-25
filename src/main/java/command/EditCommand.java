@@ -35,7 +35,7 @@ public class EditCommand extends Command {
 
 
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(TaskList taskList, Ui ui) {
         taskList.editTask(indexToEdit, ui);
     }
 }

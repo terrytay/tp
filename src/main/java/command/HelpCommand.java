@@ -25,6 +25,6 @@ public class HelpCommand extends Command {
 
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
-        ui.printHelp();
+        ui.printHelp(true);
     }
 }

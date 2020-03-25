@@ -28,6 +28,7 @@ public class SearchCommand extends Command {
         this.keyword = commandSplit[1];
     }
 
+
     @Override
     public void executeCommand(TaskList taskList, Ui ui) throws Exception {
         taskList.searchTasks(keyword, ui);

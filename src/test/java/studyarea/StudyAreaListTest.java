@@ -64,4 +64,5 @@ class StudyAreaListTest {
         Assertions.assertThrows(IllegalStudyAreaException.class, () -> StudyAreaList.checkFlag(flags, commands,
                 1, false));
     }
+
 }

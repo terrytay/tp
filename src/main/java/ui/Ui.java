@@ -2,12 +2,12 @@ package ui;
 
 
 import studyarea.StudyArea;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import static java.lang.System.lineSeparator;
-import static ui.Constants.BYE_COMMAND;
 import static ui.Constants.DAB;
 import static ui.Constants.FLAGS;
 import static ui.Constants.GOODBYE_MESSAGE;
@@ -24,6 +24,7 @@ import static ui.Constants.HELP_DESCRIPTION_18;
 import static ui.Constants.HELP_DESCRIPTION_19;
 import static ui.Constants.HELP_DESCRIPTION_2;
 import static ui.Constants.HELP_DESCRIPTION_20;
+import static ui.Constants.HELP_DESCRIPTION_21;
 import static ui.Constants.HELP_DESCRIPTION_3;
 import static ui.Constants.HELP_DESCRIPTION_4;
 import static ui.Constants.HELP_DESCRIPTION_5;
@@ -35,9 +36,7 @@ import static ui.Constants.LOGO;
 import static ui.Constants.MAX_LINE_LENGTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.START_MESSAGE;
-import static ui.Constants.STUDY_COMMAND;
 import static ui.Constants.TAB;
-import static ui.Constants.TASK_COMMAND;
 
 //@@author NizarMohd
 /**
@@ -68,25 +67,6 @@ public class Ui {
         this.out = out;
     }
 
-    /**
-     * Returns the mode (event features or StudyArea features or exit) based on User input.
-     *
-     * @return an integer which is assigned to each mode.
-     */
-
-    public int getMode() {
-        String userIn = this.in.nextLine().toLowerCase();
-        switch (userIn) {
-        case TASK_COMMAND :
-            return 1;
-        case STUDY_COMMAND :
-            return 2;
-        case BYE_COMMAND :
-            return -1;
-        default :
-            return 0;
-        }
-    }
 
     /**
      * This method allows for other class to get User input.
@@ -152,7 +132,8 @@ public class Ui {
         String name = this.in.nextLine();
         printLine();
         this.out.println(TAB + "Hello " + name + "!");
-        printMessage(START_MESSAGE);
+        this.out.println(START_MESSAGE);
+        printHelp(false);
         printLine();
     }
 
@@ -181,10 +162,13 @@ public class Ui {
 
     /**
      * Display the list of supported commands.
+     * @param withLine This boolean value states if the help message needs to print with or without lines.
      */
     //@@author
-    public void printHelp() {
-        printLine();
+    public void printHelp(boolean withLine) {
+        if (withLine) {
+            printLine();
+        }
         this.out.println(HELP_DESCRIPTION_1);
         this.out.println(HELP_DESCRIPTION_2);
         this.out.println(HELP_DESCRIPTION_3);
@@ -204,7 +188,10 @@ public class Ui {
         this.out.println(HELP_DESCRIPTION_18);
         this.out.println(HELP_DESCRIPTION_19);
         this.out.println(HELP_DESCRIPTION_20);
-        printLine();
+        this.out.println(HELP_DESCRIPTION_21);
+        if (withLine) {
+            printLine();
+        }
     }
 
     /**

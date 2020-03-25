@@ -1,36 +1,20 @@
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
+Mar 25, 2020 5:12:55 PM seedu.duke.Duke run
 INFO: Application started Execution
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
+Mar 25, 2020 5:12:55 PM seedu.duke.Duke run
 INFO: Application transitioning to task mode
-Mar 23, 2020 9:34:43 PM task.TaskList deleteTask
+Mar 25, 2020 5:12:55 PM task.TaskList deleteTask
 INFO: Index specified to be deleted is out of bounds
-Mar 23, 2020 9:34:43 PM task.Event getFieldToBeEdited
+Mar 25, 2020 5:12:55 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 23, 2020 9:34:43 PM task.Event getFieldToBeEdited
+Mar 25, 2020 5:12:55 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 23, 2020 9:34:43 PM task.Event parseDate
+Mar 25, 2020 5:12:55 PM task.Event parseDate
 INFO: Date after current date exception thrown
-Mar 23, 2020 9:34:43 PM task.Event editDate
+Mar 25, 2020 5:12:55 PM task.Event editDate
 INFO: Invalid date entered by user
-Mar 23, 2020 9:34:43 PM task.Deadline getFieldToBeEdited
+Mar 25, 2020 5:12:55 PM task.Deadline getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
-INFO: Application transitioning to task mode
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
-INFO: Application transitioning to study area mode
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkDuplicate
-INFO: Duplicate flags entered by user
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkDuplicate
-INFO: Duplicate flags entered by user
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkInteger
-INFO: no string exist after "-s"
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkInteger
-INFO: User entered an invalid number for integer input
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkOnlyFlag
-INFO: Identifier not entered with flag by user
-Mar 23, 2020 9:34:43 PM studyarea.StudyAreaList checkFlag
-INFO: Wrong flag used by user while searching for study areas
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
+Mar 25, 2020 5:12:55 PM seedu.duke.Duke run
 INFO: Application is going to exit
-Mar 23, 2020 9:34:43 PM seedu.duke.Duke run
+Mar 25, 2020 5:12:55 PM seedu.duke.Duke run
 INFO: Application closed successfully

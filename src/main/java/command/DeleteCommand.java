@@ -33,9 +33,8 @@ public class DeleteCommand extends Command {
         }
     }
 
-
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(TaskList taskList, Ui ui) {
         taskList.deleteTask(indexToDelete, ui);
     }
 }

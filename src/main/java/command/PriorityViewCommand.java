@@ -23,6 +23,7 @@ public class PriorityViewCommand extends Command {
         }
     }
 
+
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
         taskList.priorityView(ui);

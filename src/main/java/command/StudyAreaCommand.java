@@ -16,12 +16,14 @@ import static ui.Constants.SHORT_DESCRIPTION;
 import static ui.Constants.START_STUDY_AREA_SEARCH;
 
 
+//@@author NizarMohd
 /**
  * This is the StudyAreaCommand class. It executes the StudyArea Search function and interact with Users accordingly.
  */
 
 public class StudyAreaCommand {
-    //@@author NizarMohd
+
+
     /**
      * List out all the StudyAreas that match with User's preference.
      * @param ui This allows for StudyAreaCommand to interact with Users.
@@ -88,14 +90,14 @@ public class StudyAreaCommand {
         }
         return true;
     }
-    
+
+
     /**
      * Executes the StudyArea search feature.
      * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      */
-
-    public static void runCommands(StudyAreaList studyAreaList, Ui ui)  {
+    public void executeStudyCommand(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
         ui.printMessage(START_STUDY_AREA_SEARCH);
         boolean status = true;
@@ -111,4 +113,5 @@ public class StudyAreaCommand {
         }
         ui.printLine();
     }
+
 }

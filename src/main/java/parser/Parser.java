@@ -32,6 +32,7 @@ public class Parser {
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
 
+
     /**
      * This method takes in the user input parses it and returns the command to be executed.
      * @param fullCommand THe entire line of command entered by the user.
@@ -42,7 +43,7 @@ public class Parser {
 
         String[] commandSplit = fullCommand.split(" ",2);
         String commandType = commandSplit[0];
-        Command command = null;
+        Command command;
         boolean isOneWordCommand = commandSplit.length == 1 || commandSplit[1].isBlank();
         switch (commandType) {
         case ADD_DEADLINE_COMMAND:
