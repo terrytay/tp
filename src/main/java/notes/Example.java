@@ -7,27 +7,38 @@ import java.util.Scanner;
 public class Example {
 
     /**
-     * Prototype of note taking feature.
-     * 0: create module, 1: delete module.
+     * Prototype of note taking feature based on modules.
      * @param args just ignore this.
      */
     public static void main(String[] args) {
         Notes notes = new Notes();
         Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();
-        while (choice != 2) {
+        String choice;
+        do {
+            System.out.println("[add] to add a module");
+            System.out.println("[remove] to remove a module");
+            System.out.println("[enter] to choose a module to enter notes");
+            System.out.println("[list] to list modules");
+            System.out.println("[exit] to exit");
+            choice = input.nextLine();
             switch (choice) {
-            case 0:
+            case "add":
                 notes.createModule();
                 break;
-            case 1:
+            case "remove":
                 notes.deleteModule();
                 break;
-            default:
+            case "enter":
+                notes.enterModule();
                 break;
+            case "list":
+                notes.listModules();
+                break;
+            case "exit":
+                break;
+            default:
             }
-            choice = input.nextInt();
 
-        }
+        } while (!choice.equals("exit"));
     }
 }

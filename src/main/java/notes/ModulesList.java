@@ -1,16 +1,16 @@
 package notes;
 
-import notes.modules.Module;
+import notes.modules.ModuleManager;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.HashMap;
 
 public class ModulesList {
     static ModulesList instance = null;
-    private ArrayList<Module> modules;
+    private HashMap<String, ArrayList<String>> modules;
 
     private ModulesList() {
-        this.modules = new ArrayList<>();
+        this.modules = new HashMap<>();
     }
 
     /**
@@ -27,14 +27,9 @@ public class ModulesList {
     /**
      * Create a module with code and name.
      */
-    public void createModule() {
-        Scanner input = new Scanner(System.in);
-        String code;
-        String name;
-        code = input.nextLine().toUpperCase();
-        name = input.nextLine();
-        Module module = new Module(code, name);
-        modules.add(module);
+    public void createModule(String code, String name) {
+        modules.putIfAbsent(code, new ArrayList<>());
+
         String success = String.format("%s %s has been created\n", code, name);
         System.out.println(success);
     }
@@ -42,18 +37,46 @@ public class ModulesList {
     /**
      * Delete a module using its code.
      */
-    public void deleteModule() {
-        Scanner input = new Scanner(System.in);
-        String code;
-        code = input.nextLine().toUpperCase();
-
-        try {
-            boolean isRemoved = modules.removeIf(mod -> mod.getCode().equals(code));
-            if (isRemoved) {
-                System.out.println(code + " has been removed");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public void deleteModule(String code) {
+        if (modules.containsKey(code)) {
+            modules.remove(code);
+            System.out.println(code + " has been removed");
+        } else {
+            System.out.println("Module is not found.");
         }
+    }
+
+    /**
+     * Retrieves a module's content from the module given the module code.
+     * @param code module code
+     * @return module's content
+     */
+    public ArrayList<String> getModule(String code) {
+        if (!modules.containsKey(code)) {
+            return null;
+        }
+        return modules.get(code);
+    }
+
+    /**
+     * Enters the module interface -> moduleManager.
+     * @param code module code
+     */
+    public void enterModule(String code) {
+        if (getModule(code) == null) {
+            System.out.println("Module not found.");
+        } else {
+            new ModuleManager(code, getModule(code));
+        }
+    }
+
+    /**
+     * Print all saved modules.
+     */
+    public void listModules() {
+        if (modules.isEmpty()) {
+            System.out.println("No modules have been added yet.");
+        }
+        System.out.println(modules.keySet());
     }
 }
