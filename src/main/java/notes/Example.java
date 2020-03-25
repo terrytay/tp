@@ -20,16 +20,21 @@ public class Example {
             System.out.println("[enter] to choose a module to enter notes");
             System.out.println("[list] to list modules");
             System.out.println("[exit] to exit");
-            choice = input.nextLine();
+            String userInput = input.nextLine();
+            choice = userInput.split(" ")[0];
+            String code;
             switch (choice) {
             case "add":
-                notes.createModule();
+                code = userInput.split(" ")[1];
+                notes.createModule(code);
                 break;
             case "remove":
-                notes.deleteModule();
+                code = userInput.split(" ")[1];
+                notes.deleteModule(code);
                 break;
             case "enter":
-                notes.enterModule();
+                code = userInput.split(" ")[1];
+                notes.enterModule(code);
                 break;
             case "list":
                 notes.listModules();
@@ -37,6 +42,7 @@ public class Example {
             case "exit":
                 break;
             default:
+                System.out.println("Please enter a valid command.");
             }
 
         } while (!choice.equals("exit"));
