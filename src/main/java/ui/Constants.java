@@ -239,4 +239,5 @@ public class Constants {
     public static final String TASK_MODE = "Application transitioning to task mode";
     public static final String APPLICATION_CLOSED_SUCCESSFULLY = "Application closed successfully";
     public static final String SHORT_DESCRIPTION = "Description of location is too short!";
+    public static final String STUDY_AREA_COMMAND = "study";
 }
