@@ -2,7 +2,6 @@ package task;
 
 import ui.Constants;
 import ui.Ui;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +9,7 @@ import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//@@author GanapathySanathBalaji
 /**
  * Handles all functions related to the list of events.
  */

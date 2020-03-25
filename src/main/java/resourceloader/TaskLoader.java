@@ -17,6 +17,7 @@ import java.util.Scanner;
 import static ui.Constants.FILE_PATH_DICTIONARY;
 import static ui.Constants.FILE_PATH_STUDYAREAS;
 
+//@@author GanapathySanathBalaji
 /**
  * Handles the task of loading and storing events.
  */
@@ -48,7 +49,7 @@ public class TaskLoader {
      * @return events The list of events stored previously.
      */
     public ArrayList<Task> loadFile() {
-        ArrayList<Task> tasks = new ArrayList<>();;
+        ArrayList<Task> tasks = new ArrayList<>();
         File dataFile;
         Scanner s;
         Ui ui = new Ui();
