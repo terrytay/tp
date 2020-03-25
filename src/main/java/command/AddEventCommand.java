@@ -2,10 +2,10 @@ package command;
 
 import exception.command.EventCreationFormatNotFollowedException;
 import exception.command.EventDetailsNotProvidedException;
-import studyarea.StudyAreaList;
 import task.Event;
 import task.TaskList;
 import ui.Ui;
+
 import java.time.LocalDate;
 
 /**
@@ -45,11 +45,6 @@ public class AddEventCommand extends Command {
         newEvent =  new Event(description,date,startTime,endTime,priority);
         assert !newEvent.getStartTime().isAfter(newEvent.getEndTime()) : START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
         assert !newEvent.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
-    }
-
-    @Override
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
-
     }
 
     @Override

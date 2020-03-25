@@ -1,7 +1,6 @@
 package command;
 
 import exception.command.InvalidHelpCommandException;
-import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
@@ -21,11 +20,6 @@ public class HelpCommand extends Command {
         if (!isOneWordCommand) {
             throw new InvalidHelpCommandException();
         }
-    }
-
-    @Override
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
-
     }
 
     @Override

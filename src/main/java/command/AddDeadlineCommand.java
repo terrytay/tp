@@ -2,11 +2,12 @@ package command;
 
 import exception.command.DeadlineCreationFormatNotFollowedException;
 import exception.command.EventDetailsNotProvidedException;
-import studyarea.StudyAreaList;
 import task.Deadline;
 import task.TaskList;
 import ui.Ui;
+
 import java.time.LocalDate;
+
 import static command.AddEventCommand.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
 
 /**
@@ -41,11 +42,6 @@ public class AddDeadlineCommand extends Command {
         String priority = details[3].substring(2);
         newDeadline =  new Deadline(description, date, dueTime, priority);
         assert !newDeadline.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
-    }
-
-    @Override
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
-
     }
 
     @Override

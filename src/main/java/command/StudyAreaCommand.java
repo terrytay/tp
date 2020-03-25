@@ -3,18 +3,11 @@ package command;
 import exception.IllegalStudyAreaException;
 import studyarea.StudyArea;
 import studyarea.StudyAreaList;
-import task.TaskList;
 import ui.Ui;
+
 import java.util.ArrayList;
-import static ui.Constants.AVAILABLE_STUDY_AREAS;
-import static ui.Constants.BYE_COMMAND;
-import static ui.Constants.EMPTY_LIST;
-import static ui.Constants.EMPTY_LOCATION;
-import static ui.Constants.END_MESSAGE;
-import static ui.Constants.HELP_COMMAND;
-import static ui.Constants.PROMPT_USER;
-import static ui.Constants.SHORT_DESCRIPTION;
-import static ui.Constants.START_STUDY_AREA_SEARCH;
+
+import static ui.Constants.*;
 
 
 //@@author NizarMohd
@@ -22,15 +15,9 @@ import static ui.Constants.START_STUDY_AREA_SEARCH;
  * This is the StudyAreaCommand class. It executes the StudyArea Search function and interact with Users accordingly.
  */
 
-public class StudyAreaCommand extends Command  {
+public class StudyAreaCommand {
 
 
-    /**
-     * This constructor creates a StudyAreaCommand and updates the boolean value as true as it is a study area command.
-     */
-    public StudyAreaCommand() {
-        this.isStudy = true;
-    }
     /**
      * List out all the StudyAreas that match with User's preference.
      * @param ui This allows for StudyAreaCommand to interact with Users.
@@ -104,7 +91,6 @@ public class StudyAreaCommand extends Command  {
      * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      */
-    @Override
     public void executeCommand(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
         ui.printMessage(START_STUDY_AREA_SEARCH);
@@ -122,8 +108,4 @@ public class StudyAreaCommand extends Command  {
         ui.printLine();
     }
 
-    @Override
-    public void executeCommand(TaskList list, Ui ui) {
-
-    }
 }
