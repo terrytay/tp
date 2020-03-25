@@ -153,6 +153,7 @@ conducting the search.
  {Describe the value proposition: what problem does it solve?}    
     
 ## User Stories    
+
 |Version| As a ... | I want to ... | So that I can ...| 
 |--------|----------|---------------|------------------|
 |v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  

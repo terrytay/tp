@@ -2,6 +2,7 @@ package command;
 
 import exception.command.EventCreationFormatNotFollowedException;
 import exception.command.EventDetailsNotProvidedException;
+import studyarea.StudyAreaList;
 import task.Event;
 import task.TaskList;
 import ui.Ui;
@@ -48,7 +49,12 @@ public class AddEventCommand extends Command {
     }
 
     @Override
-    public void executeCommand(TaskList taskList, Ui ui) throws Exception {
+    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
+
+    }
+
+    @Override
+    public void executeCommand(TaskList taskList, Ui ui)  {
         taskList.addTask(newEvent, ui);
     }
 
