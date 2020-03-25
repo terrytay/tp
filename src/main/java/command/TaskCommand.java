@@ -29,8 +29,8 @@ public class TaskCommand {
         fullCommand = ui.getUserIn().trim().toLowerCase();
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
-                if(fullCommand.equals(STUDY_AREA_COMMAND)){
-                    new StudyAreaCommand().executeCommand(studyAreaList, ui);
+                if (fullCommand.equals(STUDY_AREA_COMMAND)) {
+                    new StudyAreaCommand().executeStudyCommand(studyAreaList, ui);
                 } else {
                     command = parser.parseCommand(fullCommand);
                     command.executeCommand(taskList, ui);

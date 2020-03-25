@@ -4,10 +4,16 @@ import exception.IllegalStudyAreaException;
 import studyarea.StudyArea;
 import studyarea.StudyAreaList;
 import ui.Ui;
-
 import java.util.ArrayList;
-
-import static ui.Constants.*;
+import static ui.Constants.AVAILABLE_STUDY_AREAS;
+import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.EMPTY_LIST;
+import static ui.Constants.EMPTY_LOCATION;
+import static ui.Constants.END_MESSAGE;
+import static ui.Constants.HELP_COMMAND;
+import static ui.Constants.PROMPT_USER;
+import static ui.Constants.SHORT_DESCRIPTION;
+import static ui.Constants.START_STUDY_AREA_SEARCH;
 
 
 //@@author NizarMohd
@@ -91,7 +97,7 @@ public class StudyAreaCommand {
      * @param studyAreaList This contains the list of all existing study area.
      * @param ui This allows for StudyAreaCommand to interact with Users.
      */
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui)  {
+    public void executeStudyCommand(StudyAreaList studyAreaList, Ui ui)  {
         ui.printLine();
         ui.printMessage(START_STUDY_AREA_SEARCH);
         boolean status = true;

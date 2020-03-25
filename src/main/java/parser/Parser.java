@@ -11,7 +11,6 @@ import command.EditCommand;
 import command.HelpCommand;
 import command.PriorityViewCommand;
 import command.SearchCommand;
-import command.StudyAreaCommand;
 import command.ViewCommand;
 
 //@@author GanapathySanathBalaji
