@@ -1,6 +1,7 @@
 package bookingsystem;
 
 import studyarea.StudyArea;
+
 import java.util.logging.Logger;
 
 public class BookingSystem extends StudyArea {

@@ -2,7 +2,6 @@ package command;
 
 import exception.command.DeleteCommandMissingIndexException;
 import exception.command.IndexNotIntegerException;
-import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
@@ -32,12 +31,6 @@ public class DeleteCommand extends Command {
         } catch (NumberFormatException e) {
             throw new IndexNotIntegerException();
         }
-    }
-
-
-    @Override
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
-
     }
 
     @Override

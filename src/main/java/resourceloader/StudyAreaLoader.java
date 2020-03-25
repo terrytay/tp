@@ -1,7 +1,7 @@
 package resourceloader;
 
-import studyarea.Dictionary;
 import exception.IllegalStudyAreaException;
+import studyarea.Dictionary;
 import studyarea.StudyArea;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import static ui.Constants.FILE_PATH_STUDYAREAS;
 import static ui.Constants.INCONSISTENT_DATA_STORAGE;
 import static ui.Constants.MISSING_STUDY_AREA_DATA;

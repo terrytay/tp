@@ -2,10 +2,10 @@ package seedu.duke;
 
 
 import command.TaskCommand;
+import exception.IllegalStudyAreaException;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
-import exception.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Constants;

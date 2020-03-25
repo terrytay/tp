@@ -2,7 +2,6 @@ package command;
 
 import exception.command.EditCommandMissingIndexException;
 import exception.command.IndexNotIntegerException;
-import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
@@ -34,11 +33,6 @@ public class EditCommand extends Command {
         }
     }
 
-
-    @Override
-    public void executeCommand(StudyAreaList studyAreaList, Ui ui) {
-
-    }
 
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
