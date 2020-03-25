@@ -12,7 +12,6 @@ public class ListCommand implements Command {
 
     /**
      * Displays the notes in the module.
-     * @param messages notes in the module
      */
     public void execute() {
         System.out.println("______________________________");

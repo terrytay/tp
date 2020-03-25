@@ -6,6 +6,13 @@ public class AddCommand implements Command {
     ModuleManager moduleManager;
     String message;
     private String userCommandType;
+
+    /**
+     * Constructs a AddCommand Object to be executed later.
+     * @param moduleManager the class holding the arraylist of messages
+     * @param message message per se
+     * @param userCommandType add/undo/redo
+     */
     public AddCommand(ModuleManager moduleManager, String message,
                       String userCommandType) {
         this.moduleManager = moduleManager;
@@ -17,6 +24,7 @@ public class AddCommand implements Command {
         this.moduleManager = moduleManager;
         this.userCommandType = userCommandType;
     }
+
     public void execute() {
         moduleManager.addMessage(message);
     }
