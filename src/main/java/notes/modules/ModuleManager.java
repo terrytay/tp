@@ -46,9 +46,14 @@ public class ModuleManager {
 
     }
 
+    /**
+     * Takes the command and execute. Depending on whether it's add,
+     * redo or undo or others, it will run differently.
+     * @param command the command to be executed
+     */
     public void executeCommand(Command command) {
         if (command instanceof AddCommand) {
-            switch(((AddCommand) command).getUserCommandType()) {
+            switch (((AddCommand) command).getUserCommandType()) {
             case "add":
                 commandStack.execute(command);
                 break;
@@ -57,6 +62,8 @@ public class ModuleManager {
                 break;
             case "redo":
                 commandStack.redo();
+                break;
+            default:
                 break;
             }
         } else {
