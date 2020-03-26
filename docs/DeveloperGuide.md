@@ -1,5 +1,4 @@
 
-  
 # Developer Guide    
 
 ## Table of content
