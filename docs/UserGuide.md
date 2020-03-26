@@ -20,7 +20,7 @@
  
     E.g, Lectures, Tutorial sessions can be stored as events.
    
- The application can add, edit and delete tasks. It also provides methods to search for tasks. Additionaly, it has the ability of storing data to a physical location on the computer, so that the tasks always remain in memory.  
+ The application can add, edit and delete tasks. It also provides methods to search for tasks. Additionally, it has the ability of storing data to a physical location on the computer, so that the tasks always remain in memory.  
     
  As a secondary feature, the application allows students who are in search of a study area to locate one based on different conditions. The different conditions that could be specified include the location, size constraints and port facilities.
 
@@ -105,6 +105,7 @@ If the wrong format is used an alert would be displayed.
 
 ##### Example of usage: 
 The following adds a Math assignment as a deadline task which is due on 04-05-2020 at 6 pm with a priority value of 2.
+
 `deadline Math assignment /d 2020-05-04 /t 18:00 /p 2`
 
 ##### Expected outcome:
@@ -136,6 +137,7 @@ If the wrong format is used an alert would be displayed.
 
 ##### Example of usage: 
 The following adds a Team Meeting which is set to take place on 06-05-2020 from 9 am to 12 pm with a priority value of 3, as an event to the list of tasks.
+
 `event Team Meeting /d 2020-06-06 /s 09:00 /e 12:00 /p 3`
 
 ##### Expected outcome:
@@ -164,6 +166,7 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To delete a task at the 3rd index of the list of tasks.
+
 `delete 3`
 
 Expected outcome:
@@ -197,7 +200,8 @@ If the wrong format is used an alert would be displayed.
 Example of usage: 
 To edit the start time of the event at 2nd index of the list.
 ###### Multi Stage
-###### `edit 2` -> Specify the index of task to be edited 
+
+###### `edit 2` - Specify the index of task to be edited 
 
 Expected outcome:
 
@@ -214,13 +218,13 @@ Expected outcome:
          5. Priority
 
 
-###### '3' -> Specify field to be edited based on list
+###### '3' - Specify field to be edited based on list
 
 Expected outcome:
 
 	 Enter new Start Time:
     
-###### '12:00' -> Enter the new value to be changed to
+###### '12:00' - Enter the new value to be changed to
 
 Expected outcome:
 
@@ -248,6 +252,7 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To clear the current list of tasks.
+
 `clear`
 
 Expected outcome:
@@ -273,6 +278,7 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To view the current list of tasks.
+
 `view`
 
 Expected outcome:
@@ -302,10 +308,11 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To view the current list of tasks sorted by their priority.
+
 `priority_view`
 
 Expected outcome:
-The list of tasks would be displayed after they are sorted based on thier priority.
+The list of tasks would be displayed after they are sorted based on their priority.
 Upon success a response similar to the following one would appear:
 
     ________________________________________________________________________________________________
@@ -332,7 +339,8 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To view the current list of tasks in countdown format.
-`priority_view`
+
+`countdown`
 
 Expected outcome:
 The list of tasks would be displayed in the countdown format.
@@ -364,6 +372,7 @@ Upon success a successful message similar to the one in the example would appear
 If the wrong format is used an alert would be displayed.
 
 Example of usage: 
+
 `search exam`
 
 Expected outcome:
@@ -391,6 +400,7 @@ The command displays the list of commands supported by the application.
 If the wrong format is used an invalid command alert would be displayed.
 
 Example of usage: 
+
 `help`
 
 Expected outcome:
@@ -433,7 +443,8 @@ Then a set of lines are displayed which specify the format to be used to specify
 If the wrong format is used an invalid command alert would be displayed.
 
 Example of usage: 
-###### `schedule 3` -> Schedule 3 tasks
+
+###### `schedule 3` - Schedule 3 tasks
 
 Expected outcome:
 
@@ -484,6 +495,7 @@ guided to the study area search interface.
 ##### Usage
 
 Example of usage: 
+
 `study`
 
 Expected Outcome:
@@ -515,6 +527,7 @@ Note: if name, address or faculty is specified, flags will have to precede eithe
 ###### Search by name, address or faculty 
 
 Example of usage:
+
 `bux`
 
 Expected Outcome:
@@ -545,6 +558,7 @@ Expected Outcome:
 ##### Search by name, address or faculty and with flags
 
 Example of usage:
+
 `bux - o`
 
 Expected Outcome:
