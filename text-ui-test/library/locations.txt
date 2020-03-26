@@ -4,7 +4,7 @@ MacCommons~2 College Avenue West Education Resource Centre, Level 1~Utown~true~t
 PC Commons~2 College Avenue West Education Resource Centre, Level 1~Utown~true~true~5
 Ian and Peony Ferguson Study~2 College Ave West Education Resource Centre, Level 3~Utown~true~true~4
 The Study~2 College Ave West Education Resource Centre, Level 2~Utown~true~true~5
-Town Plaza Seminar Rooms Waiting Area~2 College Ave West, Town Plaza, Level 2~Utown~true~true~4
+Town Plaza Seminar Rooms Waiting Lounge~2 College Ave West, Town Plaza, Level 2~Utown~true~true~4
 OCBC~2 College Ave West, Stephen Riady Centre, Ground Level~Utown~true~false~2
 SuperSnacks~2 College Ave West, Stephen Riady Centre, Ground Level~Utown~true~true~4
 EA Level 1~9 Engineering Drive 1,EA, Level 1~Engineering~true~true~4

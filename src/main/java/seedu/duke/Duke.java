@@ -1,16 +1,15 @@
 package seedu.duke;
 
-import command.StudyAreaCommand;
+
 import command.TaskCommand;
+import exception.IllegalStudyAreaException;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
-import exception.IllegalStudyAreaException;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Constants;
 import ui.Ui;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
@@ -19,9 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
-import static ui.Constants.INTERMEDIATE_MESSAGE;
-import static ui.Constants.WRONG_INPUT;
 
 /**
  * This is Duke class, which forms the main class of the program.
@@ -55,6 +51,7 @@ public class Duke {
         }
     }
 
+    //@@author GanapathySanathBalaji
     private void setupLogger() {
         LogManager.getLogManager().reset();
         LOGGER.setLevel(Level.INFO);
@@ -72,46 +69,24 @@ public class Duke {
         }
     }
 
-
+    //@@author ganapathysanathbalaji and NizarMohd
     /**
      * This method runs the program.
      */
+
     public void run() {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
-        boolean status = true;
-        while (status) {
-            int mode = ui.getMode();
-            switch (mode) {
-            case Constants.EXIT:
-                LOGGER.log(Level.INFO, Constants.APPLICATION_GOING_TO_EXIT);
-                status = false;
-                break;
-            case Constants.TASK_MODE_SELECTED:
-                LOGGER.log(Level.INFO, Constants.TASK_MODE);
-                TaskCommand.runCommands(taskList, ui, parser);
-                ui.printMessage(INTERMEDIATE_MESSAGE);
-                break;
-            case Constants.STUDY_AREA_MODE_SELECTED:
-                LOGGER.log(Level.INFO, Constants.STUDY_AREA_MODE);
-                StudyAreaCommand.runCommands(studyAreaList,ui);
-                ui.printMessage(INTERMEDIATE_MESSAGE);
-                break;
-            default:
-                LOGGER.log(Level.INFO, Constants.WRONG_COMMAND);
-                ui.printLine();
-                ui.printMessage(WRONG_INPUT);
-                break;
-            }
-            ui.printLine();
-        }
+        LOGGER.log(Level.INFO, Constants.TASK_MODE);
+        TaskCommand.runCommands(taskList, ui, parser, studyAreaList);
         taskLoader.saveTasks(taskList.tasks);
+        LOGGER.log(Level.INFO, Constants.APPLICATION_GOING_TO_EXIT);
         ui.printByeMessage();
         ui.close();
         LOGGER.log(Level.INFO, Constants.APPLICATION_CLOSED_SUCCESSFULLY);
     }
 
-
+    //@@author NizarMohd
     /**
      * Main entry-point for the java.duke.Duke application.
      *

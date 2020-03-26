@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//@@author GanapathySanathBalaji
 /**
  * Handles all functions related to the list of events.
  */
@@ -89,17 +90,19 @@ public class TaskList {
      * @param index The index (1-based) of the task to be deleted.
      */
     public void deleteTask(int index, Ui ui) {
-        ui.printLine();
         try {
             if (index > tasks.size() | index <= 0) {
                 throw new IndexOutOfBoundsException();
             }
-            tasks.remove(index - 1);
             ui.printLine();
             ui.printMessage(Constants.TASK_AT_INDEX_DELETED_MESSAGE);
+            ui.printMessage(tasks.get(index - 1).getTaskInformation());
+            tasks.remove(index - 1);
+            ui.printMessage(Constants.NOW_YOU_HAVE + tasks.size() + Constants.TASK_S_IN_YOUR_LIST);
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
             LOGGER.log(Level.INFO, Constants.INDEX_TO_BE_DELETED_OUT_OF_BOUNDS_LOG);
+            ui.printLine();
             ui.printMessage(Constants.RE_ENTER_VALID_INDEX_TO_DELETE_MESSAGE);
             ui.printLine();
         }
@@ -112,7 +115,6 @@ public class TaskList {
      * @param index The index (1-based) of the task to be deleted.
      */
     public void editTask(int index, Ui ui) {
-        ui.printLine();
         try {
             if (index > tasks.size() | index <= 0) {
                 throw new IndexOutOfBoundsException();
@@ -245,7 +247,9 @@ public class TaskList {
      */
     public void searchTasks(String keyword, Ui ui) throws Exception {
         boolean hasMatchedTask = checkForMatchedTasks(keyword);
+        ui.printLine();
         if (hasMatchedTask) {
+            ui.printMessage(Constants.SEARCH_LIST_MESSAGE);
             printMatchedTasks(keyword, ui);
         } else {
             ui.printMessage(Constants.LIST_EMPTY_MESSAGE);
