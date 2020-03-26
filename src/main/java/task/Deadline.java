@@ -49,7 +49,7 @@ public class Deadline extends Task {
     public static final int EDIT_PRIORITY = 4;
     public static final String DEADLINE_IDENTIFIER = "D";
     public static final String DEADLINE_SYMBOL = "[D] ";
-    public static final String ON = " on ";
+    public static final String ON = " is due on ";
     public static final String ENTER_NEW_DUE_TIME_MESSAGE = "Enter new due Time:";
     public static final String DEADLINE_DETAILS_AS_FOLLOWS_MESSAGE = "The deadline details are as follows:";
     public static final String ASK_FOR_OPTION_MESSAGE = "Which field of the deadline to edit? (Enter Corresponding "

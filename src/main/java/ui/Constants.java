@@ -159,7 +159,7 @@ public class Constants {
     public static final String TASK_LIST_AS_FOLLOWS = "Here is the list of tasks added so far:";
     public static final String CLOSING_BRACKET = ") ";
     public static final String LIST_EMPTY_MESSAGE = "The list is empty.";
-    public static final String TASK_AT_INDEX_DELETED_MESSAGE = "The task at the mentioned index has been deleted";
+    public static final String TASK_AT_INDEX_DELETED_MESSAGE = "Noted! I have removed this task:";
     public static final String INDEX_TO_BE_DELETED_OUT_OF_BOUNDS_LOG = "Index specified to be deleted is out of bounds";
     public static final String RE_ENTER_VALID_INDEX_TO_DELETE_MESSAGE = "Invalid index entered. Please enter a valid"
             + " index to be deleted";
@@ -240,4 +240,8 @@ public class Constants {
     public static final String APPLICATION_CLOSED_SUCCESSFULLY = "Application closed successfully";
     public static final String SHORT_DESCRIPTION = "Description of location is too short!";
     public static final String STUDY_AREA_COMMAND = "study";
+    public static final String TASK_S_IN_YOUR_LIST = " task(s) in your list";
+    public static final String NOW_YOU_HAVE = "Now you have ";
+    public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
+            + " description are as follows:";
 }
