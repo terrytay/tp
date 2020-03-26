@@ -5,10 +5,9 @@
 ## Table of content
 1. [Introduction](#1-introduction)<br>
     1.1. [Purpose](#11-purpose)<br>
-    1.2. [Target User Profile](#12-target-user-profile)<br>
-    1.3. [Value Proposition](#13-value-proposition)<br>
-    1.4. [Brief Description](#14-brief-description)<br>
-    1.5. [Features](#14-main-features)<br>
+    1.2. [Target Reader](#12-target-reader)<br>
+    1.3. [Brief Description](#13-brief-description)<br>
+    1.4. [Main Features](#14-main-features)
 1. [Design](#2-design)<br>
     2.1. [Architecture](#21-architecture)<br>
     2.2. [Task Component](#22-task-component)<br>
@@ -19,38 +18,32 @@
 1. [Testing](#4-testing)<br>
 
 [Appendix A: Product Scope](#appendix-a-product-scope)<br>
-[Appendix B](#appendix-b-user-stories)<br>
-[Appendix C](#appendix-c-non-functional-requirements)<br>
-[Appendix D](#appendix-d-glossary)<br>
-[Appendix E](#appendix-e-instructions-for-manual-testing)<br>
+[Appendix B: User Stories](#appendix-b-user-stories)<br>
+[Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)<br>
+[Appendix D: Glossary](#appendix-d-glossary)<br>
+[Appendix E: Instruction for Manual Testing](#appendix-e-instructions-for-manual-testing)<br>
 
 ## 1. Introduction
 
 ### 1.1. Purpose
 
 The document is meant to teach you on how OrgaNice! is developed and the design and implementations behind the software.
-With this document, you should have a better understanding of the framework of the application.
+With this document, you should have a better understanding of the framework of the application. 
 
-### 1.2. Target User Profile  
+### 1.2. Target Reader
 
-Mainly NUS students and professors who :
-* need to manage their tasks, events and deadlines
-* prefer desktop app over other types
-* are new to the faculty (or freshmen) , and require knowledge on conducive areas to study
-* have specific needs for a conducive study area
+The target reader of this developer guide are:
 
+- Project Managers
+- Future Developers
+- Build Verification Testers
 
-### 1.3. Value proposition    
-<!-- to be finalised -->
-You can efficiently manage tasks, in terms of priority. You can also efficiently find a study area that 
-meets your needs and is conducive, should you urgently need one.
- 
-### 1.4. Brief Description
+### 1.3. Brief Description
 
 OrgaNice! is a task manager integrated with a study area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
 it is capable of assisting students in finding Study Areas that meets their desired criteria.
 
-### 1.5. Main Features
+### 1.4. Main Features
 
 1. Scheduling Tasks
     - You can manage tasks based on priority for events and countdown for deadlines.
@@ -210,11 +203,21 @@ Therefore, the first alternative is chosen, as it is easier to implement and les
 conducting the search.
 
 
-
 ## 4. Testing
 
 ## Appendix A: Product Scope 
+### Target User Profile  
 
+Mainly NUS students and professors who :
+* need to manage their tasks, events and deadlines
+* prefer desktop app over other types
+* are new to the faculty (or freshmen) , and require knowledge on conducive areas to study
+* have specific needs for a conducive study area
+
+### Value proposition    
+<!-- to be finalised -->
+You can efficiently manage tasks, in terms of priority. You can also efficiently find a study area that 
+meets your needs and is conducive, should you urgently need one.
 ## Appendix B: User Stories    
  
  |Version| As a ... | I want to ... | So that I can ...| 
