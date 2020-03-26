@@ -14,6 +14,8 @@ public class Parser {
     /**
      * Takes in the user input and parse it into understandable
      * commands and return the command needed.
+     *
+     * @param moduleManager ModuleManager object used to manage modules.
      * @param userInput input from the user
      * @return method to call Command of specific type
      */
