@@ -1,5 +1,8 @@
 package notes;
 
+
+import java.util.Scanner;
+
 public class Notes {
     ModulesList modulesList;
 
@@ -7,19 +10,48 @@ public class Notes {
         modulesList = ModulesList.getInstance();
     }
 
-    public void createModule() {
-        modulesList.createModule();
+    /**
+     * Creates a module.
+     */
+    public void createModule(String code) {
+        code = code.toUpperCase();
+
+        modulesList.createModule(code);
     }
 
-    public void deleteModule() {
-        modulesList.deleteModule();
+    /**
+     * Deletes a module.
+     */
+    public void deleteModule(String code) {
+        code = code.toUpperCase();
+
+        modulesList.deleteModule(code);
     }
 
-    public void importNotes() {
+    /**
+     * To enter into the module notes.
+     */
+    public void enterModule(String code) {
+        code = code.toUpperCase();
+
+        modulesList.enterModule(code);
 
     }
 
-    public void exportNotes() {
+    //    public void importModules() {
+    //
+    //    }
+    //
+    //    public void exportModules() {
+    //
+    //    }
 
+    /**
+     * Print all saved modules.
+     */
+    public void listModules() {
+        System.out.println("______________________________");
+        modulesList.listModules();
+        System.out.println("______________________________");
     }
 }
