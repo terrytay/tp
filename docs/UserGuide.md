@@ -469,99 +469,99 @@ Expected outcome:
          Tasks successfully scheduled.
     ________________________________________________________________________________________________
     
-    <a name="studyArea"></a>
-    
-    ### 3.12 Study Area Search Feature
-    
-    This feature allows you to search for study areas based on criteria that you desire. 
-    
-    <a name="enterStudyArea"></a>
-    #### 3.12.1 Entering Study Area Search Interface
-    
-    To enter the Study Area search interface, you can enter 'study' in the main interface. You will then be 
-    guided to the study area search interface. 
-    
-    ##### Usage
-    
-    Example of usage: 
-    `study`
-    
-    Expected Outcome:
-    
-        ________________________________________________________________________________________________
-             Please enter the location for your desired study area.
-             Enter "help" for a list of supported flags. Flags should
-             only come after location, if a criteria for location is
-             entered. When you are done with the search, enter "bye".
-        ________________________________________________________________________________________________
-    
-    <a name="studyAreaSearch"></a>
-    #### 3.12.2 Start Search
-    
-    You can start the search by entering the criteria desired. Supported criteria include name, address, faculty,
-    ports availability, environment and size capacity. For  name, address or faculty, you simply have to enter it
-    as a string. For other supported conditions, flags have to be used. 
-    
-    Below are the supported flags: 
-       * -s {size}  : To locate a study area based on the capacity that it can manage.
-       * -p         : To locate a study area based on the availability of ports.
-       * -i         : To locate a study area that are indoors.
-       * -o         : To locate a study area that are outdoors.
-    
-    Note: if name, address or faculty is specified, flags will have to precede either the name,address or faculty.
-    
-    ###### Usage
-    
-    ###### Search by name, address or faculty 
-    
-    Example of usage:
-    `bux`
-    
-    Expected Outcome:
-    
-        ________________________________________________________________________________________________
-             Here are the available study areas!
-             __________________________________________________________
-             Name: Opposite Town Green (Outside Starbucks)
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: false
-             Maximum number of Pax: 4
-             __________________________________________________________
-             __________________________________________________________
-             Name: Starbucks
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: true
-             Maximum number of Pax: 5
-             __________________________________________________________
-             Please enter the location for your desired study area.
-        ________________________________________________________________________________________________
-    
-    ##### Search by name, address or faculty and with flags
-    
-    Example of usage:
-    `bux - o`
-    
-    Expected Outcome:
-    
-        ________________________________________________________________________________________________
-             Here are the available study areas!
-             __________________________________________________________
-             Name: Opposite Town Green (Outside Starbucks)
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: false
-             Maximum number of Pax: 4
-             __________________________________________________________
-             Please enter the location for your desired study area.
-        ________________________________________________________________________________________________
+<a name="studyArea"></a>
+
+### 3.12 Study Area Search Feature
+
+This feature allows you to search for study areas based on criteria that you desire. 
+
+<a name="enterStudyArea"></a>
+#### 3.12.1 Entering Study Area Search Interface
+
+To enter the Study Area search interface, you can enter 'study' in the main interface. You will then be 
+guided to the study area search interface. 
+
+##### Usage
+
+Example of usage: 
+`study`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Please enter the location for your desired study area.
+         Enter "help" for a list of supported flags. Flags should
+         only come after location, if a criteria for location is
+         entered. When you are done with the search, enter "bye".
+    ________________________________________________________________________________________________
+
+<a name="studyAreaSearch"></a>
+#### 3.12.2 Start Search
+
+You can start the search by entering the criteria desired. Supported criteria include name, address, faculty,
+ports availability, environment and size capacity. For  name, address or faculty, you simply have to enter it
+as a string. For other supported conditions, flags have to be used. 
+
+Below are the supported flags: 
+   * -s {size}  : To locate a study area based on the capacity that it can manage.
+   * -p         : To locate a study area based on the availability of ports.
+   * -i         : To locate a study area that are indoors.
+   * -o         : To locate a study area that are outdoors.
+
+Note: if name, address or faculty is specified, flags will have to precede either the name,address or faculty.
+
+###### Usage
+
+###### Search by name, address or faculty 
+
+Example of usage:
+`bux`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Here are the available study areas!
+         __________________________________________________________
+         Name: Opposite Town Green (Outside Starbucks)
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: false
+         Maximum number of Pax: 4
+         __________________________________________________________
+         __________________________________________________________
+         Name: Starbucks
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: true
+         Maximum number of Pax: 5
+         __________________________________________________________
+         Please enter the location for your desired study area.
+    ________________________________________________________________________________________________
+
+##### Search by name, address or faculty and with flags
+
+Example of usage:
+`bux - o`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Here are the available study areas!
+         __________________________________________________________
+         Name: Opposite Town Green (Outside Starbucks)
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: false
+         Maximum number of Pax: 4
+         __________________________________________________________
+         Please enter the location for your desired study area.
+    ________________________________________________________________________________________________
 
 
 <a name="exit"></a>
