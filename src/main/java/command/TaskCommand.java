@@ -1,5 +1,6 @@
 package command;
 
+import command.studyarea.StudyAreaCommand;
 import parser.Parser;
 import studyarea.StudyAreaList;
 import task.TaskList;
