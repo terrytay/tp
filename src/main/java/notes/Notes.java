@@ -1,8 +1,6 @@
 package notes;
 
 
-import java.util.Scanner;
-
 public class Notes {
     ModulesList modulesList;
 
@@ -12,6 +10,8 @@ public class Notes {
 
     /**
      * Creates a module.
+     *
+     * @param code Module Code.
      */
     public void createModule(String code) {
         code = code.toUpperCase();
@@ -21,6 +21,8 @@ public class Notes {
 
     /**
      * Deletes a module.
+     *
+     * @param code Module Code.
      */
     public void deleteModule(String code) {
         code = code.toUpperCase();
@@ -30,6 +32,8 @@ public class Notes {
 
     /**
      * To enter into the module notes.
+     *
+     * @param code Module Code.
      */
     public void enterModule(String code) {
         code = code.toUpperCase();

@@ -26,6 +26,8 @@ public class ModulesList {
 
     /**
      * Create a module with code.
+     *
+     * @param code Module Code.
      */
     public void createModule(String code) {
         modules.putIfAbsent(code, new ArrayList<>());
@@ -36,6 +38,8 @@ public class ModulesList {
 
     /**
      * Delete a module using its code.
+     *
+     * @param code Module code.
      */
     public void deleteModule(String code) {
         if (modules.containsKey(code)) {
@@ -59,7 +63,7 @@ public class ModulesList {
     }
 
     /**
-     * Enters the module interface -> moduleManager.
+     * Enters the module interface of moduleManager.
      * @param code module code
      */
     public void enterModule(String code) {
