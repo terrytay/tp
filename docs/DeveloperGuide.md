@@ -61,6 +61,9 @@ The architecture diagram shown above gives a overview of the various components 
 
 ### 2.2. Task Component  
   
+
+[comment]: # (@@author GanapathySanathBalaji)  
+  
 The Task component depends on 3 other components,   
   
  1. Command Component - The Command component issues instructions for the Task component to execute based on the user's input.  
@@ -91,6 +94,8 @@ The task component contains 8 separate classes. They are as follows:
   8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.     
      
 
+[comment]: # (@@author)
+
 ### 2.3. Study Area Component  
    
  The Study Area component depends on 3 other components,  
@@ -118,6 +123,9 @@ The task component contains 8 separate classes. They are as follows:
 
 ### 3.1. Scheduling Tasks 
 
+
+[comment]: # (@@author GanapathySanathBalaji)
+
 #### 3.1.1 Implementation 
    Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
  The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
@@ -142,6 +150,8 @@ Aspect : How to capture user's requirements and handle it.
 
      Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user). 
+
+[comment]: # (@@author )
 
 ### 3.2 Listing Study Areas 
 
