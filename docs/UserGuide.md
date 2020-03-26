@@ -112,9 +112,9 @@ The Deadline task would be added to the list.
 Upon success a response similar to the following one would appear:
 
     ________________________________________________________________________________________________
-    	 A new task with the following information has been added.
-    	 [D] Math assignment is due on May 4 2020 at 18:00 with
-    	 priority 2
+         A new task with the following information has been added.
+         [D] Math assignment is due on May 4 2020 at 18:00 with
+         priority 2
     ________________________________________________________________________________________________
 
 
@@ -136,16 +136,16 @@ If the wrong format is used an alert would be displayed.
 
 ##### Example of usage: 
 The following adds a Team Meeting which is set to take place on 06-05-2020 from 9 am to 12 pm with a priority value of 3, as an event to the list of tasks.
-`deadline Math assignment /d 2020-05-04 /t 18:00 /p 2`
+`event Team Meeting /d 2020-06-06 /s 09:00 /e 12:00 /p 3`
 
 ##### Expected outcome:
 The Deadline task would be added to the list.
 Upon success a response similar to the following one would appear:
 
     ________________________________________________________________________________________________
-    	 A new task with the following information has been added.
-    	 [E] Team Meeting at Jun 6 2020 from 09:00 to 12:00 with
-    	 priority 3
+         A new task with the following information has been added.
+         [E] Team Meeting at Jun 6 2020 from 09:00 to 12:00 with
+         priority 3
     ________________________________________________________________________________________________
 
 <a name="delete"></a>
@@ -171,10 +171,10 @@ The task would be deleted from the list.
 Upon success a response similar to the following one would appear:
 
     ________________________________________________________________________________________________
-    	 Noted! I have removed this task:
-    	 [E] meeting at Apr 4 2020 from 12:00 to 18:00 with
-    	 priority 2
-    	 Now you have 2 task(s) in your list
+         Noted! I have removed this task:
+         [E] meeting at Apr 4 2020 from 12:00 to 18:00 with
+         priority 2
+         Now you have 2 task(s) in your list
     ________________________________________________________________________________________________
 
 <a name="edit"></a>
