@@ -4,7 +4,9 @@ import parser.Parser;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
+
 import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.STUDY_AREA_COMMAND;
 
 //@@author GanapathySanathBalaji
 /**
@@ -24,13 +26,13 @@ public class TaskCommand {
         String fullCommand;
         Command command;
 
-        fullCommand = ui.getUserIn();
+        fullCommand = ui.getUserIn().trim().toLowerCase();
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
-                command = parser.parseCommand(fullCommand);
-                if (command.isStudy) {
-                    command.executeCommand(studyAreaList, ui);
+                if (fullCommand.equals(STUDY_AREA_COMMAND)) {
+                    new StudyAreaCommand().executeStudyCommand(studyAreaList, ui);
                 } else {
+                    command = parser.parseCommand(fullCommand);
                     command.executeCommand(taskList, ui);
                 }
             } catch (Exception exception) {
