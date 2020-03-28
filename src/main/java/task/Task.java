@@ -8,6 +8,8 @@ public abstract class Task {
 
     public TaskType taskType;
 
+    public boolean isDeadline;
+
     public abstract int getPriority();
 
     public abstract LocalDate getDate();

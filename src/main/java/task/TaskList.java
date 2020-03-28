@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.MisuseOfSetDoneWithEvent;
 import ui.Constants;
 import ui.Ui;
 
@@ -292,4 +293,22 @@ public class TaskList {
         }
     }
 
+    /**
+     * This method sets tasks of deadline type at the specified index as done.
+     * @param index this is the index where the method will operate at.
+     * @param ui this allows for interaction with the user.
+     * @throws MisuseOfSetDoneWithEvent
+     */
+
+    public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent {
+        Task task = tasks.get(index);
+        if(task.isDeadline) {
+            Deadline deadline = (Deadline) task;
+            deadline.setDone();
+            ui.printMessage("Nice! I've marked this deadline as done!");
+            ui.printMessage(deadline.getTaskInformation());
+        } else {
+            throw new MisuseOfSetDoneWithEvent();
+        }
+    }
 }
