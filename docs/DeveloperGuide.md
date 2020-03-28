@@ -135,6 +135,14 @@ The task component contains 8 separate classes. They are as follows:
     Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
  displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
+ ![Overall Sequence Diagram](images/Schedule_Overall.png)
+ 
+ ![Sub Diagram 1](images/Schedule_Sub1.png)
+ 
+ ![Sub Diagram 2](images/Schedule_Sub2.png)
+ 
+ ![Sub Diagram 3](images/Schedule_Sub3.png)
+ 
 #### 3.1.2 Alternatives
 Aspect : How to capture user's requirements and handle it.
 
