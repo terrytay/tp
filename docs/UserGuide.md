@@ -55,31 +55,32 @@
 
 After providing the User's name, the application will proceed to list out the supported features.
     
-        ________________________________________________________________________________________________
-             Hello user!
-             Welcome to OrgaNice! Below would be a list of commands useful for you!
-             OrgaNice! Supports the following commands
-             Please enter the keywords followed by the information shown in the brackets
-             event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
-             ------------------------------------------- Create a new event
-             deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
-             ------------------------------------------- Create a new deadline
-             view -------------------------------------- View existing events
-             priority_view ----------------------------- View existing tasks based on priority
-             countdown --------------------------------- View existing tasks based on days left
-             clear ------------------------------------- Delete all tasks
-             search <keyword found in task> ------------ View existing task that contains the keyword
-             delete <index of task> -------------------- Delete the task
-             edit <index of task> ---------------------- Edit the task
-             done <index of task> ---------------------- Mark the deadline as done
-             schedule <number of task to be scheduled> - Schedule tasks
-             help -------------------------------------- View List Of Commands Supported
-             bye --------------------------------------- Terminate task interface
-             study ------------------------------------- Enter Study Area search interface
-             Notes:
-             *All dates should follow YYYY-MM-DD format
-             *All timing should follow 24 hour clock
-        ________________________________________________________________________________________________
+    ________________________________________________________________________________________________
+         Hello user!
+         Welcome to OrgaNice! Below would be a list of commands useful for you!
+         OrgaNice! Supports the following commands
+         Please enter the keywords followed by the information shown in the brackets
+         event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
+         ------------------------------------------- Create a new event
+         deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
+         ------------------------------------------- Create a new deadline
+         view -------------------------------------- View existing events
+         priority_view ----------------------------- View existing tasks based on priority
+         countdown --------------------------------- View existing tasks based on days left
+         clear ------------------------------------- Delete all tasks
+         search <keyword found in task> ------------ View existing task that contains the keyword
+         delete <index of task> -------------------- Delete the task
+         edit <index of task> ---------------------- Edit the task
+         done <index of task> ---------------------- Mark the deadline as done
+         schedule <number of task to be scheduled> - Schedule tasks
+         help -------------------------------------- View List Of Commands Supported
+         bye --------------------------------------- Terminate task interface
+         study ------------------------------------- Enter Study Area search interface
+         notes ------------------------------------- Enter Notes
+         Notes:
+         *All dates should follow YYYY-MM-DD format
+         *All timing should follow 24 hour clock
+    ________________________________________________________________________________________________
 
   * Some example commands you can try:
     * schedule {number of tasks}
@@ -442,28 +443,29 @@ Expected outcome:
 The application would be exited successfully.
 A response similar to the following one would appear:
 
-	________________________________________________________________________________________________
-    	 OrgaNice! Supports the following commands
-    	 Please enter the keywords followed by the information shown in the brackets
-    	 event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
-    	 ------------------------------------------- Create a new event
-    	 deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
-    	 ------------------------------------------- Create a new deadline
-    	 view -------------------------------------- View existing events
-    	 priority_view ----------------------------- View existing tasks based on priority
-    	 countdown --------------------------------- View existing tasks based on days left
-    	 clear ------------------------------------- Delete all tasks
-    	 search <keyword found in task> ------------ View existing task that contains the keyword
-    	 delete <index of task> -------------------- Delete the task
-    	 edit <index of task> ---------------------- Edit the task
-    	 done <index of task> ---------------------- Mark the deadline as done
-    	 schedule <number of task to be scheduled> - Schedule tasks
-    	 help -------------------------------------- View List Of Commands Supported
-    	 bye --------------------------------------- Terminate task interface
-    	 study ------------------------------------- Enter Study Area search interface
-    	 Notes:
-    	 *All dates should follow YYYY-MM-DD format
-    	 *All timing should follow 24 hour clock
+    ________________________________________________________________________________________________
+         OrgaNice! Supports the following commands
+         Please enter the keywords followed by the information shown in the brackets
+         event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>
+         ------------------------------------------- Create a new event
+         deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>
+         ------------------------------------------- Create a new deadline
+         view -------------------------------------- View existing events
+         priority_view ----------------------------- View existing tasks based on priority
+         countdown --------------------------------- View existing tasks based on days left
+         clear ------------------------------------- Delete all tasks
+         search <keyword found in task> ------------ View existing task that contains the keyword
+         delete <index of task> -------------------- Delete the task
+         edit <index of task> ---------------------- Edit the task
+         done <index of task> ---------------------- Mark the deadline as done
+         schedule <number of task to be scheduled> - Schedule tasks
+         help -------------------------------------- View List Of Commands Supported
+         bye --------------------------------------- Terminate task interface
+         study ------------------------------------- Enter Study Area search interface
+         notes ------------------------------------- Enter Notes
+         Notes:
+         *All dates should follow YYYY-MM-DD format
+         *All timing should follow 24 hour clock
     ________________________________________________________________________________________________
 
 

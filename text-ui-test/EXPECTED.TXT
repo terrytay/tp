@@ -31,6 +31,7 @@ ________________________________________________________________________________
 	 help -------------------------------------- View List Of Commands Supported
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
+	 notes ------------------------------------- Enter Notes
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
@@ -166,6 +167,7 @@ ________________________________________________________________________________
 	 help -------------------------------------- View List Of Commands Supported
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
+	 notes ------------------------------------- Enter Notes
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
