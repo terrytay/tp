@@ -475,7 +475,16 @@ A response similar to the following one would appear:
 <a name="schedule"></a>
 
 ### 3.12. Schedule tasks
-If you have a bunch of assignments, projects and exams happening over the next few weeks and are stressed out with planning a schedule which can fulfill the requirements, our schedule task command can be used. It creates a schedule based on the tasks details provided by the user. 
+If you have a bunch of assignments, projects and exams happening over the next few weeks and are stressed out with 
+planning a schedule which can fulfill the requirements, our schedule task command can help you by creating a feasible 
+schedule. It creates a schedule based on the tasks details provided by you. 
+
+#### Future Enhancements
+   The current version of the application doesn't take into account the other tasks present, however the priority 
+values can still be used to decide the task which is more important. In v3.0 our application will support scheduling tasks 
+while avoiding tasks present previously and also add support for tasks to be scheduled preemptively (i.e, tasks can be 
+scheduled over non contiguous days) .
+
 
 #### Usage
 
