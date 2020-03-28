@@ -1,12 +1,14 @@
 package command;
 
 import command.studyarea.StudyAreaCommand;
+import notes.NotesInvoker;
 import parser.Parser;
 import studyarea.StudyAreaList;
 import task.TaskList;
 import ui.Ui;
 
 import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.NOTES_COMMAND;
 import static ui.Constants.STUDY_AREA_COMMAND;
 
 //@@author GanapathySanathBalaji
@@ -32,6 +34,8 @@ public class TaskCommand {
             try {
                 if (fullCommand.equals(STUDY_AREA_COMMAND)) {
                     new StudyAreaCommand().executeStudyCommand(studyAreaList, ui);
+                } else if (fullCommand.equals(NOTES_COMMAND)) {
+                    new NotesInvoker();
                 } else {
                     command = parser.parseCommand(fullCommand);
                     command.executeCommand(taskList, ui);

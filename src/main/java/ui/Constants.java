@@ -51,7 +51,7 @@ public class Constants {
     public static final String NON_POSITIVE_INTEGER = "Integer entered cannot be zero or negative!";
     public static final String HELP_DESCRIPTION_21 = TAB + "*All timing should follow 24 hour clock";
     public static final String HELP_DESCRIPTION_20 = TAB + "*All dates should follow YYYY-MM-DD format";
-    public static final String HELP_DESCRIPTION_19 = TAB + "Notes:";
+    public static final String HELP_DESCRIPTION_19 = TAB + "notes ------------------------------------- Enter Notes";
     public static final String HELP_DESCRIPTION_18 = TAB + "study ------------------------------------- Enter Study "
             + "Area search interface";
     public static final String HELP_DESCRIPTION_17 = TAB + "bye --------------------------------------- Terminate task"
@@ -247,4 +247,7 @@ public class Constants {
     public static final String NOW_YOU_HAVE = "Now you have ";
     public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
             + " description are as follows:";
+
+
+    public static final String NOTES_COMMAND = "notes";
 }
