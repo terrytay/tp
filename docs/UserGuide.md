@@ -257,13 +257,13 @@ Expected outcome:
          5. Priority
 
 
-#### '3' - Specify field to be edited based on list
+#### `3` - Specify field to be edited based on list
 
 Expected outcome:
 
 	 Enter new Start Time:
     
-#### '12:00' - Enter the new value to be changed to
+#### `12:00` - Enter the new value to be changed to
 
 Expected outcome:
 
@@ -498,19 +498,19 @@ Expected outcome:
          days left from current day to finish it>
          Enter details for task 1:
 
-#### math exam /f 2 /d 10 - Details of first task
+#### `math exam /f 2 /d 10` - Details of first task
 
 Expected outcome:
 
 	 Enter details for task 2:
      
-#### physics exam /f 3 /d 7 - Details of second task
+#### `physics exam /f 3 /d 7` - Details of second task
 
 Expected outcome:
 
 	 Enter details for task 3:
      
-#### chemistry exam /f 1 /d 4 - Details of third task     
+#### `chemistry exam /f 1 /d 4` - Details of third task     
 
 Expected outcome:
 
