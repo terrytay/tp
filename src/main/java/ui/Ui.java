@@ -25,6 +25,8 @@ import static ui.Constants.HELP_DESCRIPTION_19;
 import static ui.Constants.HELP_DESCRIPTION_2;
 import static ui.Constants.HELP_DESCRIPTION_20;
 import static ui.Constants.HELP_DESCRIPTION_21;
+import static ui.Constants.HELP_DESCRIPTION_22;
+import static ui.Constants.HELP_DESCRIPTION_23;
 import static ui.Constants.HELP_DESCRIPTION_3;
 import static ui.Constants.HELP_DESCRIPTION_4;
 import static ui.Constants.HELP_DESCRIPTION_5;
@@ -189,6 +191,8 @@ public class Ui {
         this.out.println(HELP_DESCRIPTION_19);
         this.out.println(HELP_DESCRIPTION_20);
         this.out.println(HELP_DESCRIPTION_21);
+        this.out.println(HELP_DESCRIPTION_22);
+        this.out.println(HELP_DESCRIPTION_23);
         if (withLine) {
             printLine();
         }

@@ -49,18 +49,21 @@ public class Constants {
     public static final String EMPTY_LOCATION = "Location entered is empty! Please type a location to search for "
             + "StudyAreas!";
     public static final String NON_POSITIVE_INTEGER = "Integer entered cannot be zero or negative!";
-    public static final String HELP_DESCRIPTION_21 = TAB + "*All timing should follow 24 hour clock";
-    public static final String HELP_DESCRIPTION_20 = TAB + "*All dates should follow YYYY-MM-DD format";
-    public static final String HELP_DESCRIPTION_19 = TAB + "notes ------------------------------------- Enter Notes";
-    public static final String HELP_DESCRIPTION_18 = TAB + "study ------------------------------------- Enter Study "
+    public static final String HELP_DESCRIPTION_23 = TAB + "*All timing should follow 24 hour clock";
+    public static final String HELP_DESCRIPTION_22 = TAB + "*All dates should follow YYYY-MM-DD format";
+    public static final String HELP_DESCRIPTION_21 = TAB + "Notes:";
+    public static final String HELP_DESCRIPTION_20 = TAB + "notes ------------------------------------- Enter Notes";
+    public static final String HELP_DESCRIPTION_19 = TAB + "study ------------------------------------- Enter Study "
             + "Area search interface";
-    public static final String HELP_DESCRIPTION_17 = TAB + "bye --------------------------------------- Terminate task"
+    public static final String HELP_DESCRIPTION_18 = TAB + "bye --------------------------------------- Terminate task"
             + " interface";
-    public static final String HELP_DESCRIPTION_16 = TAB + "help -------------------------------------- View List Of "
+    public static final String HELP_DESCRIPTION_17 = TAB + "help -------------------------------------- View List Of "
             + "Commands Supported";
-    public static final String HELP_DESCRIPTION_15 = TAB + "schedule <number of task to be scheduled> - Schedule tasks";
-    public static final String HELP_DESCRIPTION_14 = TAB + "edit <index number of task> --------------- Edit the task";
-    public static final String HELP_DESCRIPTION_13 = TAB + "delete <index number of task> ------------- Delete the "
+    public static final String HELP_DESCRIPTION_16 = TAB + "schedule <number of task to be scheduled> - Schedule tasks";
+    public static final String HELP_DESCRIPTION_15 = TAB + "done <index of task> ---------------------- Mark the "
+            + "deadline as done";
+    public static final String HELP_DESCRIPTION_14 = TAB + "edit <index of task> ---------------------- Edit the task";
+    public static final String HELP_DESCRIPTION_13 = TAB + "delete <index of task> -------------------- Delete the "
             + "task";
     public static final String HELP_DESCRIPTION_12 = TAB + "search <keyword found in task> ------------ View existing "
             + "task that contains the keyword";
@@ -247,7 +250,5 @@ public class Constants {
     public static final String NOW_YOU_HAVE = "Now you have ";
     public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
             + " description are as follows:";
-
-
     public static final String NOTES_COMMAND = "notes";
 }
