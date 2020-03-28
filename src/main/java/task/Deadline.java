@@ -48,7 +48,9 @@ public class Deadline extends Task {
     private static final int EDIT_DUE_TIME = 3;
     public static final int EDIT_PRIORITY = 4;
     public static final String DEADLINE_IDENTIFIER = "D";
-    public static final String DEADLINE_SYMBOL = "[D] ";
+    public static final String DEADLINE_SYMBOL = "[D]";
+    public static final String COMPLETED_SYMBOL = "[COMPLETED] ";
+    public static final String PENDING_SYMBOL = "[PENDING] ";
     public static final String ON = " is due on ";
     public static final String ENTER_NEW_DUE_TIME_MESSAGE = "Enter new due Time:";
     public static final String DEADLINE_DETAILS_AS_FOLLOWS_MESSAGE = "The deadline details are as follows:";
@@ -63,6 +65,7 @@ public class Deadline extends Task {
     private LocalDate date;
     private LocalTime dueTime;
     private int priority;
+    private static boolean isDone;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
@@ -82,17 +85,48 @@ public class Deadline extends Task {
      * @param date Date of specified Deadline
      * @param dueTime Due time of specified deadline.
      * @param priority Priority of specified deadline.
+     * @param status this is the status of isDone.
      * @throws Exception If wrong format is used for date, time fields.
      */
-    public Deadline(String description, String date, String dueTime, String priority) throws Exception {
+    public Deadline(String description, String date, String dueTime, String priority, boolean status) throws Exception {
         taskType = TaskType.Deadline;
         parseDescription(description);
         parseDate(date);
         parseDueTime(dueTime);
         parsePriority(priority);
+        isDone = status;
     }
 
+    //@@author NizarMohd
+    /**
+     * This method sets isDone to true.
+     */
+    public void setDone() {
+        isDone = true;
+    }
 
+    /**
+     * This method retrieves isDone status.
+     * @return a boolean value depending on isDone status.
+     */
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    /**
+     * This method converts the isDone status into a String.
+     * @return String value in the format "[{status}]" where {status} is completed isDone is true and pending if
+     *         otherwise
+     */
+    public String toStringIsDone() {
+
+        if (isDone) {
+            return COMPLETED_SYMBOL;
+        }
+        return PENDING_SYMBOL;
+    }
+
+    //@@author
     /**
      * Returns the number of days left till the event.
      *
@@ -171,7 +205,7 @@ public class Deadline extends Task {
      * @return deadlineInfo Contains information related to the deadline.
      */
     public String getTaskInformation() {
-        String deadlineInfo = DEADLINE_SYMBOL + description + ON
+        String deadlineInfo = DEADLINE_SYMBOL + toStringIsDone() + description + ON
                 + date.format(DateTimeFormatter.ofPattern(DATE_PATTERN)) + AT + dueTime.toString()
                 + WITH_PRIORITY + priority;
         return deadlineInfo;
@@ -218,8 +252,9 @@ public class Deadline extends Task {
      * @return formattedDeadlineDetails Contains the deadline details in the required format.
      */
     public String getFormattedDetails() {
+        String isDoneString = Boolean.toString(getIsDone());
         String formattedDeadlineDetails = DEADLINE_IDENTIFIER + DELIMITER + description + DELIMITER + date + DELIMITER
-                + dueTime + DELIMITER + priority + NEW_LINE_CHARACTER;
+                + dueTime + DELIMITER + priority + DELIMITER + isDoneString + NEW_LINE_CHARACTER;
         return formattedDeadlineDetails;
     }
 
@@ -377,7 +412,6 @@ public class Deadline extends Task {
     private void printUpdatedDetails(Ui ui) {
         ui.printMessage(UPDATED_DETAILS);
         ui.printMessage(this.getTaskInformation());
-        ui.printLine();
     }
 
     /**
@@ -396,4 +430,5 @@ public class Deadline extends Task {
         ui.printMessage(OPTION_TO_EDIT_PRIORITY);
         ui.printEmptyLine();
     }
+
 }
