@@ -41,7 +41,7 @@ public class AddDeadlineCommand extends Command {
         String date = details[1].substring(2);
         String dueTime = details[2].substring(2);
         String priority = details[3].substring(2);
-        newDeadline =  new Deadline(description, date, dueTime, priority);
+        newDeadline =  new Deadline(description, date, dueTime, priority, false);
         assert !newDeadline.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
     }
 
