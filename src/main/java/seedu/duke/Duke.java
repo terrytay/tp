@@ -28,7 +28,7 @@ public class Duke {
     protected static StudyAreaLoader studyAreaLoader;
     private static TaskList taskList = new TaskList();
     private static StudyAreaList studyAreaList;
-    private static Ui ui = new Ui();
+    private static Ui ui;
     private static Parser parser;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -39,6 +39,7 @@ public class Duke {
         try {
             setupLogger();
             parser = new Parser();
+            ui = new Ui();
             taskLoader = new TaskLoader(Constants.FILE_PATH_EVENTS);
             taskList = new TaskList(taskLoader.loadFile());
             studyAreaLoader = new StudyAreaLoader(Constants.FILE_PATH_STUDY_AREAS);

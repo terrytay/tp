@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.DeadlineCompletionStatusNotABooleanException;
 import exception.command.EmptyDescriptionException;
 import exception.command.InvalidDateException;
 import exception.command.InvalidDueTimeException;
@@ -7,6 +8,7 @@ import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
 import ui.Ui;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +16,7 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static ui.Constants.AT;
 import static ui.Constants.DATE_AFTER_CURRENT_DATE;
 import static ui.Constants.DATE_PATTERN;
@@ -58,14 +61,19 @@ public class Deadline extends Task {
             + "Number)";
     public static final String OPTION_TO_EDIT_DUE_TIME = "3. Due Time";
     public static final String OPTION_TO_EDIT_PRIORITY = "4. Priority";
+    public static final String OPTION_TO_EDIT_IS_DONE = "5. Completion Status";
     private static final String INVALID_DUE_TIME = "Invalid due time entered by user";
     private static final String INVALID_DUE_TIME_ENTERED = "Invalid due time entered by the user";
     private static final String EMPTY_DESCRIPTION_MESSAGE = "Description provided is empty";
+    public static final String ENTER_NEW_IS_DONE = "Enter new value for isDone:";
+    public static final String IS_DONE_NOT_BOOLEAN = "Value entered for isDone field isn't a boolean value";
+    public static final String INVALID_IS_DONE_VALUE = "Invalid isDone value entered by user";
+    public static final int EDIT_COMPLETION_STATUS = 5;
     private String description;
     private LocalDate date;
     private LocalTime dueTime;
     private int priority;
-    private static boolean isDone;
+    private boolean isDone;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
@@ -135,6 +143,45 @@ public class Deadline extends Task {
     @Override
     public long numberOfDaysLeft() {
         return ChronoUnit.DAYS.between(LocalDate.now(),this.date);
+    }
+
+    /**
+     * Parses the completion status from the string entered by user for the isDone field.
+     *
+     * @param isDone String entered by user for the priority field.
+     * @throws Exception If the provided string isn't a boolean value.
+     */
+    private void parseCompletionStatus(String isDone) throws Exception {
+        try {
+            parseDoneStatus(isDone);
+        } catch (Exception e) {
+            LOGGER.log(Level.INFO, IS_DONE_NOT_BOOLEAN);
+            throw new DeadlineCompletionStatusNotABooleanException();
+        }
+    }
+
+    /**
+     * Parses the completion status from the given string.
+     *
+     * @param isDone The string used to denote completion status.
+     * @throws DeadlineCompletionStatusNotABooleanException If the entered string doesn't represent a boolean value.
+     */
+    private void parseDoneStatus(String isDone) throws DeadlineCompletionStatusNotABooleanException {
+        switch (isDone.strip()) {
+        case "TRUE":
+            // Fallthrough
+        case "true":
+            this.isDone = true;
+            break;
+        case "FALSE":
+            // Fallthrough
+        case "false":
+            this.isDone = false;
+            break;
+        default:
+            throw new DeadlineCompletionStatusNotABooleanException();
+            // break statement can't be reached if added
+        }
     }
 
     /**
@@ -281,6 +328,9 @@ public class Deadline extends Task {
         case EDIT_PRIORITY:
             editPriority(ui);
             break;
+        case EDIT_COMPLETION_STATUS:
+            editCompletionStatus(ui);
+            break;
         default:
             LOGGER.log(Level.SEVERE, WRONG_OPTION);
             ui.printMessage(ERROR_MESSAGE);
@@ -305,6 +355,27 @@ public class Deadline extends Task {
                 parsePriority(newPriorityString);
             } catch (Exception e) {
                 LOGGER.log(Level.INFO, INVALID_PRIORITY_VALUE);
+                ui.printMessage(e.getMessage());
+                exceptionEncountered = true;
+            }
+        } while (exceptionEncountered);
+    }
+
+    /**
+     * Used to edit the isDone field of the deadline.
+     *
+     * @param ui Used to interact with the user.
+     */
+    private void editCompletionStatus(Ui ui) {
+        boolean exceptionEncountered;
+        do {
+            exceptionEncountered = false;
+            ui.printMessage(ENTER_NEW_IS_DONE);
+            String newPriorityString = ui.getUserIn();
+            try {
+                parseCompletionStatus(newPriorityString);
+            } catch (Exception e) {
+                LOGGER.log(Level.INFO, INVALID_IS_DONE_VALUE);
                 ui.printMessage(e.getMessage());
                 exceptionEncountered = true;
             }
@@ -391,7 +462,7 @@ public class Deadline extends Task {
             exceptionEncountered = false;
             try {
                 fieldToBeEdited = Integer.parseInt(ui.getUserIn());
-                boolean isInvalidOption = fieldToBeEdited > 4 || fieldToBeEdited < 0;
+                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited < 0;
                 if (isInvalidOption) {
                     throw new Exception();
                 }
@@ -428,6 +499,7 @@ public class Deadline extends Task {
         ui.printMessage(OPTION_TO_EDIT_DATE);
         ui.printMessage(OPTION_TO_EDIT_DUE_TIME);
         ui.printMessage(OPTION_TO_EDIT_PRIORITY);
+        ui.printMessage(OPTION_TO_EDIT_IS_DONE);
         ui.printEmptyLine();
     }
 
