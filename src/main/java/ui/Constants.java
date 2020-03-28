@@ -167,6 +167,9 @@ public class Constants {
             + "edited successfully";
     public static final String RE_ENTER_VALID_INDEX_TO_EDIT_MESSAGE = "Invalid index entered. Please enter a"
             + " valid index to be edited";
+    public static final String RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE = "Invalid index entered. Please enter a"
+            + " valid index to be marked as done";
+    public static final String DEADLINE_MARKED_AS_DONE = "Nice! I've marked this deadline as done!";
     public static final String INVALID_TASK_TYPE_LOG = "Task type of the task to be edited not recognized";
     public static final String ERROR_ENCOUNTERED_DURING_EXECUTION_MESSAGE = "Error encountered during execution";
     public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared.";

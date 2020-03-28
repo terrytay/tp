@@ -7,6 +7,7 @@ import command.Command;
 import command.CountdownCommand;
 import command.CreateScheduleCommand;
 import command.DeleteCommand;
+import command.DoneCommand;
 import command.EditCommand;
 import command.HelpCommand;
 import command.PriorityViewCommand;
@@ -31,6 +32,7 @@ public class Parser {
     public static final String EMPTY_COMMAND = "";
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
+    public static final String DONE_COMMAND = "done";
 
 
     /**
@@ -78,6 +80,9 @@ public class Parser {
             break;
         case CREATE_SCHEDULE_COMMAND:
             command = new CreateScheduleCommand(isOneWordCommand, commandSplit);
+            break;
+        case DONE_COMMAND:
+            command = new DoneCommand(commandSplit,isOneWordCommand);
             break;
         case EMPTY_COMMAND:
             throw new Exception("Empty Line entered, Please enter a valid line");
