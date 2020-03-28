@@ -180,32 +180,623 @@ ________________________________________________________________________________
 	 Wrong command used to view events (Should be :view )
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
-	 Invalid command entered, Please enter a valid command
+	 Wrong command used to view countdown of events (Should be
+	 :countdown )
 ________________________________________________________________________________________________
-	   Goodbye! Hope to see you again!
-	 ``````````````````````````````````````````````````````````
-	 ````````````````````````````````:v(v'`````````````````````
-	 ```````````````````````````,)4|ex` `L}````````````````````
-	 `````````````````````````!s"'h `M:   ^z_;)T```````````````
-	 `````````````````````````Z   u|}Z:        "}``````````````
-	 ``````````````````````:=?)                'B?L'```````````
-	 `````````````````````'Z                    ;Yp"```````````
-	 `````````````````````.e                      ?_```````````
-	 ```````````````````'QDGH                    .5````````````
-	 ````````````````````I#g'         '_`        ||````````````
-	 ```````````:mX_``````YhL`      `'q!`   ?     h````````````
-	 ```````````'Qbs)|L=_V" 'Y}     ^'q@&b=c=_`  ,Z````````````
-	 ````````````q>     'T,   ,o"    ;"@c.   .sVx~`````````````
-	 ````````````c!             "bh` `,p       z:``````````````
-	 `````````````q.              ngDQmh8s     X'``````````````
-	 ``````````````LY"             :n}>``b;   _V```````````````
-	 ````````````````q?,                ?;   "V````````````````
-	 ``````````````KvR                  '  )x_`````````````````
-	 ``````````````zjL                  GLY"```````````````````
-	 ```````````````M                 .I)``````````````````````
-	 ```````````````Lz                `D:``````````````````````
-	 ``````````````vu`    (I)_;"".      P.`````````````````````
-	 ``````````````p     :X.':^,"=n    "q``````````````````````
-	 `````````````)0X?^:)I````````m'   :j``````````````````````
-	 `````````````.IGD8k'`````````<&G55M```````````````````````
-	 ``````````````````````````````````````````````````````````
+________________________________________________________________________________________________
+	 Please enter the location for your desired study area.
+	 Enter "help" for a list of supported flags. Flags should
+	 only come after location, if a criteria for location is
+	 entered. When you are done with the search, enter "bye".
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Location entered is empty! Please type a location to
+	 search for StudyAreas!
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here is a list of supported flags!
+	 -p for study areas with ports
+	 -i for study areas that are indoors
+	 -o for study areas that are outdoors
+	 -s {size} for maximum number of pax
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: Opposite Town Green (Outside Starbucks)
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Starbucks
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: MacCommons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: PC Commons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Ian and Peony Ferguson Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 3
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: The Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: OCBC
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 2
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: SuperSnacks
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: Opposite Town Green (Outside Starbucks)
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Starbucks
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Duplicate flags entered!
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Duplicate flags entered!
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: Starbucks
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: MacCommons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: PC Commons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Ian and Peony Ferguson Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 3
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: The Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
+	 Address: 2 College Ave West, Town Plaza, Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: SuperSnacks
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 1
+	 Address: 9 Engineering Drive 1,EA, Level 1
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 2
+	 Address: 9 Engineering Drive 1,EA, Level 2
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 3
+	 Address: 9 Engineering Drive 1,EA, Level 3
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 6
+	 Address: 9 Engineering Drive 1,EA, Level 6, EA06-23
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Central Library
+	 Address: Central Library 12 Kent Ridge Crescent
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: YIH Study Room
+	 Address: Yusof Ishak House, Level 2
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: Opposite Town Green (Outside Starbucks)
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Starbucks
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: MacCommons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: PC Commons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Ian and Peony Ferguson Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 3
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: The Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
+	 Address: 2 College Ave West, Town Plaza, Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: OCBC
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 2
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: SuperSnacks
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 1
+	 Address: 9 Engineering Drive 1,EA, Level 1
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 2
+	 Address: 9 Engineering Drive 1,EA, Level 2
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 3
+	 Address: 9 Engineering Drive 1,EA, Level 3
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 4
+	 Address: 9 Engineering Drive 1,EA, Level 4, Outside Staff
+	 Offices
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 6
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 5
+	 Address: 9 Engineering Drive 1,EA, Level 5, Outside of the
+	 door beside EA05
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 6
+	 Address: 9 Engineering Drive 1,EA, Level 6, EA06-23
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Central Library
+	 Address: Central Library 12 Kent Ridge Crescent
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: YIH Study Room
+	 Address: Yusof Ishak House, Level 2
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Max Size is not indicated. Please indicate accordingly!
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Argument used after size flag "-s" is not an integer
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Oops! Based on your criteria we were not able to find a
+	 compatible study area!
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Here are the available study areas!
+	 __________________________________________________________
+	 Name: Opposite Town Green (Outside Starbucks)
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Starbucks
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Ground Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: MacCommons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: PC Commons
+	 Address: 2 College Avenue West Education Resource Centre,
+	 Level 1
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Ian and Peony Ferguson Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 3
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: The Study
+	 Address: 2 College Ave West Education Resource Centre,
+	 Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Town Plaza Seminar Rooms Waiting Lounge
+	 Address: 2 College Ave West, Town Plaza, Level 2
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: OCBC
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 2
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: SuperSnacks
+	 Address: 2 College Ave West, Stephen Riady Centre, Ground
+	 Level
+	 Faculty: Utown
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 1
+	 Address: 9 Engineering Drive 1,EA, Level 1
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 2
+	 Address: 9 Engineering Drive 1,EA, Level 2
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 3
+	 Address: 9 Engineering Drive 1,EA, Level 3
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 4
+	 Address: 9 Engineering Drive 1,EA, Level 4, Outside Staff
+	 Offices
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 6
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 5
+	 Address: 9 Engineering Drive 1,EA, Level 5, Outside of the
+	 door beside EA05
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: false
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: EA Level 6
+	 Address: 9 Engineering Drive 1,EA, Level 6, EA06-23
+	 Faculty: Engineering
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: Central Library
+	 Address: Central Library 12 Kent Ridge Crescent
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 5
+	 Current availability: false
+	 __________________________________________________________
+	 __________________________________________________________
+	 Name: YIH Study Room
+	 Address: Yusof Ishak House, Level 2
+	 Faculty: -
+	 Port: true
+	 Indoor: true
+	 Maximum number of Pax: 4
+	 Current availability: true
+	 __________________________________________________________
+	 Please enter the location for your desired study area.
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Please enter the flag along with "-"
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Flags indicated are wrongly used. Please enter "help" for
+	 the supported flags!
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Thank you for using our study area search service!
+________________________________________________________________________________________________
