@@ -54,7 +54,7 @@ public class StudyArea {
     }
 
     /**
-     * This method returns the availability of that study area.
+     * This method retrieves the availability of that study area.
      * @return a boolean value based on isAvail.
      */
     public boolean getIsAvail() {
@@ -127,8 +127,7 @@ public class StudyArea {
                 + "Faculty: " + this.faculty + lineSeparator() + TAB
                 + "Port: " + this.hasPort + lineSeparator() + TAB
                 + "Indoor: " + this.isIndoor + lineSeparator() + TAB
-                + "Maximum number of Pax: " + this.maxPax + lineSeparator() + TAB
-                + "Current availability: " + this.isAvail;
+                + "Maximum number of Pax: " + this.maxPax;
         String line = TAB + "__________________________________________________________";
         return line + lineSeparator() + text + lineSeparator() + line;
     }

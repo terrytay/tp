@@ -1,6 +1,18 @@
 package parser;
 
-import command.*;
+import command.AddDeadlineCommand;
+import command.AddEventCommand;
+import command.ClearCommand;
+import command.Command;
+import command.CountdownCommand;
+import command.CreateScheduleCommand;
+import command.DeleteCommand;
+import command.DoneCommand;
+import command.EditCommand;
+import command.HelpCommand;
+import command.PriorityViewCommand;
+import command.SearchCommand;
+import command.ViewCommand;
 
 //@@author GanapathySanathBalaji
 /**
@@ -20,7 +32,7 @@ public class Parser {
     public static final String EMPTY_COMMAND = "";
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
-    public static final String DONE_COMMAND = "done" ;
+    public static final String DONE_COMMAND = "done";
 
 
     /**

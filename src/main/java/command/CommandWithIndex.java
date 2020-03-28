@@ -48,13 +48,11 @@ public class CommandWithIndex extends Command {
         CommandWithIndex.index = index;
     }
 
-
     /**
-     * This method returns the error message based on command used.
+     * This method assigns the error message based on command used.
      * @param commandType this is the type of command entered by user.
      * @return String value of the error message depending on command type.
      */
-
     public String getErrorMessage(String commandType) {
         switch (commandType) {
         case "delete":
@@ -67,6 +65,7 @@ public class CommandWithIndex extends Command {
             return null;
         }
     }
+
     @Override
     public void executeCommand(TaskList taskList, Ui ui) throws Exception {
 

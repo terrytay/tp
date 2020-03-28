@@ -41,8 +41,7 @@ public class TaskCommand {
                 ui.printMessage(exception.getMessage());
                 ui.printLine();
             }
-            fullCommand = ui.getUserIn();
-
+            fullCommand = ui.getUserIn().trim().toLowerCase();
         }
     }
 }

@@ -85,6 +85,7 @@ public class Deadline extends Task {
      * @param date Date of specified Deadline
      * @param dueTime Due time of specified deadline.
      * @param priority Priority of specified deadline.
+     * @param status this is the status of isDone.
      * @throws Exception If wrong format is used for date, time fields.
      */
     public Deadline(String description, String date, String dueTime, String priority, boolean status) throws Exception {
@@ -105,7 +106,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * This method returns isDone status.
+     * This method retrieves isDone status.
      * @return a boolean value depending on isDone status.
      */
     public boolean getIsDone() {
@@ -113,11 +114,10 @@ public class Deadline extends Task {
     }
 
     /**
-     * This method returns the isDone status into a String.
+     * This method converts the isDone status into a String.
      * @return String value in the format "[{status}]" where {status} is completed isDone is true and pending if
-     * otherwise.
+     *         otherwise
      */
-
     public String toStringIsDone() {
 
         if (isDone) {

@@ -304,11 +304,11 @@ public class TaskList {
      * @param deadline this is the deadline that the user is trying to mark as done.
      * @param ui this object allows for interaction with the user.
      * @throws IllegalDoneCommandException is thrown when user tries to mark deadline as done when it has already been
-     * done.
+     *          done.
      */
 
     public void checkIfDone(Deadline deadline, Ui ui) throws IllegalDoneCommandException {
-        if(deadline.getIsDone()){
+        if (deadline.getIsDone()) {
             throw new IllegalDoneCommandException("Deadline has already been marked as done!");
         }
     }
@@ -330,6 +330,7 @@ public class TaskList {
      * @param task this is the task to be set as done.
      * @param ui this object allows for interaction with User.
      * @throws IllegalDoneCommandException is thrown if user enters the done command wrongly.
+     * @throws MisuseOfSetDoneWithEvent if User tries to set Event as done.
      */
     public void executeDone(Task task, Ui ui) throws IllegalDoneCommandException, MisuseOfSetDoneWithEvent {
         if (task.taskType.equals(TaskType.Deadline)) {
@@ -348,6 +349,8 @@ public class TaskList {
      * This method sets tasks of deadline type at the specified index as done.
      * @param index this is the index where the method will operate at.
      * @param ui this allows for interaction with the user.
+     * @throws MisuseOfSetDoneWithEvent if user tries to set events as done.
+     * @throws IllegalDoneCommandException if user uses the done command wrongly.
      */
 
     public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent, IllegalDoneCommandException {
