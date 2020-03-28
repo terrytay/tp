@@ -419,7 +419,6 @@ public class Event extends Task {
     private void printUpdatedDetails(Ui ui) {
         ui.printMessage(Constants.UPDATED_DETAILS);
         ui.printMessage(this.getTaskInformation());
-        ui.printLine();
     }
 
     /**
