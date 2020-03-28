@@ -1,4 +1,4 @@
-# User Guide
+# OrgaNice! - User Guide
 
 ## Table Of Contents
 1. [Introduction](#intro)
