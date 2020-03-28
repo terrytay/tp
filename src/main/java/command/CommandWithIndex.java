@@ -21,7 +21,8 @@ public class CommandWithIndex extends Command {
      */
     public CommandWithIndex(String[] commandSplit, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            throw new MissingIndexException(getErrorMessage(commandSplit[0]));
+            String errorMessage = getErrorMessage(commandSplit[0]);
+            throw new MissingIndexException(errorMessage);
         }
         try {
             setIndex(Integer.parseInt(commandSplit[1]));
@@ -59,7 +60,7 @@ public class CommandWithIndex extends Command {
         case "delete":
             return "Index to delete not mentioned";
         case "edit" :
-            return "Index to edited not mentioned";
+            return "Index to edit not mentioned";
         case "done" :
             return "Index to be marked as done not mentioned";
         default:

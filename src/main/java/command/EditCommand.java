@@ -1,7 +1,5 @@
 package command;
 
-import exception.command.EditCommandMissingIndexException;
-import exception.command.IndexNotIntegerException;
 import task.TaskList;
 import ui.Ui;
 

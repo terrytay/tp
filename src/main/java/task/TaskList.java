@@ -126,6 +126,7 @@ public class TaskList {
             ui.printMessage(Constants.TASK_AT_INDEX_EDITED_MESSAGE);
             ui.printLine();
         } catch (IndexOutOfBoundsException e) {
+            ui.printLine();
             ui.printMessage(Constants.RE_ENTER_VALID_INDEX_TO_EDIT_MESSAGE);
             ui.printLine();
         }
@@ -297,18 +298,27 @@ public class TaskList {
      * This method sets tasks of deadline type at the specified index as done.
      * @param index this is the index where the method will operate at.
      * @param ui this allows for interaction with the user.
-     * @throws MisuseOfSetDoneWithEvent
      */
 
     public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent {
-        Task task = tasks.get(index);
-        if(task.isDeadline) {
-            Deadline deadline = (Deadline) task;
-            deadline.setDone();
-            ui.printMessage("Nice! I've marked this deadline as done!");
-            ui.printMessage(deadline.getTaskInformation());
-        } else {
-            throw new MisuseOfSetDoneWithEvent();
+        index--;
+        try {
+            if (index < 0 || index >= tasks.size()) {
+                throw new IndexOutOfBoundsException();
+            }
+            Task task = tasks.get(index);
+            if (task.taskType.equals(TaskType.Deadline)) {
+                Deadline deadline = (Deadline) task;
+                deadline.setDone();
+                ui.printMessage("Nice! I've marked this deadline as done!");
+                ui.printMessage(deadline.getTaskInformation());
+            } else {
+                throw new MisuseOfSetDoneWithEvent();
+            }
+        } catch (IndexOutOfBoundsException e) {
+            ui.printLine();
+            ui.printMessage(Constants.RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE);
+            ui.printLine();
         }
     }
 }

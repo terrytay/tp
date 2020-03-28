@@ -89,7 +89,6 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String date, String dueTime, String priority) throws Exception {
         taskType = TaskType.Deadline;
-        isDeadline = true;
         parseDescription(description);
         parseDate(date);
         parseDueTime(dueTime);

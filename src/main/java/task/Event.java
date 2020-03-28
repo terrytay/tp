@@ -77,7 +77,6 @@ public class Event extends Task {
     public Event(String description, String date, String startTime, String endTime, String priority)
             throws Exception {
         taskType = TaskType.Event;
-        isDeadline = false;
         parseDescription(description);
         parseDate(date);
         parseStartTime(startTime);

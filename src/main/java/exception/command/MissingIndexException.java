@@ -6,8 +6,7 @@ package exception.command;
  */
 public class MissingIndexException extends Exception {
 
-    public MissingIndexException(String errorMesage) {
-
-
+    public MissingIndexException(String errorMessage) {
+        super(errorMessage);
     }
 }
