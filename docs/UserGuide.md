@@ -469,6 +469,8 @@ Expected outcome:
          Tasks successfully scheduled.
     ________________________________________________________________________________________________
     
+    
+[comment]: # (@@author NizarMohd)     
 <a name="studyArea"></a>
 
 ### 3.12 Study Area Search Feature
@@ -563,9 +565,9 @@ Expected Outcome:
          Please enter the location for your desired study area.
     ________________________________________________________________________________________________
 
-
+[comment]: # (@@author )     
 <a name="exit"></a>
-  
+
 ### 3.13. Exit the Application / Study Area interface
 You use this command to exit the application. Before the actual application is exited the 
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
