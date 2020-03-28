@@ -1,20 +1,20 @@
-Mar 28, 2020 2:39:30 PM seedu.duke.Duke run
+Mar 28, 2020 2:58:38 PM seedu.duke.Duke run
 INFO: Application started Execution
-Mar 28, 2020 2:39:30 PM seedu.duke.Duke run
+Mar 28, 2020 2:58:38 PM seedu.duke.Duke run
 INFO: Application transitioning to task mode
-Mar 28, 2020 2:39:30 PM task.TaskList deleteTask
+Mar 28, 2020 2:58:38 PM task.TaskList deleteTask
 INFO: Index specified to be deleted is out of bounds
-Mar 28, 2020 2:39:30 PM task.Event getFieldToBeEdited
+Mar 28, 2020 2:58:38 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 28, 2020 2:39:30 PM task.Event getFieldToBeEdited
+Mar 28, 2020 2:58:38 PM task.Event getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 28, 2020 2:39:30 PM task.Event parseDate
+Mar 28, 2020 2:58:38 PM task.Event parseDate
 INFO: Date after current date exception thrown
-Mar 28, 2020 2:39:30 PM task.Event editDate
+Mar 28, 2020 2:58:38 PM task.Event editDate
 INFO: Invalid date entered by user
-Mar 28, 2020 2:39:30 PM task.Deadline getFieldToBeEdited
+Mar 28, 2020 2:58:38 PM task.Deadline getFieldToBeEdited
 INFO: Invalid option entered by user
-Mar 28, 2020 2:39:30 PM seedu.duke.Duke run
+Mar 28, 2020 2:58:38 PM seedu.duke.Duke run
 INFO: Application is going to exit
-Mar 28, 2020 2:39:30 PM seedu.duke.Duke run
+Mar 28, 2020 2:58:38 PM seedu.duke.Duke run
 INFO: Application closed successfully

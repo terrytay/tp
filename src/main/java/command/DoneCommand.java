@@ -2,7 +2,10 @@ package command;
 
 import task.TaskList;
 import ui.Ui;
-
+//@@ author NizarMohd
+/**
+ * This class executes the done command.
+ */
 public class DoneCommand extends CommandWithIndex {
 
     /**

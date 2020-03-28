@@ -2,6 +2,7 @@ package studyarea;
 
 import ui.Ui;
 
+import java.security.SecureRandom;
 import static java.lang.System.lineSeparator;
 import static ui.Constants.MAX_LINE_LENGTH;
 import static ui.Constants.TAB;
@@ -18,6 +19,7 @@ public class StudyArea {
     private boolean hasPort;
     private boolean isIndoor;
     private int maxPax;
+    private boolean isAvail;
 
     /**
      * Constructs a StudyArea class for a study area with its information
@@ -39,6 +41,24 @@ public class StudyArea {
         this.hasPort = hasPort;
         this.isIndoor = isIndoor;
         this.maxPax = maxPax;
+        this.isAvail = checkAvail();
+    }
+
+    /**
+     * This method randomly assigns availability.
+     * @return boolean value based random.nextBoolean() output.
+     */
+    public boolean checkAvail() {
+        SecureRandom random = new SecureRandom();
+        return random.nextBoolean();
+    }
+
+    /**
+     * This method returns the availability of that study area.
+     * @return a boolean value based on isAvail.
+     */
+    public boolean getIsAvail() {
+        return this.isAvail;
     }
 
     /**
@@ -107,7 +127,8 @@ public class StudyArea {
                 + "Faculty: " + this.faculty + lineSeparator() + TAB
                 + "Port: " + this.hasPort + lineSeparator() + TAB
                 + "Indoor: " + this.isIndoor + lineSeparator() + TAB
-                + "Maximum number of Pax: " + this.maxPax;
+                + "Maximum number of Pax: " + this.maxPax + lineSeparator() + TAB
+                + "Current availability: " + this.isAvail;
         String line = TAB + "__________________________________________________________";
         return line + lineSeparator() + text + lineSeparator() + line;
     }
