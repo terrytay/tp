@@ -6,6 +6,7 @@
 3. [Features](#features)<br>3.1. [Add new Deadline task](#add-deadline)<br>3.2. [Add new Event task](#add-event)<br>3.3. [Delete task](#delete)<br>3.4. [Mark deadline as done](#done)<br>3.5. [Edit task](#edit)<br>3.6. [Clear list of tasks](#clear)<br>3.7. [View list of tasks](#view)<br>3.8. [View list of tasks sorted by their priority](#priority)<br>3.9. [View list of tasks in a countdown format](#countdown)<br>3.10. [Search tasks](#search)<br>3.11. [View commands supported](#help)<br>3.12. [Schedule tasks](#schedule)<br>3.13. [Study Area Search Feature](#studyArea)<br>3.14. [Exit the Application / Study Area interface](#exit)<br>3.15. [Saving the data](#save-tasks)<br>3.16. [Clearing old tasks](#clear-old-tasks)<br>3.17. [Viewing tasks in calendar format](#calendar)<br>
 4. [FAQ](#faq)
 5. [Command Summary](#command-summary)
+6. [Formats Used](#formats)
 
 
 <a name="intro"></a>
@@ -100,9 +101,9 @@ After providing the User's name, the application will proceed to list out the su
 ### 3.1. Add new Deadline task
 Adds a new deadline task to track a task which needs to be finished before a specific date.
 
-##### Usage
+#### Usage
 
-##### `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks
+#### `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks
 
 The command creates a new Deadline task with the description, date, due time and priority value provided.
 Note: The date and time should be provided in the correct format as mentioned [here](#formats).
@@ -110,12 +111,12 @@ Note: The date and time should be provided in the correct format as mentioned [h
 Upon success a successful addition message similar to the one in the example would appear.
 If the wrong format is used an alert would be displayed.
 
-##### Example of usage: 
+#### Example of usage: 
 The following adds a Math assignment as a deadline task which is due on 04-05-2020 at 6 pm with a priority value of 2.
 
 `deadline Math assignment /d 2020-05-04 /t 18:00 /p 2`
 
-##### Expected outcome:
+#### Expected outcome:
 The Deadline task would be added to the list.
 Upon success a response similar to the following one would appear:
 
@@ -131,9 +132,9 @@ Upon success a response similar to the following one would appear:
 ### 3.2 Add new Event task
 Adds a new deadline task to track a task which needs to be finished before a specific date.
 
-##### Usage
+#### Usage
 
-##### `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks
+#### `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks
 
 
 The command creates a new Event task with the description, date, start time, end time and priority value provided.
@@ -142,12 +143,12 @@ Note: The date and time should be provided in the correct format as mentioned [h
 Upon success a successful addition message similar to the one in the example would appear.
 If the wrong format is used an alert would be displayed.
 
-##### Example of usage: 
+#### Example of usage: 
 The following adds a Team Meeting which is set to take place on 06-05-2020 from 9 am to 12 pm with a priority value of 3, as an event to the list of tasks.
 
 `event Team Meeting /d 2020-06-06 /s 09:00 /e 12:00 /p 3`
 
-##### Expected outcome:
+#### Expected outcome:
 The Deadline task would be added to the list.
 Upon success a response similar to the following one would appear:
 
@@ -163,9 +164,9 @@ Upon success a response similar to the following one would appear:
 ### 3.3. Delete task
 If a task is done and you want to remove it from the list this command could be used. It deletes the task at the specified index, usually one of the various view command are run to look at the index of the task to be deleted.
 
-##### Usage
+#### Usage
 
-###### `delete <index number of task>` - Deletes task at specified index
+##### `delete <index number of task>` - Deletes task at specified index
 
 The command deletes the task at the specifed index, if the index provided is valid.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -192,9 +193,9 @@ Upon success a response similar to the following one would appear:
 ### 3.4. Mark deadline as done
 If the work to be completed for a deadline is done but you still want to keep it in the list, this command could be used. It marks the deadline at the specified index as done, usually one of the various view command are run to look at the index of the deadline to be deleted.
 
-##### Usage
+#### Usage
 
-###### `done <index of deadline>` - Mark the deadline at the specified index as done
+#### `done <index of deadline>` - Mark the deadline at the specified index as done
 
 The command deletes the task at the specifed index, if the index provided is valid.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -219,13 +220,15 @@ Upon success a response similar to the following one would appear:
 <a name="edit"></a>
 
 ### 3.5. Edit task
-If a task has any of it's details altered, you can use this command to edit the appropriate field directly. This saves you the trouble of manually deleting and adding a new task. This command is a multi-stage command so that it is easier for you to do it. This command changes the specified field of the task mentioned by it's index. To view the index of the task, one of the various command to view the list of tasks (view, priority_view, countdown) is run.
+If a task has any of it's details altered, you can use this command to edit the appropriate field directly. This saves you the trouble of manually deleting and adding a new task. This command is a multi-stage command so that it is easier for you to do it. This command changes the specified field of the task mentioned by it's index. To view the index of the task, one of the various command to view the list of tasks (view, priority_view, countdown) is run. 
+
+Note: The date and time should be provided in the correct format as mentioned [here](#formats).
 
 #### Multi-Stage
 
-##### Usage 
+#### Usage 
 
-###### `edit <index number of task>` - Used to edit task at specified index
+#### `edit <index number of task>` - Used to edit task at specified index
 
 The interface then displays the task and the set of attributes of the task that can be edited, if the index is valid. You can then enter the field you would like to change and then the new value to change the field into. 
 
@@ -235,9 +238,9 @@ If the wrong format is used an alert would be displayed.
 
 Example of usage: 
 To edit the start time of the event at 2nd index of the list.
-###### Multi Stage
+#### Multi Stage
 
-###### `edit 2` - Specify the index of task to be edited 
+#### `edit 2` - Specify the index of task to be edited 
 
 Expected outcome:
 
@@ -254,13 +257,13 @@ Expected outcome:
          5. Priority
 
 
-###### '3' - Specify field to be edited based on list
+#### '3' - Specify field to be edited based on list
 
 Expected outcome:
 
 	 Enter new Start Time:
     
-###### '12:00' - Enter the new value to be changed to
+#### '12:00' - Enter the new value to be changed to
 
 Expected outcome:
 
@@ -278,9 +281,9 @@ Expected outcome:
 ### 3.6. Clear list of tasks
 If you would like to clear the current list of tasks and start on a clean state, this command could be used. Clears the list of tasks stored.
 
-##### Usage
+#### Usage
 
-###### `clear` - Clears the list of tasks
+#### `clear` - Clears the list of tasks
 
 The command clears the current list of tasks stored.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -304,9 +307,9 @@ Upon success a response similar to the following one would appear:
 ### 3.7. View list of tasks
 If you would like to view the current list of tasks, this command could be used. It shows the current list of tasks stored.
 
-##### Usage
+#### Usage
 
-###### `view` - Displays the current list of tasks
+#### `view` - Displays the current list of tasks
 
 The command displays the current list of tasks stored.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -334,9 +337,9 @@ Upon success a response similar to the following one would appear:
 ### 3.8. View list of tasks sorted by their priority
 If you would like to view the more important tasks from the current list of saved tasks first, this command could be used. It shows the current list of tasks after they are sorted based on their priority.
 
-##### Usage
+#### Usage
 
-###### `priority_view` - Displays the current list of tasks sorted by priority
+#### `priority_view` - Displays the current list of tasks sorted by priority
 
 The command displays the current list of tasks sorted by their priority.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -365,9 +368,9 @@ Upon success a response similar to the following one would appear:
 ### 3.9. View list of tasks in a countdown format
 If you would like to view the early tasks from the current list of saved tasks first along with the number of days left till the task, this command could be used. It shows the current list of tasks with the number of days left till each task, after they are sorted based on their date.
 
-##### Usage
+#### Usage
 
-###### `countdown` - Displays the current list in countdown format
+#### `countdown` - Displays the current list in countdown format
 
 The command displays the current list of tasks current list of tasks with the number of days left till each task sorted by their dates.
 Upon success a successful deletion message similar to the one in the example would appear.
@@ -399,9 +402,9 @@ Upon success a response similar to the following one would appear:
 If you would like to quickly find a task based on it's description, this command could be used. It performs a linear search of all tasks stored in the list at the point of execution and list
 all the tasks containing the keyword in their description in a numbered list.
 
-##### Usage
+### Usage
 
-##### `search <keyword found in task>` - Lists all matching tasks in the list containing the keyword 
+#### `search <keyword found in task>` - Lists all matching tasks in the list containing the keyword 
 
 The command displays all the tasks with description containg the keyword searched for in a numbered list.
 Upon success a successful message similar to the one in the example would appear.
@@ -428,9 +431,9 @@ A response similar to the following one would appear:
 ### 3.11. View commands supported 
 If you are a new user or forgot the syntax of any command, our help command could be used. The command displays the list of commands supported by the application.
 
-##### Usage
+#### Usage
 
-###### `help` - Displays list of commands supported 
+#### `help` - Displays list of commands supported 
 
 The command displays the list of commands supported by the application.
 If the wrong format is used an invalid command alert would be displayed.
@@ -474,16 +477,16 @@ A response similar to the following one would appear:
 ### 3.12. Schedule tasks
 If you have a bunch of assignments, projects and exams happening over the next few weeks and are stressed out with planning a schedule which can fulfill the requirements, our schedule task command can be used. It creates a schedule based on the tasks details provided by the user. 
 
-##### Usage
+#### Usage
 
-###### `schedule <number of task to be scheduled>` - Used to schedule a set of tasks specified by the user 
+#### `schedule <number of task to be scheduled>` - Used to schedule a set of tasks specified by the user 
 
 Then a set of lines are displayed which specify the format to be used to specify the new tasks to be scheduled. After you input the relevant data. The application would find a feasible schedule satisfying your constraints, if it is possible to do so. If it is possible, the list of events that were created when the task were scheduled is added to the current list of tasks. If it is impossible, a message to alert the user is specified too.
 If the wrong format is used an invalid command alert would be displayed.
 
 Example of usage: 
 
-###### `schedule 3` - Schedule 3 tasks
+#### `schedule 3` - Schedule 3 tasks
 
 Expected outcome:
 
@@ -493,19 +496,19 @@ Expected outcome:
          days left from current day to finish it>
          Enter details for task 1:
 
-###### math exam /f 2 /d 10 -> Details of first task
+#### math exam /f 2 /d 10 - Details of first task
 
 Expected outcome:
 
 	 Enter details for task 2:
      
-###### physics exam /f 3 /d 7 -> Details of second task
+#### physics exam /f 3 /d 7 - Details of second task
 
 Expected outcome:
 
 	 Enter details for task 3:
      
-###### chemistry exam /f 1 /d 4 -> Details of third task     
+#### chemistry exam /f 1 /d 4 - Details of third task     
 
 Expected outcome:
 
@@ -533,7 +536,7 @@ This feature allows you to search for study areas based on criteria that you des
 To enter the Study Area search interface, you can enter 'study' in the main interface. You will then be 
 guided to the study area search interface. 
 
-##### Usage
+#### Usage
 
 Example of usage: 
 
@@ -563,9 +566,9 @@ Below are the supported flags:
 
 Note: if name, address or faculty is specified, flags will have to precede either the name,address or faculty.
 
-###### Usage
+#### Usage
 
-###### Search by name, address or faculty 
+#### Search by name, address or faculty 
 
 Example of usage:
 
@@ -596,7 +599,7 @@ Expected Outcome:
          Please enter the location for your desired study area.
     ________________________________________________________________________________________________
 
-##### Search by name, address or faculty and with flags
+#### Search by name, address or faculty and with flags
 
 Example of usage:
 
@@ -626,9 +629,9 @@ You use this command to exit the application. Before the actual application is e
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
 secondary study area search interface.
 
-##### Usage
+#### Usage
 
-##### `bye` - Exit the Application / Study Area interface
+#### `bye` - Exit the Application / Study Area interface
 
 The command when issued performs an exit.
 Upon success a successful message similar to the one in the example would appear and the application would be exited.
@@ -716,13 +719,23 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 
 ## 5. Command Summary
 
-###### `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasksace
-###### `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks
-###### `delete <index number of task>` - Deletes task at specified index
-###### `edit <index number of task>` - Used to edit task at specified index
-###### `clear` - Clears the list of tasks
-###### `view` - Displays the current list of tasks
-###### `priority_view` - Displays the current list of tasks sorted by priority
-###### `countdown` - Displays the current list in countdown format
-###### `search <keyword found in task>` - Lists all matching tasks in the list containing the keyword 
-###### `bye` - Exit the Application / Study Area interface
+`deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks <br>
+`event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks <br>
+`delete <index number of task>` - Deletes task at specified index <br>
+`done <index of deadline>` - Mark the deadline at the specified index as done <br>
+`edit <index number of task>` - Used to edit task at specified index <br>
+`clear` - Clears the list of tasks <br>
+`view` - Displays the current list of tasks <br>
+`priority_view` - Displays the current list of tasks sorted by priority <br>
+`countdown` - Displays the current list in countdown format <br>
+`search <keyword found in task>` - Lists all matching tasks in the list containing the keyword <br>
+`bye` - Exit the Application / Study Area interface <br>
+`study` - Enter study area search interface <br>
+
+<a name="formats"></a>
+
+## 6. Formats Used
+
+Time should be in the form of `HH:MM` (24 Hour Format, HH - Hour, MM - Minute) <br>
+Date should be in the form of `YYYY-MM-DD` (YYYY - Year, MM - Month, DD - Day) <br>
+
