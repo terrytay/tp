@@ -29,9 +29,6 @@ edit 1
 assignment
 event
 view list
-task
-bye
-task
 countdown view
 study
 
