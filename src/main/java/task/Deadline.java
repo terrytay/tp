@@ -87,13 +87,13 @@ public class Deadline extends Task {
      * @param priority Priority of specified deadline.
      * @throws Exception If wrong format is used for date, time fields.
      */
-    public Deadline(String description, String date, String dueTime, String priority) throws Exception {
+    public Deadline(String description, String date, String dueTime, String priority, boolean status) throws Exception {
         taskType = TaskType.Deadline;
         parseDescription(description);
         parseDate(date);
         parseDueTime(dueTime);
         parsePriority(priority);
-        isDone = false;
+        isDone = status;
     }
 
     //@@author NizarMohd
@@ -252,8 +252,9 @@ public class Deadline extends Task {
      * @return formattedDeadlineDetails Contains the deadline details in the required format.
      */
     public String getFormattedDetails() {
+        String isDoneString = Boolean.toString(getIsDone());
         String formattedDeadlineDetails = DEADLINE_IDENTIFIER + DELIMITER + description + DELIMITER + date + DELIMITER
-                + dueTime + DELIMITER + priority + NEW_LINE_CHARACTER;
+                + dueTime + DELIMITER + priority + DELIMITER + isDoneString + NEW_LINE_CHARACTER;
         return formattedDeadlineDetails;
     }
 
@@ -411,7 +412,6 @@ public class Deadline extends Task {
     private void printUpdatedDetails(Ui ui) {
         ui.printMessage(UPDATED_DETAILS);
         ui.printMessage(this.getTaskInformation());
-        ui.printLine();
     }
 
     /**
@@ -430,4 +430,5 @@ public class Deadline extends Task {
         ui.printMessage(OPTION_TO_EDIT_PRIORITY);
         ui.printEmptyLine();
     }
+
 }

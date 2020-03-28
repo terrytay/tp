@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.IllegalDoneCommandException;
 import exception.command.MisuseOfSetDoneWithEvent;
 import ui.Constants;
 import ui.Ui;
@@ -10,6 +11,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static ui.Constants.DEADLINE_MARKED_AS_DONE;
+import static ui.Constants.RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE;
 
 //@@author GanapathySanathBalaji
 /**
@@ -295,30 +299,60 @@ public class TaskList {
     }
 
     /**
+     * This method checks if deadline has already been marked as done.
+     * @param deadline this is the deadline that the user is trying to mark as done.
+     * @param ui this object allows for interaction with the user.
+     * @throws IllegalDoneCommandException is thrown when user tries to mark deadline as done when it has already been
+     * done.
+     */
+
+    public void checkIfDone(Deadline deadline, Ui ui) throws IllegalDoneCommandException {
+        if(deadline.getIsDone()){
+            throw new IllegalDoneCommandException("Deadline has already been marked as done!");
+        }
+    }
+
+    /**
+     * This method checks for the upper and lower bounds of index.
+     * @param index this is the index that is being checked.
+     * @throws IllegalDoneCommandException is thrown when the user enters an index that is out of both bounds.
+     */
+
+    public void checkIndexBounds(int index) throws IllegalDoneCommandException {
+        if (index < 0 || index >= tasks.size()) {
+            throw new IllegalDoneCommandException(RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE);
+        }
+    }
+
+    /**
+     * This method executes the overall process to mark a deadline as done.
+     * @param task this is the task to be set as done.
+     * @param ui this object allows for interaction with User.
+     * @throws IllegalDoneCommandException is thrown if user enters the done command wrongly.
+     */
+    public void executeDone(Task task, Ui ui) throws IllegalDoneCommandException, MisuseOfSetDoneWithEvent {
+        if (task.taskType.equals(TaskType.Deadline)) {
+            Deadline deadline = (Deadline) task;
+            checkIfDone(deadline, ui);
+            deadline.setDone();
+            ui.printLine();
+            ui.printMessage(DEADLINE_MARKED_AS_DONE);
+            ui.printMessage(deadline.getTaskInformation());
+            ui.printLine();
+        } else {
+            throw new MisuseOfSetDoneWithEvent();
+        }
+    }
+    /**
      * This method sets tasks of deadline type at the specified index as done.
      * @param index this is the index where the method will operate at.
      * @param ui this allows for interaction with the user.
      */
 
-    public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent {
+    public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent, IllegalDoneCommandException {
         index--;
-        try {
-            if (index < 0 || index >= tasks.size()) {
-                throw new IndexOutOfBoundsException();
-            }
-            Task task = tasks.get(index);
-            if (task.taskType.equals(TaskType.Deadline)) {
-                Deadline deadline = (Deadline) task;
-                deadline.setDone();
-                ui.printMessage("Nice! I've marked this deadline as done!");
-                ui.printMessage(deadline.getTaskInformation());
-            } else {
-                throw new MisuseOfSetDoneWithEvent();
-            }
-        } catch (IndexOutOfBoundsException e) {
-            ui.printLine();
-            ui.printMessage(Constants.RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE);
-            ui.printLine();
-        }
+        checkIndexBounds(index);
+        Task task = tasks.get(index);
+        executeDone(task, ui);
     }
 }
