@@ -26,7 +26,7 @@
 
 ### 1.1. Purpose
 
-The document is meant to teach you on how OrgaNice! is developed and the design and implementations behind the software.
+The document is meant to teach you on how OrgaNice! was developed and the design and implementations behind the software.
 With this document, you should have a better understanding of the framework of the application. 
 
 ### 1.2. Target Reader
@@ -94,7 +94,7 @@ The task component contains 8 separate classes. They are as follows:
   8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.     
      
 
-[comment]: # (@@author)
+[comment]: # (@@author NizarMohd)
 
 ### 2.3. Study Area Component  
    
@@ -151,7 +151,7 @@ Aspect : How to capture user's requirements and handle it.
      Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user). 
 
-[comment]: # (@@author )
+[comment]: # (@@author NizarMohd)
 
 ### 3.2 Listing Study Areas 
 
@@ -211,8 +211,8 @@ will be added to the output list.
 Therefore, the first alternative is chosen, as it is easier to implement and lesser memory is used while 
 conducting the search.
 
-
-## 4. Testing
+[comment]: # (@@author )
+## 4. Testing 
 
 ## Appendix A: Product Scope 
 ### Target User Profile  
@@ -248,7 +248,7 @@ meets your needs and is conducive, should you urgently need one.
 
 ## Appendix D: Glossary    
 
- * *flag* - criteria that is supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
+ * *flag* - criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate. 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage.
 

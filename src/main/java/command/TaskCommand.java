@@ -1,5 +1,6 @@
 package command;
 
+import command.studyarea.StudyAreaCommand;
 import notes.NotesInvoker;
 import parser.Parser;
 import studyarea.StudyAreaList;
@@ -44,8 +45,7 @@ public class TaskCommand {
                 ui.printMessage(exception.getMessage());
                 ui.printLine();
             }
-            fullCommand = ui.getUserIn();
-
+            fullCommand = ui.getUserIn().trim().toLowerCase();
         }
     }
 }
