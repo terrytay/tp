@@ -2,11 +2,28 @@
 
 ## Table Of Contents
 1. [Introduction](#intro)
-2. [Quick Start](#quick-start)
-3. [Features](#features)<br>3.1. [Add new Deadline task](#add-deadline)<br>3.2. [Add new Event task](#add-event)<br>3.3. [Delete task](#delete)<br>3.4. [Mark deadline as done](#done)<br>3.5. [Edit task](#edit)<br>3.6. [Clear list of tasks](#clear)<br>3.7. [View list of tasks](#view)<br>3.8. [View list of tasks sorted by their priority](#priority)<br>3.9. [View list of tasks in a countdown format](#countdown)<br>3.10. [Search tasks](#search)<br>3.11. [View commands supported](#help)<br>3.12. [Schedule tasks](#schedule)<br>3.13. [Study Area Search Feature](#studyArea)<br>3.14. [Exit the Application / Study Area interface](#exit)<br>3.15. [Saving the data](#save-tasks)<br>3.16. [Clearing old tasks](#clear-old-tasks)<br>3.17. [Viewing tasks in calendar format](#calendar)<br>
-4. [FAQ](#faq)
-5. [Command Summary](#command-summary)
-6. [Formats Used](#formats)
+1. [Quick Start](#quick-start)
+1. [Features](#features) <br>
+    3.1. [Add new Deadline task](#add-deadline) <br>
+    3.2. [Add new Event task](#add-event) <br>
+    3.3. [Delete task](#delete) <br>
+    3.4. [Mark deadline as done](#done) <br>
+    3.5. [Edit task](#edit) <br>
+    3.6. [Clear list of tasks](#clear) <br>
+    3.7. [View list of tasks](#view) <br>
+    3.8. [View list of tasks sorted by their priority](#priority) <br>
+    3.9. [View list of tasks in a countdown format](#countdown) <br>
+    3.10. [Search tasks](#search) <br>
+    3.11. [View commands supported](#help) <br>
+    3.12. [Schedule tasks](#schedule) <br>
+    3.13. [Study Area Search Feature](#studyArea) <br>
+    3.14. [Exit the Application / Study Area interface](#exit) <br>
+    3.15. [Saving the data](#save-tasks) <br>
+    3.16. [Clearing old tasks](#clear-old-tasks) <br>
+    3.17. [Viewing tasks in calendar format](#calendar) <br>
+1. [FAQ](#faq)
+1. [Command Summary](#command-summary)
+1. [Formats Used](#formats)
 
 
 <a name="intro"></a>
