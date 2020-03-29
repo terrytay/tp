@@ -144,7 +144,8 @@ public class StudyArea {
         if (this.address.toLowerCase().contains(key) || this.address.toLowerCase().contains(Dictionary.parseKey(key))) {
             return true;
         }
-        return this.faculty.toLowerCase().contains((key)) || this.faculty.toLowerCase().contains(Dictionary.parseKey(key));
+        return this.faculty.toLowerCase().contains((key))
+                || this.faculty.toLowerCase().contains(Dictionary.parseKey(key));
     }
 
     /**
@@ -154,6 +155,6 @@ public class StudyArea {
      * @return True if the size stated by the user is smaller than or equals to the maximum size of the Study Area.
      */
     public boolean isSizeCapable(String size) {
-      return  Integer.parseInt(size) <= this.maxPax;
+        return  Integer.parseInt(size) <= this.maxPax;
     }
 }
