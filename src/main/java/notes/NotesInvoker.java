@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 
 
-public class Example {
+public class NotesInvoker {
 
     /**
-     * Prototype of note taking feature based on modules.
-     * @param args just ignore this.
+     * Constructor to invoke Notes app.
      */
-    public static void main(String[] args) {
+    public NotesInvoker() {
         Notes notes = new Notes();
         Scanner input = new Scanner(System.in);
         String choice;
