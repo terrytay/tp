@@ -39,7 +39,7 @@ The target reader of this developer guide are:
 
 ### 1.3. Brief Description
 
-OrgaNice! is a task manager integrated with a study area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
+OrgaNice! is a task manager integrated with a Study Area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
 it is capable of assisting students in finding Study Areas that meets their desired criteria.
 
 ### 1.4. Main Features
@@ -47,7 +47,7 @@ it is capable of assisting students in finding Study Areas that meets their desi
 1. Scheduling Tasks
     - You can manage tasks based on priority for events and countdown for deadlines.
 1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
-    - You can find a study area that meets your criteria. The software however have a limited number of supported 
+    - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
 
 ## 2. Design   
@@ -117,7 +117,7 @@ The task component contains 8 separate classes. They are as follows:
     
    2. StudyArea : Class that is used to model Study Areas. 
    
-   3. StudyAreaList : Class that handles the list of available study areas based on User input.  
+   3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
         
 ## 3. Implementation
 
@@ -156,19 +156,19 @@ the user's requirements (e.g. Changes to the number of parameters provided by th
 ### 3.2 Listing Study Areas 
 
 #### 3.2.1 Implementation 
-The study area search is facilitated by StudyAreaList. In this class, it has the list of all existing study areas, 
+The Study Area search is facilitated by StudyAreaList. In this class, it has the list of all existing Study Areas, 
 stored internally as an ArrayList. This ArrayList is called studyAreaList. 
 
-To list the study area, we iterate through the entire list of all existing study area and conduct a check. The check is 
+To list the Study Area, we iterate through the entire list of all existing Study Area and conduct a check. The check is 
 as follows :
 
-If in each study area, the study area meets all the flags stated by the User, the study area is then added to the 
-list of available study area. If not, the iteration is skipped and move on to the subsequent study area.
+If in each Study Area, the Study Area meets all the flags stated by the User, the Study Area is then added to the 
+list of available Study Area. If not, the iteration is skipped and move on to the subsequent Study Area.
 
 To do as mentioned above, the StudyAreaList class implements the following main methods :
 
 - searchList() : 
-    - This method will iterate through all the study areas in the ArrayList studyAreaList while calling other methods 
+    - This method will iterate through all the Study Areas in the ArrayList studyAreaList while calling other methods 
     to carry out the search. Once process has ended, the method will return a list of the Study Area, availStudyArea, 
     that meets the User requirement.
 - getFlagsInfo() : 
@@ -183,8 +183,16 @@ To do as mentioned above, the StudyAreaList class implements the following main 
 
 Below would be a sequence diagram to demonstrate how the search algorithm is operated.
 
-![Study Area Sequence_Diagram](images/studyAreaSequenceDiagram.png)  
 
+![Study Area Sequence_Diagram_Main](images/user_sL_interaction.png)  
+###### User to OrgaNice interaction
+<br><br>
+
+![Study_Area_Sequence_Diagram_subModules](images/sL_sA_interaction.png)
+###### Interaction within OrgaNice's submodule
+<br><br>
+
+You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
 #### 3.2.2 Alternative 
 Aspect: How to search based on User input.
 
@@ -200,8 +208,8 @@ meets User's Criteria
     Create adjacency lists based on Study Area attributes. If the Study Area contains that attribute, the 
 Study Area is added in that specific attribute list. The creation and initialisation of attribute lists are done when
 the software is setting up. For example : Locations -> Study Area. Therefore, each attribute has its own list. Based on
-user criteria, concatenate the output list with the study areas in the related attribute list. If more than one 
-requirement is entered by the user, only the study areas appears in all the related attributes specified by the User 
+user criteria, concatenate the output list with the Study Areas in the related attribute list. If more than one 
+requirement is entered by the user, only the Study Areas appears in all the related attributes specified by the User 
 will be added to the output list.
     - Pros : Data is categorised base on attributes
     - Cons : More memory is required as more data structures are used. Since methods invoked during the search are also 
@@ -221,12 +229,13 @@ Mainly NUS students and professors who :
 * need to manage their tasks, events and deadlines
 * prefer desktop app over other types
 * are new to the faculty (or freshmen) , and require knowledge on conducive areas to study
-* have specific needs for a conducive study area
+* have specific needs for a conducive Study Area
 
 ### Value proposition    
-<!-- to be finalised -->
-You can efficiently manage tasks, in terms of priority. You can also efficiently find a study area that 
+
+You can efficiently manage tasks, in terms of priority. You can also efficiently find a Study Area that 
 meets your needs and is conducive, should you urgently need one.
+
 ## Appendix B: User Stories    
  
  |Version| As a ... | I want to ... | So that I can ...| 
@@ -238,20 +247,39 @@ meets your needs and is conducive, should you urgently need one.
  |v1.0|user|view my list of tasks sorted based on their date|be aware of all the tasks that are due/happening soon|  
  |v1.0|user|view my list of tasks sorted based on their priority|be aware of the more important tasks|  
  |v1.0|user|find a task by name|locate a task without having to go through the entire list|    
- |v1.0|student|find a study area based on location and environment|have a conducive space to study|
- |v1.0|professor|locate a study area that is outdoors| conduct consultations without worrying of making noise|
+ |v1.0|student|find a Study Area based on location and environment|have a conducive space to study|
+ |v1.0|professor|locate a Study Area that is outdoors| conduct consultations without worrying of making noise|
  
 
 ## Appendix C: Non-Functional Requirements    
   {Give non-functional requirements}    
     
-
+[comment]: # (@@author NizarMohd)
 ## Appendix D: Glossary    
 
- * *flag* - criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
- -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate. 
- * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage.
-
+ * *flag* - Criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
+ -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
+ * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
+ * *availStudyAreas* - ArrayList of StudyArea objects that contains the list of available Study Areas
+ * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns true if the either one of the alternate 
+ paths in [the sequence diagram](#interaction-within-organices-submodule) returns a true value
+ * *executeStudyCommand()* - This method executes the Study Area User Interface
+ * *hasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
+ * *isIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
+ * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
+ by user.
+ * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
+ entered by the user. This method is invoked when under the [default](#interaction-within-organices-submodule) condition as search by name, address or locations 
+ does not require any flags, instead it utilises a loose search. 
+ * *ports_flag* - refers to "-p" flag
+ * *indoor_flag* - refers to "-i" flag
+ * *outdoor_flag* - refers to "-o" flag
+ * *size_flag* - refers to "-s" flag
 
 ## Appendix E: Instructions for Manual Testing    
- {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+
+### Testing for Study Area Search 
+#### Search by location, name, address 
+
+ * To test for accuracy of loose search, test 'bux' to see if 

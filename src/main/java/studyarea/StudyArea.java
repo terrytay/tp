@@ -132,4 +132,28 @@ public class StudyArea {
         return line + lineSeparator() + text + lineSeparator() + line;
     }
 
+    /**
+     * Checks if search key is found in Study Area's Name and Faculty attributes.
+     * @param key This is the search key entered by User.
+     * @return True if can be found in either case. False if not found in both cases.
+     */
+    public boolean containsSearchKey(String key) {
+        if (this.name.toLowerCase().contains(key) || this.name.toLowerCase().contains(Dictionary.parseKey(key))) {
+            return true;
+        }
+        if (this.address.toLowerCase().contains(key) || this.address.toLowerCase().contains(Dictionary.parseKey(key))) {
+            return true;
+        }
+        return this.faculty.toLowerCase().contains((key)) || this.faculty.toLowerCase().contains(Dictionary.parseKey(key));
+    }
+
+    /**
+     * This method checks if the maximum size of the study area is capable of containing the desired size of people
+     * stated by the User.
+     * @param size this is the size stated by the user.
+     * @return True if the size stated by the user is smaller than or equals to the maximum size of the Study Area.
+     */
+    public boolean isSizeCapable(String size) {
+      return  Integer.parseInt(size) <= this.maxPax;
+    }
 }
