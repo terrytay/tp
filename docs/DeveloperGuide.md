@@ -85,7 +85,7 @@ The Task component depends on 3 other components,
  
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
-![Task Component](images/Task_Component.jpg)  
+![Task Component](images/Task_Component_UML.png)  
   
 The task component contains 8 separate classes. They are as follows:  
  
