@@ -125,6 +125,8 @@ The task component contains 8 separate classes. They are as follows:
   3. ResourceLoader Component - The ResourceLoader component is used to load data of all existing Study Areas in NUS 
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
+<div style="text-align:center; font-size: x-small">Object diagram of classes under Study Area Component</div><br>
+
  ![Study Area Component](images/StudyAreaObjectDiagram.png)  
    
  The Study Area component contains 3 separate classes. They are as follows:  
@@ -173,6 +175,7 @@ The task component contains 8 separate classes. They are as follows:
  ![Sub Diagram 2](images/Schedule_Sub2.png)
  
  * `Add the scheduled tasks to current list of tasks`
+ 
  ![Sub Diagram 3](images/Schedule_Sub3.png)
  
 #### 3.1.2 Alternatives
@@ -223,13 +226,13 @@ To do as mentioned above, the StudyAreaList class implements the following main 
 
 Below would be a sequence diagram to demonstrate how the search algorithm is operated.
 
-
+ * `User enters search key` 
+ 
 ![Study Area Sequence_Diagram_Main](images/user_sL_interaction.png)  
-###### User to OrgaNice interaction
-<br><br>
-
+<br>
+ * `StudyAreaCommand invokes searchList() of StudyAreaList` 
+ 
 ![Study_Area_Sequence_Diagram_subModules](images/sL_sA_interaction.png)
-###### Interaction within OrgaNice's submodule
 <br><br>
 
 You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram

@@ -646,6 +646,13 @@ Expected Outcome:
          Please enter the location for your desired study area.
     ________________________________________________________________________________________________
 
+#### Future Enhancements
+
+   The current implementation does not include real-time availability of the study areas. In version 3.0 we hope to be
+   able to retrieve real-time availability of public study areas, like the ones in U-Town. In order to do so we would 
+   require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
+   a specific point of time at a specific area.
+
 [comment]: # (@@author )     
 <a name="exit"></a>
 

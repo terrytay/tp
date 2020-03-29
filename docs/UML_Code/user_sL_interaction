@@ -1,5 +1,6 @@
 @startuml
 
+mainframe Interaction between User and OrgaNice!                                                                                                                                                              qqwwf
 Actor User
 
 participant ":Duke" as d
