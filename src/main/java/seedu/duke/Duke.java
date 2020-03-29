@@ -1,8 +1,10 @@
 package seedu.duke;
 
 
-import command.TaskCommand;
+import command.Command;
+import command.StudyAreaCommand;
 import exception.IllegalStudyAreaException;
+import notes.NotesInvoker;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
@@ -55,8 +57,6 @@ public class Duke {
         }
     }
 
-<<<<<<< Updated upstream
-=======
     /**
      * Runs all the command for tasks.
      */
@@ -91,7 +91,6 @@ public class Duke {
         }
     }
 
->>>>>>> Stashed changes
     //@@author GanapathySanathBalaji
     private void setupLogger() {
         LogManager.getLogManager().reset();
@@ -119,11 +118,7 @@ public class Duke {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
         LOGGER.log(Level.INFO, Constants.TASK_MODE);
-<<<<<<< Updated upstream
-        TaskCommand.runCommands(taskList, ui, parser, studyAreaList);
-=======
         runCommands();
->>>>>>> Stashed changes
         taskLoader.saveTasks(taskList.tasks);
         LOGGER.log(Level.INFO, Constants.APPLICATION_GOING_TO_EXIT);
         ui.printByeMessage();
