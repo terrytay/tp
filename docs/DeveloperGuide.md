@@ -53,10 +53,26 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ## 2. Design   
  {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
 
-
+[comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
   
-The architecture diagram shown above gives a overview of the various components used.  
+![Architecture](images/Architecture.png)
+
+1. Duke - Main component which controls the flow of execution.
+
+1. Ui - Component used to get input from the user and display results on the monitor.
+
+1. Parser - Component used to abstract out the command based on user's input, so that the command can be executed later.
+
+1. Command - Component contains information and implementation on how to execute various types of commands.
+
+1. Task - Component contains details about handling the task list and related operations.
+
+1. StudyArea - Component contains details about handling queries for study area search.
+
+1. Exception - Component contains the various types of exceptions encountered when OrgaNice! is run.
+
+1. ResourceLoader - Component handles loading and saving of the task list and study area details to local storage.
 
 
 ### 2.2. Task Component  
@@ -72,7 +88,7 @@ The Task component depends on 3 other components,
  
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
-![Task Component](images/Task_Component.jpg)  
+![Task Component](images/Task_Component_UML.png)   
   
 The task component contains 8 separate classes. They are as follows:  
  
@@ -135,12 +151,28 @@ The task component contains 8 separate classes. They are as follows:
     Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
  displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
+	
+   The following sequence diagrams explain how tasks are scheduled.
+	
  ![Overall Sequence Diagram](images/Schedule_Overall.png)
- 
+
+ ![Overall Sequence Diagram](images/Schedule_Overall.png)
+
+ The three reference frames used are as follows:
+
+ * `Get information regarding the tasks from the user`
+
  ![Sub Diagram 1](images/Schedule_Sub1.png)
- 
+
+ ![Sub Diagram 1](images/Schedule_Sub1.png)
+
+ * `Check and Schedule tasks if feasible`
+
+ ![Sub Diagram 2](images/Schedule_Sub2.png)
+
  ![Sub Diagram 2](images/Schedule_Sub2.png)
  
+ * `Add the scheduled tasks to current list of tasks`
  ![Sub Diagram 3](images/Schedule_Sub3.png)
  
 #### 3.1.2 Alternatives
@@ -241,7 +273,9 @@ Mainly NUS students and professors who :
 
 ### Value proposition    
 
-You can efficiently manage tasks, in terms of priority. You can also efficiently find a Study Area that 
+[comment]: # (to be finalised)  
+
+You can efficiently manage tasks, in terms of priority. You can also efficiently find a study area that
 meets your needs and is conducive, should you urgently need one.
 
 ## Appendix B: User Stories    
@@ -285,9 +319,15 @@ meets your needs and is conducive, should you urgently need one.
  * *size_flag* - refers to "-s" flag
 
 ## Appendix E: Instructions for Manual Testing    
+ __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
+ software's features.
 
+### Testing for Study Area Search
 
-### Testing for Study Area Search 
 #### Search by location, name, address 
-
- * To test for accuracy of loose search, test 'bux' to see if 
+ * To test for accuracy of loose search, test "bux" to see if it returns locations related to Starbucks.
+#### Search by flags only 
+ * To test for accuracy of flags, test either "-p", "-i", "-o" or "-s {integer}"
+#### Search with both, (1) location, name or address , and , (2) flags 
+ * To test for accuracy, test "{location/name/address} {flags}".
+ * Since flags must come as a second argument in this case, test for "{flags} {location/name/address}"
