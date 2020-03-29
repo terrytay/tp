@@ -125,7 +125,7 @@ The task component contains 8 separate classes. They are as follows:
   3. ResourceLoader Component - The ResourceLoader component is used to load data of all existing Study Areas in NUS 
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
-<div style="text-align:center; font-size: x-small">Object diagram of classes under Study Area Component</div><br>
+<div style="text-align:center; font-size: x-small">Object diagram of classes under Study Area Component</div>
 
  ![Study Area Component](images/StudyAreaObjectDiagram.png)  
    
@@ -158,13 +158,9 @@ The task component contains 8 separate classes. They are as follows:
 	
  ![Overall Sequence Diagram](images/Schedule_Overall.png)
 
- ![Overall Sequence Diagram](images/Schedule_Overall.png)
-
  The three reference frames used are as follows:
 
  * `Get information regarding the tasks from the user`
-
- ![Sub Diagram 1](images/Schedule_Sub1.png)
 
  ![Sub Diagram 1](images/Schedule_Sub1.png)
 
@@ -172,8 +168,6 @@ The task component contains 8 separate classes. They are as follows:
 
  ![Sub Diagram 2](images/Schedule_Sub2.png)
 
- ![Sub Diagram 2](images/Schedule_Sub2.png)
- 
  * `Add the scheduled tasks to current list of tasks`
  
  ![Sub Diagram 3](images/Schedule_Sub3.png)
