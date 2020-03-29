@@ -1,32 +1,61 @@
 @startuml
 
-mainframe Interaction between User and OrgaNice!                                                                                                                                                              qqwwf
-Actor User
-
-participant ":Duke" as d
-participant ":StudyAreaCommand" as sC
-participant ":StudyAreaList" as sL
-
-User -> d : "study"
+mainframe sd Interaction between StudyAreaCommand and study area package's submodules          qw   aa..
 
 
-create sC
-d -> sC : executeStudyCommand()
-activate sC
+participant ":StudyAreaCommand" as StudyAreaCommand
+box "study area package\n" #white
+participant ":StudyAreaList" as StudyAreaList
+participant ":StudyArea" as StudyArea
+end box
 
-d -> User : "enter search key"
-User -> d : "EA -p"
-d -> sC : "EA -p"
-sC -> sL : searchList("EA -p")
-activate sL
-sL --> sC : availStudyAreas
-deactivate sL
+StudyAreaCommand -> StudyAreaList : searchList()
 
-sC --> d : availStudyAreas
-deactivate sC
+activate StudyAreaList
 
-d -> User : "Here is a list of available study areas"
+  StudyAreaList -> StudyAreaList: getFlagsInfo()
+  activate StudyAreaList
+    StudyAreaList --> StudyAreaList: flags
+  deactivate StudyAreaList
 
 
+    loop every studyArea in StudyAreaList
+    StudyAreaList -> StudyAreaList: isAvailStudyArea()
+    activate StudyAreaList
+      alt ports_flag
+        StudyAreaList -> StudyArea : hasPorts()
+        activate StudyArea
+        StudyArea --> StudyAreaList : isAvail
+        deactivate StudyArea
+      else indoor_flag
+        StudyAreaList -> StudyArea : isIndoor()
+        activate StudyArea
+        StudyArea --> StudyAreaList : isAvail
+       deactivate StudyArea
+      else outdoor_flag
+        StudyAreaList -> StudyArea : isIndoor()
+        activate StudyArea
+        StudyArea --> StudyAreaList : isAvail
+        deactivate StudyArea
+      else size_flag
+        StudyAreaList -> StudyArea : isSizeCapable()
+        activate StudyArea
+        StudyArea --> StudyAreaList : isAvail
+        deactivate StudyArea
+      else default
+        StudyAreaList -> StudyArea : containsSearchKey()
+        activate StudyArea
+        StudyArea --> StudyAreaList : isAvail
+        deactivate StudyArea
+      end
+    StudyAreaList --> StudyAreaList: isAvail
+    deactivate StudyAreaList
+    opt isAvail
+      StudyAreaList -> StudyAreaList: availStudyAreas.add(studyArea)
+    end
+  end
+
+StudyAreaList --> StudyAreaCommand: availStudyAreas
+deactivate StudyAreaList
 
 @enduml
