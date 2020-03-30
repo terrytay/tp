@@ -127,8 +127,11 @@ The task component contains 8 separate classes. They are as follows:
   
 <div style="text-align:center; font-size: x-small">Object diagram of classes under Study Area Component</div>
 
- ![Study Area Component](images/StudyAreaObjectDiagram.png)  
-   
+![Study Area Component](images/StudyAreaObjectDiagram.png) 
+
+<img id="image" alt="studyAreaComponent" src="images/StudyAreaObjectDiagram.png" style="align-self: center">
+
+
  The Study Area component contains 3 separate classes. They are as follows:  
   
    1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
