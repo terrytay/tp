@@ -22,9 +22,11 @@ div {
     2.1. [Architecture](#21-architecture)<br>
     2.2. [Task Component](#22-task-component)<br>
     2.3. [Study Area Component](#23-study-area-component)<br>
+    2.4. [Notes Component](#24-notes-component)<br>
 1. [Implementation](#3-implementation)<br>
     3.1. [Scheduling Tasks](#31-scheduling-tasks)<br>
     3.2. [Listing Study Areas](#32-listing-study-areas)<br>
+    3.3. [Undo/Redo of Notes](#33-undo-redo-of-notes)<br>
 1. [Testing](#4-testing)<br>
 
 [Appendix A: Product Scope](#appendix-a-product-scope)<br>
@@ -60,6 +62,8 @@ it is capable of assisting students in finding Study Areas that meets their desi
 1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
     - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
+1. Notes
+	- You can enter notes based on school modules. Notes support undo and redo operations.
 
 ## 2. Design   
  {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
@@ -83,9 +87,12 @@ it is capable of assisting students in finding Study Areas that meets their desi
 
 1. StudyArea - Component contains details about handling queries for study area search.
 
+1. Notes - Component contains details about Notes related operations.
+
 1. Exception - Component contains the various types of exceptions encountered when OrgaNice! is run.
 
 1. ResourceLoader - Component handles loading and saving of the task list and study area details to local storage.
+
 
 
 ### 2.2. Task Component  
@@ -149,6 +156,25 @@ The task component contains 8 separate classes. They are as follows:
    2. StudyArea : Class that is used to model Study Areas. 
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
+
+
+[comment]: # (@@author terrytay)
+
+### 2.4. Notes Component
+
+  The Notes component is self-contained apart from calling UI class for Strings output.
+  <br>
+  Inside Notes component, there exists these classes:
+  
+  	1. NotesInvoker : Class to start the Notes
+	
+	2. Notes : Class to support operations for the modules in the Notes, acts as interface.
+	
+	3. Modulelist: Class to implement actual modules operations and store modules list.
+	
+	4. Command : Package containing Command interface, Add command, Command Stack classes.
+	
+	5. Parser : Class to parse commands for command-based operations.
         
 ## 3. Implementation
 
