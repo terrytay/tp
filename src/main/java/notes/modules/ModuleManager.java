@@ -73,7 +73,7 @@ public class ModuleManager {
     }
 
     private void showMenu() {
-        System.out.println("[add] to add a note");
+        System.out.println("[add ...message...] to add a note");
         System.out.println("[undo] to undo");
         System.out.println("[redo] to redo");
         System.out.println("[list] to list notes");
