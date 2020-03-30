@@ -3,7 +3,7 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: auto;
 }
 div {
     text-align: center;
