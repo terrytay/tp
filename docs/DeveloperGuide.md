@@ -4,7 +4,6 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    height: auto;
 }
 div {
     text-align: center;
