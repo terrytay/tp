@@ -70,6 +70,7 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ![Architecture](images/Architecture.png)
 <div>Figure 1. Overall Architecture of OrgaNice!</div>
 <br>
+
 1. Duke - Main component which controls the flow of execution.
 
 1. Ui - Component used to get input from the user and display results on the monitor.
@@ -158,11 +159,11 @@ The task component contains 8 separate classes. They are as follows:
 
 #### 3.1.1 Implementation 
    Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
- The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
- The requirements captured are stored in the SchedulableTask object. 
- Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
+ 1. The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
+ 1. The requirements captured are stored in the SchedulableTask object. 
+ 1. Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
  (Early Deadline First) algorithm.
-    Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
+ 1. If a feasible schedule is found it is 
  displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 	
@@ -188,6 +189,7 @@ The task component contains 8 separate classes. They are as follows:
  ![Sub Diagram 3](images/Schedule_Sub3.png)
  <div>Figure 7. Sub Diagram 3</div>
  <br> 
+ 
 #### 3.1.2 Alternatives
 Aspect : How to capture user's requirements and handle it.
 
