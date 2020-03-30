@@ -1,7 +1,7 @@
 @startuml
 
 
-mainframe sd Add the scheduled tasks to current list of tasks         qw   aa..
+mainframe sd Add the scheduled tasks to current list of tasks
 
 participant "taskScheduler :TaskScheduler" as b
 
@@ -16,5 +16,7 @@ c-->b
 deactivate c
 
 deactivate b
+
+hide footbox
 
 @enduml
