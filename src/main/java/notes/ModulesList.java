@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+//@@author terrytay
 public class ModulesList {
     static ModulesList instance = null;
     private HashMap<String, ArrayList<String>> modules;

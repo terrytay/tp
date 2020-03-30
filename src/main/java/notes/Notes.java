@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+//@@author terrytay
 public class Notes {
     ModulesList modulesList;
 
