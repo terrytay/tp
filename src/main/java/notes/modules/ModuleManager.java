@@ -9,6 +9,7 @@ import notes.modules.parser.Parser;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//@@author terrytay
 public class ModuleManager {
     private String code;
     private ArrayList<String> messages;
