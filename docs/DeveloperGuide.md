@@ -129,8 +129,16 @@ The task component contains 8 separate classes. They are as follows:
 
 ![Study Area Component](images/StudyAreaObjectDiagram.png) 
 
-<img id="image" alt="studyAreaComponent" src="images/StudyAreaObjectDiagram.png" style="align-self: center">
-
+<img id="image" alt="studyAreaComponent" src="images/StudyAreaObjectDiagram.png" class="center">
+<style>
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
+}
+</style>
 
  The Study Area component contains 3 separate classes. They are as follows:  
   
