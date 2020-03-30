@@ -1,4 +1,15 @@
-
+<style>
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+div {
+    text-align: center;
+    font-size: x-small;
+}
+</style>
 # Developer Guide    
 
 ## Table of content
@@ -57,7 +68,8 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ### 2.1. Architecture  
   
 ![Architecture](images/Architecture.png)
-
+<div>Figure 1. Overall Architecture of OrgaNice!</div>
+<br>
 1. Duke - Main component which controls the flow of execution.
 
 1. Ui - Component used to get input from the user and display results on the monitor.
@@ -89,7 +101,8 @@ The Task component depends on 3 other components,
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
 ![Task Component](images/Task_Component_UML.png)   
-  
+<div>Figure 2. Object Diagram for Task Component</div>
+<br>
 The task component contains 8 separate classes. They are as follows:  
  
   1. Task : Abstract class used to model a generic task. 
@@ -125,10 +138,9 @@ The task component contains 8 separate classes. They are as follows:
   3. ResourceLoader Component - The ResourceLoader component is used to load data of all existing Study Areas in NUS 
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
-<div style="text-align:center; font-size: x-small">Object diagram of classes under Study Area Component</div>
-
- ![Study Area Component](images/StudyAreaObjectDiagram.png)  
-   
+![Study Area Component](images/StudyAreaObjectDiagram.png) 
+<div>Figure 3. Object diagram for Study Area Component</div>
+<br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
    1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
@@ -157,21 +169,25 @@ The task component contains 8 separate classes. They are as follows:
    The following sequence diagrams explain how tasks are scheduled.
 	
  ![Overall Sequence Diagram](images/Schedule_Overall.png)
-
+<div>Figure 4. Overall Sequence Diagram</div>
+<br>
  The three reference frames used are as follows:
 
  * `Get information regarding the tasks from the user`
 
  ![Sub Diagram 1](images/Schedule_Sub1.png)
-
+ <div>Figure 5. Sub Diagram 1</div>
+ <br>
  * `Check and Schedule tasks if feasible`
 
  ![Sub Diagram 2](images/Schedule_Sub2.png)
-
+ <div>Figure 6. Sub Diagram 2</div>
+ <br>
  * `Add the scheduled tasks to current list of tasks`
  
  ![Sub Diagram 3](images/Schedule_Sub3.png)
- 
+ <div>Figure 7. Sub Diagram 3</div>
+ <br> 
 #### 3.1.2 Alternatives
 Aspect : How to capture user's requirements and handle it.
 
@@ -223,12 +239,18 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
  * `User enters search key` 
  
 ![Study Area Sequence_Diagram_Main](images/user_sL_interaction.png)  
+<div>Figure 8. Interaction between User and Study Area Search Interface</div>
 <br>
+
  * `StudyAreaCommand invokes searchList() of StudyAreaList` 
  
 ![Study_Area_Sequence_Diagram_subModules](images/sL_sA_interaction.png)
-<br><br>
+<div>Figure 9. Interaction within Study Area Search Interface</div>
+<br>
 
+![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
+<div>Figure 10. Interaction when isAvailStudyArea is invoked</div>
+<br>
 You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
 #### 3.2.2 Alternative 
 Aspect: How to search based on User input.
@@ -288,7 +310,10 @@ meets your needs and is conducive, should you urgently need one.
  |v1.0|user|find a task by name|locate a task without having to go through the entire list|    
  |v1.0|student|find a Study Area based on location and environment|have a conducive space to study|
  |v1.0|professor|locate a Study Area that is outdoors| conduct consultations without worrying of making noise|
- 
+ |v2.0|user|mark deadline as done|check to see if I have pending deadlines|
+ |v2.0|user|to delete a Module|clean up my finished notes|
+ |v2.0|user|create a Module|add notes inside|
+ |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
 
 ## Appendix C: Non-Functional Requirements    
   {Give non-functional requirements}    
