@@ -1,8 +1,10 @@
 package seedu.duke;
 
 
-import command.TaskCommand;
+import command.Command;
+import command.StudyAreaCommand;
 import exception.IllegalStudyAreaException;
+import notes.NotesInvoker;
 import parser.Parser;
 import resourceloader.StudyAreaLoader;
 import resourceloader.TaskLoader;
@@ -18,6 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.NOTES_COMMAND;
+import static ui.Constants.STUDY_AREA_COMMAND;
+
 
 /**
  * This is Duke class, which forms the main class of the program.
@@ -51,6 +57,40 @@ public class Duke {
         }
     }
 
+    /**
+     * Runs all the command for tasks.
+     */
+    public static void runCommands() {
+        String fullCommand;
+        fullCommand = ui.getUserIn().trim().toLowerCase();
+        while (!fullCommand.equals(BYE_COMMAND)) {
+            try {
+                switchCommands(fullCommand);
+            } catch (Exception exception) {
+                ui.printLine();
+                ui.printMessage(exception.getMessage());
+                ui.printLine();
+            }
+            fullCommand = ui.getUserIn().trim().toLowerCase();
+        }
+    }
+
+    /**
+     * This method will choose the commands to execute based on user input. Allows for abstraction.
+     * @param fullCommand this is the user input.
+     * @throws Exception when user enters any illegal commands.
+     */
+    private static void switchCommands(String fullCommand) throws Exception {
+        if (fullCommand.equals(STUDY_AREA_COMMAND)) {
+            new StudyAreaCommand().executeStudyCommand(studyAreaList, ui);
+        } else if (fullCommand.equals(NOTES_COMMAND)) {
+            new NotesInvoker();
+        } else {
+            Command command = parser.parseCommand(fullCommand);
+            command.executeCommand(taskList, ui);
+        }
+    }
+
     //@@author GanapathySanathBalaji
     private void setupLogger() {
         LogManager.getLogManager().reset();
@@ -78,7 +118,7 @@ public class Duke {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
         LOGGER.log(Level.INFO, Constants.TASK_MODE);
-        TaskCommand.runCommands(taskList, ui, parser, studyAreaList);
+        runCommands();
         taskLoader.saveTasks(taskList.tasks);
         LOGGER.log(Level.INFO, Constants.APPLICATION_GOING_TO_EXIT);
         ui.printByeMessage();
