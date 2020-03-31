@@ -1,18 +1,6 @@
 package parser;
 
-import command.AddDeadlineCommand;
-import command.AddEventCommand;
-import command.ClearCommand;
-import command.Command;
-import command.CountdownCommand;
-import command.CreateScheduleCommand;
-import command.DeleteCommand;
-import command.DoneCommand;
-import command.EditCommand;
-import command.HelpCommand;
-import command.PriorityViewCommand;
-import command.SearchCommand;
-import command.ViewCommand;
+import command.*;
 
 //@@author GanapathySanathBalaji
 /**
@@ -33,6 +21,7 @@ public class Parser {
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
     public static final String DONE_COMMAND = "done";
+    public static final  String CALENDER_COMMAND = "calender";
 
 
     /**
@@ -83,6 +72,9 @@ public class Parser {
             break;
         case DONE_COMMAND:
             command = new DoneCommand(commandSplit,isOneWordCommand);
+            break;
+        case CALENDER_COMMAND:
+            command = new CalenderCommand(isOneWordCommand);
             break;
         case EMPTY_COMMAND:
             throw new Exception("Empty Line entered, Please enter a valid line");

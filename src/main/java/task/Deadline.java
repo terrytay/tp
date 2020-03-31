@@ -7,6 +7,7 @@ import exception.command.InvalidDueTimeException;
 import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
+import ui.Constants;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -503,4 +504,20 @@ public class Deadline extends Task {
         ui.printEmptyLine();
     }
 
+    @Override
+    public String getCalenderTaskDetails() {
+        String isDoneString = isDone ? "Y" : "N" ;
+        String isDoneSymbol = "[" + isDoneString + "]" ;
+        String details = DEADLINE_SYMBOL + isDoneSymbol  + this.description;
+        if(details.length() > 26) {
+            details = details.substring(0, 25);
+        } else { ;
+            StringBuilder detailsBuilder = new StringBuilder(details);
+            while(detailsBuilder.length() < 25) {
+                detailsBuilder.append(" ");
+            }
+            details = detailsBuilder.toString();
+        }
+        return details;
+    }
 }

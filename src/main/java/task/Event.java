@@ -187,6 +187,21 @@ public class Event extends Task {
         return ChronoUnit.DAYS.between(LocalDate.now(),this.date);
     }
 
+    @Override
+    public String getCalenderTaskDetails() {
+        String details = Constants.EVENT_SYMBOL + this.description;
+        if(details.length() > 26) {
+            details = details.substring(0, 25);
+        } else { ;
+            StringBuilder detailsBuilder = new StringBuilder(details);
+            while(detailsBuilder.length() < 25) {
+                detailsBuilder.append(" ");
+            }
+            details = detailsBuilder.toString();
+        }
+        return details;
+    }
+
     /**
      * Returns the priority of the specified event.
      *
