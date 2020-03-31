@@ -190,11 +190,11 @@ public class Event extends Task {
     @Override
     public String getCalenderTaskDetails() {
         String details = Constants.EVENT_SYMBOL + this.description;
-        if(details.length() > 26) {
+        if (details.length() > 26) {
             details = details.substring(0, 25);
-        } else { ;
+        } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
-            while(detailsBuilder.length() < 25) {
+            while (detailsBuilder.length() < 25) {
                 detailsBuilder.append(" ");
             }
             details = detailsBuilder.toString();

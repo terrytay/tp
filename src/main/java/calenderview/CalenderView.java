@@ -27,7 +27,7 @@ public class CalenderView {
     public static final String DIVIDER = "-----------------------------------------------------------------------"
             + "----------------------------------------------------------------------------------------------------"
             + "---------------------------";
-    public static final String[] DAYS = {"SUN", "MON", "TUE" , "WED", "THU", "FRI", "SAT"};
+    public static final String[] DAYS = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
     public static final String SPACES = "\t\t\t\t\t\t ";
     public static final String COL = "|";
     public static final String PADDING = "    ";
@@ -51,7 +51,7 @@ public class CalenderView {
      * @param inMap this is the incoming created by CalenderCommand.
      */
     public void setMap(HashMap<Integer, LinkedList<Task>> inMap) {
-        this.map=inMap;
+        this.map = inMap;
     }
 
     /**
@@ -59,8 +59,8 @@ public class CalenderView {
      */
     public void printDays() {
         System.out.println(DIVIDER);
-        for( int i=0; i<7 ; i++){
-            System.out.print(COL+ DAYS[i]+ SPACES);
+        for (int i = 0; i < 7; i++) {
+            System.out.print(COL + DAYS[i] + SPACES);
         }
         System.out.println(COL);
         System.out.println(DIVIDER);
@@ -72,8 +72,8 @@ public class CalenderView {
     public void processDates() {
         int index = this.firstDay.getDayOfWeek().getValue();
         index = index % 7;
-        for (int i=1 ; i<=this.lastDay ; i++) {
-            if(index >= 35) {
+        for (int i = 1; i <= this.lastDay; i++) {
+            if (index >= 35) {
                 index = 0;
             }
             this.daysOfMonths[index] = i;
@@ -87,19 +87,19 @@ public class CalenderView {
      * @param i this is the height of the box that is currently being printed.
      * @param j this is the day which the box is at.
      */
-    public void printContent( int row, int i, int j) {
+    public void printContent(int row, int i, int j) {
         int index = row * 7 + j;
         int day = daysOfMonths[index];
-        if( i==0 ){
+        if (i == 0) {
             if (this.daysOfMonths[index] == 0) {
                 System.out.print(COL + SPACES + PADDING);
-            } else if(this.daysOfMonths[index] > 9) {
-                System.out.print(COL + SPACES + PADDING3+ this.daysOfMonths[index]);
+            } else if (this.daysOfMonths[index] > 9) {
+                System.out.print(COL + SPACES + PADDING3 + this.daysOfMonths[index]);
             } else {
                 System.out.print(COL + SPACES + PADDING2 + this.daysOfMonths[index]);
             }
         } else {
-            if(map.containsKey(day)) {
+            if (map.containsKey(day)) {
                 if (map.get(day).isEmpty()) {
                     System.out.print(COL + SPACES + PADDING);
                 } else {
@@ -119,7 +119,7 @@ public class CalenderView {
      * @param row this is the row that the box is currently being printed.
      */
     public void printBox(int row) {
-        for(int i =0; i< 5; i++) {
+        for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 7; j++) {
                 printContent(row, i, j);
             }
@@ -143,11 +143,11 @@ public class CalenderView {
     public void checkMonth(String in) throws CalenderException {
         try {
             int inMonth = Integer.parseInt(in);
-            if ( inMonth < 1 || inMonth > 12) {
+            if (inMonth < 1 || inMonth > 12) {
                 throw new CalenderException("Invalid Month");
             }
             this.month = inMonth;
-        } catch ( NumberFormatException e ){
+        } catch (NumberFormatException e) {
             throw new CalenderException("Month is not integer");
         }
     }
@@ -160,14 +160,13 @@ public class CalenderView {
     public void checkYear(String in) throws CalenderException {
         try {
             int inYear = Integer.parseInt(in);
-            if ( inYear < 2020) {
+            if (inYear < 2020) {
                 throw new CalenderException("Invalid Year");
             }
             this.year = inYear;
-        } catch ( NumberFormatException e ){
+        } catch (NumberFormatException e) {
             throw new CalenderException("Year is not integer");
         }
-
     }
 
     /**
@@ -197,7 +196,7 @@ public class CalenderView {
     public void printCalender() {
         printCurrentMonth(); // to remove constructor later
         printDays();
-        for(int i =0; i< 5; i++) {
+        for (int i = 0; i < 5; i++) {
             printBox(i);
         }
     }

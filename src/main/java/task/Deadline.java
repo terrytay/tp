@@ -17,7 +17,6 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static ui.Constants.AT;
 import static ui.Constants.DATE_AFTER_CURRENT_DATE;
 import static ui.Constants.DATE_PATTERN;
@@ -39,6 +38,7 @@ import static ui.Constants.OPTION_TO_EDIT_DATE;
 import static ui.Constants.OPTION_TO_EDIT_DESCRIPTION;
 import static ui.Constants.PRIORITY_NOT_INTEGER;
 import static ui.Constants.SEARCH_KEYWORD_EMPTY;
+import static ui.Constants.SPACE;
 import static ui.Constants.UPDATED_DETAILS;
 import static ui.Constants.WITH_PRIORITY;
 import static ui.Constants.WRONG_OPTION;
@@ -506,15 +506,15 @@ public class Deadline extends Task {
 
     @Override
     public String getCalenderTaskDetails() {
-        String isDoneString = isDone ? "Y" : "N" ;
-        String isDoneSymbol = "[" + isDoneString + "]" ;
+        String isDoneString = isDone ? "Y" : "N";
+        String isDoneSymbol = "[" + isDoneString + "]";
         String details = DEADLINE_SYMBOL + isDoneSymbol  + this.description;
-        if(details.length() > 26) {
+        if (details.length() > 26) {
             details = details.substring(0, 25);
-        } else { ;
+        } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
-            while(detailsBuilder.length() < 25) {
-                detailsBuilder.append(" ");
+            while (detailsBuilder.length() < 25) {
+                detailsBuilder.append(SPACE);
             }
             details = detailsBuilder.toString();
         }

@@ -36,16 +36,12 @@ public class CalenderCommand extends Command {
      */
     public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, CalenderView c) {
         HashMap<Integer, LinkedList<Task>> dayToTaskHashMap = new HashMap<>();
-        for(Task task : tasks) {
+        for (Task task : tasks) {
             LocalDate date = task.getDate();
-            if ( date.getMonthValue()==c.month && date.getYear()==c.year ) {
+            if (date.getMonthValue() == c.month && date.getYear() == c.year) {
                 int day = date.getDayOfMonth();
-                if(dayToTaskHashMap.get(day)==null){
-                    dayToTaskHashMap.put(day, new LinkedList<Task>());
-                    dayToTaskHashMap.get(day).add(task);
-                } else {
-                    dayToTaskHashMap.get(day).add(task);
-                }
+                dayToTaskHashMap.computeIfAbsent(day, k -> new LinkedList<Task>());
+                dayToTaskHashMap.get(day).add(task);
             }
         }
         return dayToTaskHashMap;
