@@ -1,6 +1,6 @@
 @startuml
 
-mainframe sd Get information regarding the tasks from the user            aaaa..
+mainframe sd Get information regarding the tasks from the user
 
 participant "taskScheduler :TaskScheduler" as b
 
@@ -34,5 +34,7 @@ b->c !!: delete
 end
 
 deactivate b
+
+hide footbox
 
 @enduml
