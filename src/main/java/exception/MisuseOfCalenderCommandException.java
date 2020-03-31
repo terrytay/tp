@@ -1,7 +1,6 @@
 package exception;
 
 //@@author NizarMohd
-
 /**
  * This exception handles with when the user enters the calender command wrongly.
  */
