@@ -1,7 +1,7 @@
 @startuml
 
 
-mainframe sd Check and Schedule tasks if feasible            aaaa..
+mainframe sd Check and Schedule tasks if feasible 
 
 participant "taskScheduler :TaskScheduler" as b
 
@@ -42,5 +42,7 @@ b->c !!: delete
 end
 
 deactivate b
+
+hide footbox
 
 @enduml

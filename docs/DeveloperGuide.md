@@ -22,9 +22,11 @@ div {
     2.1. [Architecture](#21-architecture)<br>
     2.2. [Task Component](#22-task-component)<br>
     2.3. [Study Area Component](#23-study-area-component)<br>
+    2.4. [Notes Component](#24-notes-component)<br>
 1. [Implementation](#3-implementation)<br>
     3.1. [Scheduling Tasks](#31-scheduling-tasks)<br>
     3.2. [Listing Study Areas](#32-listing-study-areas)<br>
+    3.3. [Operation of Notes](#33-operation-of-notes)<br>
 1. [Testing](#4-testing)<br>
 
 [Appendix A: Product Scope](#appendix-a-product-scope)<br>
@@ -60,6 +62,8 @@ it is capable of assisting students in finding Study Areas that meets their desi
 1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
     - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
+1. Notes
+	- You can enter notes based on school modules. Notes support undo and redo operations.
 
 ## 2. Design   
  {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
@@ -70,6 +74,7 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ![Architecture](images/Architecture.png)
 <div>Figure 1. Overall Architecture of OrgaNice!</div>
 <br>
+
 1. Duke - Main component which controls the flow of execution.
 
 1. Ui - Component used to get input from the user and display results on the monitor.
@@ -82,9 +87,12 @@ it is capable of assisting students in finding Study Areas that meets their desi
 
 1. StudyArea - Component contains details about handling queries for study area search.
 
+1. Notes - Component contains details about Notes related operations.
+
 1. Exception - Component contains the various types of exceptions encountered when OrgaNice! is run.
 
 1. ResourceLoader - Component handles loading and saving of the task list and study area details to local storage.
+
 
 
 ### 2.2. Task Component  
@@ -148,7 +156,32 @@ The task component contains 8 separate classes. They are as follows:
    2. StudyArea : Class that is used to model Study Areas. 
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
-        
+
+
+[comment]: # (@@author terrytay)
+
+### 2.4. Notes Component
+![Notes Component](images/NotesComponent.png)
+<div>Figure 4. Object diagram for Notes Component</div>
+<br>
+The Notes component is self-contained apart from calling UI class for Strings output.
+<br> 
+Inside Notes component, there exists these classes:
+  
+1. NotesInvoker : Class to start the Notes
+	
+2. Notes : Class to support operations for the modules in the Notes, acts as interface.
+	
+3. Modulelist: Class to implement actual modules operations and store modules list.
+	
+4. Command : Package containing Command interface, Add command, Command Stack classes.
+	
+5. Parser : Class to parse commands for command-based operations.
+
+
+
+ 
+ 
 ## 3. Implementation
 
 ### 3.1. Scheduling Tasks 
@@ -158,36 +191,37 @@ The task component contains 8 separate classes. They are as follows:
 
 #### 3.1.1 Implementation 
    Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
- The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
- The requirements captured are stored in the SchedulableTask object. 
- Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
+ 1. The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
+ 1. The requirements captured are stored in the SchedulableTask object. 
+ 1. Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
  (Early Deadline First) algorithm.
-    Since, EDF is an optimum algorithm, if it can't find a valid schedule it means that it's impossible to find a valid schedule based on the user's requirement. If a feasible schedule is found it is 
+ 1. If a feasible schedule is found it is 
  displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 	
    The following sequence diagrams explain how tasks are scheduled.
 	
  ![Overall Sequence Diagram](images/Schedule_Overall.png)
-<div>Figure 4. Overall Sequence Diagram</div>
+<div>Figure 5. Overall Sequence Diagram</div>
 <br>
  The three reference frames used are as follows:
 
  * `Get information regarding the tasks from the user`
 
  ![Sub Diagram 1](images/Schedule_Sub1.png)
- <div>Figure 5. Sub Diagram 1</div>
+ <div>Figure 6. Sub Diagram 1</div>
  <br>
  * `Check and Schedule tasks if feasible`
 
  ![Sub Diagram 2](images/Schedule_Sub2.png)
- <div>Figure 6. Sub Diagram 2</div>
+ <div>Figure 7. Sub Diagram 2</div>
  <br>
  * `Add the scheduled tasks to current list of tasks`
  
  ![Sub Diagram 3](images/Schedule_Sub3.png)
- <div>Figure 7. Sub Diagram 3</div>
+ <div>Figure 8. Sub Diagram 3</div>
  <br> 
+ 
 #### 3.1.2 Alternatives
 Aspect : How to capture user's requirements and handle it.
 
@@ -206,7 +240,7 @@ the user's requirements (e.g. Changes to the number of parameters provided by th
 
 [comment]: # (@@author NizarMohd)
 
-### 3.2 Listing Study Areas 
+### 3.2. Listing Study Areas 
 
 #### 3.2.1 Implementation 
 The Study Area search is facilitated by StudyAreaList. In this class, it has the list of all existing Study Areas, 
@@ -239,17 +273,17 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
  * `User enters search key` 
  
 ![Study Area Sequence_Diagram_Main](images/user_sL_interaction.png)  
-<div>Figure 8. Interaction between User and Study Area Search Interface</div>
+<div>Figure 9. Interaction between User and Study Area Search Interface</div>
 <br>
 
  * `StudyAreaCommand invokes searchList() of StudyAreaList` 
  
 ![Study_Area_Sequence_Diagram_subModules](images/sL_sA_interaction.png)
-<div>Figure 9. Interaction within Study Area Search Interface</div>
+<div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
 ![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
-<div>Figure 10. Interaction when isAvailStudyArea is invoked</div>
+<div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
 You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
 #### 3.2.2 Alternative 
@@ -277,6 +311,41 @@ will be added to the output list.
   
 Therefore, the first alternative is chosen, as it is easier to implement and lesser memory is used while 
 conducting the search.
+
+[comment]: # (@@author terrytay)
+
+### 3.3. Operation of Notes
+
+#### 3.3.1 Implementation 
+
+The NotesInvoker class will create a Notes object. Notes acts as an Interface for the ModulesList class.
+Each module is mapped to an ArrayList of notes. This map is stored in the ModuleList class. The ModuleList class
+contains operations to add, remove, enter and list modules.
+<br>
+
+A ModuleManager class is used to hold operations for a module. These operations are achieved by working together
+with the Parser class and Command class. Operations supported are add, list, undo, redo. 
+
+Add operations are fairly simple, primarily using the add method of hashmap library. The implementation of
+undo and redo is stated here below.
+
+Each time an AddCommand object is called, CommandStack will determine if operation is add, undo or redo.
+<br><br>
+If operation is to add notes, the notes will be added to the value in the module key. At the same time, 
+this note that is added is also added to a CommandStack list in the CommandStack class. The redoStack list in the 
+CommandStack class is then cleared.
+<br><br>
+If operation is to undo added notes, the CommandStack will remove the last added note from
+the CommandStack and pass it to the Command class to execute the undo action by removing it from the module
+contained in the hashmap. Also, this note will be added to the redoStack list.
+<br><br>
+If operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
+pass it to the Command class to execute the redo action by adding this note into the module contained in the
+hashmap.
+<br><br>
+The reason why we chose two linked lists to support these operations is because it reduces the SLOC needed to
+write the logic. An alternative is to actually remember the state of the hashmap before an operation and save
+it to another hashmap. However, this approach will take up more memory and reduces the performance of the application. 
 
 [comment]: # (@@author )
 ## 4. Testing 
@@ -313,6 +382,8 @@ meets your needs and is conducive, should you urgently need one.
  |v2.0|user|mark deadline as done|check to see if I have pending deadlines|
  |v2.0|user|to delete a Module|clean up my finished notes|
  |v2.0|user|create a Module|add notes inside|
+ |v2.0|user|undo an added note|increase my efficiency|
+ |v2.0|user|redo a removed notes|increase my efficiency|
  |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
 
 ## Appendix C: Non-Functional Requirements    
