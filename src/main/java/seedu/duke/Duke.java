@@ -38,6 +38,7 @@ public class Duke {
     private static Parser parser;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    //@@author terrytay
     /**
      * This is the constructor to create a new Duke program every time user runs the main loop.
      */
@@ -57,6 +58,7 @@ public class Duke {
         }
     }
 
+    //@@author terrytay
     /**
      * Runs all the command for tasks.
      */
@@ -75,6 +77,7 @@ public class Duke {
         }
     }
 
+    //@@author terrytay
     /**
      * This method will choose the commands to execute based on user input. Allows for abstraction.
      * @param fullCommand this is the user input.
