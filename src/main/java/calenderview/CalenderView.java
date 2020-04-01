@@ -7,29 +7,8 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
-import static ui.Constants.COL;
-import static ui.Constants.COMMA;
-import static ui.Constants.DAYS;
-import static ui.Constants.DEC;
-import static ui.Constants.DIVIDER;
-import static ui.Constants.ENTER_DESIRED_MONTH;
-import static ui.Constants.INVALID_MONTH;
-import static ui.Constants.INVALID_YEAR;
-import static ui.Constants.JAN;
-import static ui.Constants.MAP_CANNOT_BE_EMPTY;
-import static ui.Constants.MAX_COL;
-import static ui.Constants.MAX_LIST_SIZE;
-import static ui.Constants.MAX_ROW;
-import static ui.Constants.MULTIPLE_WHITE_SPACES;
-import static ui.Constants.NON_INTEGER_MONTH;
-import static ui.Constants.NON_INTEGER_YEAR;
-import static ui.Constants.NOW;
-import static ui.Constants.PADDING;
-import static ui.Constants.PADDING2;
-import static ui.Constants.PADDING3;
-import static ui.Constants.SPACE;
-import static ui.Constants.SPACES;
-import static ui.Constants.TASKS_FOR;
+
+import static ui.Constants.*;
 
 //@@author NizarMohd
 /**
@@ -70,7 +49,7 @@ public class CalenderView {
     public void printDays() {
         this.ui.printOut(DIVIDER, true);
         for (int i = 0; i < MAX_COL; i++) {
-            this.ui.printOut(COL + DAYS[i] + SPACES, false);
+            this.ui.printOut(COL + DAYS[i] + PADDING1, false);
         }
         this.ui.printOut(COL, true);
         this.ui.printOut(DIVIDER, true);
@@ -219,7 +198,7 @@ public class CalenderView {
      * This method prints the calendar.
      */
     public void printCalender() {
-        printCurrentMonth(); // to remove constructor later
+        printCurrentMonth();
         printDays();
         for (int i = 0; i < MAX_ROW; i++) {
             printBox(i);

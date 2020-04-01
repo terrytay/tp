@@ -271,12 +271,13 @@ public class Constants {
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
             + "be saved.";
     public static final String DIVIDER = "-----------------------------------------------------------------------"
-            + "----------------------------------------------------------------------------------------------------"
+            + "---------------------------------------------------------------------------------------------------"
             + "---------------------------";
     public static final String[] DAYS = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
-    public static final String SPACES = "\t\t\t\t\t\t ";
+    public static final String SPACES = "                       ";
     public static final String COL = "|";
     public static final String PADDING = "    ";
+    public static final String PADDING1 = "                        ";
     public static final String PADDING2 = "   ";
     public static final String PADDING3 = "  ";
     public static final int MAX_COL = 7;
