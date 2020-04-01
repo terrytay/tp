@@ -19,8 +19,8 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
+import static ui.Constants.SPACE;
 
 //@@author GanapathySanathBalaji
 /**
@@ -196,12 +196,12 @@ public class Event extends Task {
     @Override
     public String getCalenderTaskDetails() {
         String details = Constants.EVENT_SYMBOL + this.description;
-        if (details.length() > 26) {
+        if (details.length() > 25) {
             details = details.substring(0, 25);
         } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
             while (detailsBuilder.length() < 25) {
-                detailsBuilder.append(" ");
+                detailsBuilder.append(SPACE);
             }
             details = detailsBuilder.toString();
         }
