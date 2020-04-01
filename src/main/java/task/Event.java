@@ -1,5 +1,6 @@
 package task;
 
+import exception.command.DescriptionContainsInvalidCharacterException;
 import exception.command.EmptyDescriptionException;
 import exception.command.EventStartTimeAfterEndTimeException;
 import exception.command.InvalidDateException;
@@ -10,6 +11,7 @@ import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
 import ui.Constants;
 import ui.Ui;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -156,11 +158,15 @@ public class Event extends Task {
      * Parses the description from the string entered by user for the description field.
      *
      * @param description String entered by user for the description field.
-     * @throws EmptyDescriptionException If the description of the task provided is empty.
+     * @throws Exception If the description of the task provided is invalid.
      */
-    private void parseDescription(String description) throws EmptyDescriptionException {
-        if (description.trim().equals(Event.EMPTY_STRING)) {
+    private void parseDescription(String description) throws Exception {
+
+        if (description.isBlank()) {
             throw new EmptyDescriptionException();
+        }
+        if (description.contains(Character.toString('/')) || description.contains(Character.toString('#'))) {
+            throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
     }
@@ -413,7 +419,7 @@ public class Event extends Task {
             exceptionEncountered = false;
             try {
                 fieldToBeEdited = Integer.parseInt(ui.getUserIn());
-                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited < 0;
+                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited <= 0;
                 if (isInvalidOption) {
                     throw new Exception();
                 }
