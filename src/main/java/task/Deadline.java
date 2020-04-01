@@ -508,7 +508,7 @@ public class Deadline extends Task {
     public String getCalenderTaskDetails() {
         String isDoneString = isDone ? Constants.YES : Constants.NO;
         String details = DEADLINE_SYMBOL + isDoneString  + SPACE +  this.description;
-        if (details.length() > 26) {
+        if (details.length() > 25) {
             details = details.substring(0, 25);
         } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
