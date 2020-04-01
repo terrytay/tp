@@ -1,4 +1,4 @@
-package calenderview;
+package calendarview;
 
 import exception.CalenderException;
 import task.Task;
@@ -14,7 +14,7 @@ import static ui.Constants.*;
 /**
  * This class deals with converting Tasks into Calender view.
  */
-public class CalenderView {
+public class CalendarView {
     private HashMap<Integer, LinkedList<Task>> map;
     private  LocalDate firstDay;
     public  int month;
@@ -27,7 +27,7 @@ public class CalenderView {
      * This constructs the class.
      * @param ui allows for interaction with the user.
      */
-    public CalenderView(Ui ui) {
+    public CalendarView(Ui ui) {
         this.ui = ui;
         getInput();
         this.firstDay = YearMonth.of(this.year, this.month).atDay(1);
