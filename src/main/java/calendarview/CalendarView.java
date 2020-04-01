@@ -8,7 +8,30 @@ import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import static ui.Constants.*;
+import static ui.Constants.COL;
+import static ui.Constants.COMMA;
+import static ui.Constants.DAYS;
+import static ui.Constants.DEC;
+import static ui.Constants.DIVIDER;
+import static ui.Constants.ENTER_DESIRED_MONTH;
+import static ui.Constants.INVALID_MONTH;
+import static ui.Constants.INVALID_YEAR;
+import static ui.Constants.JAN;
+import static ui.Constants.MAP_CANNOT_BE_EMPTY;
+import static ui.Constants.MAX_COL;
+import static ui.Constants.MAX_LIST_SIZE;
+import static ui.Constants.MAX_ROW;
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
+import static ui.Constants.NON_INTEGER_MONTH;
+import static ui.Constants.NON_INTEGER_YEAR;
+import static ui.Constants.NOW;
+import static ui.Constants.PADDING;
+import static ui.Constants.PADDING1;
+import static ui.Constants.PADDING2;
+import static ui.Constants.PADDING3;
+import static ui.Constants.SPACE;
+import static ui.Constants.SPACES;
+import static ui.Constants.TASKS_FOR;
 
 //@@author NizarMohd
 /**
@@ -72,7 +95,7 @@ public class CalendarView {
 
     private LinkedList<Task> processList(int day) {
         LinkedList<Task> tasks = this.map.get(day);
-        if(tasks.size() > MAX_LIST_SIZE) {
+        if (tasks.size() > MAX_LIST_SIZE) {
             LinkedList<Task> temp = new LinkedList<>();
             for (int i = 0; i < MAX_LIST_SIZE; i++) {
                 temp.add(tasks.get(i));
@@ -83,6 +106,8 @@ public class CalendarView {
         }
         return this.map.get(day);
     }
+
+
     /**
      * This prints the content to be displayed in the box.
      * @param row this is the row the box is at.

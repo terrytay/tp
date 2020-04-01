@@ -230,8 +230,8 @@ public class Ui {
      * @param message This is the message to be printed.
      * @param withLine This controls if nextLine have to be printed.
      */
-    public void printOut(String message, boolean withLine){
-        if(withLine){
+    public void printOut(String message, boolean withLine) {
+        if (withLine) {
             this.out.println(message);
         } else {
             this.out.print(message);
