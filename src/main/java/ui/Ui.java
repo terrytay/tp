@@ -129,11 +129,7 @@ public class Ui {
 
     public void printWelcomeMessage() {
         this.out.println("Hello from" + System.lineSeparator() + LOGO);
-        this.out.println("What is your name?");
         printLine();
-        String name = this.in.nextLine();
-        printLine();
-        this.out.println(TAB + "Hello " + name + "!");
         this.out.println(START_MESSAGE);
         printHelp(false);
         printLine();
