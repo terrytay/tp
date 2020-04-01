@@ -270,4 +270,29 @@ public class Constants {
     public static final String NOTES_PATH = "library/notes.txt";
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
             + "be saved.";
+    public static final String DIVIDER = "-----------------------------------------------------------------------"
+            + "----------------------------------------------------------------------------------------------------"
+            + "---------------------------";
+    public static final String[] DAYS = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+    public static final String SPACES = "\t\t\t\t\t\t ";
+    public static final String COL = "|";
+    public static final String PADDING = "    ";
+    public static final String PADDING2 = "   ";
+    public static final String PADDING3 = "  ";
+    public static final int MAX_COL = 7;
+    public static final int MAX_ROW = 5;
+    public static final int JAN = 1;
+    public static final int DEC = 12;
+    public static final int MAX_LIST_SIZE = 4;
+    public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see: ";
+    public static final String NON_INTEGER_YEAR = "Year is not integer";
+    public static final String INVALID_YEAR = "Invalid Year";
+    public static final String NON_INTEGER_MONTH = "Month is not integer";
+    public static final String INVALID_MONTH = "Invalid Month";
+    public static final String TASKS_FOR = "Tasks for: ";
+    public static final String COMMA = ", ";
+    public static final String MAP_CANNOT_BE_EMPTY = "Map cannot be empty";
+    public static final String NOW = "now";
+    public static final String YES = "[Y]";
+    public static final String NO = "[N]";
 }

@@ -1,15 +1,13 @@
 package command;
 
+import calenderview.TaskComparator;
 import exception.MisuseOfCalenderCommandException;
 import task.Task;
 import task.TaskList;
 import ui.Ui;
 import calenderview.CalenderView;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 //@@author NizarMohd
 /**
@@ -28,6 +26,7 @@ public class CalenderCommand extends Command {
         }
     }
 
+
     /**
      * This method retrieves the mapping between the days to the current tasks for that month.
      * @param tasks this is the list of tasks in taskList.
@@ -42,6 +41,7 @@ public class CalenderCommand extends Command {
                 int day = date.getDayOfMonth();
                 dayToTaskHashMap.computeIfAbsent(day, k -> new LinkedList<Task>());
                 dayToTaskHashMap.get(day).add(task);
+                dayToTaskHashMap.get(day).sort(new TaskComparator());
             }
         }
         return dayToTaskHashMap;
