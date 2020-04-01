@@ -1,11 +1,11 @@
 package command;
 
+import calendarview.TaskComparator;
 import exception.MisuseOfCalenderCommandException;
 import task.Task;
 import task.TaskList;
 import ui.Ui;
-import calenderview.CalenderView;
-
+import calendarview.CalendarView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,13 +28,14 @@ public class CalenderCommand extends Command {
         }
     }
 
+
     /**
      * This method retrieves the mapping between the days to the current tasks for that month.
      * @param tasks this is the list of tasks in taskList.
      * @param c this is the calenderView class that was instantiated to convert the tasks into calender view.
      * @return a hashMap that maps the days to its designated tasks.
      */
-    public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, CalenderView c) {
+    public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, CalendarView c) {
         HashMap<Integer, LinkedList<Task>> dayToTaskHashMap = new HashMap<>();
         for (Task task : tasks) {
             LocalDate date = task.getDate();
@@ -42,6 +43,7 @@ public class CalenderCommand extends Command {
                 int day = date.getDayOfMonth();
                 dayToTaskHashMap.computeIfAbsent(day, k -> new LinkedList<Task>());
                 dayToTaskHashMap.get(day).add(task);
+                dayToTaskHashMap.get(day).sort(new TaskComparator());
             }
         }
         return dayToTaskHashMap;
@@ -50,7 +52,7 @@ public class CalenderCommand extends Command {
 
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
-        CalenderView c = new CalenderView(ui);
+        CalendarView c = new CalendarView(ui);
         HashMap<Integer, LinkedList<Task>> map = checkExistingTasks(taskList.tasks, c);
         c.setMap(map);
         c.printCalender();

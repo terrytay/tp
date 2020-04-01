@@ -15,6 +15,8 @@ import command.PriorityViewCommand;
 import command.SearchCommand;
 import command.ViewCommand;
 
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
+
 //@@author GanapathySanathBalaji
 /**
  * This class is used to parse the user input into executable commands.
@@ -45,7 +47,7 @@ public class Parser {
      */
     public Command parseCommand(String fullCommand) throws Exception {
 
-        String[] commandSplit = fullCommand.split(" ",2);
+        String[] commandSplit = fullCommand.split(MULTIPLE_WHITE_SPACES,2);
         String commandType = commandSplit[0];
         Command command;
         boolean isOneWordCommand = commandSplit.length == 1 || commandSplit[1].isBlank();

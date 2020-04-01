@@ -72,9 +72,12 @@ public class Duke {
                 ui.printLine();
                 ui.printMessage(exception.getMessage());
                 ui.printLine();
+            }   finally {
+                taskLoader.saveTasks(taskList.tasks);
             }
             fullCommand = ui.getUserIn().trim().toLowerCase();
         }
+        ui.printLine();
     }
 
     //@@author terrytay
@@ -122,7 +125,6 @@ public class Duke {
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
         LOGGER.log(Level.INFO, Constants.TASK_MODE);
         runCommands();
-        taskLoader.saveTasks(taskList.tasks);
         LOGGER.log(Level.INFO, Constants.APPLICATION_GOING_TO_EXIT);
         ui.printByeMessage();
         ui.close();
