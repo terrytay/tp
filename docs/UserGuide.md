@@ -783,7 +783,7 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 
 ## 5. Command Summary
 
-### Organice Main Features
+### OrgaNice Main Features
 `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks <br>
 `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks <br>
 `delete <index number of task>` - Deletes task at specified index <br>
