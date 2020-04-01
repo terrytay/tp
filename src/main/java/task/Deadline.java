@@ -1,13 +1,13 @@
 package task;
 
 import exception.command.DeadlineCompletionStatusNotABooleanException;
+import exception.command.DescriptionContainsInvalidCharacterException;
 import exception.command.EmptyDescriptionException;
 import exception.command.InvalidDateException;
 import exception.command.InvalidDueTimeException;
 import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
-import ui.Constants;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -34,6 +34,7 @@ import static ui.Constants.INVALID_DATE_ENTERED;
 import static ui.Constants.INVALID_OPTION_ENTERED;
 import static ui.Constants.INVALID_PRIORITY_VALUE;
 import static ui.Constants.NEW_LINE_CHARACTER;
+import static ui.Constants.NO;
 import static ui.Constants.OPTION_TO_EDIT_DATE;
 import static ui.Constants.OPTION_TO_EDIT_DESCRIPTION;
 import static ui.Constants.PRIORITY_NOT_INTEGER;
@@ -42,6 +43,7 @@ import static ui.Constants.SPACE;
 import static ui.Constants.UPDATED_DETAILS;
 import static ui.Constants.WITH_PRIORITY;
 import static ui.Constants.WRONG_OPTION;
+import static ui.Constants.YES;
 
 
 /**
@@ -238,11 +240,15 @@ public class Deadline extends Task {
      * Parses the description from the string entered by user for the description field.
      *
      * @param description String entered by user for the description field.
-     * @throws EmptyDescriptionException If the description of the task provided is empty.
+     * @throws Exception If the description of the task provided is invalid.
      */
-    private void parseDescription(String description) throws EmptyDescriptionException {
-        if (description.trim().equals(Event.EMPTY_STRING)) {
+    private void parseDescription(String description) throws Exception {
+
+        if (description.isBlank()) {
             throw new EmptyDescriptionException();
+        }
+        if (description.contains("/") || description.contains("#")) {
+            throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
     }
@@ -463,7 +469,7 @@ public class Deadline extends Task {
             exceptionEncountered = false;
             try {
                 fieldToBeEdited = Integer.parseInt(ui.getUserIn());
-                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited < 0;
+                boolean isInvalidOption = fieldToBeEdited > 5 || fieldToBeEdited <= 0;
                 if (isInvalidOption) {
                     throw new Exception();
                 }
@@ -506,10 +512,9 @@ public class Deadline extends Task {
 
     @Override
     public String getCalenderTaskDetails() {
-        String isDoneString = isDone ? "Y" : "N";
-        String isDoneSymbol = "[" + isDoneString + "]";
-        String details = DEADLINE_SYMBOL + isDoneSymbol  + this.description;
-        if (details.length() > 26) {
+        String isDoneString = isDone ? YES : NO;
+        String details = DEADLINE_SYMBOL + isDoneString  + SPACE +  this.description;
+        if (details.length() > 25) {
             details = details.substring(0, 25);
         } else {
             StringBuilder detailsBuilder = new StringBuilder(details);

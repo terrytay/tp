@@ -50,7 +50,6 @@ public class TaskScheduler {
                 addTaskToQueue(newSchedulableTask);
             } catch (Exception e) {
                 ui.printMessage(e.getMessage());
-                ui.printMessage(Constants.WRONG_FORMAT_MESSAGE);
                 taskNumber--;
             }
         }
@@ -76,10 +75,8 @@ public class TaskScheduler {
     public boolean scheduleTasks(Ui ui) {
         int currentDay = 0;
         LocalDate startDate;
-        LocalDate endDate;
         String startOfDay = NINE_AM;
         String endOfDay = NINE_PM;
-        String defaultPriority = PRIORITY_FOR_SCHEDULED_TASKS;
         StringBuilder scheduleCreated = new StringBuilder();
         boolean isFeasible = true;
         while (!taskQueue.isEmpty() && isFeasible) {
@@ -91,11 +88,13 @@ public class TaskScheduler {
                     > taskToBeScheduledNext.numberOfDaysLeft) {
                 isFeasible = scheduleNotFeasible();
             } else {
-                currentDay = addTaskToList(ui, currentDay, startDate, startOfDay, endOfDay, defaultPriority,
-                        scheduleCreated, taskToBeScheduledNext);
+                currentDay = addTaskToList(ui, currentDay, startDate, startOfDay, endOfDay,
+                        PRIORITY_FOR_SCHEDULED_TASKS, scheduleCreated, taskToBeScheduledNext);
             }
         }
-        ui.printMessage(scheduleCreated.toString());
+        if (isFeasible) {
+            ui.printMessage(scheduleCreated.toString());
+        }
         return isFeasible;
     }
 
