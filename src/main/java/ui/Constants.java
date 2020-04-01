@@ -161,7 +161,7 @@ public class Constants {
     public static final String NEW_TASK_ADDED_MESSAGE = "A new task with the following information has been added.";
     public static final String TASK_LIST_AS_FOLLOWS = "Here is the list of tasks added so far:";
     public static final String CLOSING_BRACKET = ") ";
-    public static final String LIST_EMPTY_MESSAGE = "The list is empty.";
+    public static final String LIST_EMPTY_MESSAGE = "No matched tasks found.";
     public static final String TASK_AT_INDEX_DELETED_MESSAGE = "Noted! I have removed this task:";
     public static final String INDEX_TO_BE_DELETED_OUT_OF_BOUNDS_LOG = "Index specified to be deleted is out of bounds";
     public static final String RE_ENTER_VALID_INDEX_TO_DELETE_MESSAGE = "Invalid index entered. Please enter a valid"
