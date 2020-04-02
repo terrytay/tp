@@ -49,11 +49,9 @@
  
  * Ensure you have Java 11 or above installed in your Computer.
  * Download the latest OrgaNice!.jar from [here](https://github.com/AY1920S2-CS2113T-T12-3/tp/releases) and place it in an empty folder. 
- * Double-click on OrgaNice!.jar to open it.
- * If it fails do the following:
-    * Open Command Prompt.
-    * Navigate to the folder with the jar.
-    * Type the following command:  java -jar iP.jar to run it.
+ * Open Command Prompt. **NOTE: Please ensure that the command prompt is at full screen when running the jar file**
+ * Navigate to the folder with the jar.
+ * Type the following command:  java -jar OrgaNice!.jar to run it.
  
  A text based UI should with appear with the following lines.
   
@@ -785,7 +783,7 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 
 ## 5. Command Summary
 
-### Organice Main Features
+### OrgaNice Main Features
 `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks <br>
 `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks <br>
 `delete <index number of task>` - Deletes task at specified index <br>

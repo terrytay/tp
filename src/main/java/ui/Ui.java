@@ -129,11 +129,7 @@ public class Ui {
 
     public void printWelcomeMessage() {
         this.out.println("Hello from" + System.lineSeparator() + LOGO);
-        this.out.println("What is your name?");
         printLine();
-        String name = this.in.nextLine();
-        printLine();
-        this.out.println(TAB + "Hello " + name + "!");
         this.out.println(START_MESSAGE);
         printHelp(false);
         printLine();
@@ -229,4 +225,16 @@ public class Ui {
         return TAB + standardLengthMessage.toString().stripTrailing();
     }
 
+    /**
+     * This allows for other classes to print without formatMessage's format.
+     * @param message This is the message to be printed.
+     * @param withLine This controls if nextLine have to be printed.
+     */
+    public void printOut(String message, boolean withLine) {
+        if (withLine) {
+            this.out.println(message);
+        } else {
+            this.out.print(message);
+        }
+    }
 }
