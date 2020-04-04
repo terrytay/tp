@@ -46,7 +46,7 @@ public class Notes {
      *
      * @param code Module Code.
      */
-    public void enterModule(String code) {
+    public void enterModule(String code) throws Exception {
         code = code.toUpperCase();
 
         modulesList.enterModule(code);

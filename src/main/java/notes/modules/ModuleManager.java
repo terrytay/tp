@@ -20,30 +20,23 @@ public class ModuleManager {
      * @param code module code
      * @param messages the notes in the module
      */
-    public ModuleManager(String code, ArrayList<String> messages) {
+    public ModuleManager(String code, ArrayList<String> messages) throws Exception {
         this.code = code;
         this.messages = messages;
         commandStack = new CommandStack();
         runInstance();
     }
 
-    private void runInstance() {
-        try {
-            System.out.println(String.format("Notes for %s", code));
-            Command command;
-            do {
-                showMenu();
-                Scanner input = new Scanner(System.in);
-                String userInput = input.nextLine();
-                command = new Parser().parseCommand(userInput, this);
-                if (command.equals(null)) {
-                    throw new NullPointerException();
-                }
-                executeCommand(command);
-            } while (!ExitCommand.isExit(command));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    private void runInstance() throws Exception {
+        System.out.println(String.format("Notes for %s", code));
+        Command command;
+        showMenu();
+        do {
+            Scanner input = new Scanner(System.in);
+            String userInput = input.nextLine();
+            command = new Parser().parseCommand(userInput, this);
+            executeCommand(command);
+        } while (!ExitCommand.isExit(command));
 
     }
 
@@ -83,6 +76,7 @@ public class ModuleManager {
 
     public void addMessage(String message) {
         messages.add(message);
+        System.out.println("SUCCESS");
     }
 
     public ArrayList<String> getMessages() {
