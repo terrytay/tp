@@ -81,7 +81,7 @@ public class TaskScheduler {
         boolean isFeasible = true;
         while (!taskQueue.isEmpty() && isFeasible) {
             SchedulableTask taskToBeScheduledNext = taskQueue.poll();
-            scheduleCreated.append(taskToBeScheduledNext.taskName).append(Constants.FROM)
+            scheduleCreated.append(taskToBeScheduledNext.taskDescription).append(Constants.FROM)
                     .append(LocalDate.now().plusDays(currentDay + 1));
             startDate = LocalDate.now().plusDays(currentDay);
             if (currentDay + taskToBeScheduledNext.numberOfDaysRequiredToFinishTask
@@ -131,7 +131,7 @@ public class TaskScheduler {
         for (LocalDate iterator = startDate.plusDays(1); !iterator.isAfter(endDate);
              iterator = iterator.plusDays(1)) {
             try {
-                toBeAddedToList.add(new Event(taskToBeScheduledNext.taskName, iterator.toString(), startOfDay,
+                toBeAddedToList.add(new Event(taskToBeScheduledNext.taskDescription, iterator.toString(), startOfDay,
                         endOfDay, defaultPriority));
             } catch (Exception e) {
                 ui.printMessage("Unexpected error");

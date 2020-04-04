@@ -1,6 +1,6 @@
 package calendarview;
 
-import exception.CalenderException;
+import exception.CalendarException;
 import task.Task;
 import ui.Ui;
 import java.time.LocalDate;
@@ -35,7 +35,7 @@ import static ui.Constants.TASKS_FOR;
 
 //@@author NizarMohd
 /**
- * This class deals with converting Tasks into Calender view.
+ * This class deals with converting Tasks into Calendar view.
  */
 public class CalendarView {
     private HashMap<Integer, LinkedList<Task>> map;
@@ -60,7 +60,7 @@ public class CalendarView {
 
     /**
      * This sets the mapping between days to Tasks.
-     * @param inMap this is the incoming created by CalenderCommand.
+     * @param inMap this is the incoming created by CalendarCommand.
      */
     public void setMap(HashMap<Integer, LinkedList<Task>> inMap) {
         this.map = inMap;
@@ -133,7 +133,7 @@ public class CalendarView {
                     LinkedList<Task> tasks = processList(day);
                     Task task = tasks.get(0);
                     tasks.removeFirst();
-                    this.ui.printOut(COL + SPACE + task.getCalenderTaskDetails() + SPACE, false);
+                    this.ui.printOut(COL + SPACE + task.getCalendarTaskDetails() + SPACE, false);
                 }
             } else {
                 this.ui.printOut(COL + SPACES + PADDING, false);
@@ -166,34 +166,34 @@ public class CalendarView {
     /**
      * This checks if the month entered by user is correct.
      * @param in this is the input by user.
-     * @throws CalenderException this is the exception thrown when user entered the month wrongly.
+     * @throws CalendarException this is the exception thrown when user entered the month wrongly.
      */
-    public void checkMonth(String in) throws CalenderException {
+    public void checkMonth(String in) throws CalendarException {
         try {
             int inMonth = Integer.parseInt(in);
             if (inMonth < JAN || inMonth > DEC) {
-                throw new CalenderException(INVALID_MONTH);
+                throw new CalendarException(INVALID_MONTH);
             }
             this.month = inMonth;
         } catch (NumberFormatException e) {
-            throw new CalenderException(NON_INTEGER_MONTH);
+            throw new CalendarException(NON_INTEGER_MONTH);
         }
     }
 
     /**
      * This method checks the year entered by the user.
      * @param in This is the input entered by the user.
-     * @throws CalenderException is thrown when user enters the year wrongly.
+     * @throws CalendarException is thrown when user enters the year wrongly.
      */
-    public void checkYear(String in) throws CalenderException {
+    public void checkYear(String in) throws CalendarException {
         try {
             int inYear = Integer.parseInt(in);
             if (inYear < 2020) {
-                throw new CalenderException(INVALID_YEAR);
+                throw new CalendarException(INVALID_YEAR);
             }
             this.year = inYear;
         } catch (NumberFormatException e) {
-            throw new CalenderException(NON_INTEGER_YEAR);
+            throw new CalendarException(NON_INTEGER_YEAR);
         }
     }
 
@@ -222,7 +222,7 @@ public class CalendarView {
     /**
      * This method prints the calendar.
      */
-    public void printCalender() {
+    public void printCalendar() {
         printCurrentMonth();
         printDays();
         for (int i = 0; i < MAX_ROW; i++) {

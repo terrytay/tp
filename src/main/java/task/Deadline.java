@@ -300,7 +300,7 @@ public class Deadline extends Task {
             LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
-        boolean containsKeyword = description.contains(keyword);
+        boolean containsKeyword = description.toLowerCase().contains(keyword.toLowerCase());
         return containsKeyword;
     }
 
@@ -515,7 +515,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String getCalenderTaskDetails() {
+    public String getCalendarTaskDetails() {
         String isDoneString = isDone ? YES : NO;
         String details = DEADLINE_SYMBOL + isDoneString  + SPACE +  this.description;
         if (details.length() > 25) {
