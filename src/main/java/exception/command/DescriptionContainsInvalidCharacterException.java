@@ -5,6 +5,6 @@ import exception.CustomException;
 //@@author GanapathySanathBalaji
 public class DescriptionContainsInvalidCharacterException extends CustomException {
     public DescriptionContainsInvalidCharacterException() {
-        super("Description shouldn't contain '\\' and '#' characters");
+        super("Description shouldn't contain '/' and '#' characters");
     }
 }

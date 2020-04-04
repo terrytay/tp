@@ -173,9 +173,13 @@ public class Deadline extends Task {
         switch (isDone.strip()) {
         case "TRUE":
             // Fallthrough
+        case "True":
+            // Fallthrough
         case "true":
             this.isDone = true;
             break;
+        case "False":
+            // Fallthrough
         case "FALSE":
             // Fallthrough
         case "false":
