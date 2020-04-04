@@ -515,7 +515,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String getCalenderTaskDetails() {
+    public String getCalendarTaskDetails() {
         String isDoneString = isDone ? YES : NO;
         String details = DEADLINE_SYMBOL + isDoneString  + SPACE +  this.description;
         if (details.length() > 25) {

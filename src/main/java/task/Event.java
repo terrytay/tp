@@ -194,7 +194,7 @@ public class Event extends Task {
     }
 
     @Override
-    public String getCalenderTaskDetails() {
+    public String getCalendarTaskDetails() {
         String details = Constants.EVENT_SYMBOL + this.description;
         if (details.length() > 25) {
             details = details.substring(0, 25);
