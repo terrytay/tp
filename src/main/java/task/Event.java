@@ -27,7 +27,7 @@ import static ui.Constants.SPACE;
  * Represents an event and contains the related functions.
  */
 public class Event extends Task {
-    
+
     public static final String EMPTY_DESCRIPTION_MESSAGE = "New description entered by user while editing "
             + "the task is empty";
     private String description;
