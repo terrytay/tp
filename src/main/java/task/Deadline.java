@@ -300,7 +300,7 @@ public class Deadline extends Task {
             LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
-        boolean containsKeyword = description.contains(keyword);
+        boolean containsKeyword = description.toLowerCase().contains(keyword.toLowerCase());
         return containsKeyword;
     }
 
