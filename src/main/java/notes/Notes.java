@@ -45,8 +45,9 @@ public class Notes {
      * To enter into the module notes.
      *
      * @param code Module Code.
+     * @throws Exception for moduleManager
      */
-    public void enterModule(String code) {
+    public void enterModule(String code) throws Exception {
         code = code.toUpperCase();
 
         modulesList.enterModule(code);
