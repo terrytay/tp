@@ -19,6 +19,7 @@ public class Parser {
      * @param moduleManager ModuleManager object used to manage modules.
      * @param userInput input from the user
      * @return method to call Command of specific type
+     * @throws Exception for invalid commands
      */
     public Command parseCommand(String userInput, ModuleManager moduleManager) throws Exception {
         try {

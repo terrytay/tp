@@ -28,29 +28,29 @@ public class NotesInvoker {
                 choice = userInput.split(" ")[0];
                 String code;
                 switch (choice) {
-                    case "add":
-                        code = userInput.split(" ")[1];
-                        notes.createModule(code);
-                        break;
-                    case "remove":
-                        code = userInput.split(" ")[1];
-                        notes.deleteModule(code);
-                        break;
-                    case "enter":
-                        code = userInput.split(" ")[1];
-                        notes.enterModule(code);
-                        break;
-                    case "list":
-                        notes.listModules();
-                        break;
-                    case "exit":
-                        notes.exportModules();
-                        break;
-                    case "help":
-                        displayMenu();
-                        break;
-                    default:
-                        System.out.println(Constants.INVALID_NOTES_COMMAND_MESSAGE);
+                case "add":
+                    code = userInput.split(" ")[1];
+                    notes.createModule(code);
+                    break;
+                case "remove":
+                    code = userInput.split(" ")[1];
+                    notes.deleteModule(code);
+                    break;
+                case "enter":
+                    code = userInput.split(" ")[1];
+                    notes.enterModule(code);
+                    break;
+                case "list":
+                    notes.listModules();
+                    break;
+                case "exit":
+                    notes.exportModules();
+                    break;
+                case "help":
+                    displayMenu();
+                    break;
+                default:
+                    System.out.println(Constants.INVALID_NOTES_COMMAND_MESSAGE);
                 }
 
             } while (!choice.equals("exit"));

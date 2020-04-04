@@ -19,6 +19,7 @@ public class ModuleManager {
      * Manages the module e.g. overall commands and control.
      * @param code module code
      * @param messages the notes in the module
+     * @throws Exception for commandStack
      */
     public ModuleManager(String code, ArrayList<String> messages) throws Exception {
         this.code = code;

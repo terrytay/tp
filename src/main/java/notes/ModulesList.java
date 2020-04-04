@@ -74,6 +74,7 @@ public class ModulesList {
     /**
      * Enters the module interface of moduleManager.
      * @param code module code
+     * @throws Exception for ModuleManager
      */
     public void enterModule(String code) throws Exception {
         if (getModule(code) == null) {
