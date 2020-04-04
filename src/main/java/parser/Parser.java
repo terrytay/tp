@@ -2,6 +2,7 @@ package parser;
 
 import command.AddDeadlineCommand;
 import command.AddEventCommand;
+import command.CalenderCommand;
 import command.ClearCommand;
 import command.Command;
 import command.CountdownCommand;
@@ -13,6 +14,8 @@ import command.HelpCommand;
 import command.PriorityViewCommand;
 import command.SearchCommand;
 import command.ViewCommand;
+
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
 
 //@@author GanapathySanathBalaji
 /**
@@ -33,6 +36,7 @@ public class Parser {
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
     public static final String DONE_COMMAND = "done";
+    public static final  String CALENDER_COMMAND = "calender";
 
 
     /**
@@ -43,7 +47,7 @@ public class Parser {
      */
     public Command parseCommand(String fullCommand) throws Exception {
 
-        String[] commandSplit = fullCommand.split(" ",2);
+        String[] commandSplit = fullCommand.split(MULTIPLE_WHITE_SPACES,2);
         String commandType = commandSplit[0];
         Command command;
         boolean isOneWordCommand = commandSplit.length == 1 || commandSplit[1].isBlank();
@@ -83,6 +87,9 @@ public class Parser {
             break;
         case DONE_COMMAND:
             command = new DoneCommand(commandSplit,isOneWordCommand);
+            break;
+        case CALENDER_COMMAND:
+            command = new CalenderCommand(isOneWordCommand);
             break;
         case EMPTY_COMMAND:
             throw new Exception("Empty Line entered, Please enter a valid line");

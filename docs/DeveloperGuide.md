@@ -330,24 +330,19 @@ Add operations are fairly simple, primarily using the add method of hashmap libr
 undo and redo is stated here below.
 
 Each time an AddCommand object is called, CommandStack will determine if operation is add, undo or redo.
-<div>
+<br><br>
 If operation is to add notes, the notes will be added to the value in the module key. At the same time, 
 this note that is added is also added to a CommandStack list in the CommandStack class. The redoStack list in the 
 CommandStack class is then cleared.
-</div>
-<br>
-<div>
+<br><br>
 If operation is to undo added notes, the CommandStack will remove the last added note from
 the CommandStack and pass it to the Command class to execute the undo action by removing it from the module
 contained in the hashmap. Also, this note will be added to the redoStack list.
-</div>
-<br>
-<div>
+<br><br>
 If operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
 pass it to the Command class to execute the redo action by adding this note into the module contained in the
 hashmap.
-</div>
-<br>
+<br><br>
 The reason why we chose two linked lists to support these operations is because it reduces the SLOC needed to
 write the logic. An alternative is to actually remember the state of the hashmap before an operation and save
 it to another hashmap. However, this approach will take up more memory and reduces the performance of the application. 
