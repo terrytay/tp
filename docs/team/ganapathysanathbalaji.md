@@ -48,7 +48,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Reported 19 bugs during the [PE Dry Run](https://github.com/GanapathySanathBalaji/ped/issues).
 * **Contributions to the User Guide (Extracts)**:
 
-		The sections I contributed to in the user guide are as follows. They showcase my ability to write documentation targeting end-users.
+		The sections I contributed to in the user guide are as follows. Due to recommended page limit not all sections contributed by me have been shown below. They showcase my ability to write documentation targeting end-users.
 
 ### 3.5. Edit task
 If a task has any of it's details altered, you can use this command to edit the appropriate field directly. This saves you the trouble of manually deleting and adding a new task. This command is a multi-stage command so that it is easier for you to do it. This command changes the specified field of the task mentioned by it's index. To view the index of the task, one of the various command to view the list of tasks (view, priority_view, countdown) is run. 
@@ -166,6 +166,8 @@ scheduled over non contiguous days) .
 <br>
 
 **Contributions to the Developer Guide (Extracts)**:
+
+        I contributed to the following sections in the Developer Guide. Due to recommended page limit not all sections contributed by me have been shown below. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
 
 ### 2.1. Architecture  
   
