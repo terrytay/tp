@@ -1,5 +1,6 @@
 package notes.modules.parser;
 
+import exception.NotesInvalidAddMessageException;
 import notes.modules.ModuleManager;
 import notes.modules.command.AddCommand;
 import notes.modules.command.Command;
@@ -18,8 +19,9 @@ public class Parser {
      * @param moduleManager ModuleManager object used to manage modules.
      * @param userInput input from the user
      * @return method to call Command of specific type
+     * @throws Exception for invalid commands
      */
-    public Command parseCommand(String userInput, ModuleManager moduleManager) {
+    public Command parseCommand(String userInput, ModuleManager moduleManager) throws Exception {
         try {
             this.userInput = userInput;
             userCommandText = userInput.split(" ")[0];
@@ -38,11 +40,12 @@ public class Parser {
             case "exit":
                 return new ExitCommand();
             default:
-                throw new NullPointerException();
+                throw new Exception();
             }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new NotesInvalidAddMessageException();
         } catch (Exception e) {
-            System.out.println("Please enter a valid command.");
+            throw new Exception("Please specify a right command.");
         }
-        return null;
     }
 }

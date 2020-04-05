@@ -1,7 +1,7 @@
 package command;
 
 import calendarview.TaskComparator;
-import exception.MisuseOfCalenderCommandException;
+import exception.MisuseOfCalendarCommandException;
 import task.Task;
 import task.TaskList;
 import ui.Ui;
@@ -13,18 +13,18 @@ import java.util.LinkedList;
 
 //@@author NizarMohd
 /**
- * This class deals with the command used for Calender View.
+ * This class deals with the command used for Calendar View.
  */
-public class CalenderCommand extends Command {
+public class CalendarCommand extends Command {
 
     /**
      * This constructs the command.
      * @param isOneWordCommand checks to see if the user entered the command correctly.
      * @throws Exception is thrown if the user entered the command wrongly.
      */
-    public CalenderCommand(boolean isOneWordCommand) throws Exception {
+    public CalendarCommand(boolean isOneWordCommand) throws Exception {
         if (!isOneWordCommand) {
-            throw new MisuseOfCalenderCommandException();
+            throw new MisuseOfCalendarCommandException();
         }
     }
 
@@ -32,7 +32,7 @@ public class CalenderCommand extends Command {
     /**
      * This method retrieves the mapping between the days to the current tasks for that month.
      * @param tasks this is the list of tasks in taskList.
-     * @param c this is the calenderView class that was instantiated to convert the tasks into calender view.
+     * @param c this is the calendarView class that was instantiated to convert the tasks into calendar view.
      * @return a hashMap that maps the days to its designated tasks.
      */
     public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, CalendarView c) {
@@ -55,7 +55,7 @@ public class CalenderCommand extends Command {
         CalendarView c = new CalendarView(ui);
         HashMap<Integer, LinkedList<Task>> map = checkExistingTasks(taskList.tasks, c);
         c.setMap(map);
-        c.printCalender();
+        c.printCalendar();
         ui.printLine();
     }
 }

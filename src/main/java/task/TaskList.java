@@ -258,7 +258,7 @@ public class TaskList {
             ui.printMessage(Constants.SEARCH_LIST_MESSAGE);
             printMatchedTasks(keyword, ui);
         } else {
-            ui.printMessage(Constants.LIST_EMPTY_MESSAGE);
+            ui.printMessage(Constants.SEARCH_EMPTY_MESSAGE);
         }
         ui.printLine();
     }
