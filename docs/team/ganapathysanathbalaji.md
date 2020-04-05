@@ -36,7 +36,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Documented a few user stories.
 * **Contributions to  team-based tasks :**
 	* Managed the release of v1.0 and v2.0.
-	* Refactored code and created seperate parser and command classes.
+	* Refactored code and created separate parser and command classes.
 	* Added user stories to the DG.
 	* Maintained the issue tracker for a significant amount of time and handled all the issues/bugs raised during the PE-Dry run.
 * **Review/mentoring contributions:**
@@ -44,11 +44,13 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 		[#133](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/133), [#127](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/127), [#124](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/124), [#117](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/117), [#112](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/112), [#95](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/95), [#67](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/67), [#65](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/65), [#41](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/41)
 	* Helped team by changing the runtest.bat and runtest.sh files to decrease the number of steps required to run the tests.
 * **Contributions beyond the project team:**
-	* I posted one reponse to [Issue#21](https://github.com/nus-cs2113-AY1920S2/forum/issues/21) on the main forum.
+	* I posted one response to [Issue#21](https://github.com/nus-cs2113-AY1920S2/forum/issues/21) on the main forum.
 	* Reported 19 bugs during the [PE Dry Run](https://github.com/GanapathySanathBalaji/ped/issues).
 * **Contributions to the User Guide (Extracts)**:
 
-		The sections I contributed to in the user guide are as follows. Due to recommended page limit not all sections contributed by me have been shown below. They showcase my ability to write documentation targeting end-users.
+		The sections I contributed to in the user guide are as follows.
+	    Due to recommended page limit not all sections contributed by me have been shown below.
+	    They showcase my ability to write documentation targeting end-users.
 
 ### 3.5. Edit task
 If a task has any of it's details altered, you can use this command to edit the appropriate field directly. This saves you the trouble of manually deleting and adding a new task. This command is a multi-stage command so that it is easier for you to do it. This command changes the specified field of the task mentioned by it's index. To view the index of the task, one of the various command to view the list of tasks (view, priority_view, countdown) is run. 
@@ -167,7 +169,9 @@ scheduled over non contiguous days) .
 
 **Contributions to the Developer Guide (Extracts)**:
 
-        I contributed to the following sections in the Developer Guide. Due to recommended page limit not all sections contributed by me have been shown below. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
+        I contributed to the following sections in the Developer Guide.
+        Due to recommended page limit not all sections contributed by me have been shown below.
+        They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
 
 ### 2.1. Architecture  
   
