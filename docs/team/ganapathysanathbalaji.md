@@ -49,65 +49,9 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 * **Contributions to the User Guide (Extracts)**:
 
 		The sections I contributed to in the user guide are as follows.
-	    Due to recommended page limit not all sections contributed by me have been shown below.
+	    Due to recommended page limit not all sections contributed by 
+	    me have been shown below.
 	    They showcase my ability to write documentation targeting end-users.
-
-### 3.5. Edit task
-If a task has any of it's details altered, you can use this command to edit the appropriate field directly. This saves you the trouble of manually deleting and adding a new task. This command is a multi-stage command so that it is easier for you to do it. This command changes the specified field of the task mentioned by it's index. To view the index of the task, one of the various command to view the list of tasks (view, priority_view, countdown) is run. 
-
-Note: The date and time should be provided in the correct format as mentioned [here](#formats).
-
-#### Multi-Stage
-
-#### Usage 
-
-#### `edit <index number of task>` - Used to edit task at specified index
-
-The interface then displays the task and the set of attributes of the task that can be edited, if the index is valid. You can then enter the field you would like to change and then the new value to change the field into. 
-
-The command edits the task at the specifed index at the field mentioned by you.
-Upon success a successful edit message displaying the updated task's information similar to the one in the example would appear.
-If the wrong format is used an alert would be displayed.
-
-Example of usage: 
-To edit the start time of the event at 2nd index of the list.
-#### Multi Stage
-
-#### `edit 2` - Specify the index of task to be edited 
-
-Expected outcome:
-
-    ________________________________________________________________________________________________
-         The event details are as follows:
-         [E] meeting at May 6 2020 from 14:00 to 18:00 with
-         priority 4
-         Which field of the event to edit? (Enter Corresponding
-         Number)
-         1. Description
-         2. Date
-         3. Start Time
-         4. End Time
-         5. Priority
-
-
-#### `3` - Specify field to be edited based on list
-
-Expected outcome:
-
-	 Enter new Start Time:
-    
-#### `12:00` - Enter the new value to be changed to
-
-Expected outcome:
-
-         Updated Details:
-         [E] meeting at May 6 2020 from 12:00 to 18:00 with
-         priority 4
-    ________________________________________________________________________________________________
-    ________________________________________________________________________________________________
-         The task at the mentioned index has been edited
-         successfully
-    ________________________________________________________________________________________________
 
 ### 3.12. Schedule tasks
 If you have a bunch of assignments, projects and exams happening over the next few weeks and are stressed out with 
@@ -167,11 +111,20 @@ scheduled over non contiguous days) .
 
 <br>
 
+
+## 6. Formats Used
+
+Time should be in the form of `HH:MM` (24 Hour Format, HH - Hour, MM - Minute) <br>
+Date should be in the form of `YYYY-MM-DD` (YYYY - Year, MM - Month, DD - Day) <br>
+
+
 **Contributions to the Developer Guide (Extracts)**:
 
         I contributed to the following sections in the Developer Guide.
-        Due to recommended page limit not all sections contributed by me have been shown below.
-        They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
+        Due to recommended page limit not all sections contributed by 
+        me have been shown below.
+        They showcase my ability to write technical documentation and
+        the technical depth of my contributions to the project.
 
 ### 2.1. Architecture  
   
