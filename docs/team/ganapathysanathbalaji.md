@@ -46,7 +46,6 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 * **Contributions beyond the project team:**
 	* I posted one reponse to [Issue#21](https://github.com/nus-cs2113-AY1920S2/forum/issues/21) on the main forum.
 	* Reported 19 bugs during the [PE Dry Run](https://github.com/GanapathySanathBalaji/ped/issues).
-<br><br><br><br><br><br><br><br><br><br>
 * **Contributions to the User Guide (Extracts)**:
 
 		The sections I contributed to in the user guide are as follows. They showcase my ability to write documentation targeting end-users.
