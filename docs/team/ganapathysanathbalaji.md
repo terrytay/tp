@@ -165,7 +165,7 @@ The Task component depends on 3 other components,
  
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
-![Task Component](../images/Task_Component_UML.png)   
+![Task Component](../images/TaskComponentUML.png)   
 <div>Figure 2. Object Diagram for Task Component</div>
 <br>
 The task component contains 8 separate classes. They are as follows:  
@@ -204,24 +204,24 @@ The task component contains 8 separate classes. They are as follows:
 	
    The following sequence diagrams explain how tasks are scheduled.
 	
- ![Overall Sequence Diagram](../images/Schedule_Overall.png)
+ ![Overall Sequence Diagram](../images/ScheduleOverall.png)
 <div>Figure 5. Overall Sequence Diagram</div>
 <br>
  The three reference frames used are as follows:
 
  * `Get information regarding the tasks from the user`
 
- ![Sub Diagram 1](../images/Schedule_Sub1.png)
+ ![Sub Diagram 1](../images/ScheduleSub1.png)
  <div>Figure 6. Sub Diagram 1</div>
  <br>
  * `Check and Schedule tasks if feasible`
 
- ![Sub Diagram 2](../images/Schedule_Sub2.png)
+ ![Sub Diagram 2](../images/ScheduleSub2.png)
  <div>Figure 7. Sub Diagram 2</div>
  <br>
  * `Add the scheduled tasks to current list of tasks`
  
- ![Sub Diagram 3](../images/Schedule_Sub3.png)
+ ![Sub Diagram 3](../images/ScheduleSub3.png)
  <div>Figure 8. Sub Diagram 3</div>
  <br> 
  
