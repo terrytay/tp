@@ -123,10 +123,10 @@ public class Ui {
         this.out.println(studyArea.toString());
     }
 
+    //@@author hongquan448
     /**
      * Display welcome message.
      */
-
     public void printWelcomeMessage() {
         this.out.println("Hello from" + System.lineSeparator() + LOGO);
         printLine();
@@ -135,6 +135,8 @@ public class Ui {
         printLine();
     }
 
+
+    //@@author NizarMohd
     /**
      * This method prints the list of supported flags for the User.
      */
@@ -158,11 +160,11 @@ public class Ui {
         printMessage(GOODBYE_MESSAGE + DAB);
     }
 
+    //@@author hongquan448
     /**
      * Display the list of supported commands.
      * @param withLine This boolean value states if the help message needs to print with or without lines.
      */
-    //@@author
     public void printHelp(boolean withLine) {
         if (withLine) {
             printLine();
@@ -193,6 +195,8 @@ public class Ui {
             printLine();
         }
     }
+    //@@author
+
 
     /**
      * This is a modification of a code from Stack Overflow to format strings into a standard length. Minor edition is
