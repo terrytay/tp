@@ -261,7 +261,7 @@ public class Constants {
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
     public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter notes for its notes";
     public static final String LIST_MODULE_MESSAGE = "[list] to list modules";
-    public static final String EXIT_MODULE_MESSAGE = "[exit] to go back to OrgaNice main page";
+    public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
     public static final String HELP_MODULE_MESSAGE = "[help] to list all the commands again";
     public static final String INVALID_NOTES_COMMAND_MESSAGE = "Please enter a valid command.";
 
@@ -300,4 +300,42 @@ public class Constants {
     public static final String ONLY_MONTH_AND_YEAR = "Please enter only month and year!";
     public static final String BACK_IN_MAIN_INTERFACE = "You are now back in main interface. Enter \"help\" for a "
             + "list of supported commands";
+
+    public static final String NOTHING_TO_UNDO = "There is no message to undo at the moment.";
+    public static final String NOTHING_TO_REDO = "There is no message to redo at the moment.";
+    public static final String NO_NOTES_YET = "No notes have been added for this module yet.";
+
+    public static final String NOTES_PARSER_ADD = "add";
+    public static final String NOTES_PARSER_UNDO = "undo";
+    public static final String NOTES_PARSER_REDO = "redo";
+    public static final String NOTES_PARSER_LIST = "list";
+    public static final String NOTES_PARSER_BACK = "back";
+    public static final String NOTES_PARSER_INVALID_INPUT = "Please specify a message to add i.e. add [message here]";
+    public static final String NOTES_PARSER_INVALID_INPUT_2 = "Please specify a proper command";
+
+    public static final String MODULE_MANAGER_1 = "[add ...message...] to add a note";
+    public static final String MODULE_MANAGER_2 = "[undo] to undo";
+    public static final String MODULE_MANAGER_3 = "[redo] to redo";
+    public static final String MODULE_MANAGER_4 = "[list] to list notes";
+    public static final String MODULE_MANAGER_5 = "[back] to go to notes mainpage";
+
+    public static final String ACTION_SUCCESS = "SUCCESS";
+
+    public static final String CANCEL_OPERATION = "Remove operation has been cancelled.";
+    public static final String MODULE_NOT_FOUND = "No modules found.";
+
+    public static final String IMPORT_ERROR = "Couldn't import modules.";
+    public static final String EXPORT_SUCCESS = "Notes saved successfully.";
+
+    public static final String NOTES_ADD = "add";
+    public static final String NOTES_REMOVE = "remove";
+    public static final String NOTES_ENTER = "enter";
+    public static final String NOTES_LIST = "list";
+    public static final String NOTES_BYE = "bye";
+    public static final String NOTES_HELP = "help";
+
+    public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
+            + " e.g. To add a module, enter \"add [modulename]\"";
+
+    public static final String NOTES_BYE_MSG = "Thank you for using notes.";
 }
