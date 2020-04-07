@@ -31,10 +31,10 @@ import static ui.Constants.PADDING;
 import static ui.Constants.PADDING1;
 import static ui.Constants.PADDING2;
 import static ui.Constants.PADDING3;
-import static ui.Constants.PAST_MONTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.SPACES;
 import static ui.Constants.TASKS_FOR;
+import static ui.Constants.PAST_MONTH;
 
 //@@author NizarMohd
 /**

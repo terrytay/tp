@@ -338,4 +338,5 @@ public class Constants {
             + " e.g. To add a module, enter \"add [modulename]\"";
 
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
+    public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
 }
