@@ -48,14 +48,14 @@ class StudyAreaTest {
     //@@author NizarMohd
     @Test
     void testToString() {
-       String out = "\t __________________________________________________________\n" +
-               "\t Name: mac commons\n" +
-               "\t Address: utown\n" +
-               "\t Faculty: nil\n" +
-               "\t Port: true\n" +
-               "\t Indoor: true\n" +
-               "\t Maximum number of Pax: 5\n" +
-               "\t __________________________________________________________";
+       String out = "\t __________________________________________________________" + lineSeparator()
+               + "\t Name: mac commons" + lineSeparator()
+               + "\t Address: utown" + lineSeparator()
+               + "\t Faculty: nil" + lineSeparator()
+               + "\t Port: true" + lineSeparator()
+               + "\t Indoor: true" + lineSeparator()
+               + "\t Maximum number of Pax: 5" + lineSeparator()
+               + "\t __________________________________________________________";
         assertEquals(out, location1.toString());
     }
 
