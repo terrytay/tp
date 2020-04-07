@@ -1,12 +1,11 @@
 package studyarea;
 
 import org.junit.jupiter.api.Test;
-import ui.Ui;
-
 import static java.lang.System.lineSeparator;
-import static org.junit.jupiter.api.Assertions.*;
-import static ui.Constants.MAX_LINE_LENGTH;
-import static ui.Constants.TAB;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 //@@author terrytay
 class StudyAreaTest {
@@ -46,9 +45,12 @@ class StudyAreaTest {
 
 
     //@@author NizarMohd
+    /**
+     * Checks for accurace of toString() format.
+     */
     @Test
     void testToString() {
-       String out = "\t __________________________________________________________" + lineSeparator()
+        String out = "\t __________________________________________________________" + lineSeparator()
                + "\t Name: mac commons" + lineSeparator()
                + "\t Address: utown" + lineSeparator()
                + "\t Faculty: nil" + lineSeparator()
@@ -59,22 +61,33 @@ class StudyAreaTest {
         assertEquals(out, location1.toString());
     }
 
+    /**
+     * Checks for accuracy of method.
+     */
     @Test
     void containsSearchKey_assertTrue() {
         assertTrue(location1.containsSearchKey("utown"));
     }
 
+    /**
+     * Checks for accuracy of method.
+     */
     @Test
     void containsSearchKey_assertFalse() {
         assertFalse(location1.containsSearchKey("u-town"));
     }
 
-
+    /**
+     * Checks for accuracy of method.
+     */
     @Test
     void isSizeCapable_assertTrue() {
         assertTrue(location1.isSizeCapable("3"));
     }
 
+    /**
+     * Checks for accuracy of method.
+     */
     @Test
     void isSizeCapable_assertFalse() {
         assertFalse(location1.isSizeCapable("10"));

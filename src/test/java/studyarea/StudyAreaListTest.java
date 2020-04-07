@@ -1,13 +1,19 @@
 package studyarea;
 
-import exception.IllegalStudyAreaException;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static ui.Constants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static ui.Constants.DUPLICATE_FLAGS;
+import static ui.Constants.NON_POSITIVE_INTEGER;
+import static ui.Constants.NOT_INTEGER;
+import static ui.Constants.NO_SIZE_INDICATED;
+import static ui.Constants.ONLY_FLAG;
+import static ui.Constants.WRONG_FLAG_ARGUMENT_POSITION;
+import static ui.Constants.WRONG_FLAG_USAGE;
 
 //@@author terrytay
 class StudyAreaListTest {
@@ -27,7 +33,7 @@ class StudyAreaListTest {
             StudyAreaList.checkDuplicate(flag, 0);
             fail("Should have thrown an exception");
         } catch (Exception e) {
-            assertEquals(DUPLICATE_FLAGS , e.getMessage());
+            assertEquals(DUPLICATE_FLAGS, e.getMessage());
         }
     }
 
@@ -107,7 +113,7 @@ class StudyAreaListTest {
         try {
             StudyAreaList.checkInteger(commands,0);
             fail("Should have raised an exception");
-        } catch(Exception e) {
+        } catch (Exception e) {
             assertEquals(NON_POSITIVE_INTEGER, e.getMessage());
         }
     }
@@ -143,7 +149,7 @@ class StudyAreaListTest {
     }
 
     /**
-     * Test to check accuracy of method
+     * Test to check accuracy of method.
      */
     @Test
     void isAvailStudyArea_assertTrue_location() {
@@ -152,7 +158,7 @@ class StudyAreaListTest {
     }
 
     /**
-     * Test to check accuracy of method
+     * Test to check accuracy of method.
      */
     @Test
     void isAvailStudyArea_assertFalse_location() {
@@ -162,7 +168,7 @@ class StudyAreaListTest {
     }
 
     /**
-     * Test to check accuracy of method
+     * Test to check accuracy of method.
      */
     @Test
     void isAvailStudyArea_assertTrue_flag() {
@@ -171,7 +177,7 @@ class StudyAreaListTest {
     }
 
     /**
-     * Test to check accuracy of method
+     * Test to check accuracy of method.
      */
     @Test
     void isAvailStudyArea_assertFalse_flag() {
@@ -191,7 +197,7 @@ class StudyAreaListTest {
             StudyAreaList studyAreaList = new StudyAreaList(availStudyAreas);
             studyAreaList.searchList(userIn);
             fail("Should have thrown an exception");
-        } catch(Exception e){
+        } catch (Exception e) {
             assertEquals(NO_SIZE_INDICATED, e.getMessage());
         }
     }

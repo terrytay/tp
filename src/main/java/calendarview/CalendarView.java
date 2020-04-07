@@ -5,12 +5,35 @@ import task.Task;
 import ui.Ui;
 
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import static ui.Constants.*;
+import static ui.Constants.BACK_IN_MAIN_INTERFACE;
+import static ui.Constants.COL;
+import static ui.Constants.COMMA;
+import static ui.Constants.DAYS;
+import static ui.Constants.DEC;
+import static ui.Constants.DIVIDER;
+import static ui.Constants.ENTER_DESIRED_MONTH;
+import static ui.Constants.INVALID_MONTH;
+import static ui.Constants.INVALID_MONTH_RANGE;
+import static ui.Constants.INVALID_YEAR;
+import static ui.Constants.JAN;
+import static ui.Constants.MAP_CANNOT_BE_EMPTY;
+import static ui.Constants.MAX_COL;
+import static ui.Constants.MAX_LIST_SIZE;
+import static ui.Constants.MAX_ROW;
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
+import static ui.Constants.NON_INTEGER_YEAR;
+import static ui.Constants.NOW;
+import static ui.Constants.ONLY_MONTH_AND_YEAR;
+import static ui.Constants.PADDING;
+import static ui.Constants.PADDING1;
+import static ui.Constants.PADDING2;
+import static ui.Constants.PADDING3;
+import static ui.Constants.SPACE;
+import static ui.Constants.SPACES;
+import static ui.Constants.TASKS_FOR;
 
 //@@author NizarMohd
 /**
@@ -215,26 +238,26 @@ public class CalendarView {
      */
     public static String setMonthAndYear(String[] input) {
         StringBuilder errMessage = null;
-            try {                               // try setting month
-                setMonth(input[0]);
-            } catch (CalendarException e) {         // if error, catch the message
-                errMessage = new StringBuilder(e.getMessage());
-            }
+        try {                               // try setting month
+            setMonth(input[0]);
+        } catch (CalendarException e) {         // if error, catch the message
+            errMessage = new StringBuilder(e.getMessage());
+        }
 
-            try {                                    // try setting year
-                setYear(input[1]);
-            } catch (CalendarException e1) {        // if error, catch message also.
-                if(errMessage != null) {
-                    errMessage.append(" Also, ").append(e1.getMessage());
-                } else {
-                    errMessage = new StringBuilder(e1.getMessage());
-                }
-            }
-            if(errMessage != null ) {
-                return errMessage.toString();
+        try {                                    // try setting year
+            setYear(input[1]);
+        } catch (CalendarException e1) {        // if error, catch message also.
+            if (errMessage != null) {
+                errMessage.append(" Also, ").append(e1.getMessage());
             } else {
-                return null;
+                errMessage = new StringBuilder(e1.getMessage());
             }
+        }
+        if (errMessage != null) {
+            return errMessage.toString();
+        } else {
+            return null;
+        }
     }
 
 
@@ -254,7 +277,7 @@ public class CalendarView {
                 month = LocalDate.now().getMonthValue();
                 year = LocalDate.now().getYear();
                 isWrongCommand = false;
-            } else if (input[0].equals("bye")){
+            } else if (input[0].equals("bye")) {
                 exit = true;
                 isWrongCommand = false;
             } else {
@@ -281,7 +304,7 @@ public class CalendarView {
      * This method prints the calendar.
      */
     public void printCalendar() {
-        if(exit){
+        if (exit) {
             ui.printLine();
             ui.printMessage(BACK_IN_MAIN_INTERFACE);
             return;

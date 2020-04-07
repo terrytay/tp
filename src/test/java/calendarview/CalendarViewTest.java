@@ -2,9 +2,13 @@ package calendarview;
 
 import exception.CalendarException;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static ui.Constants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+import static ui.Constants.INVALID_MONTH;
+import static ui.Constants.INVALID_MONTH_RANGE;
+import static ui.Constants.INVALID_YEAR;
+import static ui.Constants.NON_INTEGER_YEAR;
+import static ui.Constants.ONLY_MONTH_AND_YEAR;
 
 class CalendarViewTest {
 
@@ -94,7 +98,7 @@ class CalendarViewTest {
     }
 
     /**
-     * Checks for concatenation of two error message
+     * Checks for concatenation of two error message.
      */
     @Test
     void setMonthAndYear_invalidMonth_invalidYear() {
@@ -104,7 +108,7 @@ class CalendarViewTest {
     }
 
     /**
-     * Checks for concatenation of two error message
+     * Checks for concatenation of two error message.
      */
     @Test
     void setMonthAndYear_invalidMonthRange_invalidYear() {
@@ -114,7 +118,7 @@ class CalendarViewTest {
     }
 
     /**
-     * Checks for concatenation of two error message
+     * Checks for concatenation of two error message.
      */
     @Test
     void setMonthAndYear_invalidMonth_nonIntegerYear() {
