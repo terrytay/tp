@@ -1,5 +1,7 @@
 package notes.modules.command;
 
+import ui.Constants;
+
 import java.util.LinkedList;
 
 //@@author terrytay
@@ -28,7 +30,7 @@ public class CommandStack {
      */
     public void undo() {
         if (commandStack.isEmpty()) {
-            System.out.println("Nothing to undo.");
+            System.out.println(Constants.NOTHING_TO_UNDO);
             return;
         }
         Command command = commandStack.removeFirst();
@@ -41,7 +43,7 @@ public class CommandStack {
      */
     public void redo() {
         if (redoStack.isEmpty()) {
-            System.out.println("You are at your latest action.");
+            System.out.println(Constants.NOTHING_TO_REDO);
             return;
         }
         Command command = redoStack.removeFirst();
