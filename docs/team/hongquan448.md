@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Hong Quan - Project Portfolio Page
 
 ## Overview
 
