@@ -251,8 +251,6 @@ public class Constants {
     public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
             + " description are as follows:";
 
-
-
     public static final String NOTES_COMMAND = "notes";
     public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!"
             + "Notes are stored based on modules."
@@ -264,9 +262,6 @@ public class Constants {
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
     public static final String HELP_MODULE_MESSAGE = "[help] to list all the commands again";
     public static final String INVALID_NOTES_COMMAND_MESSAGE = "Please enter a valid command.";
-
-    public static final String LINE_BREAK = "______________________________";
-
     public static final String NOTES_PATH = "library/notes.txt";
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
             + "be saved.";
@@ -336,7 +331,8 @@ public class Constants {
 
     public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
             + " e.g. To add a module, enter \"add [modulename]\"";
-
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
+    public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
+    public static final String NO_MODULE_FOUND = "No modules found.";
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
 }
