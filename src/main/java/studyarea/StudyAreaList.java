@@ -203,7 +203,7 @@ public class StudyAreaList {
      *              flag and false if otherwise.
      */
     public static boolean isAvailStudyArea(String flag, boolean isAvail, int index, StudyArea studyArea,
-                                            String[] flags) {
+                                           String[] flags) {
         boolean carryOn = flag != null && isAvail && index != 1; // carryOn indicates if current StudyArea iteration
         // should continue.
         if (carryOn) {

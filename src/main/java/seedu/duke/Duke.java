@@ -62,7 +62,7 @@ public class Duke {
     /**
      * Runs all the command for tasks.
      */
-    public static void runCommands() {
+    private static void runCommands() {
         String fullCommand;
         fullCommand = ui.getUserIn().trim().toLowerCase();
         while (!fullCommand.equals(BYE_COMMAND)) {
@@ -119,7 +119,7 @@ public class Duke {
     /**
      * This method runs the program.
      */
-    public void run() {
+    private void run() {
         ui.printWelcomeMessage();
         LOGGER.log(Level.INFO, Constants.APPLICATION_STARTED_EXECUTION);
         LOGGER.log(Level.INFO, Constants.TASK_MODE);
