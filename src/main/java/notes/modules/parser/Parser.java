@@ -6,6 +6,7 @@ import notes.modules.command.AddCommand;
 import notes.modules.command.Command;
 import notes.modules.command.ExitCommand;
 import notes.modules.command.ListCommand;
+import ui.Constants;
 
 //@@author terrytay
 public class Parser {
@@ -24,28 +25,29 @@ public class Parser {
     public Command parseCommand(String userInput, ModuleManager moduleManager) throws Exception {
         try {
             this.userInput = userInput;
-            userCommandText = userInput.split(" ")[0];
+            userCommandText = userInput.split(Constants.SPACE)[0];
 
             switch (userCommandText) {
-            case "redo":
-            case "undo":
+            case Constants.NOTES_PARSER_REDO:
+            case Constants.NOTES_PARSER_UNDO:
                 return new AddCommand(
                         moduleManager, userCommandText);
-            case "add":
-                String message = userInput.split(userCommandText + " ")[1];
+            case Constants.NOTES_PARSER_ADD:
+                String message = userInput.split(userCommandText + Constants.SPACE)[1];
                 return new AddCommand(
                         moduleManager, message, userCommandText);
-            case "list":
+            case Constants.NOTES_PARSER_LIST:
                 return new ListCommand(moduleManager.getMessages());
-            case "exit":
+            case Constants.NOTES_PARSER_BACK:
                 return new ExitCommand();
             default:
                 throw new Exception();
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new NotesInvalidAddMessageException();
+            System.out.println(Constants.NOTES_PARSER_INVALID_INPUT);
         } catch (Exception e) {
-            throw new Exception("Please specify a right command.");
+            System.out.println(Constants.NOTES_PARSER_INVALID_INPUT_2);
         }
+        return null;
     }
 }

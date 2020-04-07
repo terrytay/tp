@@ -10,6 +10,9 @@ import exception.command.SchedulableTaskDaysToFinishNotPositiveException;
 import exception.command.SchedulableTaskEmptyDescriptionException;
 import exception.command.SchedulableTaskFormatNotFollowedException;
 
+/**
+ * Object used to store a task which has to be scheduled.
+ */
 public class SchedulableTask {
 
     public static final char SINGLE_SPACE = ' ';
