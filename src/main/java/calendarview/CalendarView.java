@@ -230,6 +230,7 @@ public class CalendarView {
             if (input[0].equals(NOW)) {
                 this.month = LocalDate.now().getMonthValue();
                 this.year = LocalDate.now().getYear();
+                isWrongCommand = false;
             } else {
                 try {
                     setMonth(input[0]);
