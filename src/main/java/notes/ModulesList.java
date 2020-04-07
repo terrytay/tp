@@ -1,6 +1,7 @@
 package notes;
 
 import notes.modules.ModuleManager;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,10 +53,10 @@ public class ModulesList {
                 modules.remove(code);
                 System.out.println(code + " has been removed");
             } else {
-                System.out.println("Remove operation has been cancelled");
+                System.out.println(Constants.CANCEL_OPERATION);
             }
         } else {
-            System.out.println("Module is not found.");
+            System.out.println(Constants.MODULE_NOT_FOUND);
         }
     }
 
@@ -78,7 +79,7 @@ public class ModulesList {
      */
     public void enterModule(String code) throws Exception {
         if (getModule(code) == null) {
-            System.out.println("Module not found.");
+            System.out.println(Constants.MODULE_NOT_FOUND);
         } else {
             new ModuleManager(code, getModule(code));
         }
@@ -89,7 +90,7 @@ public class ModulesList {
      */
     public void listModules() {
         if (modules.isEmpty()) {
-            System.out.println("No modules have been added yet.");
+            System.out.println(Constants.MODULE_NOT_FOUND);
         }
         System.out.println(modules.keySet());
     }

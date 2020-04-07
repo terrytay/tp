@@ -74,7 +74,7 @@ public class Notes {
             }
             modulesList.importModules(modules);
         } catch (Exception e) {
-            System.out.println("Couldn't import modules.");
+            System.out.println(Constants.IMPORT_ERROR);
         }
     }
 
@@ -97,7 +97,7 @@ public class Notes {
             }
         });
         fw.close();
-        System.out.println("Notes saved successfully.");
+        System.out.println(Constants.EXPORT_SUCCESS);
     }
 
     /**

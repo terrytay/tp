@@ -17,13 +17,13 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static ui.Constants.AT;
 import static ui.Constants.DATE_AFTER_CURRENT_DATE;
 import static ui.Constants.DATE_PATTERN;
 import static ui.Constants.DELIMITER;
 import static ui.Constants.EDIT_DATE;
 import static ui.Constants.EDIT_DESCRIPTION;
-import static ui.Constants.EMPTY_STRING;
 import static ui.Constants.ENTER_NEW_DATE_MESSAGE;
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
 import static ui.Constants.ENTER_NEW_PRIORITY_MESSAGE;
@@ -298,7 +298,7 @@ public class Deadline extends Task {
      * @throws Exception If no keyword is entered.
      */
     public boolean hasKeyword(String keyword) throws Exception {
-        if (keyword.equals(EMPTY_STRING)) {
+        if (keyword.isBlank()) {
             LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }

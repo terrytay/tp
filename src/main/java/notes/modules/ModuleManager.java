@@ -5,6 +5,7 @@ import notes.modules.command.Command;
 import notes.modules.command.CommandStack;
 import notes.modules.command.ExitCommand;
 import notes.modules.parser.Parser;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,12 +33,18 @@ public class ModuleManager {
         System.out.println(String.format("Notes for %s", code));
         Command command;
         showMenu();
+        boolean isExit = false;
         do {
             Scanner input = new Scanner(System.in);
             String userInput = input.nextLine();
             command = new Parser().parseCommand(userInput, this);
-            executeCommand(command);
-        } while (!ExitCommand.isExit(command));
+            if (command != null) {
+                executeCommand(command);
+            }
+            if (ExitCommand.isExit(command)) {
+                isExit = true;
+            }
+        } while (!isExit);
 
     }
 
@@ -49,13 +56,13 @@ public class ModuleManager {
     public void executeCommand(Command command) {
         if (command instanceof AddCommand) {
             switch (((AddCommand) command).getUserCommandType()) {
-            case "add":
+            case Constants.NOTES_PARSER_ADD:
                 commandStack.execute(command);
                 break;
-            case "undo":
+            case Constants.NOTES_PARSER_UNDO:
                 commandStack.undo();
                 break;
-            case "redo":
+            case Constants.NOTES_PARSER_REDO:
                 commandStack.redo();
                 break;
             default:
@@ -68,16 +75,16 @@ public class ModuleManager {
     }
 
     private void showMenu() {
-        System.out.println("[add ...message...] to add a note");
-        System.out.println("[undo] to undo");
-        System.out.println("[redo] to redo");
-        System.out.println("[list] to list notes");
-        System.out.println("[exit] to exit");
+        System.out.println(Constants.MODULE_MANAGER_1);
+        System.out.println(Constants.MODULE_MANAGER_2);
+        System.out.println(Constants.MODULE_MANAGER_3);
+        System.out.println(Constants.MODULE_MANAGER_4);
+        System.out.println(Constants.MODULE_MANAGER_5);
     }
 
     public void addMessage(String message) {
         messages.add(message);
-        System.out.println("SUCCESS");
+        System.out.println(Constants.ACTION_SUCCESS);
     }
 
     public ArrayList<String> getMessages() {
@@ -86,6 +93,6 @@ public class ModuleManager {
 
     public void removeMessage(String message) {
         messages.remove(message);
-        System.out.println("SUCCESS");
+        System.out.println(Constants.ACTION_SUCCESS);
     }
 }

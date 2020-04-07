@@ -21,43 +21,46 @@ public class NotesInvoker {
         displayMenu();
 
         Scanner input = new Scanner(System.in);
+        boolean isExit = false;
         String choice;
-        try {
-            do {
+
+        do {
+            try {
                 String userInput = input.nextLine();
                 choice = userInput.split(" ")[0];
                 String code;
                 switch (choice) {
-                case "add":
+                case Constants.NOTES_ADD:
                     code = userInput.split(" ")[1];
                     notes.createModule(code);
                     break;
-                case "remove":
+                case Constants.NOTES_REMOVE:
                     code = userInput.split(" ")[1];
                     notes.deleteModule(code);
                     break;
-                case "enter":
+                case Constants.NOTES_ENTER:
                     code = userInput.split(" ")[1];
                     notes.enterModule(code);
                     break;
-                case "list":
+                case Constants.NOTES_LIST:
                     notes.listModules();
                     break;
-                case "exit":
+                case Constants.NOTES_BYE:
                     notes.exportModules();
+                    isExit = true;
                     break;
-                case "help":
+                case Constants.NOTES_HELP:
                     displayMenu();
                     break;
                 default:
                     System.out.println(Constants.INVALID_NOTES_COMMAND_MESSAGE);
                 }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(Constants.NOTES_EXCEPTION_MSG);
+            }
+        } while (!isExit);
 
-            } while (!choice.equals("exit"));
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new NotesCommandException();
-        }
-        System.out.println("Thank you for using notes.");
+        System.out.println(Constants.NOTES_BYE_MSG);
     }
 
     private void displayMenu() {
