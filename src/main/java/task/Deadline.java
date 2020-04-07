@@ -46,6 +46,7 @@ import static ui.Constants.WRONG_OPTION;
 import static ui.Constants.YES;
 
 
+//@@author hongquan448
 /**
  * Represents an deadline and contains the related functions.
  */
@@ -137,7 +138,7 @@ public class Deadline extends Task {
         return PENDING_SYMBOL;
     }
 
-    //@@author
+    //@@author hongquan448
     /**
      * Returns the number of days left till the event.
      *
@@ -257,6 +258,7 @@ public class Deadline extends Task {
         this.description = description;
     }
 
+    //@@author hongquan448
     /**
      * Returns the information related to information in form of a string.
      *
@@ -316,6 +318,7 @@ public class Deadline extends Task {
         return formattedDeadlineDetails;
     }
 
+    //@@author GanapathySanathBalaji
     /**
      * Edits the event at the index specified.
      *
@@ -513,6 +516,8 @@ public class Deadline extends Task {
         ui.printMessage(OPTION_TO_EDIT_IS_DONE);
         ui.printEmptyLine();
     }
+
+    //@@author NizarMohd
 
     @Override
     public String getCalendarTaskDetails() {
