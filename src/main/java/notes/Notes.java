@@ -14,11 +14,11 @@ import java.util.Scanner;
 //@@author terrytay
 public class Notes {
     ModulesList modulesList;
-     Ui ui;
+    Ui ui;
 
     /**
-     * To be added by Terry
-     * @param ui to be added by terry
+     * To be added by Terry.
+     * @param ui to be added by terry.
      */
     public Notes(Ui ui) {
 

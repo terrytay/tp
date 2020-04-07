@@ -20,6 +20,7 @@ public class Parser {
      *
      * @param moduleManager ModuleManager object used to manage modules.
      * @param userInput input from the user
+     * @param ui allows for interaction with the user
      * @return method to call Command of specific type
      * @throws Exception for invalid commands
      */

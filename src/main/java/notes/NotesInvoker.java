@@ -16,6 +16,7 @@ public class NotesInvoker {
 
     /**
      * Constructor to invoke Notes app.
+     * @param ui allows for interaction with the user
      * @throws IOException exception for module import/export
      */
     public NotesInvoker(Ui ui) throws Exception {
@@ -80,6 +81,6 @@ public class NotesInvoker {
         ui.printOut(TAB + SPACE + Constants.ENTER_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.LIST_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.EXIT_MODULE_MESSAGE, true);
-        ui.printOut (TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
     }
 }

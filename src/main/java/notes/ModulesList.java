@@ -20,6 +20,7 @@ public class ModulesList {
 
     /**
      * Singleton check for null instance before initializing.
+     * @param ui allows for interaction with the user
      * @return ModuleList
      */
     public static ModulesList getInstance(Ui ui) {

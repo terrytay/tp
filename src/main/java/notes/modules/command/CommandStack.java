@@ -16,8 +16,8 @@ public class CommandStack {
     private Ui ui;
 
     /**
-     * To be added by terry
-     * @param ui to be added by terry
+     * To be added by terry.
+     * @param ui to be added by terry.
      */
     public CommandStack(Ui ui) {
         this.ui = ui;

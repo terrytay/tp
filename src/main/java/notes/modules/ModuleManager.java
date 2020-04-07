@@ -22,6 +22,7 @@ public class ModuleManager {
      * Manages the module e.g. overall commands and control.
      * @param code module code
      * @param messages the notes in the module
+     * @param ui allows for interaction with the user
      * @throws Exception for commandStack
      */
     public ModuleManager(String code, ArrayList<String> messages, Ui ui) throws Exception {
@@ -87,8 +88,8 @@ public class ModuleManager {
     }
 
     /**
-     * to add by terry
-     * @param message to add by terry
+     * to add by terry.
+     * @param message to add by terry.
      */
     public void addMessage(String message) {
         messages.add(message);
@@ -98,13 +99,17 @@ public class ModuleManager {
     }
 
     /**
-     * To add by terry
-     * @return to add by terry
+     * To add by terry.
+     * @return to add by terry.
      */
     public ArrayList<String> getMessages() {
         return this.messages;
     }
 
+    /**
+     * To add by terry.
+     * @param message to be add by terry.
+     */
     public void removeMessage(String message) {
         messages.remove(message);
         this.ui.printLine();
