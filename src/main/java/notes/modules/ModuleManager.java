@@ -34,7 +34,6 @@ public class ModuleManager {
     }
 
     private void runInstance() throws Exception {
-        this.ui.printLine();
         this.ui.printMessage(String.format("Notes for %s", code));
         Command command;
         showMenu();
