@@ -30,7 +30,9 @@
 
 ## 1. Introduction
 
-  OrgaNice! is a command line based application that can help academics with scheduling their tasks and keeping track of them.  Our application supports 2 types of tasks, they are as follows: 
+  OrgaNice! is a task manager integrated with a Study Area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
+  it is capable of assisting students in finding Study Areas that meets their desired criteria.
+  Our application supports 2 types of tasks, they are as follows: 
  * **Deadline** Tasks - Used to denote a task that needs to be finished by a deadline.
     
      E.g, Assignments, Projects etc that are due on a specific date. 
@@ -40,8 +42,6 @@
    
  The application can add, edit and delete tasks. It also provides methods to search for tasks. Additionally, it has the ability of storing data to a physical location on the computer, so that the tasks always remain in memory.  
     
- As a secondary feature, the application allows students who are in search of a study area to locate one based on different conditions. The different conditions that could be specified include the location, size constraints and port facilities.
-
 
 <a name="quick-start"></a>
 
