@@ -1,5 +1,5 @@
-James Gosling
 clear
+Y
 event meeting /d 2021-05-05 /s 12:00 /e 13:00 /p 1
 view
 deadline assignment /d 2021-05-02 /t 14:00 /p 2
