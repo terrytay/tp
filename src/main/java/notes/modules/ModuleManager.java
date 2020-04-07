@@ -86,6 +86,10 @@ public class ModuleManager {
         this.ui.printLine();
     }
 
+    /**
+     * to add by terry
+     * @param message to add by terry
+     */
     public void addMessage(String message) {
         messages.add(message);
         this.ui.printLine();
@@ -93,6 +97,10 @@ public class ModuleManager {
         this.ui.printLine();
     }
 
+    /**
+     * To add by terry
+     * @return to add by terry
+     */
     public ArrayList<String> getMessages() {
         return this.messages;
     }

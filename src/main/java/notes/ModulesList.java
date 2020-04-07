@@ -12,6 +12,7 @@ public class ModulesList {
     static ModulesList instance = null;
     private HashMap<String, ArrayList<String>> modules;
     private Ui ui;
+
     private ModulesList(Ui ui) {
         this.modules = new HashMap<>();
         this.ui = ui;

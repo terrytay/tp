@@ -61,7 +61,7 @@ public class NotesInvoker {
                     ui.printMessage(Constants.INVALID_NOTES_COMMAND_MESSAGE);
                     break;
                 }
-                if(!isExit) {
+                if (!isExit) {
                     ui.printLine();
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -77,9 +77,9 @@ public class NotesInvoker {
     private void displayMenu(Ui ui) {
         ui.printOut(TAB + SPACE + Constants.ADD_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.REMOVE_MODULE_MESSAGE, true);
-        ui.printOut( TAB + SPACE + Constants.ENTER_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.ENTER_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.LIST_MODULE_MESSAGE, true);
-        ui.printOut( TAB + SPACE + Constants.EXIT_MODULE_MESSAGE, true);
-        ui.printOut ( TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.EXIT_MODULE_MESSAGE, true);
+        ui.printOut (TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
     }
 }

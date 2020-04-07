@@ -15,7 +15,13 @@ import java.util.Scanner;
 public class Notes {
     ModulesList modulesList;
      Ui ui;
+
+    /**
+     * To be added by Terry
+     * @param ui to be added by terry
+     */
     public Notes(Ui ui) {
+
         this.ui = ui;
         modulesList = ModulesList.getInstance(ui);
         importModules();

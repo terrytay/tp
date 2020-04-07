@@ -15,6 +15,10 @@ public class CommandStack {
     private LinkedList<Command> redoStack;
     private Ui ui;
 
+    /**
+     * To be added by terry
+     * @param ui to be added by terry
+     */
     public CommandStack(Ui ui) {
         this.ui = ui;
         this.commandStack =  new LinkedList<>();

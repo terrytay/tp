@@ -268,11 +268,11 @@ public class CalendarView {
     public static void checkIfPast() throws CalendarException {
 
         int thisYear = LocalDate.now().getYear();
-        if (year == thisYear) {
-        int thisMonth = LocalDate.now().getMonthValue();
-        if (month < thisMonth) {
-            throw new CalendarException(PAST_MONTH);
-        }
+            if (year == thisYear) {
+                int thisMonth = LocalDate.now().getMonthValue();
+            if (month < thisMonth) {
+                throw new CalendarException(PAST_MONTH);
+            }
         }
     }
 
