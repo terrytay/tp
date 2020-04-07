@@ -234,7 +234,7 @@ public class Event extends Task {
      * @throws Exception If keyword entered is empty.
      */
     public boolean hasKeyword(String keyword) throws Exception {
-        if (keyword.equals(Constants.EMPTY_STRING)) {
+        if (keyword.isBlank()) {
             LOGGER.log(Level.INFO, Constants.SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
