@@ -66,7 +66,7 @@ it is capable of assisting students in finding Study Areas that meets their desi
 	- You can enter notes based on school modules. Notes support undo and redo operations.
 
 ## 2. Design   
- {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
+    
 
 [comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
@@ -305,41 +305,50 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-             __________________________________________________________
-             Name: Opposite Town Green (Outside Starbucks)
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: false
-             Maximum number of Pax: 4
-             __________________________________________________________
-             __________________________________________________________
-             Name: Starbucks
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: true
-             Maximum number of Pax: 5
-             __________________________________________________________
-             Please enter the location for your desired study area.
-
+     __________________________________________________________
+     Name: Opposite Town Green (Outside Starbucks)
+     Address: 2 College Avenue West Education Resource Centre,
+     Ground Level
+     Faculty: Utown
+     Port: true
+     Indoor: false
+     Maximum number of Pax: 4
+     __________________________________________________________
+     __________________________________________________________
+     Name: Starbucks
+     Address: 2 College Avenue West Education Resource Centre,
+     Ground Level
+     Faculty: Utown
+     Port: true
+     Indoor: true
+     Maximum number of Pax: 5
+     __________________________________________________________
+     Please enter the location for your desired study area.
+    
 
 
 This will result in the following adjacency lists : 
-Environment: <br>
+
+Environment: 
+
 Indoor -> {Starbucks} 
-Outdoor -> {Opposite Town Green (Outside Starbucks)} <br>
-*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)<br>
-Ports: <br>
+Outdoor -> {Opposite Town Green (Outside Starbucks)} 
+
+*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)
+
+Ports: 
+
 Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
-No -> null<br>
-*Data Structure* : 2D Array, with only two rows (For Yes and No)<br>
-Capacity: <br>
+No -> null
+
+*Data Structure* : 2D Array, with only two rows (For Yes and No)
+
+Capacity: 
+
 4 -> {Opposite Town Green (Outside Starbucks)} 
-5 -> {Starbucks} <br>
-*Data Structure* : HashMap<Integer, ArrayList<String>> <br>
+5 -> {Starbucks} 
+
+*Data Structure* : HashMap<Integer, ArrayList<String>> 
 
 The creation and initialisation of the lists are done when the software is setting up.  Therefore, each flag 
 has its own list. Based on user criteria, concatenate an output list with the Study Areas that are found in all

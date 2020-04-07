@@ -2,27 +2,30 @@ package notes;
 
 import notes.modules.ModuleManager;
 import ui.Constants;
-
+import ui.Ui;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
+
 
 //@@author terrytay
 public class ModulesList {
     static ModulesList instance = null;
     private HashMap<String, ArrayList<String>> modules;
+    private Ui ui;
 
-    private ModulesList() {
+    private ModulesList(Ui ui) {
         this.modules = new HashMap<>();
+        this.ui = ui;
     }
 
     /**
      * Singleton check for null instance before initializing.
+     * @param ui allows for interaction with the user
      * @return ModuleList
      */
-    public static ModulesList getInstance() {
+    public static ModulesList getInstance(Ui ui) {
         if (instance == null) {
-            instance = new ModulesList();
+            instance = new ModulesList(ui);
         }
         return instance;
     }
@@ -34,9 +37,9 @@ public class ModulesList {
      */
     public void createModule(String code) {
         modules.putIfAbsent(code, new ArrayList<>());
-
         String success = String.format("%s has been created\n", code);
-        System.out.println(success);
+        this.ui.printMessage(success);
+
     }
 
     /**
@@ -46,18 +49,19 @@ public class ModulesList {
      */
     public void deleteModule(String code) {
         if (modules.containsKey(code)) {
-            System.out.println("Are you sure you want to remove " + code
+            this.ui.printMessage("Are you sure you want to remove " + code
                     + "? [Y/N]");
-            Scanner input = new Scanner(System.in);
-            String choice = input.nextLine();
-            if (choice.trim().equals("Y") || choice.trim().equals("y")) {
+            this.ui.printLine();
+            String input = ui.getUserIn();
+            this.ui.printLine();
+            if (input.contains("Y")) {
                 modules.remove(code);
-                System.out.println(code + " has been removed");
+                this.ui.printMessage(code + " has been removed");
             } else {
-                System.out.println(Constants.CANCEL_OPERATION);
+                this.ui.printMessage(Constants.CANCEL_OPERATION);
             }
         } else {
-            System.out.println(Constants.MODULE_NOT_FOUND);
+            this.ui.printMessage(Constants.MODULE_NOT_FOUND);
         }
     }
 
@@ -80,9 +84,9 @@ public class ModulesList {
      */
     public void enterModule(String code) throws Exception {
         if (getModule(code) == null) {
-            System.out.println(Constants.MODULE_NOT_FOUND);
+            this.ui.printMessage(Constants.MODULE_NOT_FOUND);
         } else {
-            new ModuleManager(code, getModule(code));
+            new ModuleManager(code, getModule(code), this.ui);
         }
     }
 
@@ -91,9 +95,10 @@ public class ModulesList {
      */
     public void listModules() {
         if (modules.isEmpty()) {
-            System.out.println(Constants.NO_MODULE_FOUND);
+            this.ui.printMessage(Constants.MODULE_NOT_FOUND);
+        } else {
+            this.ui.printMessage(modules.keySet().toString());
         }
-        System.out.println(modules.keySet());
     }
 
     public void importModules(HashMap<String, ArrayList<String>> modules) {
