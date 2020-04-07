@@ -17,10 +17,10 @@
     3.11. [View commands supported](#help) <br>
     3.12. [Schedule tasks](#schedule) <br>
     3.13. [Study Area Search Feature](#studyArea) <br>
-    3.14. [Exit the Application / Study Area interface](#exit) <br>
-    3.15. [Saving the data](#save-tasks) <br>
-    3.16. [Clearing old tasks](#clear-old-tasks) <br>
-    3.17. [Viewing tasks in calendar format](#calendar) <br>
+    3.14. [Calendar View](#314-calendar-view)<br>
+    3.15. [Exit the Application / Study Area interface](#exit) <br>
+    3.16. [Saving the data](#save-tasks) <br>
+    3.17. [Clearing old tasks](#clear-old-tasks) <br>
 1. [FAQ](#faq)
 1. [Command Summary](#command-summary)
 1. [Formats Used](#formats)
@@ -673,7 +673,7 @@ Expected output:
 
 
 
-### 3.14 Calendar View
+### 3.14. Calendar View
 
 
 #### 1. Enter Calendar
@@ -785,7 +785,7 @@ Expected output:
 [comment]: # (@@author )     
 <a name="exit"></a>
 
-### 3.14. Exit the Application / Study Area interface
+### 3.15. Exit the Application / Study Area interface
 You use this command to exit the application. Before the actual application is exited the 
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
 secondary study area search interface.
@@ -849,18 +849,14 @@ A response similar to the following one would appear:
 
 <a name="save-tasks"></a>
 
-### 3.15. Saving the data
+### 3.16. Saving the data
 The tasklist is saved automatically before the application is executed. There is no need to save manually.
 
 <a name="clear-old-tasks"></a>
 
-### 3.16. Clearing old tasks
+### 3.17. Clearing old tasks
 The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
-<a name="calendar"></a>
-
-### 3.17. Viewing tasks in calendar format [coming in v3.0]
-The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
 
 [comment]: # (@@author )
