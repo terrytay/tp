@@ -49,7 +49,8 @@ public class ModulesList {
             System.out.println("Are you sure you want to remove " + code
                     + "? [Y/N]");
             Scanner input = new Scanner(System.in);
-            if (input.nextLine().contains("Y")) {
+            String choice = input.nextLine();
+            if (choice.trim().equals("Y") || choice.trim().equals("y")) {
                 modules.remove(code);
                 System.out.println(code + " has been removed");
             } else {
@@ -90,7 +91,7 @@ public class ModulesList {
      */
     public void listModules() {
         if (modules.isEmpty()) {
-            System.out.println(Constants.MODULE_NOT_FOUND);
+            System.out.println(Constants.NO_MODULE_FOUND);
         }
         System.out.println(modules.keySet());
     }
