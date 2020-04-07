@@ -119,15 +119,6 @@ class TaskListTest {
     }
 
     @Test
-    void clearCommand() throws Exception {
-        TaskList newTaskList = new task.TaskList();
-        newTaskList.addTask(new Event("Team Meeting", "2021-03-21", "09:00",
-                "17:00", "1"),ui);
-        newTaskList.clearTasks(ui);
-        assertEquals(0, newTaskList.getTaskListSize());
-    }
-
-    @Test
     void checkForMatchedTasks_emptyKeyword_throwException() {
         try {
             taskList.checkForMatchedTasks("   ");

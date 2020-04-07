@@ -175,7 +175,7 @@ public class Constants {
     public static final String DEADLINE_MARKED_AS_DONE = "Nice! I've marked this deadline as done!";
     public static final String INVALID_TASK_TYPE_LOG = "Task type of the task to be edited not recognized";
     public static final String ERROR_ENCOUNTERED_DURING_EXECUTION_MESSAGE = "Error encountered during execution";
-    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared";
+    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared.";
     public static final String LIST_SORTED_BY_PRIORITY_MESSAGE = "Here is the list of tasks added so far displayed "
             + "in decreasing order of priority:";
     public static final String LIST_SORTED_ON_DAYS_LEFT_MESSAGE = "Here is the list of tasks with sorted based"
@@ -339,4 +339,5 @@ public class Constants {
 
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
     public static final String NO_MODULE_FOUND = "No modules found.";
+    public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
 }

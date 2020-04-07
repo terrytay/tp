@@ -293,6 +293,7 @@ If you would like to clear the current list of tasks and start on a clean state,
 
 #### `clear` - Clears the list of tasks
 
+The application then asks for another confirmation before the list is cleared.
 The command clears the current list of tasks stored.
 Upon success a successful deletion message similar to the one in the example would appear.
 If the wrong format is used an alert would be displayed.
@@ -303,12 +304,22 @@ To clear the current list of tasks.
 `clear`
 
 Expected outcome:
+
+The application asks for a confirmation message.
+
+    ________________________________________________________________________________________________
+         Are you sure that you want to clear the list? [Y/N]
+
+`Y` - Choice
+
+Expected outcome:
+
 The list of tasks would be cleared.
 Upon success a response similar to the following one would appear:
 
+    	 The list of tasks is cleared.
     ________________________________________________________________________________________________
-         The list of tasks is cleared.
-    ________________________________________________________________________________________________
+
 
 <a name="view"></a>
 
@@ -496,7 +507,7 @@ If the wrong format is used an invalid command alert would be displayed.
 
 Example of usage: 
 
-#### `schedule 3` - Schedule 3 tasks
+`schedule 3` - Schedule 3 tasks
 
 Expected outcome:
 
@@ -506,19 +517,19 @@ Expected outcome:
          days left from current day to finish it>
          Enter details for task 1:
 
-#### `math exam /f 2 /d 10` - Details of first task
+`math exam /f 2 /d 10` - Details of first task
 
 Expected outcome:
 
 	 Enter details for task 2:
      
-#### `physics exam /f 3 /d 7` - Details of second task
+`physics exam /f 3 /d 7` - Details of second task
 
 Expected outcome:
 
 	 Enter details for task 3:
      
-#### `chemistry exam /f 1 /d 4` - Details of third task     
+`chemistry exam /f 1 /d 4` - Details of third task     
 
 Expected outcome:
 
