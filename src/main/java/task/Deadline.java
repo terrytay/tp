@@ -46,6 +46,7 @@ import static ui.Constants.WRONG_OPTION;
 import static ui.Constants.YES;
 
 
+//@@author hongquan448
 /**
  * Represents an deadline and contains the related functions.
  */
@@ -137,7 +138,7 @@ public class Deadline extends Task {
         return PENDING_SYMBOL;
     }
 
-    //@@author
+    //@@author hongquan448
     /**
      * Returns the number of days left till the event.
      *
@@ -257,6 +258,7 @@ public class Deadline extends Task {
         this.description = description;
     }
 
+    //@@author hongquan448
     /**
      * Returns the information related to information in form of a string.
      *
@@ -300,7 +302,7 @@ public class Deadline extends Task {
             LOGGER.log(Level.INFO, SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
-        boolean containsKeyword = description.contains(keyword);
+        boolean containsKeyword = description.toLowerCase().contains(keyword.toLowerCase());
         return containsKeyword;
     }
 
@@ -316,6 +318,7 @@ public class Deadline extends Task {
         return formattedDeadlineDetails;
     }
 
+    //@@author GanapathySanathBalaji
     /**
      * Edits the event at the index specified.
      *
@@ -514,12 +517,15 @@ public class Deadline extends Task {
         ui.printEmptyLine();
     }
 
+    //@@author NizarMohd
+
     @Override
-    public String getCalenderTaskDetails() {
+    public String getCalendarTaskDetails() {
         String isDoneString = isDone ? YES : NO;
         String details = DEADLINE_SYMBOL + isDoneString  + SPACE +  this.description;
         if (details.length() > 25) {
-            details = details.substring(0, 25);
+            details = details.substring(0, 22);
+            details = details + "...";
         } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
             while (detailsBuilder.length() < 25) {

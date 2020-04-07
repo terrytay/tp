@@ -306,7 +306,6 @@ public class TaskList {
      * @throws IllegalDoneCommandException is thrown when user tries to mark deadline as done when it has already been
      *          done.
      */
-
     public void checkIfDone(Deadline deadline, Ui ui) throws IllegalDoneCommandException {
         if (deadline.getIsDone()) {
             throw new IllegalDoneCommandException("Deadline has already been marked as done!");
@@ -318,7 +317,6 @@ public class TaskList {
      * @param index this is the index that is being checked.
      * @throws IllegalDoneCommandException is thrown when the user enters an index that is out of both bounds.
      */
-
     public void checkIndexBounds(int index) throws IllegalDoneCommandException {
         if (index < 0 || index >= tasks.size()) {
             throw new IllegalDoneCommandException(RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE);
@@ -345,6 +343,7 @@ public class TaskList {
             throw new MisuseOfSetDoneWithEvent();
         }
     }
+
     /**
      * This method sets tasks of deadline type at the specified index as done.
      * @param index this is the index where the method will operate at.
@@ -352,7 +351,6 @@ public class TaskList {
      * @throws MisuseOfSetDoneWithEvent if user tries to set events as done.
      * @throws IllegalDoneCommandException if user uses the done command wrongly.
      */
-
     public void marksAsDone(int index, Ui ui) throws MisuseOfSetDoneWithEvent, IllegalDoneCommandException {
         index--;
         checkIndexBounds(index);

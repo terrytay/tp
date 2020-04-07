@@ -175,7 +175,7 @@ public class Constants {
     public static final String DEADLINE_MARKED_AS_DONE = "Nice! I've marked this deadline as done!";
     public static final String INVALID_TASK_TYPE_LOG = "Task type of the task to be edited not recognized";
     public static final String ERROR_ENCOUNTERED_DURING_EXECUTION_MESSAGE = "Error encountered during execution";
-    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared.";
+    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared";
     public static final String LIST_SORTED_BY_PRIORITY_MESSAGE = "Here is the list of tasks added so far displayed "
             + "in decreasing order of priority:";
     public static final String LIST_SORTED_ON_DAYS_LEFT_MESSAGE = "Here is the list of tasks with sorted based"
@@ -286,10 +286,10 @@ public class Constants {
     public static final int DEC = 12;
     public static final int MAX_LIST_SIZE = 4;
     public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see: ";
-    public static final String NON_INTEGER_YEAR = "Year is not integer";
-    public static final String INVALID_YEAR = "Invalid Year";
-    public static final String NON_INTEGER_MONTH = "Month is not integer";
-    public static final String INVALID_MONTH = "Invalid Month";
+    public static final String NON_INTEGER_YEAR = "Input entered for Year is not an integer. Please re-enter the year.";
+    public static final String INVALID_YEAR = "Invalid Year.";
+    public static final String INVALID_MONTH_RANGE = "Invalid Month range used. Must be within 1 - 12.";
+    public static final String INVALID_MONTH = "Input entered for month is not an integer. Please re-enter the month.";
     public static final String TASKS_FOR = "Tasks for: ";
     public static final String COMMA = ", ";
     public static final String MAP_CANNOT_BE_EMPTY = "Map cannot be empty";
@@ -297,4 +297,7 @@ public class Constants {
     public static final String YES = "[Y]";
     public static final String NO = "[N]";
     public static final String LIST_EMPTY_MESSAGE = "List of tasks is empty";
+    public static final String ONLY_MONTH_AND_YEAR = "Please enter only month and year!";
+    public static final String BACK_IN_MAIN_INTERFACE = "You are now back in main interface. Enter \"help\" for a "
+            + "list of supported commands";
 }

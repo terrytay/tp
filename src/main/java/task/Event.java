@@ -27,8 +27,7 @@ import static ui.Constants.SPACE;
  * Represents an event and contains the related functions.
  */
 public class Event extends Task {
-;
-    public static final String EMPTY_STRING = "";
+
     public static final String EMPTY_DESCRIPTION_MESSAGE = "New description entered by user while editing "
             + "the task is empty";
     private String description;
@@ -194,10 +193,11 @@ public class Event extends Task {
     }
 
     @Override
-    public String getCalenderTaskDetails() {
+    public String getCalendarTaskDetails() {
         String details = Constants.EVENT_SYMBOL + this.description;
         if (details.length() > 25) {
-            details = details.substring(0, 25);
+            details = details.substring(0, 22);
+            details = details + "...";
         } else {
             StringBuilder detailsBuilder = new StringBuilder(details);
             while (detailsBuilder.length() < 25) {
@@ -238,7 +238,7 @@ public class Event extends Task {
             LOGGER.log(Level.INFO, Constants.SEARCH_KEYWORD_EMPTY);
             throw new SearchKeywordEmptyException();
         }
-        boolean containsKeyword = description.contains(keyword);
+        boolean containsKeyword = description.toLowerCase().contains(keyword.toLowerCase());
         return containsKeyword;
     }
 
