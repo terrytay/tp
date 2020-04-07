@@ -41,27 +41,8 @@ public class StudyArea {
         this.hasPort = hasPort;
         this.isIndoor = isIndoor;
         this.maxPax = maxPax;
-        this.isAvail = checkAvail();
     }
 
-    /**
-     * This method randomly assigns availability.
-     * @return boolean value based random.nextBoolean() output.
-     */
-    //@@author terrytay
-    public boolean checkAvail() {
-        SecureRandom random = new SecureRandom();
-        return random.nextBoolean();
-    }
-
-    /**
-     * This method retrieves the availability of that study area.
-     * @return a boolean value based on isAvail.
-     */
-    //@@author terrytay
-    public boolean getIsAvail() {
-        return this.isAvail;
-    }
 
     /**
      * This is the getter for the name attribute.
@@ -145,7 +126,7 @@ public class StudyArea {
      * @param key This is the search key entered by User.
      * @return True if can be found in either case. False if not found in both cases.
      */
-    //@@author terrytay
+
     public boolean containsSearchKey(String key) {
         if (this.name.toLowerCase().contains(key) || this.name.toLowerCase().contains(Dictionary.parseKey(key))) {
             return true;
@@ -163,7 +144,7 @@ public class StudyArea {
      * @param size this is the size stated by the user.
      * @return True if the size stated by the user is smaller than or equals to the maximum size of the Study Area.
      */
-    //@@author terrytay
+
     public boolean isSizeCapable(String size) {
         return  Integer.parseInt(size) <= this.maxPax;
     }

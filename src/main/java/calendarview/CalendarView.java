@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
-
+import static ui.Constants.BACK_IN_MAIN_INTERFACE;
 import static ui.Constants.COL;
 import static ui.Constants.COMMA;
 import static ui.Constants.DAYS;
@@ -26,6 +26,7 @@ import static ui.Constants.MAX_ROW;
 import static ui.Constants.MULTIPLE_WHITE_SPACES;
 import static ui.Constants.NON_INTEGER_YEAR;
 import static ui.Constants.NOW;
+import static ui.Constants.ONLY_MONTH_AND_YEAR;
 import static ui.Constants.PADDING;
 import static ui.Constants.PADDING1;
 import static ui.Constants.PADDING2;
@@ -40,21 +41,22 @@ import static ui.Constants.TASKS_FOR;
  */
 public class CalendarView {
     private HashMap<Integer, LinkedList<Task>> map;
+    private static boolean exit = false;
     private  LocalDate firstDay;
-    public  int month = -1;
-    public  int year = -1;
+    public static int month = -1;
+    public static int year = -1;
     private  int lastDay;
     private  int[] daysOfMonths = new int[35];
-    private Ui ui;
+    private static Ui ui;
 
     /**
      * This constructs the class.
-     * @param ui allows for interaction with the user.
+     * @param inUi allows for interaction with the user.
      */
-    public CalendarView(Ui ui) {
-        this.ui = ui;
+    public CalendarView(Ui inUi) {
+        ui = inUi;
         getInput();                                     // year and month will be set if user enters correctly.
-        if (this.year != -1 && this.month != -1) {       // check if year and month is set
+        if (year != -1 && month != -1) {       // check if year and month is set
             this.setFirstDay();
             this.setLastDay();
             processDates();
@@ -74,7 +76,7 @@ public class CalendarView {
      * This method sets the first day val. This prevent double error messages when user enters invalid command.
      */
     private void setFirstDay() {
-        this.firstDay = YearMonth.of(this.year, this.month).atDay(1);
+        this.firstDay = YearMonth.of(year, month).atDay(1);
     }
 
     /**
@@ -89,12 +91,12 @@ public class CalendarView {
      * This print the days header.
      */
     public void printDays() {
-        this.ui.printOut(DIVIDER, true);
+        ui.printOut(DIVIDER, true);
         for (int i = 0; i < MAX_COL; i++) {
-            this.ui.printOut(COL + DAYS[i] + PADDING1, false);
+            ui.printOut(COL + DAYS[i] + PADDING1, false);
         }
-        this.ui.printOut(COL, true);
-        this.ui.printOut(DIVIDER, true);
+        ui.printOut(COL, true);
+        ui.printOut(DIVIDER, true);
     }
 
     /**
@@ -138,24 +140,24 @@ public class CalendarView {
         int day = daysOfMonths[index];
         if (i == 0) {
             if (this.daysOfMonths[index] == 0) {
-                this.ui.printOut(COL + SPACES + PADDING, false);
+                ui.printOut(COL + SPACES + PADDING, false);
             } else if (this.daysOfMonths[index] > 9) {
-                this.ui.printOut(COL + SPACES + PADDING3 + this.daysOfMonths[index], false);
+                ui.printOut(COL + SPACES + PADDING3 + this.daysOfMonths[index], false);
             } else {
-                this.ui.printOut(COL + SPACES + PADDING2 + this.daysOfMonths[index], false);
+                ui.printOut(COL + SPACES + PADDING2 + this.daysOfMonths[index], false);
             }
         } else {
             if (map.containsKey(day)) {
                 if (map.get(day).isEmpty()) {
-                    this.ui.printOut(COL + SPACES + PADDING, false);
+                    ui.printOut(COL + SPACES + PADDING, false);
                 } else {
                     LinkedList<Task> tasks = processList(day);
                     Task task = tasks.get(0);
                     tasks.removeFirst();
-                    this.ui.printOut(COL + SPACE + task.getCalendarTaskDetails() + SPACE, false);
+                    ui.printOut(COL + SPACE + task.getCalendarTaskDetails() + SPACE, false);
                 }
             } else {
-                this.ui.printOut(COL + SPACES + PADDING, false);
+                ui.printOut(COL + SPACES + PADDING, false);
             }
         }
     }
@@ -169,16 +171,16 @@ public class CalendarView {
             for (int j = 0; j < MAX_COL; j++) {
                 printContent(row, i, j);
             }
-            this.ui.printOut(COL, true);
+            ui.printOut(COL, true);
         }
-        this.ui.printOut(DIVIDER, true);
+        ui.printOut(DIVIDER, true);
     }
 
     /**
      * This prints the month which the calendar is being printed.
      */
     public void printCurrentMonth() {
-        this.ui.printOut(TASKS_FOR + this.firstDay.getMonth().toString() + COMMA +  this.firstDay.getYear(),
+        ui.printOut(TASKS_FOR + this.firstDay.getMonth().toString() + COMMA +  this.firstDay.getYear(),
                 true);
     }
 
@@ -187,13 +189,13 @@ public class CalendarView {
      * @param in this is the input by user.
      * @throws CalendarException this is the exception thrown when user entered the month wrongly.
      */
-    public void setMonth(String in) throws CalendarException {
+    public static void setMonth(String in) throws CalendarException {
         try {
             int inMonth = Integer.parseInt(in);
             if (inMonth < JAN || inMonth > DEC) {
                 throw new CalendarException(INVALID_MONTH_RANGE);
             }
-            this.month = inMonth;
+            month = inMonth;
         } catch (NumberFormatException e) {
             throw new CalendarException(INVALID_MONTH);
         }
@@ -204,41 +206,95 @@ public class CalendarView {
      * @param in This is the input entered by the user.
      * @throws CalendarException is thrown when user enters the year wrongly.
      */
-    public void setYear(String in) throws CalendarException {
+    public static void setYear(String in) throws CalendarException {
         try {
             int inYear = Integer.parseInt(in);
-            if (inYear < 2020) {
+            int thisYear = LocalDate.now().getYear();
+            if (inYear < thisYear) {
                 throw new CalendarException(INVALID_YEAR);
             }
-            this.year = inYear;
+            year = inYear;
         } catch (NumberFormatException e) {
             throw new CalendarException(NON_INTEGER_YEAR);
         }
     }
 
     /**
+     * This method checks if the input length is 2, else it will throw an exception.
+     * @param input this is the input entered by the user.
+     * @throws CalendarException if user enters input of length more than 2.
+     */
+    public static void checkInputLength(String[] input) throws CalendarException {
+        if (input.length != 2) {
+            throw new CalendarException(ONLY_MONTH_AND_YEAR);
+        }
+    }
+
+    /**
+     * This method will validate month and year input sequentially and prints an error message based on the combination
+     * of wrong input pattern.
+     * @param input this is the input entered by the user for the month and year.
+     * @return a string of error message, if user enters input wrongly, else return null.
+     */
+    public static String setMonthAndYear(String[] input) {
+        StringBuilder errMessage = null;
+        try {                               // try setting month
+            setMonth(input[0]);
+        } catch (CalendarException e) {         // if error, catch the message
+            errMessage = new StringBuilder(e.getMessage());
+        }
+
+        try {                                    // try setting year
+            setYear(input[1]);
+        } catch (CalendarException e1) {        // if error, catch message also.
+            if (errMessage != null) {
+                errMessage.append(" Also, ").append(e1.getMessage());
+            } else {
+                errMessage = new StringBuilder(e1.getMessage());
+            }
+        }
+        if (errMessage != null) {
+            return errMessage.toString();
+        } else {
+            return null;
+        }
+    }
+
+
+    /**
      * This method gets the input from the user.
      */
-    public void getInput() {
-        this.ui.printLine();
-        this.ui.printMessage(ENTER_DESIRED_MONTH);
-        this.ui.printLine();
+    public static void getInput() {
+        ui.printLine();
+        ui.printMessage(ENTER_DESIRED_MONTH);
+        ui.printLine();
         boolean isWrongCommand = true;
+
         while (isWrongCommand) {
-            String temp = this.ui.getUserIn().toLowerCase();
+            String temp = ui.getUserIn().toLowerCase();
             String[] input = temp.split(MULTIPLE_WHITE_SPACES);
             if (input[0].equals(NOW)) {
-                this.month = LocalDate.now().getMonthValue();
-                this.year = LocalDate.now().getYear();
+                month = LocalDate.now().getMonthValue();
+                year = LocalDate.now().getYear();
+                isWrongCommand = false;
+            } else if (input[0].equals("bye")) {
+                exit = true;
+                isWrongCommand = false;
             } else {
                 try {
-                    setMonth(input[0]);
-                    setYear(input[1]);
-                    isWrongCommand = false;
+                    checkInputLength(input);
+                    String errMessage = setMonthAndYear(input);
+                    if (errMessage == null) {
+                        isWrongCommand = false;
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(errMessage);
+                        ui.printLine();
+                    }
                 } catch (Exception e) {
-                    this.ui.printLine();
-                    this.ui.printMessage(e.getMessage());
-                    this.ui.printLine();
+                    ui.printLine();
+                    ui.printMessage(e.getMessage());
+                    ui.printLine();
                 }
             }
         }
@@ -248,11 +304,15 @@ public class CalendarView {
      * This method prints the calendar.
      */
     public void printCalendar() {
+        if (exit) {
+            ui.printLine();
+            ui.printMessage(BACK_IN_MAIN_INTERFACE);
+            return;
+        }
         printCurrentMonth();
         printDays();
         for (int i = 0; i < MAX_ROW; i++) {
             printBox(i);
         }
     }
-
 }
