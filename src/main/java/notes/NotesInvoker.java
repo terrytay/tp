@@ -1,6 +1,5 @@
 package notes;
 
-import exception.NotesCommandException;
 import ui.Constants;
 
 import java.io.IOException;
@@ -12,6 +11,7 @@ public class NotesInvoker {
 
     /**
      * Constructor to invoke Notes app.
+     *
      * @throws IOException exception for module import/export
      */
     public NotesInvoker() throws Exception {
@@ -31,15 +31,15 @@ public class NotesInvoker {
                 String code;
                 switch (choice) {
                 case Constants.NOTES_ADD:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(" ",2)[1].trim();
                     notes.createModule(code);
                     break;
                 case Constants.NOTES_REMOVE:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(" ",2)[1].trim();
                     notes.deleteModule(code);
                     break;
                 case Constants.NOTES_ENTER:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(" ",2)[1].trim();
                     notes.enterModule(code);
                     break;
                 case Constants.NOTES_LIST:
@@ -55,7 +55,7 @@ public class NotesInvoker {
                 default:
                     System.out.println(Constants.INVALID_NOTES_COMMAND_MESSAGE);
                 }
-            } catch (ArrayIndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println(Constants.NOTES_EXCEPTION_MSG);
             }
         } while (!isExit);
