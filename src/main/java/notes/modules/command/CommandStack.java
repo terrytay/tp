@@ -1,6 +1,7 @@
 package notes.modules.command;
 
 import ui.Constants;
+import ui.Ui;
 
 import java.util.LinkedList;
 
@@ -10,10 +11,15 @@ public class CommandStack {
      * Adapted from: https://www.developer.com/design
      * /article.php/3720566/Working-With-Design-Patterns-Memento.htm
      */
-    private LinkedList<Command> commandStack
-            = new LinkedList<>();
-    private LinkedList<Command> redoStack
-            = new LinkedList<>();
+    private LinkedList<Command> commandStack;
+    private LinkedList<Command> redoStack;
+    private Ui ui;
+
+    public CommandStack(Ui ui) {
+        this.ui = ui;
+        this.commandStack =  new LinkedList<>();
+        this.redoStack = new LinkedList<>();
+    }
 
     /**
      * Execute the given command, and add it to a undo stack and redo stack.
@@ -30,7 +36,9 @@ public class CommandStack {
      */
     public void undo() {
         if (commandStack.isEmpty()) {
-            System.out.println(Constants.NOTHING_TO_UNDO);
+            this.ui.printLine();
+            this.ui.printMessage(Constants.NOTHING_TO_UNDO);
+            this.ui.printLine();
             return;
         }
         Command command = commandStack.removeFirst();
@@ -43,7 +51,9 @@ public class CommandStack {
      */
     public void redo() {
         if (redoStack.isEmpty()) {
-            System.out.println(Constants.NOTHING_TO_REDO);
+            this.ui.printLine();
+            this.ui.printMessage(Constants.NOTHING_TO_REDO);
+            this.ui.printLine();
             return;
         }
         Command command = redoStack.removeFirst();

@@ -2,6 +2,7 @@ package notes;
 
 
 import ui.Constants;
+import ui.Ui;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,9 +14,10 @@ import java.util.Scanner;
 //@@author terrytay
 public class Notes {
     ModulesList modulesList;
-
-    public Notes() {
-        modulesList = ModulesList.getInstance();
+     Ui ui;
+    public Notes(Ui ui) {
+        this.ui = ui;
+        modulesList = ModulesList.getInstance(ui);
         importModules();
     }
 
@@ -26,7 +28,6 @@ public class Notes {
      */
     public void createModule(String code) {
         code = code.toUpperCase();
-
         modulesList.createModule(code);
     }
 
@@ -37,7 +38,6 @@ public class Notes {
      */
     public void deleteModule(String code) {
         code = code.toUpperCase();
-
         modulesList.deleteModule(code);
     }
 
@@ -49,7 +49,6 @@ public class Notes {
      */
     public void enterModule(String code) throws Exception {
         code = code.toUpperCase();
-
         modulesList.enterModule(code);
 
     }
@@ -58,7 +57,9 @@ public class Notes {
         try {
             File f = new File(Constants.NOTES_PATH);
             if (f.createNewFile()) {
-                System.out.println(Constants.NOTES_FILE_NOT_FOUND);
+                ui.printLine();
+                ui.printMessage(Constants.NOTES_FILE_NOT_FOUND);
+                ui.printLine();
             }
             HashMap<String, ArrayList<String>> modules = new HashMap<>();
             Scanner input = new Scanner(f);
@@ -74,7 +75,9 @@ public class Notes {
             }
             modulesList.importModules(modules);
         } catch (Exception e) {
-            System.out.println(Constants.IMPORT_ERROR);
+            ui.printLine();
+            ui.printMessage(Constants.IMPORT_ERROR);
+            ui.printLine();
         }
     }
 
@@ -93,19 +96,19 @@ public class Notes {
                 }
                 fw.write("-----\n");
             } catch (IOException e) {
+                ui.printLine();
                 e.printStackTrace();
+                ui.printLine();
             }
         });
         fw.close();
-        System.out.println(Constants.EXPORT_SUCCESS);
+        ui.printMessage(Constants.EXPORT_SUCCESS);
     }
 
     /**
      * Print all saved modules.
      */
     public void listModules() {
-        System.out.println(Constants.LINE_BREAK);
         modulesList.listModules();
-        System.out.println(Constants.LINE_BREAK);
     }
 }

@@ -254,8 +254,8 @@ public class Constants {
 
 
     public static final String NOTES_COMMAND = "notes";
-    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!\n"
-            + "Notes are stored based on modules.\n"
+    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!"
+            + "Notes are stored based on modules."
             + "To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";

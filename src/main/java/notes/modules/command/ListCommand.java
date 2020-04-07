@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 //@@author terrytay
 public class ListCommand implements Command {
-    private static Ui ui = new Ui();
+    private static Ui ui;
     private ArrayList<String> messages;
 
-    public ListCommand(ArrayList<String> messages) {
+    public ListCommand(ArrayList<String> messages, Ui ui) {
         this.messages = messages;
     }
 
@@ -20,12 +20,13 @@ public class ListCommand implements Command {
 
         if (messages.isEmpty()) {
             ui.printOut(Constants.NO_NOTES_YET, true);
+        } else {
+            for (String message : messages) {
+                ui.printOut(message, false);
+                ui.printEmptyLine();
+            }
+            ui.printLine();
         }
-        for (String message : messages) {
-            ui.printOut(message, false);
-            ui.printEmptyLine();
-        }
-        ui.printLine();
     }
 
     public void undo() {

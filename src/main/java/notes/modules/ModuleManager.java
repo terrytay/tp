@@ -6,6 +6,7 @@ import notes.modules.command.CommandStack;
 import notes.modules.command.ExitCommand;
 import notes.modules.parser.Parser;
 import ui.Constants;
+import ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ public class ModuleManager {
     private String code;
     private ArrayList<String> messages;
     private CommandStack commandStack;
+    private Ui ui;
 
     /**
      * Manages the module e.g. overall commands and control.
@@ -22,22 +24,23 @@ public class ModuleManager {
      * @param messages the notes in the module
      * @throws Exception for commandStack
      */
-    public ModuleManager(String code, ArrayList<String> messages) throws Exception {
+    public ModuleManager(String code, ArrayList<String> messages, Ui ui) throws Exception {
         this.code = code;
         this.messages = messages;
-        commandStack = new CommandStack();
+        this.ui = ui;
+        commandStack = new CommandStack(ui);
         runInstance();
     }
 
     private void runInstance() throws Exception {
-        System.out.println(String.format("Notes for %s", code));
+        this.ui.printLine();
+        this.ui.printMessage(String.format("Notes for %s", code));
         Command command;
         showMenu();
         boolean isExit = false;
         do {
-            Scanner input = new Scanner(System.in);
-            String userInput = input.nextLine();
-            command = new Parser().parseCommand(userInput, this);
+            String userInput = ui.getUserIn();
+            command = new Parser().parseCommand(userInput, this, ui);
             if (command != null) {
                 executeCommand(command);
             }
@@ -45,7 +48,6 @@ public class ModuleManager {
                 isExit = true;
             }
         } while (!isExit);
-
     }
 
     /**
@@ -75,16 +77,20 @@ public class ModuleManager {
     }
 
     private void showMenu() {
-        System.out.println(Constants.MODULE_MANAGER_1);
-        System.out.println(Constants.MODULE_MANAGER_2);
-        System.out.println(Constants.MODULE_MANAGER_3);
-        System.out.println(Constants.MODULE_MANAGER_4);
-        System.out.println(Constants.MODULE_MANAGER_5);
+        this.ui.printLine();
+        this.ui.printMessage(Constants.MODULE_MANAGER_1);
+        this.ui.printMessage(Constants.MODULE_MANAGER_2);
+        this.ui.printMessage(Constants.MODULE_MANAGER_3);
+        this.ui.printMessage(Constants.MODULE_MANAGER_4);
+        this.ui.printMessage(Constants.MODULE_MANAGER_5);
+        this.ui.printLine();
     }
 
     public void addMessage(String message) {
         messages.add(message);
-        System.out.println(Constants.ACTION_SUCCESS);
+        this.ui.printLine();
+        this.ui.printMessage(Constants.ACTION_SUCCESS);
+        this.ui.printLine();
     }
 
     public ArrayList<String> getMessages() {
@@ -93,6 +99,8 @@ public class ModuleManager {
 
     public void removeMessage(String message) {
         messages.remove(message);
-        System.out.println(Constants.ACTION_SUCCESS);
+        this.ui.printLine();
+        this.ui.printMessage(Constants.ACTION_SUCCESS);
+        this.ui.printLine();
     }
 }
