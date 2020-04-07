@@ -300,4 +300,5 @@ public class Constants {
     public static final String ONLY_MONTH_AND_YEAR = "Please enter only month and year!";
     public static final String BACK_IN_MAIN_INTERFACE = "You are now back in main interface. Enter \"help\" for a "
             + "list of supported commands";
+    public static final String PAST_MONTH = "Month entered is outdated. Please enter current month onwards";
 }

@@ -31,6 +31,7 @@ import static ui.Constants.PADDING;
 import static ui.Constants.PADDING1;
 import static ui.Constants.PADDING2;
 import static ui.Constants.PADDING3;
+import static ui.Constants.PAST_MONTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.SPACES;
 import static ui.Constants.TASKS_FOR;
@@ -260,7 +261,20 @@ public class CalendarView {
         }
     }
 
+    /**
+     * This method checks if the month entered is current or future.
+     * @throws CalendarException if month entered is not current and not future.
+     */
+    public static void checkIfPast() throws CalendarException {
 
+        int thisYear = LocalDate.now().getYear();
+        if (year == thisYear) {
+        int thisMonth = LocalDate.now().getMonthValue();
+        if (month < thisMonth) {
+            throw new CalendarException(PAST_MONTH);
+        }
+        }
+    }
     /**
      * This method gets the input from the user.
      */
@@ -284,6 +298,7 @@ public class CalendarView {
                 try {
                     checkInputLength(input);
                     String errMessage = setMonthAndYear(input);
+                    checkIfPast();
                     if (errMessage == null) {
                         isWrongCommand = false;
                     } else {
@@ -309,6 +324,7 @@ public class CalendarView {
             ui.printMessage(BACK_IN_MAIN_INTERFACE);
             return;
         }
+        ui.printLine();
         printCurrentMonth();
         printDays();
         for (int i = 0; i < MAX_ROW; i++) {
