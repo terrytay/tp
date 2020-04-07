@@ -169,9 +169,15 @@ public class TaskList {
      * @param ui This allows TaskList class to interact with User.
      */
     public void clearTasks(Ui ui) {
-        tasks.clear();
         ui.printLine();
-        ui.printMessage(Constants.TASK_LIST_CLEARED_MESSAGE);
+        ui.printMessage("Are you sure that you want to clear the list? [Y/N]");
+        String choice = ui.getUserIn();
+        if (choice.trim().toLowerCase().equals("y")) {
+            tasks.clear();
+            ui.printMessage(Constants.TASK_LIST_CLEARED_MESSAGE);
+        } else {
+            ui.printMessage(Constants.THE_TASK_LIST_ISN_T_CLEARED);
+        }
         ui.printLine();
     }
 

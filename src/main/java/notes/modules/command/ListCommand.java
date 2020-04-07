@@ -6,26 +6,27 @@ import java.util.ArrayList;
 
 //@@author terrytay
 public class ListCommand implements Command {
-    private static Ui ui = new Ui();
+    private  Ui ui;
     private ArrayList<String> messages;
 
-    public ListCommand(ArrayList<String> messages) {
+    public ListCommand(ArrayList<String> messages, Ui ui) {
         this.messages = messages;
+        this.ui = ui;
     }
 
     /**
      * Displays the notes in the module.
      */
     public void execute() {
-
+        this.ui.printLine();
         if (messages.isEmpty()) {
-            ui.printOut(Constants.NO_NOTES_YET, true);
+            this.ui.printMessage(Constants.NO_NOTES_YET);
+        } else {
+            for (String message : messages) {
+                this.ui.printMessage(message);
+            }
+            this.ui.printLine();
         }
-        for (String message : messages) {
-            ui.printOut(message, false);
-            ui.printEmptyLine();
-        }
-        ui.printLine();
     }
 
     public void undo() {
