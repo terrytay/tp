@@ -108,7 +108,7 @@ The Task component depends on 3 other components,
  
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
-![Task Component](images/Task_Component_UML.png)   
+![Task Component](images/TaskComponentUML.png)   
 <div>Figure 2. Object Diagram for Task Component</div>
 <br>
 The task component contains 8 separate classes. They are as follows:  
@@ -198,26 +198,26 @@ Inside Notes component, there exists these classes:
 	
    The following sequence diagrams explain how tasks are scheduled.
 	
- ![Overall Sequence Diagram](images/Schedule_Overall.png)
+ ![Overall Sequence Diagram](images/ScheduleOverall.png)
 <div>Figure 5. Overall Sequence Diagram</div>
 <br>
  The three reference frames used are as follows:
 
  * `Get information regarding the tasks from the user`
 
- ![Sub Diagram 1](images/Schedule_Sub1.png)
+ ![Sub Diagram 1](images/ScheduleSub1.png)
  <div>Figure 6. Sub Diagram 1</div>
  <br>
  
  * `Check and Schedule tasks if feasible`
 
- ![Sub Diagram 2](images/Schedule_Sub2.png)
+ ![Sub Diagram 2](images/ScheduleSub2.png)
  <div>Figure 7. Sub Diagram 2</div>
  <br>
  
  * `Add the scheduled tasks to current list of tasks`
  
- ![Sub Diagram 3](images/Schedule_Sub3.png)
+ ![Sub Diagram 3](images/ScheduleSub3.png)
  <div>Figure 8. Sub Diagram 3</div>
  <br> 
  
@@ -271,13 +271,13 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 
  * `User enters search key` 
  
-![Study Area Sequence_Diagram_Main](images/user_sL_interaction.png)  
+![Study Area Sequence_Diagram_Main](images/usersLinteraction.png)  
 <div>Figure 9. Interaction between User and Study Area Search Interface</div>
 <br>
 
  * `StudyAreaCommand invokes searchList() of StudyAreaList` 
  
-![Study_Area_Sequence_Diagram_subModules](images/sL_sA_interaction.png)
+![Study_Area_Sequence_Diagram_subModules](images/sLinteraction.png)
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
@@ -329,17 +329,17 @@ For example, let's take only the two study areas as the entire data set.
 
 This will result in the following adjacency lists : 
 Environment: <br>
-Indoor -> {Starbucks} <br>
+Indoor -> {Starbucks} 
 Outdoor -> {Opposite Town Green (Outside Starbucks)} <br>
 *Data Structure* : 2D Array, with only two rows (For indoors and outdoors)<br>
 Ports: <br>
-Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
+Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
 No -> null<br>
 *Data Structure* : 2D Array, with only two rows (For Yes and No)<br>
-Capacity: 
-4 -> {Opposite Town Green (Outside Starbucks)}
-5 -> {Starbucks}
-*Data Structure* : HashMap<Integer, ArrayList<String>> 
+Capacity: <br>
+4 -> {Opposite Town Green (Outside Starbucks)} 
+5 -> {Starbucks} <br>
+*Data Structure* : HashMap<Integer, ArrayList<String>> <br>
 
 The creation and initialisation of the lists are done when the software is setting up.  Therefore, each flag 
 has its own list. Based on user criteria, concatenate an output list with the Study Areas that are found in all
@@ -434,11 +434,11 @@ meets your needs and is conducive, should you urgently need one.
     * 32-bit or 64-bit environment
     * Command Line Interface
     * Should work without internet access <br>
-  * Quality Requirement :
+* Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
-  * Performance Requirement :
+* Performance Requirement :
     * Should respond quickly, buffer time of 2 seconds at most.<br>
-  * Reliability Requirement: 
+* Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
 [comment]: # (@@author NizarMohd)
