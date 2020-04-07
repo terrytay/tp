@@ -251,11 +251,9 @@ public class Constants {
     public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
             + " description are as follows:";
 
-
-
     public static final String NOTES_COMMAND = "notes";
-    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!\n"
-            + "Notes are stored based on modules.\n"
+    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!"
+            + "Notes are stored based on modules."
             + "To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
@@ -264,12 +262,9 @@ public class Constants {
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
     public static final String HELP_MODULE_MESSAGE = "[help] to list all the commands again";
     public static final String INVALID_NOTES_COMMAND_MESSAGE = "Please enter a valid command.";
-
-    public static final String LINE_BREAK = "______________________________";
-
     public static final String NOTES_PATH = "library/notes.txt";
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
-            + " be saved.";
+            + "be saved.";
     public static final String DIVIDER = "-----------------------------------------------------------------------"
             + "---------------------------------------------------------------------------------------------------"
             + "---------------------------";
@@ -322,7 +317,7 @@ public class Constants {
     public static final String ACTION_SUCCESS = "SUCCESS";
 
     public static final String CANCEL_OPERATION = "Remove operation has been cancelled.";
-    public static final String MODULE_NOT_FOUND = "No such module found.";
+    public static final String MODULE_NOT_FOUND = "No modules found.";
 
     public static final String IMPORT_ERROR = "Couldn't import modules.";
     public static final String EXPORT_SUCCESS = "Notes saved successfully.";
@@ -336,8 +331,8 @@ public class Constants {
 
     public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
             + " e.g. To add a module, enter \"add [modulename]\"";
-
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
-    public static final String NO_MODULE_FOUND = "No modules found.";
     public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
+    public static final String NO_MODULE_FOUND = "No modules found.";
+    public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
 }

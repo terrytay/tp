@@ -17,10 +17,10 @@
     3.11. [View commands supported](#help) <br>
     3.12. [Schedule tasks](#schedule) <br>
     3.13. [Study Area Search Feature](#studyArea) <br>
-    3.14. [Exit the Application / Study Area interface](#exit) <br>
-    3.15. [Saving the data](#save-tasks) <br>
-    3.16. [Clearing old tasks](#clear-old-tasks) <br>
-    3.17. [Viewing tasks in calendar format](#calendar) <br>
+    3.14. [Calendar View](#314-calendar-view)<br>
+    3.15. [Exit the Application / Study Area interface](#exit) <br>
+    3.16. [Saving the data](#save-tasks) <br>
+    3.17. [Clearing old tasks](#clear-old-tasks) <br>
 1. [FAQ](#faq)
 1. [Command Summary](#command-summary)
 1. [Formats Used](#formats)
@@ -86,6 +86,7 @@
          bye --------------------------------------- Terminate task interface
          study ------------------------------------- Enter Study Area search interface
          notes ------------------------------------- Enter Notes
+         calendar ---------------------------------- View existing tasks in Calender view
          Notes:
          *All dates should follow YYYY-MM-DD format
          *All timing should follow 24 hour clock
@@ -681,10 +682,135 @@ Expected output:
    require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
    a specific point of time at a specific area.
 
+
+
+### 3.14. Calendar View
+
+
+#### 1. Enter Calendar
+Example of usage:
+
+`calendar`
+
+Expected output: 
+
+________________________________________________________________________________________________
+	 Enter the month and year that you wish to see:
+________________________________________________________________________________________________
+
+#### 2. Enter Desired Month to View
+
+##### To view tasks for current month
+Example of usage:
+ 
+`now`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: APRIL, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                           |                           |                           |                          1|                          2|                          3|                          4|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          5|                          6|                          7|                          8|                          9|                         10|                         11|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         12|                         13|                         14|                         15|                         16|                         17|                         18|
+    |                           |                           |                           |                           |                           |                           | [D][N] submit cg2028 r... |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         19|                         20|                         21|                         22|                         23|                         24|                         25|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         26|                         27|                         28|                         29|                         30|                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+##### To view tasks for future months
+
+*NOTE*: Input for both month and year must be integers. This feature only support current and future months. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+
+Example of usage: 
+
+`5 2020`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: MAY, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         31|                           |                           |                           |                           |                          1|                          2|
+    |                           |                           |                           |                           |                           |                           | [E] cs2113 final exam     |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          3|                          4|                          5|                          6|                          7|                          8|                          9|
+    |                           | [D][N] math assignment    |                           |                           |                           |                           |                           |
+    |                           | [D][N] physics assignm... |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         10|                         11|                         12|                         13|                         14|                         15|                         16|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         17|                         18|                         19|                         20|                         21|                         22|                         23|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         24|                         25|                         26|                         27|                         28|                         29|                         30|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+#### To escape from Calendar View Command 
+
+In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
+
+Example of usage: 
+
+`bye`
+
+Expected output:
+
+________________________________________________________________________________________________
+	 You are now back in main interface. Enter "help" for a
+	 list of supported commands
+________________________________________________________________________________________________
+
+
 [comment]: # (@@author )     
 <a name="exit"></a>
 
-### 3.14. Exit the Application / Study Area interface
+### 3.15. Exit the Application / Study Area interface
 You use this command to exit the application. Before the actual application is exited the 
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
 secondary study area search interface.
@@ -748,18 +874,14 @@ A response similar to the following one would appear:
 
 <a name="save-tasks"></a>
 
-### 3.15. Saving the data
+### 3.16. Saving the data
 The tasklist is saved automatically before the application is executed. There is no need to save manually.
 
 <a name="clear-old-tasks"></a>
 
-### 3.16. Clearing old tasks
+### 3.17. Clearing old tasks
 The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
-<a name="calendar"></a>
-
-### 3.17. Viewing tasks in calendar format [coming in v3.0]
-The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
 
 [comment]: # (@@author )
