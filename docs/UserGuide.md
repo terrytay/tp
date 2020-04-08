@@ -17,10 +17,11 @@
     3.11. [View commands supported](#help) <br>
     3.12. [Schedule tasks](#schedule) <br>
     3.13. [Study Area Search Feature](#studyArea) <br>
-    3.14. [Calendar View](#314-calendar-view)<br>
-    3.15. [Exit the Application / Study Area interface](#exit) <br>
-    3.16. [Saving the data](#save-tasks) <br>
-    3.17. [Clearing old tasks](#clear-old-tasks) <br>
+    3.14. [Notes Taking Feature](#notes) <br>
+    3.15. [Calendar View](#314-calendar-view)<br>
+    3.16. [Exit the Application / Study Area interface](#exit) <br>
+    3.17. [Saving the data](#save-tasks) <br>
+    3.18. [Clearing old tasks](#clear-old-tasks) <br>
 1. [FAQ](#faq)
 1. [Command Summary](#command-summary)
 1. [Formats Used](#formats)
@@ -30,8 +31,11 @@
 
 ## 1. Introduction
 
-  OrgaNice! is a task manager integrated with a Study Area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
+  OrgaNice! is a task manager integrated with a Study Area search function and a Notes Taking feature. 
+  You can use it to manage your tasks, be it events or deadlines. On top of that, 
   it is capable of assisting students in finding Study Areas that meets their desired criteria.
+  Also, our Notes Taking feature provides you a handy way to record notes based on school modules fast.<br>
+  
   Our application supports 2 types of tasks, they are as follows: 
  * **Deadline** Tasks - Used to denote a task that needs to be finished by a deadline.
     
@@ -684,11 +688,243 @@ Expected output:
    a specific point of time at a specific area.
 
 
+[comment]: # (@@author terrytay)     
+<a name="notes"></a>
 
-### 3.14. Calendar View
+### 3.14 Notes Taking Feature
+
+You can create notes based on modules that you are taking for the semester easily.
+These modules can easily be imported or exported for your convenience.
+
+#### 3.14.1 Entering Notes Taking Interface
+
+To enter the Notes Taking interface, you can enter 'notes' in the main interface. You will then be 
+guided to the Notes Taking interface. 
+
+#### Usage
+
+Example of usage: 
+`notes`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+        Welcome to OrgaNice's Notes! Notes are stored based on
+        modules. To get started: add a module, enter a module and
+        start adding notes!
+    ________________________________________________________________________________________________
+         [add modulecode] to add a module
+         [remove modulecode] to add a module
+         [enter modulecode] to enter notes for its notes
+         [list] to list modules
+         [bye] to go back to OrgaNice main page
+         [help] to list all the commands again
+    ________________________________________________________________________________________________
 
 
-#### 3.14.1. Enter Calendar
+#### 3.14.2 Adding a Module
+
+For first time users, it is recommended that you create a module first
+so that you can add notes into it.
+
+#### Usage 
+
+Example of usage:
+`add CS2113T`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+        CS2113T has been created
+    ________________________________________________________________________________________________
+
+
+#### 3.14.3 Removing a Module
+
+Sometimes you are done with a module and you want to remove it. We have provided a friendly way to delete
+completed module notes.
+
+#### Usage 
+
+Example of usage:
+`remove CS2113T`<br>
+You will be prompted to enter `Y` for confirmation.
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+        Are you sure you want to remove CS2113T? [Y/N]
+    ________________________________________________________________________________________________
+    Y
+    ________________________________________________________________________________________________
+        CS2113T has been removed
+    ________________________________________________________________________________________________
+
+#### 3.14.4 Listing all created/available Modules
+
+It might be helpful if you were able to list all the modules of notes that you have. Check out the step
+below to learn how to do so.
+
+#### Usage 
+
+Example of usage:
+`list`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+        [EE2026, CG1112, CS2040C, CS2113T, CS2107]
+    ________________________________________________________________________________________________
+
+
+#### 3.14.5 Start taking Notes
+
+Now that you have created at least a module, it is time to start taking notes.
+In the Notes mainpage, key in the following code below.
+
+#### Usage
+
+Example of usage: 
+`enter CS2113T` `add CS2113T is so fun`
+
+Expected Outcome:
+    
+    enter CS2113T
+    ________________________________________________________________________________________________
+        Notes for CS2113T
+    ________________________________________________________________________________________________
+         [add ...message...] to add a note
+         [undo] to undo
+         [redo] to redo
+         [list] to list notes
+         [back] to go to notes mainpage
+    ________________________________________________________________________________________________
+    add CS2113T is so cool and fun
+    ________________________________________________________________________________________________
+	    SUCCESS
+    ________________________________________________________________________________________________
+
+#### 3.14.6 Listing all Notes of specific Module
+
+Apart from writing notes, we know you need to review it. This is how you list
+all notes of a module.
+
+#### Usage
+
+Example of usage: 
+`list`
+
+Expected Outcome:
+    
+    list
+    ________________________________________________________________________________________________
+         CS2113T is fun
+         UML diagram is important
+         GITHUB is quite frustrating at times
+         Reposense is awesome
+    ________________________________________________________________________________________________
+
+#### 3.14.7 Quick Correction through Undo and Redo
+
+Sometimes, you make a mistake and you want to quickly correct it. Thankfully, Notes come
+with quick undo and redo features.
+
+#### Usage
+
+Example of usage: 
+`undo` `redo`
+
+Expected Outcome:
+    
+    add hi
+    ________________________________________________________________________________________________
+         SUCCESS
+    ________________________________________________________________________________________________
+    add bye
+    ________________________________________________________________________________________________
+         SUCCESS
+    ________________________________________________________________________________________________
+    undo
+    ________________________________________________________________________________________________
+         SUCCESS
+    ________________________________________________________________________________________________
+    list
+    ________________________________________________________________________________________________
+         hi
+    ________________________________________________________________________________________________
+    redo
+    ________________________________________________________________________________________________
+         SUCCESS
+    ________________________________________________________________________________________________
+    list
+    ________________________________________________________________________________________________
+         hi
+         bye
+    ________________________________________________________________________________________________
+
+#### 3.14.8 To go back to Notes mainpage
+
+To visit other modules, you can do the following below.
+
+#### Usage
+
+Example of usage: 
+`back` followed by `help`
+
+Expected Outcome:
+    
+    back
+    ________________________________________________________________________________________________
+    help
+    ________________________________________________________________________________________________
+          [add modulecode] to add a module
+          [remove modulecode] to add a module
+          [enter modulecode] to enter notes for its notes
+          [list] to list modules
+          [bye] to go back to OrgaNice main page
+          [help] to list all the commands again
+    ________________________________________________________________________________________________
+    
+ 
+#### 3.14.9 Saving your Notes
+
+To save your notes, we support one way at the moment.
+
+#### Usage
+
+Example of usage:
+`bye`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+          [add modulecode] to add a module
+          [remove modulecode] to add a module
+          [enter modulecode] to enter notes for its notes
+          [list] to list modules
+          [bye] to go back to OrgaNice main page
+          [help] to list all the commands again
+    ________________________________________________________________________________________________
+    bye
+    ________________________________________________________________________________________________
+         Notes saved successfully.
+         Thank you for using notes.
+    ________________________________________________________________________________________________
+
+This will bring you to Organice main page. For a list of available commands in Organice,
+you can use `help` to get you around. For more information on importing and exporting, please check the FAQ section.
+
+#### Future Enhancements
+
+   Right now, our saving feature is very restrictive to you. In the upcoming v3.0, we are planning to
+   release a new auto saving feature where you do not have to worry about losing your notes even if you close
+   the terminal abruptly or do not use the `bye` way to save.
+
+
+### 3.15. Calendar View
+
+
+#### 3.15.1. Enter Calendar
 Example of usage:
 
 `calendar`
@@ -700,7 +936,7 @@ Expected output:
     ________________________________________________________________________________________________
 
 
-#### 3.14.2. Enter Desired Month to View
+#### 3.15.2. Enter Desired Month to View
 
 #### To view tasks for current month
 Example of usage:
@@ -793,7 +1029,7 @@ Expected output:
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ________________________________________________________________________________________________
 
-#### 3.14.3 To escape from Calendar View Command 
+#### 3.15.3 To escape from Calendar View Command 
 
 In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
 
@@ -812,7 +1048,7 @@ Expected output:
 [comment]: # (@@author )     
 <a name="exit"></a>
 
-### 3.15. Exit the Application / Study Area interface
+### 3.16. Exit the Application / Study Area interface
 You use this command to exit the application. Before the actual application is exited the 
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
 secondary study area search interface.
@@ -876,12 +1112,12 @@ A response similar to the following one would appear:
 
 <a name="save-tasks"></a>
 
-### 3.16. Saving the data
+### 3.17. Saving the data
 The tasklist is saved automatically before the application is executed. There is no need to save manually.
 
 <a name="clear-old-tasks"></a>
 
-### 3.17. Clearing old tasks
+### 3.18. Clearing old tasks
 The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
 
@@ -904,6 +1140,12 @@ The tasklist only includes the tasks which have date beyond the current date. Th
     A: Go to the software's root folder and check to see if the library folder exist. Proceed to check if TaskList.txt 
        exist. If so, transfer it to a temporary folder. Delete the library folder and rerun the software. Transfer the 
        content from the old TaskList.txt to the new TaskList.txt
+       
+    Q: How do I import and export Notes?
+    A: Notes are stored in library/notes.txt. To export and import Notes, simply transfer this file to another device 
+       with OrgaNice installed in the same directory /library/. You can open the text file to see how we actually 
+       structure our notes information inside to write your own notes.txt.
+       
 
 <a name="command-summary"></a>
 
@@ -924,6 +1166,7 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 `search <keyword found in task>` - Lists all matching tasks in the list containing the keyword <br>
 `bye` - Exit the Application / Study Area interface <br>
 `study` - Enter study area search interface <br>
+`notes` - Enter notes taking interface <br>
 
 ### Study Area Search Interface
 `{name\address\faculty} {flags}` - Returns a list of Study Areas, if any of the existing data matches the requirement 
