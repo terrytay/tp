@@ -54,7 +54,7 @@ public class ModulesList {
             this.ui.printLine();
             String input = ui.getUserIn();
             this.ui.printLine();
-            if (input.contains("Y")) {
+            if (input.toUpperCase().equals("Y")) {
                 modules.remove(code);
                 this.ui.printMessage(code + " has been removed");
             } else {
