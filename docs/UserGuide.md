@@ -1,3 +1,34 @@
+<style>
+#topButton {
+  display: none; 
+  position: fixed; 
+  bottom: 20px;
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: lightblue; 
+  color: white; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
+}
+
+#topButton:hover {
+  background-color: #555;
+}
+</style>
+
+<button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+
+<script src="jsCodes/topButton.js"></script>
+
+<form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
+    <input type="submit" value="Go back to main page" />
+</form>
+
+
 # OrgaNice! - User Guide
 
 ## Table Of Contents
@@ -53,7 +84,7 @@
  
  * Ensure you have Java 11 or above installed in your Computer.
  * Download the latest OrgaNice!.jar from [here](https://github.com/AY1920S2-CS2113T-T12-3/tp/releases) and place it in an empty folder. 
- * Open Command Prompt. **NOTE: Please ensure that the command prompt is at full screen when running the jar file**
+ * Open Command Prompt. **NOTE: Please ensure that the command prompt is at full screen BEFORE running the jar file**
  * Navigate to the folder with the jar.
  * Type the following command:  java -jar OrgaNice!.jar to run it.
  
@@ -921,6 +952,8 @@ you can use `help` to get you around. For more information on importing and expo
    the terminal abruptly or do not use the `bye` way to save.
 
 
+
+[comment]: # (@@author NizarMohd)
 ### 3.15. Calendar View
 
 
@@ -1127,6 +1160,10 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 <a name="faq"></a>
 
 ## 4. FAQ
+    Q: When loading the interface on command line, why was the logo cut off and certain format dirupted? 
+    A: You need to be using the software at full screen before launching the software. If this happens, exit the software,
+    go to fullscreen mode, then restart the software. Everything should run smoothly. 
+    
     Q: How to transfer the task list data from one computer to an other computer?
     A: Just copy the "TaskList.txt" file which could be found at the same directory
        as the jar file and paste it to the location containing the jar file in the other
