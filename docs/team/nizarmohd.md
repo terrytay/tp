@@ -19,15 +19,16 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Highlights: This feature supports lose search when searching by name, address or faculty. Meaning user can enter commonly used abbreviations for locations and still return a result. For example, Starbucks is commonly known as bux or bucks in the current era, and allowing the user to search with the commonly used abbreviations allows for ease of use on the user end. This utilised HashMap to create a mapping between the commonly used abbreviations to the actual attributes of the locations stored in our data files.
 	* Credits: The algorithm currently used was suggested by one of our Team Member, Terry. He gave me a verbal idea of the algorithm which allowed me to implement it into code. 
 * **Major Enhancement:**  added the ability to view Tasks in calendar view.
-	* What it does: Allows user to take a glance on the list of tasks (maximum of https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java4 per day) available in a month period (specified by the User).
+	* What it does: Allows user to take a glance on the list of tasks available in a month period (specified by the User).
 	* Justification: This feature improves the product visually, and gives the User ease of access and visibility of the task they have for an entire month.
 	* Highlights: The user can view the tasks for any month that they desire, present or future only. The difficulty comes when we have to print the day of the month at the correct boxes and according to the actual day of the week. Next was to print the content such that it does not cause any mismatch in the alignment of Calendar view. Therefore, we only decided to print a maximum of four tasks per day with each tasks detail not exceeding 25 characters. Any details that exceed will have its last three characters (of the 25) displayed as ellipses.
 * **Minor Enhancement:** added the ability to mark deadlines as done, by extension, adding a boolean attribute, isDone, to Deadline class.
 * **Minor Enhancement:** added the ability to print messages in a specific format, which is with indentation and of a fixed length.
     * Credits: The implementation of the code was extracted from [stackOverflow](https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java)
-* **Contributions to UG**
-	* Documented the for features (3.13).
-* **Contributions to the DG:**
+* **Contributions to [UG](#contributions-to-user-guide)**
+	* Documented the for features (3.13 & 3.15)
+	* Added some details for FAQ (Q1 , 3 & 5)
+* **Contributions to the [DG](#contributions-to-the-developers-guide-extracts)**
     * Documented Table of Contents, styling of images using css and numbering of figures.
 	* Documented the Study Area Component. This includes the documentation of the Object Diagram for the Study Area Component.
 	* Documented the implementation for study area search feature and the Sequence Diagram to show the implementation.
@@ -38,6 +39,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Assisted with integration of the forking workflow during the earlier stage, as there were mismatch after resolving merge conflicts.
 	* Refactored code by removing some of the magic literals into constants and moving constants into its own class, Constant class. 
 	* Obtained the design for logo and goodbye dab. Credits: [Generator for logo](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=TypeSomething), [image source for goodbye dab](https://www.netclipart.com/isee/iRwmhJb_bt21-rj-transparent-background/), [generator for goodbye dab](https://asciiart.club/)
+    * Added test cases using JUnit for study area command, calendar view and study area list.
 * **Review/mentoring contributions:**
 	* Reviewed the following PR's: 
 		[#75](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/75) [#125](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/125)
@@ -46,7 +48,146 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28)
 	
 	
-###**Contributions to the Developer's Guide (Extracts)**:
+
+
+### Contributions to User Guide (Extract)
+
+This section is extracted to show a sample documentation that I have done for the User Guide.
+
+[comment]: # (@@author NizarMohd)     
+<a name="studyArea"></a>
+
+### 3.13 Study Area Search Feature
+
+You can search for study areas based on criteria that you desire by using this feature. You are free to loosely search. 
+For example, if you enter as [this](#search-by-name-address-or-faculty), you will receive a list of  places related 
+to the name *Starbucks* as "bux" is a common abbreviation used for it.
+
+<a name="enterStudyArea"></a>
+#### 3.13.1 Entering Study Area Search Interface
+
+To enter the Study Area search interface, you can enter 'study' in the main interface. You will then be 
+guided to the study area search interface. 
+
+#### Usage
+
+Example of usage: 
+`study`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Please enter the location for your desired study area.
+         Enter "help" for a list of supported flags. Flags should
+         only come after location, if a criteria for location is
+         entered. When you are done with the search, enter "bye".
+    ________________________________________________________________________________________________
+
+<a name="studyAreaSearch"></a>
+#### 3.13.2 Start Search
+
+You can start the search by entering the criteria desired. Supported criteria include name, address, faculty,
+ports availability, environment and size capacity. For  name, address or faculty, you simply have to enter it
+as a string. For other supported conditions, flags have to be used. 
+
+Below are the supported flags: 
+   * -s {size}  : To locate a study area that can facilitate the size of pax entered.
+   * -p         : To locate a study area based on the availability of ports.
+   * -i         : To locate a study area that are indoors.
+   * -o         : To locate a study area that are outdoors.
+
+Note: 
+
+{name\address\faculty} {flags} is the basic format to search for Study Areas. You can enter either argument, or both.
+If both arguments are specified, flags will have to precede either the name,address or faculty.
+
+#### Usage
+
+#### Search by name, address or faculty 
+
+Example of usage:
+`bux`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Here are the available study areas!
+         __________________________________________________________
+         Name: Opposite Town Green (Outside Starbucks)
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: false
+         Maximum number of Pax: 4
+         __________________________________________________________
+         __________________________________________________________
+         Name: Starbucks
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: true
+         Maximum number of Pax: 5
+         __________________________________________________________
+         Please enter the location for your desired study area.
+    ________________________________________________________________________________________________
+
+#### Search by name, address or faculty and with flags
+
+Example of usage:
+`bux -o`
+
+Expected Outcome:
+
+    ________________________________________________________________________________________________
+         Here are the available study areas!
+         __________________________________________________________
+         Name: Opposite Town Green (Outside Starbucks)
+         Address: 2 College Avenue West Education Resource Centre,
+         Ground Level
+         Faculty: Utown
+         Port: true
+         Indoor: false
+         Maximum number of Pax: 4
+         __________________________________________________________
+         Please enter the location for your desired study area.
+    ________________________________________________________________________________________________
+
+__NOTE__: When using this format, flags must always come after the location, name or address. Else, the system will 
+return an error message.
+
+### Search by flags only 
+
+Example of usage : 
+`-s 6`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+         Here are the available study areas!
+         __________________________________________________________
+         Name: EA Level 4
+         Address: 9 Engineering Drive 1,EA, Level 4, Outside Staff
+         Offices
+         Faculty: Engineering
+         Port: true
+         Indoor: false
+         Maximum number of Pax: 6
+         __________________________________________________________
+         Please enter the location for your desired study area.
+    ________________________________________________________________________________________________
+
+#### Future Enhancements
+
+   The current implementation does not include real-time availability of the study areas. In version 3.0 we hope to be
+   able to retrieve real-time availability of public study areas, like the ones in U-Town. In order to do so we would 
+   require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
+   a specific point of time at a specific area.
+
+
+
+### Contributions to the Developer's Guide (Extracts):
 
 The sections I contributed to in the Developer's Guide are as follows.
 Note that the content below just shows an extract of the documentation I have done.
@@ -67,7 +208,7 @@ The purpose of the extract is to show my documentation capability.
   3. ResourceLoader Component - The ResourceLoader component is used to load data of all existing Study Areas in NUS 
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
-![Study Area Component](images/StudyAreaObjectDiagram.png) 
+![Study Area Component](../images/StudyAreaObjectDiagram.png) 
 <div>Figure 3. Object diagram for Study Area Component</div>
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
@@ -113,21 +254,21 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 
  * `User enters search key` 
  
-![Study Area Sequence_Diagram_Main](images/usersLinteraction.png)  
+![Study Area Sequence_Diagram_Main](../images/usersLinteraction.png)  
 <div>Figure 9. Interaction between User and Study Area Search Interface</div>
 <br>
 
  * `StudyAreaCommand invokes searchList() of StudyAreaList` 
  
-![Study_Area_Sequence_Diagram_subModules](images/sLinteraction.png)
+![Study_Area_Sequence_Diagram_subModules](../images/sLinteraction.png)
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
-![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
+![Study_Area_Sequence_Diagram_subModules2](../images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
 
-You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
+You can refer [here](https://ay1920s2-cs2113t-t12-3.github.io/tp/DeveloperGuide.html#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
 
 #### 3.2.2 Alternative 
 Aspect: How to search based on User input.
@@ -147,27 +288,7 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-             __________________________________________________________
-             Name: Opposite Town Green (Outside Starbucks)
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: false
-             Maximum number of Pax: 4
-             __________________________________________________________
-             __________________________________________________________
-             Name: Starbucks
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: true
-             Maximum number of Pax: 5
-             __________________________________________________________
-             Please enter the location for your desired study area.
-
-
+![study_area](../images/study_area_det.PNG)
 
 This will result in the following adjacency lists : 
 Environment: <br>
@@ -195,3 +316,45 @@ to implement.
 
 Therefore, the first alternative is chosen, as it is much easier to implement and lesser memory is used while conducting the search.
 
+### Extract 3 
+
+[comment]: # (@@author NizarMohd)
+## 4. Testing 
+
+Currently we have two runners to execute the tests, JUnit and Gradle.
+
+#### Using IntelliJ JUnit
+
+Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration, if there isn't any to run all tests. 
+
+To edit a configuration, click `Run` then click on `Edit Configurations`. Proceed to click the `+` icon, followed by `JUnit`
+
+Afterwards, ensure that the configurations are as such:
+
+![Junit_config](images/JUnit_configuration.PNG)
+
+To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
+This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
+
+Alternatively, you can click on this icon to run with coverage :
+
+![JUnit_test](images/JUnit_run_test.PNG)
+
+
+To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
+
+#### Using Gradle
+
+Firstly ensure that the gradle build has the following details: 
+
+![gradle_build](images/gradle_build.PNG)
+
+Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
+
+Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
+
+![elephant_icon](images/elephant_icon.PNG)
+
+Now the configuration is set to gradle. Proceed to click the icon:
+
+![gradle_run_test](images/gradle_run_test.PNG)
