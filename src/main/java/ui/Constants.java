@@ -253,8 +253,8 @@ public class Constants {
 
     public static final String NOTES_COMMAND = "notes";
     public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!"
-            + "Notes are stored based on modules."
-            + "To get started: add a module, enter a module and start adding notes!";
+            + " Notes are stored based on modules."
+            + " To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
     public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter notes for its notes";
@@ -280,7 +280,8 @@ public class Constants {
     public static final int JAN = 1;
     public static final int DEC = 12;
     public static final int MAX_LIST_SIZE = 4;
-    public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see: ";
+    public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see. "
+            + "For current month, enter \"now\". For future months, enter {MM} {YYYY} where both arguments are integer";
     public static final String NON_INTEGER_YEAR = "Input entered for Year is not an integer. Please re-enter the year.";
     public static final String INVALID_YEAR = "Invalid Year.";
     public static final String INVALID_MONTH_RANGE = "Invalid Month range used. Must be within 1 - 12.";
@@ -335,4 +336,6 @@ public class Constants {
     public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
     public static final String NO_MODULE_FOUND = "No modules found.";
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
+    public static final String HELP_DESCRIPTION_24 = TAB + "calendar ----------------------------------"
+            + " View existing tasks in Calender view";
 }

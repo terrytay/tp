@@ -29,6 +29,7 @@ ________________________________________________________________________________
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
 	 notes ------------------------------------- Enter Notes
+	 calendar ---------------------------------- View existing tasks in Calender view
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
@@ -190,6 +191,7 @@ ________________________________________________________________________________
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
 	 notes ------------------------------------- Enter Notes
+	 calendar ---------------------------------- View existing tasks in Calender view
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
