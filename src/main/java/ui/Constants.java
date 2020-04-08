@@ -318,7 +318,7 @@ public class Constants {
     public static final String ACTION_SUCCESS = "SUCCESS";
 
     public static final String CANCEL_OPERATION = "Remove operation has been cancelled.";
-    public static final String MODULE_NOT_FOUND = "No modules found.";
+    public static final String MODULE_NOT_FOUND = "Module not found.";
 
     public static final String IMPORT_ERROR = "Couldn't import modules.";
     public static final String EXPORT_SUCCESS = "Notes saved successfully.";

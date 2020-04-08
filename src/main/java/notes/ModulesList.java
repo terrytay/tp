@@ -95,7 +95,7 @@ public class ModulesList {
      */
     public void listModules() {
         if (modules.isEmpty()) {
-            this.ui.printMessage(Constants.MODULE_NOT_FOUND);
+            this.ui.printMessage(Constants.NO_MODULE_FOUND);
         } else {
             this.ui.printMessage(modules.keySet().toString());
         }
