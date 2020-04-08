@@ -3,6 +3,7 @@ package calendarview;
 import task.Task;
 import java.util.Comparator;
 
+//@@author NizarMohd
 /**
  * This comparator class allows for the priority queue to sort the tasks by its priority.
  */
