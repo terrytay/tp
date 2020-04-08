@@ -1,14 +1,14 @@
 package command.studyarea;
 
 import org.junit.jupiter.api.Test;
-import studyarea.StudyArea;
 import studyarea.StudyAreaList;
 import ui.Ui;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static ui.Constants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+import static ui.Constants.EMPTY_LOCATION;
+import static ui.Constants.SHORT_DESCRIPTION;
+import static ui.Constants.WRONG_FLAG_USAGE;
 
 //@@author NizarMohd
 
