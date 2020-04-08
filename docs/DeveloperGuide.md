@@ -28,7 +28,7 @@ div {
 }
 
 #topButton:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+  background-color: #555;
 }
 </style>
 
@@ -332,25 +332,25 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-     __________________________________________________________
-     Name: Opposite Town Green (Outside Starbucks)
-     Address: 2 College Avenue West Education Resource Centre,
-     Ground Level
-     Faculty: Utown
-     Port: true
-     Indoor: false
-     Maximum number of Pax: 4
-     __________________________________________________________
-     __________________________________________________________
-     Name: Starbucks
-     Address: 2 College Avenue West Education Resource Centre,
-     Ground Level
-     Faculty: Utown
-     Port: true
-     Indoor: true
-     Maximum number of Pax: 5
-     __________________________________________________________
-     Please enter the location for your desired study area.
+ __________________________________________________________
+ Name: Opposite Town Green (Outside Starbucks)
+ Address: 2 College Avenue West Education Resource Centre,
+ Ground Level
+ Faculty: Utown
+ Port: true
+ Indoor: false
+ Maximum number of Pax: 4
+ __________________________________________________________
+ __________________________________________________________
+ Name: Starbucks
+ Address: 2 College Avenue West Education Resource Centre,
+ Ground Level
+ Faculty: Utown
+ Port: true
+ Indoor: true
+ Maximum number of Pax: 5
+ __________________________________________________________
+ Please enter the location for your desired study area.
     
 
 
