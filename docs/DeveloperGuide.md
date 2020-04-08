@@ -427,7 +427,7 @@ This allows for you to see which path has the test covered, so that you can ensu
 
 Alternatively, you can click on this icon to run with coverage :
 
-![JUnit_test](images/JUnit_run_test.PNG)
+![JUnit_test](images/JUnitRunTest.PNG)
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
