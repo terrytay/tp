@@ -136,7 +136,6 @@ public class TaskList {
         }
     }
 
-
     /**
      * Edits the task at the specified index.
      *
@@ -144,7 +143,7 @@ public class TaskList {
      * @param ui This allows TaskList class to interact with User.
      * @throws IndexOutOfBoundsException If the index provided is invalid (i.e, out of bounds).
      */
-    private void editTaskAtIndex(int index, Ui ui) throws IndexOutOfBoundsException {
+    void editTaskAtIndex(int index, Ui ui) throws IndexOutOfBoundsException {
         switch (tasks.get(index).taskType) {
         case Event:
             Event oldEvent = (Event) tasks.get(index);
@@ -170,9 +169,15 @@ public class TaskList {
      * @param ui This allows TaskList class to interact with User.
      */
     public void clearTasks(Ui ui) {
-        tasks.clear();
         ui.printLine();
-        ui.printMessage(Constants.TASK_LIST_CLEARED_MESSAGE);
+        ui.printMessage("Are you sure that you want to clear the list? [Y/N]");
+        String choice = ui.getUserIn();
+        if (choice.trim().toLowerCase().equals("y")) {
+            tasks.clear();
+            ui.printMessage(Constants.TASK_LIST_CLEARED_MESSAGE);
+        } else {
+            ui.printMessage(Constants.THE_TASK_LIST_ISN_T_CLEARED);
+        }
         ui.printLine();
     }
 
@@ -270,7 +275,7 @@ public class TaskList {
      * @return true if at least one task has a description containing the keyword and false otherwise
      * @throws Exception If keyword used is empty.
      */
-    private boolean checkForMatchedTasks(String keyword) throws Exception {
+    boolean checkForMatchedTasks(String keyword) throws Exception {
         boolean hasMatchedTask = false;
         for (Task task : tasks) {
             if (task.hasKeyword(keyword)) {
@@ -301,6 +306,7 @@ public class TaskList {
     //@@author NizarMohd
     /**
      * This method checks if deadline has already been marked as done.
+     *
      * @param deadline this is the deadline that the user is trying to mark as done.
      * @param ui this object allows for interaction with the user.
      * @throws IllegalDoneCommandException is thrown when user tries to mark deadline as done when it has already been
@@ -314,6 +320,7 @@ public class TaskList {
 
     /**
      * This method checks for the upper and lower bounds of index.
+     *
      * @param index this is the index that is being checked.
      * @throws IllegalDoneCommandException is thrown when the user enters an index that is out of both bounds.
      */
@@ -325,6 +332,7 @@ public class TaskList {
 
     /**
      * This method executes the overall process to mark a deadline as done.
+     *
      * @param task this is the task to be set as done.
      * @param ui this object allows for interaction with User.
      * @throws IllegalDoneCommandException is thrown if user enters the done command wrongly.
@@ -346,6 +354,7 @@ public class TaskList {
 
     /**
      * This method sets tasks of deadline type at the specified index as done.
+     *
      * @param index this is the index where the method will operate at.
      * @param ui this allows for interaction with the user.
      * @throws MisuseOfSetDoneWithEvent if user tries to set events as done.

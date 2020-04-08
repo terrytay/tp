@@ -17,10 +17,10 @@
     3.11. [View commands supported](#help) <br>
     3.12. [Schedule tasks](#schedule) <br>
     3.13. [Study Area Search Feature](#studyArea) <br>
-    3.14. [Exit the Application / Study Area interface](#exit) <br>
-    3.15. [Saving the data](#save-tasks) <br>
-    3.16. [Clearing old tasks](#clear-old-tasks) <br>
-    3.17. [Viewing tasks in calendar format](#calendar) <br>
+    3.14. [Calendar View](#314-calendar-view)<br>
+    3.15. [Exit the Application / Study Area interface](#exit) <br>
+    3.16. [Saving the data](#save-tasks) <br>
+    3.17. [Clearing old tasks](#clear-old-tasks) <br>
 1. [FAQ](#faq)
 1. [Command Summary](#command-summary)
 1. [Formats Used](#formats)
@@ -30,7 +30,9 @@
 
 ## 1. Introduction
 
-  OrgaNice! is a command line based application that can help academics with scheduling their tasks and keeping track of them.  Our application supports 2 types of tasks, they are as follows: 
+  OrgaNice! is a task manager integrated with a Study Area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
+  it is capable of assisting students in finding Study Areas that meets their desired criteria.
+  Our application supports 2 types of tasks, they are as follows: 
  * **Deadline** Tasks - Used to denote a task that needs to be finished by a deadline.
     
      E.g, Assignments, Projects etc that are due on a specific date. 
@@ -40,8 +42,6 @@
    
  The application can add, edit and delete tasks. It also provides methods to search for tasks. Additionally, it has the ability of storing data to a physical location on the computer, so that the tasks always remain in memory.  
     
- As a secondary feature, the application allows students who are in search of a study area to locate one based on different conditions. The different conditions that could be specified include the location, size constraints and port facilities.
-
 
 <a name="quick-start"></a>
 
@@ -64,15 +64,8 @@
         ______\//\\\______/\\\___\/\\\___\///____\///////\\\____/\\\\\\\\\\___\/\\\_\//\\\/\\\__\/\\\___/\\\___________/\\\\\\\\\\\_____\//\\\_______
         ________\///\\\__/\\\_____\/\\\___________/\\_____\\\___/\\\/////\\\___\/\\\__\//\\\\\\__\/\\\__\//\\\_________\//\\///////_______\///_______
         ____________\///\\\\\/______\/\\\__________\//\\\\\\\\___\//\\\\\\\\/\\_\/\\\___\//\\\\\__\/\\\___\///\\\\\\\\___\//\\\\\\\\\\______/\\\_____
-        ______________\/////________\///____________\////////_____\////////\//___\///_____\/////___\///______\////////_____\//////////______\///_____
-        What is your name?
-        ________________________________________________________________________________________________
-
-
-After providing the User's name, the application will proceed to list out the supported features.
-    
+        ______________\/////________\///____________\////////_____\////////\//___\///_____\/////___\///______\////////_____\//////////______\///_____    
     ________________________________________________________________________________________________
-         Hello user!
          Welcome to OrgaNice! Below would be a list of commands useful for you!
          OrgaNice! Supports the following commands
          Please enter the keywords followed by the information shown in the brackets
@@ -93,6 +86,7 @@ After providing the User's name, the application will proceed to list out the su
          bye --------------------------------------- Terminate task interface
          study ------------------------------------- Enter Study Area search interface
          notes ------------------------------------- Enter Notes
+         calendar ---------------------------------- View existing tasks in Calender view
          Notes:
          *All dates should follow YYYY-MM-DD format
          *All timing should follow 24 hour clock
@@ -300,6 +294,7 @@ If you would like to clear the current list of tasks and start on a clean state,
 
 #### `clear` - Clears the list of tasks
 
+The application then asks for another confirmation before the list is cleared.
 The command clears the current list of tasks stored.
 Upon success a successful deletion message similar to the one in the example would appear.
 If the wrong format is used an alert would be displayed.
@@ -310,12 +305,22 @@ To clear the current list of tasks.
 `clear`
 
 Expected outcome:
+
+The application asks for a confirmation message.
+
+    ________________________________________________________________________________________________
+         Are you sure that you want to clear the list? [Y/N]
+
+`Y` - Choice
+
+Expected outcome:
+
 The list of tasks would be cleared.
 Upon success a response similar to the following one would appear:
 
+    	 The list of tasks is cleared.
     ________________________________________________________________________________________________
-         The list of tasks is cleared.
-    ________________________________________________________________________________________________
+
 
 <a name="view"></a>
 
@@ -481,6 +486,7 @@ A response similar to the following one would appear:
          bye --------------------------------------- Terminate task interface
          study ------------------------------------- Enter Study Area search interface
          notes ------------------------------------- Enter Notes
+         calendar ---------------------------------- View existing tasks in Calender view
          Notes:
          *All dates should follow YYYY-MM-DD format
          *All timing should follow 24 hour clock
@@ -503,7 +509,7 @@ If the wrong format is used an invalid command alert would be displayed.
 
 Example of usage: 
 
-#### `schedule 3` - Schedule 3 tasks
+`schedule 3` - Schedule 3 tasks
 
 Expected outcome:
 
@@ -513,19 +519,19 @@ Expected outcome:
          days left from current day to finish it>
          Enter details for task 1:
 
-#### `math exam /f 2 /d 10` - Details of first task
+`math exam /f 2 /d 10` - Details of first task
 
 Expected outcome:
 
 	 Enter details for task 2:
      
-#### `physics exam /f 3 /d 7` - Details of second task
+`physics exam /f 3 /d 7` - Details of second task
 
 Expected outcome:
 
 	 Enter details for task 3:
      
-#### `chemistry exam /f 1 /d 4` - Details of third task     
+`chemistry exam /f 1 /d 4` - Details of third task     
 
 Expected outcome:
 
@@ -677,10 +683,136 @@ Expected output:
    require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
    a specific point of time at a specific area.
 
+
+
+### 3.14. Calendar View
+
+
+#### 3.14.1. Enter Calendar
+Example of usage:
+
+`calendar`
+
+Expected output: 
+
+    ________________________________________________________________________________________________
+         Enter the month and year that you wish to see:
+    ________________________________________________________________________________________________
+
+
+#### 3.14.2. Enter Desired Month to View
+
+#### To view tasks for current month
+Example of usage:
+ 
+`now`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: APRIL, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                           |                           |                           |                          1|                          2|                          3|                          4|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          5|                          6|                          7|                          8|                          9|                         10|                         11|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         12|                         13|                         14|                         15|                         16|                         17|                         18|
+    |                           |                           |                           |                           |                           |                           | [D][N] submit cg2028 r... |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         19|                         20|                         21|                         22|                         23|                         24|                         25|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         26|                         27|                         28|                         29|                         30|                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+#### To view tasks for future months
+
+*NOTE*: Input for both month and year must be integers. This feature only support current and future months. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+
+Example of usage: 
+
+`5 2020`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: MAY, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         31|                           |                           |                           |                           |                          1|                          2|
+    |                           |                           |                           |                           |                           |                           | [E] cs2113 final exam     |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          3|                          4|                          5|                          6|                          7|                          8|                          9|
+    |                           | [D][N] math assignment    |                           |                           |                           |                           |                           |
+    |                           | [D][N] physics assignm... |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         10|                         11|                         12|                         13|                         14|                         15|                         16|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         17|                         18|                         19|                         20|                         21|                         22|                         23|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         24|                         25|                         26|                         27|                         28|                         29|                         30|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+#### 3.14.3 To escape from Calendar View Command 
+
+In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
+
+Example of usage: 
+
+`bye`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+         You are now back in main interface. Enter "help" for a
+         list of supported commands
+    ________________________________________________________________________________________________
+
+
 [comment]: # (@@author )     
 <a name="exit"></a>
 
-### 3.14. Exit the Application / Study Area interface
+### 3.15. Exit the Application / Study Area interface
 You use this command to exit the application. Before the actual application is exited the 
 tasks currently in the list are stored in a file. This command is used for exiting the main interface and the
 secondary study area search interface.
@@ -744,18 +876,14 @@ A response similar to the following one would appear:
 
 <a name="save-tasks"></a>
 
-### 3.15. Saving the data
+### 3.16. Saving the data
 The tasklist is saved automatically before the application is executed. There is no need to save manually.
 
 <a name="clear-old-tasks"></a>
 
-### 3.16. Clearing old tasks
+### 3.17. Clearing old tasks
 The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
-<a name="calendar"></a>
-
-### 3.17. Viewing tasks in calendar format [coming in v3.0]
-The tasklist only includes the tasks which have date beyond the current date. This removes the need for you to manually find and delete the old tasks.
 
 
 [comment]: # (@@author )

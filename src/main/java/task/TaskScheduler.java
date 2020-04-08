@@ -27,7 +27,7 @@ public class TaskScheduler {
      */
     public TaskScheduler(int numberOfTasksToSchedule) {
         this.numberOfTasksToSchedule = numberOfTasksToSchedule;
-        this.taskQueue = new PriorityQueue<>(numberOfTasksToSchedule, new TaskComparator());
+        this.taskQueue = new PriorityQueue<>(numberOfTasksToSchedule, new SchedulableTaskComparator());
         toBeAddedToList = new ArrayList<>();
     }
 

@@ -29,15 +29,14 @@ ________________________________________________________________________________
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
 	 notes ------------------------------------- Enter Notes
+	 calendar ---------------------------------- View existing tasks in Calender view
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
-	 Invalid command entered, Please enter a valid command
-________________________________________________________________________________________________
-________________________________________________________________________________________________
-	 The list of tasks is cleared
+	 Are you sure that you want to clear the list? [Y/N]
+	 The list of tasks is cleared.
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 A new task with the following information has been added.
@@ -76,7 +75,21 @@ ________________________________________________________________________________
 	 Empty Line entered, Please enter a valid line
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
+	 Invalid command entered, Please enter a valid command
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Nice! I've marked this deadline as done!
+	 [D][COMPLETED] assignment is due on May 2 2021 at 14:00
+	 with priority 2
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Empty Line entered, Please enter a valid line
+________________________________________________________________________________________________
+________________________________________________________________________________________________
 	 Task of event type cannot be marked as done
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Invalid command entered, Please enter a valid command
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 The list of tasks containing the mentioned keyword in
@@ -106,10 +119,17 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Here is the list of tasks added so far:
-	 1) [D][PENDING] assignment is due on May 2 2021 at 14:00
+	 1) [D][COMPLETED] assignment is due on May 2 2021 at 14:00
 	 with priority 2
 	 2) [E] meeting at May 5 2021 from 12:00 to 13:00 with
 	 priority 1
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Invalid index entered. Please enter a valid index to be
+	 marked as done
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 The search string entered is empty.
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Invalid index entered. Please enter a valid index to be
@@ -143,10 +163,13 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 Here is the list of tasks added so far:
-	 1) [D][PENDING] assignment is due on May 2 2021 at 14:00
+	 1) [D][COMPLETED] assignment is due on May 2 2021 at 14:00
 	 with priority 2
 	 2) [E] team meeting at May 5 2021 from 12:00 to 13:00 with
 	 priority 1
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+	 Wrong command used to view events (Should be :view )
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 OrgaNice! Supports the following commands
@@ -168,6 +191,7 @@ ________________________________________________________________________________
 	 bye --------------------------------------- Terminate task interface
 	 study ------------------------------------- Enter Study Area search interface
 	 notes ------------------------------------- Enter Notes
+	 calendar ---------------------------------- View existing tasks in Calender view
 	 Notes:
 	 *All dates should follow YYYY-MM-DD format
 	 *All timing should follow 24 hour clock
@@ -187,6 +211,9 @@ ________________________________________________________________________________
 	 Enter new Date:
 	 Date specified must be a current or a future date
 	 Enter new Date:
+	 Date provided is invalid or is in wrong format (Should be
+	 YYYY-MM-DD)
+	 Enter new Date:
 	 Updated Details:
 	 [E] team meeting at Jun 6 2020 from 12:00 to 13:00 with
 	 priority 1
@@ -196,8 +223,8 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
 	 The deadline details are as follows:
-	 [D][PENDING] assignment is due on May 2 2021 at 14:00 with
-	 priority 2
+	 [D][COMPLETED] assignment is due on May 2 2021 at 14:00
+	 with priority 2
 	 Which field of the deadline to edit? (Enter Corresponding
 	 Number)
 	 1. Description
@@ -208,9 +235,23 @@ ________________________________________________________________________________
 
 	 Please enter a valid number from the list
 	 Enter new description:
+	 Description shouldn't be empty
+	 Enter new description:
+	 Description shouldn't contain '/' and '#' characters
+	 Enter new description:
+	 Description shouldn't contain '/' and '#' characters
+	 Enter new description:
+	 Description shouldn't contain '/' and '#' characters
+	 Enter new description:
+	 Description shouldn't be empty
+	 Enter new description:
+	 Description shouldn't contain '/' and '#' characters
+	 Enter new description:
+	 Description shouldn't contain '/' and '#' characters
+	 Enter new description:
 	 Updated Details:
-	 [D][PENDING] assignment is due on May 2 2021 at 14:00 with
-	 priority 2
+	 [D][COMPLETED] assignment is due on May 2 2021 at 14:00
+	 with priority 2
 ________________________________________________________________________________________________
 	 The task at the mentioned index has been edited
 	 successfully

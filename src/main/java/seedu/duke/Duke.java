@@ -90,7 +90,7 @@ public class Duke {
         if (fullCommand.equals(STUDY_AREA_COMMAND)) {
             new StudyAreaCommand().executeStudyCommand(studyAreaList, ui);
         } else if (fullCommand.equals(NOTES_COMMAND)) {
-            new NotesInvoker();
+            new NotesInvoker(ui);
         } else {
             Command command = parser.parseCommand(fullCommand);
             command.executeCommand(taskList, ui);

@@ -2,9 +2,13 @@ package notes;
 
 import exception.NotesCommandException;
 import ui.Constants;
+import ui.Ui;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import static ui.Constants.SPACE;
+import static ui.Constants.TAB;
 
 
 //@@author terrytay
@@ -12,34 +16,36 @@ public class NotesInvoker {
 
     /**
      * Constructor to invoke Notes app.
+     * @param ui allows for interaction with the user
      * @throws IOException exception for module import/export
      */
-    public NotesInvoker() throws Exception {
-        Notes notes = new Notes();
-        System.out.println(Constants.NOTES_WELCOME_MESSAGE);
-        System.out.println(Constants.LINE_BREAK);
-        displayMenu();
-
-        Scanner input = new Scanner(System.in);
+    public NotesInvoker(Ui ui) throws Exception {
+        Notes notes = new Notes(ui);
+        ui.printLine();
+        ui.printMessage(Constants.NOTES_WELCOME_MESSAGE);
+        ui.printLine();
+        displayMenu(ui);
+        ui.printLine();
         boolean isExit = false;
         String choice;
 
         do {
             try {
-                String userInput = input.nextLine();
-                choice = userInput.split(" ")[0];
+                String userInput = ui.getUserIn();
+                ui.printLine();
+                choice = userInput.split(SPACE)[0];
                 String code;
                 switch (choice) {
                 case Constants.NOTES_ADD:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(SPACE)[1];
                     notes.createModule(code);
                     break;
                 case Constants.NOTES_REMOVE:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(SPACE)[1];
                     notes.deleteModule(code);
                     break;
                 case Constants.NOTES_ENTER:
-                    code = userInput.split(" ")[1];
+                    code = userInput.split(SPACE)[1];
                     notes.enterModule(code);
                     break;
                 case Constants.NOTES_LIST:
@@ -50,25 +56,31 @@ public class NotesInvoker {
                     isExit = true;
                     break;
                 case Constants.NOTES_HELP:
-                    displayMenu();
+                    displayMenu(ui);
                     break;
                 default:
-                    System.out.println(Constants.INVALID_NOTES_COMMAND_MESSAGE);
+                    ui.printMessage(Constants.INVALID_NOTES_COMMAND_MESSAGE);
+                    break;
+                }
+                if (!isExit) {
+                    ui.printLine();
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println(Constants.NOTES_EXCEPTION_MSG);
+                ui.printLine();
+                ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                ui.printLine();
             }
         } while (!isExit);
-
-        System.out.println(Constants.NOTES_BYE_MSG);
+        ui.printMessage(Constants.NOTES_BYE_MSG);
+        ui.printLine();
     }
 
-    private void displayMenu() {
-        System.out.println(Constants.ADD_MODULE_MESSAGE);
-        System.out.println(Constants.REMOVE_MODULE_MESSAGE);
-        System.out.println(Constants.ENTER_MODULE_MESSAGE);
-        System.out.println(Constants.LIST_MODULE_MESSAGE);
-        System.out.println(Constants.EXIT_MODULE_MESSAGE);
-        System.out.println(Constants.HELP_MODULE_MESSAGE);
+    private void displayMenu(Ui ui) {
+        ui.printOut(TAB + SPACE + Constants.ADD_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.REMOVE_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.ENTER_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.LIST_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.EXIT_MODULE_MESSAGE, true);
+        ui.printOut(TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
     }
 }

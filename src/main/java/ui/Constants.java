@@ -175,7 +175,7 @@ public class Constants {
     public static final String DEADLINE_MARKED_AS_DONE = "Nice! I've marked this deadline as done!";
     public static final String INVALID_TASK_TYPE_LOG = "Task type of the task to be edited not recognized";
     public static final String ERROR_ENCOUNTERED_DURING_EXECUTION_MESSAGE = "Error encountered during execution";
-    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared";
+    public static final String TASK_LIST_CLEARED_MESSAGE = "The list of tasks is cleared.";
     public static final String LIST_SORTED_BY_PRIORITY_MESSAGE = "Here is the list of tasks added so far displayed "
             + "in decreasing order of priority:";
     public static final String LIST_SORTED_ON_DAYS_LEFT_MESSAGE = "Here is the list of tasks with sorted based"
@@ -251,11 +251,9 @@ public class Constants {
     public static final String SEARCH_LIST_MESSAGE = "The list of tasks containing the mentioned keyword in their"
             + " description are as follows:";
 
-
-
     public static final String NOTES_COMMAND = "notes";
-    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!\n"
-            + "Notes are stored based on modules.\n"
+    public static final String NOTES_WELCOME_MESSAGE = "Welcome to OrgaNice's Notes!"
+            + "Notes are stored based on modules."
             + "To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
@@ -264,9 +262,6 @@ public class Constants {
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
     public static final String HELP_MODULE_MESSAGE = "[help] to list all the commands again";
     public static final String INVALID_NOTES_COMMAND_MESSAGE = "Please enter a valid command.";
-
-    public static final String LINE_BREAK = "______________________________";
-
     public static final String NOTES_PATH = "library/notes.txt";
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
             + "be saved.";
@@ -285,7 +280,8 @@ public class Constants {
     public static final int JAN = 1;
     public static final int DEC = 12;
     public static final int MAX_LIST_SIZE = 4;
-    public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see: ";
+    public static final String ENTER_DESIRED_MONTH = "Enter the month and year that you wish to see. "
+            + "For current month, enter \"now\". For future months, enter {MM} {YYYY} where both arguments are integer";
     public static final String NON_INTEGER_YEAR = "Input entered for Year is not an integer. Please re-enter the year.";
     public static final String INVALID_YEAR = "Invalid Year.";
     public static final String INVALID_MONTH_RANGE = "Invalid Month range used. Must be within 1 - 12.";
@@ -336,6 +332,10 @@ public class Constants {
 
     public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
             + " e.g. To add a module, enter \"add [modulename]\"";
-
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
+    public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
+    public static final String NO_MODULE_FOUND = "No modules found.";
+    public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
+    public static final String HELP_DESCRIPTION_24 = TAB + "calendar ----------------------------------"
+            + " View existing tasks in Calender view";
 }

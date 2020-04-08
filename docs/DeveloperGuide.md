@@ -1,3 +1,4 @@
+<!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
 <style>
 img {
     display: block;
@@ -9,7 +10,36 @@ div {
     text-align: center;
     font-size: x-small;
 }
+
+#topButton {
+  display: none; 
+  position: fixed; 
+  bottom: 20px;
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: lightblue; 
+  color: white; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
+}
+
+#topButton:hover {
+  background-color: #555;
+}
 </style>
+
+<button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+
+<script src="jsCodes/topButton.js"></script>
+
+<form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
+    <input type="submit" value="Go back to main page" />
+</form>
+
 # Developer Guide    
 
 ## Table of content
@@ -66,7 +96,7 @@ it is capable of assisting students in finding Study Areas that meets their desi
 	- You can enter notes based on school modules. Notes support undo and redo operations.
 
 ## 2. Design   
- {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}    
+    
 
 [comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
@@ -305,40 +335,29 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-             __________________________________________________________
-             Name: Opposite Town Green (Outside Starbucks)
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: false
-             Maximum number of Pax: 4
-             __________________________________________________________
-             __________________________________________________________
-             Name: Starbucks
-             Address: 2 College Avenue West Education Resource Centre,
-             Ground Level
-             Faculty: Utown
-             Port: true
-             Indoor: true
-             Maximum number of Pax: 5
-             __________________________________________________________
-             Please enter the location for your desired study area.
-
-
+![study_area_det](images/study_area_det.PNG)
 
 This will result in the following adjacency lists : 
-Environment: <br>
-Indoor -> {Starbucks} <br>
-Outdoor -> {Opposite Town Green (Outside Starbucks)} <br>
-*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)<br>
-Ports: <br>
-Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
-No -> null<br>
-*Data Structure* : 2D Array, with only two rows (For Yes and No)<br>
+
+Environment: 
+
+Indoor -> {Starbucks} 
+Outdoor -> {Opposite Town Green (Outside Starbucks)} 
+
+*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)
+
+Ports: 
+
+Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
+No -> null
+
+*Data Structure* : 2D Array, with only two rows (For Yes and No)
+
 Capacity: 
-4 -> {Opposite Town Green (Outside Starbucks)}
-5 -> {Starbucks}
+
+4 -> {Opposite Town Green (Outside Starbucks)} 
+5 -> {Starbucks} 
+
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
 
 The creation and initialisation of the lists are done when the software is setting up.  Therefore, each flag 
@@ -388,9 +407,49 @@ The reason why we chose two linked lists to support these operations is because 
 write the logic. An alternative is to actually remember the state of the hashmap before an operation and save
 it to another hashmap. However, this approach will take up more memory and reduces the performance of the application. 
 
-[comment]: # (@@author )
+[comment]: # (@@author NizarMohd)
 ## 4. Testing 
 
+Currently we have two runners to execute the tests, JUnit and Gradle.
+
+#### Using IntelliJ JUnit
+
+Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration, if there isn't any to run all tests. 
+
+To edit a configuration, click `Run` then click on `Edit Configurations`. Proceed to click the `+` icon, followed by `JUnit`
+
+Afterwards, ensure that the configurations are as such:
+
+![Junit_config](images/JUnit_configuration.PNG)
+
+To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
+This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
+
+Alternatively, you can click on this icon to run with coverage :
+
+![JUnit_test](images/JUnit_run_test.PNG)
+
+
+To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
+
+#### Using Gradle
+
+Firstly ensure that the gradle build has the following details: 
+
+![gradle_build](images/gradle_build.PNG)
+
+Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
+
+Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
+
+![elephant_icon](images/elephant_icon.PNG)
+
+Now the configuration is set to gradle. Proceed to click the icon:
+
+![gradle_run_test](images/gradle_run_test.PNG)
+
+
+[comment]: # (@@author GanapathySanathBalaji) 
 ## Appendix A: Product Scope 
 ### Target User Profile  
 
@@ -402,10 +461,11 @@ Mainly NUS students and professors who :
 
 ### Value proposition    
 
-[comment]: # (to be finalised)  
+ 
 
 You can efficiently manage tasks, in terms of priority. You can also efficiently find a study area that
 meets your needs and is conducive, should you urgently need one.
+
 
 ## Appendix B: User Stories    
  
@@ -434,11 +494,11 @@ meets your needs and is conducive, should you urgently need one.
     * 32-bit or 64-bit environment
     * Command Line Interface
     * Should work without internet access <br>
-  * Quality Requirement :
+* Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
-  * Performance Requirement :
+* Performance Requirement :
     * Should respond quickly, buffer time of 2 seconds at most.<br>
-  * Reliability Requirement: 
+* Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
 [comment]: # (@@author NizarMohd)
