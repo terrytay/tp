@@ -19,7 +19,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Highlights: This feature supports lose search when searching by name, address or faculty. Meaning user can enter commonly used abbreviations for locations and still return a result. For example, Starbucks is commonly known as bux or bucks in the current era, and allowing the user to search with the commonly used abbreviations allows for ease of use on the user end. This utilised HashMap to create a mapping between the commonly used abbreviations to the actual attributes of the locations stored in our data files.
 	* Credits: The algorithm currently used was suggested by one of our Team Member, Terry. He gave me a verbal idea of the algorithm which allowed me to implement it into code. 
 * **Major Enhancement:**  added the ability to view Tasks in calendar view.
-	* What it does: Allows user to take a glance on the list of tasks (maximum of https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java4 per day) available in a month period (specified by the User).
+	* What it does: Allows user to take a glance on the list of tasks available in a month period (specified by the User).
 	* Justification: This feature improves the product visually, and gives the User ease of access and visibility of the task they have for an entire month.
 	* Highlights: The user can view the tasks for any month that they desire, present or future only. The difficulty comes when we have to print the day of the month at the correct boxes and according to the actual day of the week. Next was to print the content such that it does not cause any mismatch in the alignment of Calendar view. Therefore, we only decided to print a maximum of four tasks per day with each tasks detail not exceeding 25 characters. Any details that exceed will have its last three characters (of the 25) displayed as ellipses.
 * **Minor Enhancement:** added the ability to mark deadlines as done, by extension, adding a boolean attribute, isDone, to Deadline class.
@@ -46,7 +46,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28)
 	
 	
-###**Contributions to the Developer's Guide (Extracts)**:
+###Contributions to the Developer's Guide (Extracts):
 
 The sections I contributed to in the Developer's Guide are as follows.
 Note that the content below just shows an extract of the documentation I have done.
@@ -67,7 +67,7 @@ The purpose of the extract is to show my documentation capability.
   3. ResourceLoader Component - The ResourceLoader component is used to load data of all existing Study Areas in NUS 
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
-![Study Area Component](images/StudyAreaObjectDiagram.png) 
+![Study Area Component](../images/StudyAreaObjectDiagram.png) 
 <div>Figure 3. Object diagram for Study Area Component</div>
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
@@ -113,21 +113,21 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 
  * `User enters search key` 
  
-![Study Area Sequence_Diagram_Main](images/usersLinteraction.png)  
+![Study Area Sequence_Diagram_Main](../images/usersLinteraction.png)  
 <div>Figure 9. Interaction between User and Study Area Search Interface</div>
 <br>
 
  * `StudyAreaCommand invokes searchList() of StudyAreaList` 
  
-![Study_Area_Sequence_Diagram_subModules](images/sLinteraction.png)
+![Study_Area_Sequence_Diagram_subModules](../images/sLinteraction.png)
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
-![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
+![Study_Area_Sequence_Diagram_subModules2](../images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
 
-You can refer [here](#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
+You can refer [here](https://ay1920s2-cs2113t-t12-3.github.io/tp/DeveloperGuide.html#appendix-d-glossary) for a detailed explanation on the terms used in this diagram
 
 #### 3.2.2 Alternative 
 Aspect: How to search based on User input.
