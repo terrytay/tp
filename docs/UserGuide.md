@@ -486,6 +486,7 @@ A response similar to the following one would appear:
          bye --------------------------------------- Terminate task interface
          study ------------------------------------- Enter Study Area search interface
          notes ------------------------------------- Enter Notes
+         calendar ---------------------------------- View existing tasks in Calender view
          Notes:
          *All dates should follow YYYY-MM-DD format
          *All timing should follow 24 hour clock
@@ -687,20 +688,21 @@ Expected output:
 ### 3.14. Calendar View
 
 
-#### 1. Enter Calendar
+#### 3.14.1. Enter Calendar
 Example of usage:
 
 `calendar`
 
 Expected output: 
 
-________________________________________________________________________________________________
-	 Enter the month and year that you wish to see:
-________________________________________________________________________________________________
+    ________________________________________________________________________________________________
+         Enter the month and year that you wish to see:
+    ________________________________________________________________________________________________
 
-#### 2. Enter Desired Month to View
 
-##### To view tasks for current month
+#### 3.14.2. Enter Desired Month to View
+
+#### To view tasks for current month
 Example of usage:
  
 `now`
@@ -744,7 +746,7 @@ Expected output:
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ________________________________________________________________________________________________
 
-##### To view tasks for future months
+#### To view tasks for future months
 
 *NOTE*: Input for both month and year must be integers. This feature only support current and future months. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
 
@@ -791,7 +793,7 @@ Expected output:
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ________________________________________________________________________________________________
 
-#### To escape from Calendar View Command 
+#### 3.14.3 To escape from Calendar View Command 
 
 In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
 
@@ -801,10 +803,10 @@ Example of usage:
 
 Expected output:
 
-________________________________________________________________________________________________
-	 You are now back in main interface. Enter "help" for a
-	 list of supported commands
-________________________________________________________________________________________________
+    ________________________________________________________________________________________________
+         You are now back in main interface. Enter "help" for a
+         list of supported commands
+    ________________________________________________________________________________________________
 
 
 [comment]: # (@@author )     
