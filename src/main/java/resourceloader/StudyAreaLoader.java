@@ -11,9 +11,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static ui.Constants.ERROR_DICTIONARY_LOGGER;
 import static ui.Constants.FILE_PATH_STUDYAREAS;
 import static ui.Constants.INCONSISTENT_DATA_STORAGE;
+import static ui.Constants.MISSING_DATA_FILES_LOGGER;
 import static ui.Constants.MISSING_STUDY_AREA_DATA;
+import static ui.Constants.SUCCESSFUL_DATA_FILE_CREATION_LOGGER;
+import static ui.Constants.SUCCESSFUL_LOCATIONS_IMPORT_LOGGER;
 
 /**
  * This class loads all the required information of Study Areas that is stored in location.txt.
@@ -23,6 +29,7 @@ public class StudyAreaLoader {
     private static final String DIVIDER = "~";
     private String url;
     private File file;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     //@@author terrytay
     public StudyAreaLoader(String url) throws IllegalStudyAreaException {
@@ -40,8 +47,10 @@ public class StudyAreaLoader {
             this.file = new File(this.url);
             Dictionary.loadDictionary();
         }  catch (NullPointerException e) {
+            LOGGER.log(Level.SEVERE, MISSING_DATA_FILES_LOGGER);
             throw new IllegalStudyAreaException(MISSING_STUDY_AREA_DATA);
-        } catch (FileNotFoundException e) {
+        } catch (IllegalStudyAreaException e) {
+            LOGGER.log(Level.INFO, ERROR_DICTIONARY_LOGGER);
             throw new IllegalStudyAreaException(e.getMessage());
         }
     }
@@ -72,6 +81,7 @@ public class StudyAreaLoader {
             buffer.add(studyArea);
         }
         input.close();
+        LOGGER.log(Level.INFO, SUCCESSFUL_LOCATIONS_IMPORT_LOGGER);
         return buffer;
     }
 
@@ -91,6 +101,7 @@ public class StudyAreaLoader {
             dataBuffer.println(BackUpData.BACKUP_DICTIONARY);
         }
         dataBuffer.close();
+        LOGGER.log(Level.INFO, SUCCESSFUL_DATA_FILE_CREATION_LOGGER);
     }
 }
 

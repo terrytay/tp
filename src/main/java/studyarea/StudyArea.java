@@ -20,6 +20,7 @@ public class StudyArea {
     private boolean isIndoor;
     private int maxPax;
 
+
     /**
      * Constructs a StudyArea class for a study area with its information
      * Precondition: 'All variables have to be filled.

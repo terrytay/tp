@@ -177,7 +177,7 @@ The task component contains 8 separate classes. They are as follows:
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
 ![Study Area Component](images/StudyAreaObjectDiagram.png) 
-<div>Figure 3. Object diagram for Study Area Component</div>
+<div>Figure 3. Class diagram for Study Area Component</div>
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
@@ -193,7 +193,7 @@ Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
 ### 2.4. Notes Component
 ![Notes Component](images/NotesComponent.png)
-<div>Figure 4. Object diagram for Notes Component</div>
+<div>Figure 4. Class diagram for Notes Component</div>
 <br>
 The Notes component is self-contained apart from calling UI class for Strings output.
 <br> 
@@ -500,7 +500,7 @@ meets your needs and is conducive, should you urgently need one.
 * Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
 * Performance Requirement :
-    * Should respond quickly, buffer time of 2 seconds at most.<br>
+    * Should be able to hold upto 1000 tasks without noticable delay in performance for typical usage. <br> 
 * Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
@@ -522,7 +522,7 @@ meets your needs and is conducive, should you urgently need one.
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
  entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
  does not require any flags, instead it utilises a loose search 
- * *ports_flag* - refers to "-p" flag
+ * *ports_flag* - refers to "-p" flag <a href="flags"></a>
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
@@ -535,15 +535,182 @@ meets your needs and is conducive, should you urgently need one.
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
  software's features.
 
+### Initial launch
+
+1.  Opening the application
+
+    a. Download the jar file and copy into an empty folder.
+   
+    b. Double-click the jar file (or) Run using `java -jar` command 
+
+### Testing for task related features
+
+#### Adding a deadline task
+
+1. Adding a new deadline task to the list
+    
+    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+
+    b. Test case: `deadline homework /d 2020-05-06 /t 12:00 /p 5`<br>
+    Expected: New deadine task with the specified details should be added to the list. A message is displayed which includes the details of the deadline task added.
+    
+    c. Test case: `deadline project /d 11-12-2020 /t 12:00 /p 2`<br>
+    Expected: No new deadline task should be added. Error details are shown in the interface.
+    
+    d. Other incorrect deadline creation commands: `deadline`,`deadline /d /t /p`<br>
+    Expected: Similar to previous test case.
+
+#### Adding an event task
+
+1. Adding a new event task to the list
+    
+    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+
+    b. Test case: `event exam /d 2020-05-07 /s 10:00 /e 12:00 /p 5`<br>
+    Expected: New event task with the specified details should be added to the list. A message is displayed which includes the details of the event task added.
+    
+    c. Test case: `event exam /d 05-07-2020 /s 10:00 /e 12:00 /p 5`<br>
+    Expected: No new event task should be added. Error details are shown in the interface.
+    
+    d. Other incorrect event creation commands: `event`,`event /d /s /e /p`<br>
+    Expected: Similar to previous test case.
+    
+#### Scheduling tasks
+
+1. Creating a schedule based on user's requirements
+
+    a. Prerequsites: Application is in the main interface. (i.e, not inside study area, notes interface).
+
+    b. Test case: `schedule 2`<br>
+      Expected: A message asking for the requirements of the tasks is displayed. After the requirements are entered successfully, the schedule generated is shown and stored in the list of tasks. Please follow these test cases mentioned later to test the interface used to get the requirements.
+      
+    c. Test case: `schedule 0`<br>
+       Expected: No tasks are scheduled. Error details are shown in the interface.
+       
+    d. Other incorrect schedule commands to try:`schedule`,    `schedule y` (where y is an negative integer),
+       `schedule z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+2. Entering details of individual tasks to be done.
+
+    a. Prerequsites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
+
+    b. Test case: `math exam preparation /f 2 /d 5`<br>
+       Expected: No error message should be displayed. The interface should ask for the details of the next task.
+       
+    c. Test case: `/f 2 /d 4`<br>
+       Expected: Invalid Task details entered are rightly rejected. Error details are shown in the interface. The application asks the user to re-enter data for the task.
+       
+    d. Other incorrect commands to try: `assignment /f x     /d y` (Where x is greater than y), `project /f x /d y` (Where x is a negative number)<br>
+       Expected: Similar to previous test case
+
+#### Marking a deadline task as done
+
+1. Marking a deadline task as done while all tasks are listed
+
+    a. Prerequsites: List all tasks using the `view` command. Atleast one deadline task and one event in the list. For the following test cases it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
+    
+    b. Test case: `done 1`<br>
+      Expected: Deadline task at the first index of the list should be marked as "COMPLETED". Details of the marked task is shown in the interface.
+      
+    c. Test case: `done 1` (again)<br>
+       Expected: When tasks marked as done already are set to be marked again, A message is displayed stating that the task was already marked.
+       
+    d. Test case: `done 2`<br>
+       Expected: A message is displayed stating that task of event type can't be marked as done.
+       
+    e. Test case: `done 0`<br>
+       Expected: No deadline is marked as done. Error details are shown in the interface.
+       
+    f. Other incorrect done commands to try: `done`,          `done x` (where x is larger than the list size),       `done y` (where y is an negative integer),
+       `done z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+#### Editing a task
+
+1. Editing a task while all tasks are listed
+ 
+    a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
+
+    b. Test case: `edit 1`<br>
+       Expected: A new interface diplayed which guides user on how to edit the various feilds of the first task in the list. After the process is over, Details of the edited task is shown in the interface.
+       
+    c. Test case: `edit 0`<br>
+       Expected: No task is edited. Error details shown in the interface.
+       
+    d. Other incorrect edit commands to try: `edit`,      `edit x` (where x is larger than the list size),     `edit y` (where y is an negative integer),
+       `edit z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+#### Searching for tasks
+
+1. Searching for tasks based on their description
+ 
+    a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
+
+    b. Test case: `search math`<br>
+       Expected: THe list of tasks containing the string 'math' is shown.
+       
+    c. Test case: `search  `<br>
+       Expected: Search operation isn't performed and no list is shown. Error details shown in the interface.
+       
+    d. Other incorrect search commands to try: `searchfor math`, `searchmath`<br>
+       Expected: Similar to previous test case
+
+
+#### Deleting a task
+
+1. Deleting a task while all tasks are listed
+ 
+    a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
+
+    b. Test case: `delete 1`<br>
+       Expected: First task is deleted from the list. Details of the deleted task shown in the interface.
+       
+    c. Test case: `delete 0`<br>
+       Expected: No task is deleted. Error details shown in the interface.
+       
+    d. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size),     `delete y` (where y is an negative integer),
+       `delete z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
 ### Testing for Study Area Search
 
 #### Search by location, name, address 
- * To test for accuracy of loose search, test "bux" to see if it returns locations related to Starbucks.
+
+1. To test accuracy of loose search:
+ 
+    a. Test case : `bux` <br>
+     Expected: returns locations related to Starbucks.
+     
+     *Note*: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
+
+1. To test for normal search: 
+
+    a. Test case : `UTown` <br>
+    Expected: returns locations associated to UTown.<br>
 
 #### Search by flags only 
- * To test for accuracy of flags, test either "-p", "-i", "-o" or "-s {integer}"
+
+ 1. To test for accuracy of flags:<br>
+    a. Test case: `-p` <br>
+    Expected: List of study areas with ports available.<br>
+    b. Test case: `-i`<br>
+    Expected: List of study areas that are indoors.<br>
+    c. Test case: `-o`<br>
+     Expected: List of study areas that are outdoors.<br>
+    d. Test case: `-s` `integer`<br>
+     Expected: List of study areas that has a capacity of the stated integer value or more. <br>
  
- 
+ 1. To test for wrong flag usage: <br>
+    a. Test case: `-z`<br>
+    Expected: Error message pertaining to wrong usage of flags.<br>
 #### Search with both, (1) location, name or address , and , (2) flags 
- * To test for accuracy, test "{location/name/address} {flags}".
- * Since flags must come as a second argument in this case, test for "{flags} {location/name/address}"
+
+1. To test for accuracy:<br>
+    a. Test case:  `location/name/address`  `flags`<br>
+    Expected: List of study areas that contains the search key and the [flags](#flags).<br>
+    
+1. Since flags must come as a second argument in this case:<br>
+    a.Test case: `flags` `location/name/address}`<br>
+    Expected: Error message pertaining to commands position.<br>
