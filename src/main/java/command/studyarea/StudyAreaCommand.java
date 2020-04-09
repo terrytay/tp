@@ -7,8 +7,18 @@ import ui.Ui;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static ui.Constants.*;
+import static ui.Constants.AVAILABLE_STUDY_AREAS;
+import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.EMPTY_LIST;
+import static ui.Constants.EMPTY_LOCATION;
+import static ui.Constants.EMPTY_STRING_LOGGER;
+import static ui.Constants.END_MESSAGE;
+import static ui.Constants.HELP_COMMAND;
+import static ui.Constants.PROMPT_USER;
+import static ui.Constants.SHORT_DESCRIPTION;
+import static ui.Constants.SHORT_STRING_LOGGER;
+import static ui.Constants.START_STUDY_AREA_SEARCH;
+import static ui.Constants.WRONG_STUDY_AREA_COMMAND_LOGGER;
 
 
 //@@author NizarMohd

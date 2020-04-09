@@ -366,5 +366,6 @@ public class Constants {
     public static final String MISSING_DATA_FILES_LOGGER = "locations.txt is missing from library folder.";
     public static final String ERROR_DICTIONARY_LOGGER = "Error with dictionary class";
     public static final String SUCCESSFUL_LOCATIONS_IMPORT_LOGGER = "study areas imported to system successfully";
-    public static final String SUCCESSFUL_DATA_FILE_CREATION_LOGGER = "created new data files for locations and dictionary successfully";
+    public static final String SUCCESSFUL_DATA_FILE_CREATION_LOGGER = "created new data files for locations and "
+            + "dictionary successfully";
 }

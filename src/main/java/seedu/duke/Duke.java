@@ -20,9 +20,8 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-import static ui.Constants.BYE_COMMAND;
-import static ui.Constants.NOTES_COMMAND;
-import static ui.Constants.STUDY_AREA_COMMAND;
+
+import static ui.Constants.*;
 
 
 /**
@@ -45,6 +44,7 @@ public class Duke {
     public Duke()  {
         try {
             setupLogger();
+            LOGGER.log(Level.INFO, SUCCESSFUL_UI_CREATION_LOGGER);
             parser = new Parser();
             taskLoader = new TaskLoader(Constants.FILE_PATH_EVENTS);
             taskList = new TaskList(taskLoader.loadFile());

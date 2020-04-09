@@ -37,7 +37,6 @@ public class StudyAreaList {
 
     // Assigns studyAreaList into object's studyAreaList.
     public StudyAreaList(ArrayList<StudyArea> studyAreaList) {
-        assert !studyAreaList.isEmpty() : Constants.ASSERT_EMPTY_STUDY_AREA_LIST_WARNING;
         this.studyAreaList = studyAreaList;
     }
 

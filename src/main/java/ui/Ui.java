@@ -9,9 +9,43 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static java.lang.System.lineSeparator;
-import static ui.Constants.*;
+import static ui.Constants.DAB;
+import static ui.Constants.FLAGS;
+import static ui.Constants.GOODBYE_MESSAGE;
+import static ui.Constants.HELP_DESCRIPTION_1;
+import static ui.Constants.HELP_DESCRIPTION_10;
+import static ui.Constants.HELP_DESCRIPTION_11;
+import static ui.Constants.HELP_DESCRIPTION_12;
+import static ui.Constants.HELP_DESCRIPTION_13;
+import static ui.Constants.HELP_DESCRIPTION_14;
+import static ui.Constants.HELP_DESCRIPTION_15;
+import static ui.Constants.HELP_DESCRIPTION_16;
+import static ui.Constants.HELP_DESCRIPTION_17;
+import static ui.Constants.HELP_DESCRIPTION_18;
+import static ui.Constants.HELP_DESCRIPTION_19;
+import static ui.Constants.HELP_DESCRIPTION_2;
+import static ui.Constants.HELP_DESCRIPTION_20;
+import static ui.Constants.HELP_DESCRIPTION_21;
+import static ui.Constants.HELP_DESCRIPTION_22;
+import static ui.Constants.HELP_DESCRIPTION_23;
+import static ui.Constants.HELP_DESCRIPTION_24;
+import static ui.Constants.HELP_DESCRIPTION_3;
+import static ui.Constants.HELP_DESCRIPTION_4;
+import static ui.Constants.HELP_DESCRIPTION_5;
+import static ui.Constants.HELP_DESCRIPTION_7;
+import static ui.Constants.HELP_DESCRIPTION_8;
+import static ui.Constants.HELP_DESCRIPTION_9;
+import static ui.Constants.LINE;
+import static ui.Constants.LOGO;
+import static ui.Constants.MAX_LINE_LENGTH;
+import static ui.Constants.SPACE;
+import static ui.Constants.START_MESSAGE;
+import static ui.Constants.SUCCESSFUL_CLOSING_OF_UI_LOGGER;
+import static ui.Constants.SUCCESSFUL_UI_CREATION_LOGGER;
+import static ui.Constants.TAB;
+import static ui.Constants.UI_END_LOGGER;
+import static ui.Constants.UI_START_LOGGER;
 
 //@@author NizarMohd
 /**
@@ -41,7 +75,6 @@ public class Ui {
     public Ui(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
-        LOGGER.log(Level.INFO, SUCCESSFUL_UI_CREATION_LOGGER);
     }
 
 

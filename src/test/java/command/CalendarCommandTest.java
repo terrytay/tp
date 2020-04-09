@@ -7,8 +7,7 @@ import task.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalendarCommandTest {
 
