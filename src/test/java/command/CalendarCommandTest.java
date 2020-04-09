@@ -21,9 +21,9 @@ class CalendarCommandTest {
         tasks.add(task);
         HashMap<Integer, LinkedList<Task>> map = new HashMap<>();
         map = CalendarCommand.checkExistingTasks(tasks, 5, 2020);
-        String actual = map.get(5).get(0).getCalendarTaskDetails();
-        assertEquals("[E] this task            ", actual);
-
+        String actual = map.get(9).get(0).getCalendarTaskDetails();
+        actual = actual.trim();
+        assertEquals("[E] this event", actual);
     }
 
 }
