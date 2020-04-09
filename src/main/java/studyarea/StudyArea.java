@@ -19,7 +19,6 @@ public class StudyArea {
     private boolean hasPort;
     private boolean isIndoor;
     private int maxPax;
-    private boolean isAvail;
 
     /**
      * Constructs a StudyArea class for a study area with its information
@@ -80,7 +79,7 @@ public class StudyArea {
      * @return true if the StudyArea has ports and false if otherwise.
      */
     //@@author terrytay
-    public boolean hasPort() {
+    public boolean getHasPort() {
         return this.hasPort;
     }
 
@@ -90,7 +89,7 @@ public class StudyArea {
      * @return true if StudyArea is indoors and false if otherwise.
      */
     //@@author terrytay
-    public boolean isIndoor() {
+    public boolean getIsIndoor() {
         return this.isIndoor;
     }
 
