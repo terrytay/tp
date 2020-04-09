@@ -1,3 +1,4 @@
+[comment]: # (@@author NizarMohd)
 <!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
 <style>
 img {
@@ -69,7 +70,7 @@ div {
 
 ### 1.1. Purpose
 
-The document is meant to teach you on how OrgaNice! was developed and the design and implementations behind the software.
+The document is meant to guide you on how OrgaNice! was developed and the design and implementations behind the software.
 With this document, you should have a better understanding of the framework of the application. 
 
 ### 1.2. Target Reader
@@ -88,15 +89,14 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ### 1.4. Main Features
 
 1. Scheduling Tasks
-    - You can manage tasks based on priority for events and countdown for deadlines.
-1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+    - You can manage tasks based on priority for events and countdown for deadlines.For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+1. Study Area. 
     - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
 1. Notes
-	- You can enter notes based on school modules. Notes support undo and redo operations.
+	- You can enter notes based on school modules. Notes support undo and redo operations.For more information of the design and implementation for this feature, click [here](#33-operation-of-notes)
 
 ## 2. Design   
-    
 
 [comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
@@ -177,22 +177,23 @@ The task component contains 8 separate classes. They are as follows:
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
 ![Study Area Component](images/StudyAreaObjectDiagram.png) 
-<div>Figure 3. Object diagram for Study Area Component</div>
+<div>Figure 3. Class diagram for Study Area Component</div>
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
-   1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
+   1. Dictionary : Class to map user input to specific terms used in StudyAreaList. 
     
    2. StudyArea : Class that is used to model Study Areas. 
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
 
+Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
 [comment]: # (@@author terrytay)
 
 ### 2.4. Notes Component
 ![Notes Component](images/NotesComponent.png)
-<div>Figure 4. Object diagram for Notes Component</div>
+<div>Figure 4. Class diagram for Notes Component</div>
 <br>
 The Notes component is self-contained apart from calling UI class for Strings output.
 <br> 
@@ -311,6 +312,8 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
+<a href="isAvail"></a>
+
 ![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
@@ -322,16 +325,14 @@ Aspect: How to search based on User input.
 
 - Alternative 1 (Current Choice) :
  
-    Iterate through the list of all existing Study Areas. Then check if each Study Area 
-meets User's Criteria
+    Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
     - Pros : Lesser data structures required. Therefore lesser memory required.
     - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
     
 - Alternative 2 : 
-There exists four flags : port availability, indoor, outdoor, capacity.
-Create adjacency lists that maps the flag to the Study Area itself. If the Study Area contains that 
-attribute, the Study Area is added in that specific attribute list. Depending on the type of attribute, the adjacency
-list can be implemented using different data structure.
+There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
+Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
+Depending on the type of attribute, the adjacency list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
@@ -356,6 +357,7 @@ No -> null
 Capacity: 
 
 4 -> {Opposite Town Green (Outside Starbucks)} 
+
 5 -> {Starbucks} 
 
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
@@ -486,6 +488,7 @@ meets your needs and is conducive, should you urgently need one.
  |v2.0|user|undo an added note|increase my efficiency|
  |v2.0|user|redo a removed notes|increase my efficiency|
  |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
+ |v2.0|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
 
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
@@ -497,7 +500,7 @@ meets your needs and is conducive, should you urgently need one.
 * Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
 * Performance Requirement :
-    * Should respond quickly, buffer time of 2 seconds at most.<br>
+    * Should be able to hold upto 1000 tasks without noticable delay in performance for typical usage. <br> 
 * Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
@@ -509,25 +512,167 @@ meets your needs and is conducive, should you urgently need one.
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
  * *availStudyAreas* - ArrayList of StudyArea objects that contains the list of available Study Areas
- * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns true if the either one of the alternate 
- paths in [the sequence diagram](#interaction-within-organices-submodule) returns a true value
+ * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns as true if the either one of the alternate 
+ paths in [the sequence diagram](#isAvail) returns a true value
  * *executeStudyCommand()* - This method executes the Study Area User Interface
- * *hasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
- * *isIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
+ * *getHasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
+ * *getIsIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
  * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
- by user.
+ by user.<a href="containsSearchKey"></a>
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
- entered by the user. This method is invoked when under the [default](#interaction-within-organices-submodule) condition as search by name, address or locations 
- does not require any flags, instead it utilises a loose search. 
+ entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
+ does not require any flags, instead it utilises a loose search 
  * *ports_flag* - refers to "-p" flag
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
-
+ * *loadDictionary()* - this method will load the data for the mapping (of loose search terms to name/address/faculty of the study area) from the text files and store it into the dictionary class. This mapping is later used when [containSearchKey()](#containsSearchKey) method calls the Dictionary class 
+ to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
+ * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
+ 
 [comment]: # (@@NizarMohd)
 ## Appendix E: Instructions for Manual Testing    
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
  software's features.
+
+### Initial launch
+
+1.  Opening the application
+
+    a. Download the jar file and copy into an empty folder.
+   
+    b. Double-click the jar file (or) Run using `java -jar` command 
+
+### Testing for task related features
+
+#### Adding a deadline task
+
+1. Adding a new deadline task to the list
+    
+    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+
+    b. Test case: `deadline homework /d 2020-05-06 /t 12:00 /p 5`<br>
+    Expected: New deadine task with the specified details should be added to the list. A message is displayed which includes the details of the deadline task added.
+    
+    c. Test case: `deadline project /d 11-12-2020 /t 12:00 /p 2`<br>
+    Expected: No new deadline task should be added. Error details are shown in the interface.
+    
+    d. Other incorrect deadline creation commands: `deadline`,`deadline /d /t /p`<br>
+    Expected: Similar to previous test case.
+
+#### Adding an event task
+
+1. Adding a new event task to the list
+    
+    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+
+    b. Test case: `event exam /d 2020-05-07 /s 10:00 /e 12:00 /p 5`<br>
+    Expected: New event task with the specified details should be added to the list. A message is displayed which includes the details of the event task added.
+    
+    c. Test case: `event exam /d 05-07-2020 /s 10:00 /e 12:00 /p 5`<br>
+    Expected: No new event task should be added. Error details are shown in the interface.
+    
+    d. Other incorrect event creation commands: `event`,`event /d /s /e /p`<br>
+    Expected: Similar to previous test case.
+    
+#### Scheduling tasks
+
+1. Creating a schedule based on user's requirements
+
+    a. Prerequsites: Application is in the main interface. (i.e, not inside study area, notes interface).
+
+    b. Test case: `schedule 2`<br>
+      Expected: A message asking for the requirements of the tasks is displayed. After the requirements are entered successfully, the schedule generated is shown and stored in the list of tasks. Please follow these test cases mentioned later to test the interface used to get the requirements.
+      
+    c. Test case: `schedule 0`<br>
+       Expected: No tasks are scheduled. Error details are shown in the interface.
+       
+    d. Other incorrect schedule commands to try:`schedule`,    `schedule y` (where y is an negative integer),
+       `schedule z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+2. Entering details of individual tasks to be done.
+
+    a. Prerequsites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
+
+    b. Test case: `math exam preparation /f 2 /d 5`<br>
+       Expected: No error message should be displayed. The interface should ask for the details of the next task.
+       
+    c. Test case: `/f 2 /d 4`<br>
+       Expected: Invalid Task details entered are rightly rejected. Error details are shown in the interface. The application asks the user to re-enter data for the task.
+       
+    d. Other incorrect commands to try: `assignment /f x     /d y` (Where x is greater than y), `project /f x /d y` (Where x is a negative number)<br>
+       Expected: Similar to previous test case
+
+#### Marking a deadline task as done
+
+1. Marking a deadline task as done while all tasks are listed
+
+    a. Prerequsites: List all tasks using the `view` command. Atleast one deadline task and one event in the list. For the following test cases it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
+    
+    b. Test case: `done 1`<br>
+      Expected: Deadline task at the first index of the list should be marked as "COMPLETED". Details of the marked task is shown in the interface.
+      
+    c. Test case: `done 1` (again)<br>
+       Expected: When tasks marked as done already are set to be marked again, A message is displayed stating that the task was already marked.
+       
+    d. Test case: `done 2`<br>
+       Expected: A message is displayed stating that task of event type can't be marked as done.
+       
+    e. Test case: `done 0`<br>
+       Expected: No deadline is marked as done. Error details are shown in the interface.
+       
+    f. Other incorrect done commands to try: `done`,          `done x` (where x is larger than the list size),       `done y` (where y is an negative integer),
+       `done z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+#### Editing a task
+
+1. Editing a task while all tasks are listed
+ 
+    a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
+
+    b. Test case: `edit 1`<br>
+       Expected: A new interface diplayed which guides user on how to edit the various feilds of the first task in the list. After the process is over, Details of the edited task is shown in the interface.
+       
+    c. Test case: `edit 0`<br>
+       Expected: No task is edited. Error details shown in the interface.
+       
+    d. Other incorrect edit commands to try: `edit`,      `edit x` (where x is larger than the list size),     `edit y` (where y is an negative integer),
+       `edit z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
+
+#### Searching for tasks
+
+1. Searching for tasks based on their description
+ 
+    a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
+
+    b. Test case: `search math`<br>
+       Expected: THe list of tasks containing the string 'math' is shown.
+       
+    c. Test case: `search  `<br>
+       Expected: Search operation isn't performed and no list is shown. Error details shown in the interface.
+       
+    d. Other incorrect search commands to try: `searchfor math`, `searchmath`<br>
+       Expected: Similar to previous test case
+
+
+#### Deleting a task
+
+1. Deleting a task while all tasks are listed
+ 
+    a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
+
+    b. Test case: `delete 1`<br>
+       Expected: First task is deleted from the list. Details of the deleted task shown in the interface.
+       
+    c. Test case: `delete 0`<br>
+       Expected: No task is deleted. Error details shown in the interface.
+       
+    d. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size),     `delete y` (where y is an negative integer),
+       `delete z` (where z isn't an integer)<br>
+       Expected: Similar to previous test case
 
 ### Testing for Study Area Search
 
