@@ -1,9 +1,13 @@
 package studyarea;
 
+import exception.IllegalStudyAreaException;
+import ui.Constants;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //@@author NizarMohd
 /**
@@ -14,29 +18,38 @@ public class Dictionary {
     private static final String FILEPATH = "library" + File.separator + "dictionary.txt";
     private static final String DELIMITER = "~";
     private static HashMap<String, String> dictionary = new HashMap<>();
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * This method loads the dictionary mapping from dictionary.text.
-     * @throws FileNotFoundException if the file cannot be found.
+     * @throws IllegalStudyAreaException if the file cannot be found.
      */
 
-    public static void loadDictionary() throws FileNotFoundException {
-        Scanner in = new Scanner(new File(FILEPATH));
-        while (in.hasNextLine()) {
-            String userIn = in.nextLine();
-            String[] buffer = userIn.split(DELIMITER);
-            int i = 0;
-            String out = null;
-            for (String value : buffer) {
-                if (i == 0) {
-                    out = value;
-                } else {
-                    dictionary.put(value, out);
+    public static void loadDictionary() throws IllegalStudyAreaException {
+        try {
+            Scanner in = new Scanner(new File(FILEPATH));
+
+            while (in.hasNextLine()) {
+                String userIn = in.nextLine();
+                String[] buffer = userIn.split(DELIMITER);
+                int i = 0;
+                String out = null;
+                for (String value : buffer) {
+                    if (i == 0) {
+                        out = value;
+                    } else {
+                        dictionary.put(value, out);
+                    }
+                    i++;
                 }
-                i++;
             }
+            in.close();
+            LOGGER.log(Level.INFO, Constants.SUCCESSFUL_DICTIONARY_LOAD_LOGGER);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, Constants.MISSING_DICTIONARY_FILE_LOGGER);
+            throw new IllegalStudyAreaException(Constants.DICTIONARY_FILE_IS_NOT_FOUND);
         }
-        in.close();
+
     }
 
     /**

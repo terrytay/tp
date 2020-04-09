@@ -1,6 +1,7 @@
 package studyarea;
 
 import exception.IllegalStudyAreaException;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -164,6 +165,7 @@ public class StudyAreaList {
                 flags[1] = Integer.toString(Integer.parseInt(commands[i + 1]));
                 i++;
             } else if (commands[i].contains(FLAG)) {
+                assert commands[i].contains(FLAG);
                 isNotFlag = false;
                 checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
