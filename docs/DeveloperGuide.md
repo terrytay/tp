@@ -325,16 +325,14 @@ Aspect: How to search based on User input.
 
 - Alternative 1 (Current Choice) :
  
-    Iterate through the list of all existing Study Areas. Then check if each Study Area 
-meets User's Criteria
+    Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
     - Pros : Lesser data structures required. Therefore lesser memory required.
     - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
     
 - Alternative 2 : 
-There exists four flags : port availability, indoor, outdoor, capacity.
-Create adjacency lists that maps the flag to the Study Area itself. If the Study Area contains that 
-attribute, the Study Area is added in that specific attribute list. Depending on the type of attribute, the adjacency
-list can be implemented using different data structure.
+There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
+Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
+Depending on the type of attribute, the adjacency list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
