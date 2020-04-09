@@ -139,7 +139,7 @@ The Task component depends on 3 other components,
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
 ![Task Component](images/TaskComponentUML.png)   
-<div>Figure 2. Object Diagram for Task Component</div>
+<div>Figure 2. Class Diagram for Task Component</div>
 <br>
 The task component contains 8 separate classes. They are as follows:  
  
@@ -338,7 +338,7 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-![study_area_det](images/study_area_det.PNG)
+![study_area_det](images/studyAreaDet.PNG)
 
 This will result in the following adjacency lists : 
 
@@ -424,14 +424,14 @@ To edit a configuration, click `Run` then click on `Edit Configurations`. Procee
 
 Afterwards, ensure that the configurations are as such:
 
-![Junit_config](images/JUnit_configuration.PNG)
+![Junit_config](images/JUnitConfiguration.PNG)
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
 This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
 
 Alternatively, you can click on this icon to run with coverage :
 
-![JUnit_test](images/JUnit_run_test.PNG)
+![JUnit_test](images/JUnitRunTest.PNG)
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
@@ -440,17 +440,17 @@ To run a subset of tests, you can right-click on a test package, test class, or 
 
 Firstly ensure that the gradle build has the following details: 
 
-![gradle_build](images/gradle_build.PNG)
+![gradle_build](images/gradleBuild.PNG)
 
 Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
 
 Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
 
-![elephant_icon](images/elephant_icon.PNG)
+![elephant_icon](images/elephantIcon.PNG)
 
 Now the configuration is set to gradle. Proceed to click the icon:
 
-![gradle_run_test](images/gradle_run_test.PNG)
+![gradle_run_test](images/gradleRunTest.PNG)
 
 
 [comment]: # (@@author GanapathySanathBalaji) 

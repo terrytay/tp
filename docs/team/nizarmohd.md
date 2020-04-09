@@ -288,7 +288,7 @@ list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-![study_area](../images/study_area_det.PNG)
+![study_area](../images/studyAreaDet.PNG)
 
 This will result in the following adjacency lists : 
 Environment: <br>
