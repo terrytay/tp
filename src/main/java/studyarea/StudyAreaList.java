@@ -209,13 +209,13 @@ public class StudyAreaList {
         if (carryOn) {
             switch (flag) {
             case PORTS_FLAG:
-                isAvail = studyArea.hasPort();
+                isAvail = studyArea.getHasPort();
                 break;
             case INDOOR_FLAG:
-                isAvail = studyArea.isIndoor();
+                isAvail = studyArea.getIsIndoor();
                 break;
             case OUTDOOR_FLAG:
-                isAvail = !studyArea.isIndoor();
+                isAvail = !studyArea.getIsIndoor();
                 break;
             case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
                 isAvail = studyArea.isSizeCapable(flags[1]);
