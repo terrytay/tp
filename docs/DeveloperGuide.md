@@ -1,3 +1,4 @@
+[comment]: # (@@author NizarMohd)
 <!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
 <style>
 img {
@@ -69,7 +70,7 @@ div {
 
 ### 1.1. Purpose
 
-The document is meant to teach you on how OrgaNice! was developed and the design and implementations behind the software.
+The document is meant to guide you on how OrgaNice! was developed and the design and implementations behind the software.
 With this document, you should have a better understanding of the framework of the application. 
 
 ### 1.2. Target Reader
@@ -88,15 +89,14 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ### 1.4. Main Features
 
 1. Scheduling Tasks
-    - You can manage tasks based on priority for events and countdown for deadlines.
-1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+    - You can manage tasks based on priority for events and countdown for deadlines.For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+1. Study Area. 
     - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
 1. Notes
-	- You can enter notes based on school modules. Notes support undo and redo operations.
+	- You can enter notes based on school modules. Notes support undo and redo operations.For more information of the design and implementation for this feature, click [here](#33-operation-of-notes)
 
 ## 2. Design   
-    
 
 [comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
@@ -139,7 +139,7 @@ The Task component depends on 3 other components,
  3. ResourceLoader Component - The ResourceLoader component is used to load the list of tasks stored previously when the application is started and is also used to store the current list of tasks to the local storage upon exit.   
 
 ![Task Component](images/TaskComponentUML.png)   
-<div>Figure 2. Object Diagram for Task Component</div>
+<div>Figure 2. Class Diagram for Task Component</div>
 <br>
 The task component contains 8 separate classes. They are as follows:  
  
@@ -181,12 +181,13 @@ The task component contains 8 separate classes. They are as follows:
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
-   1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
+   1. Dictionary : Class to map user input to specific terms used in StudyAreaList. 
     
    2. StudyArea : Class that is used to model Study Areas. 
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
 
+Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
 [comment]: # (@@author terrytay)
 
@@ -311,6 +312,8 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
+<a href="isAvail"></a>
+
 ![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
@@ -322,20 +325,18 @@ Aspect: How to search based on User input.
 
 - Alternative 1 (Current Choice) :
  
-    Iterate through the list of all existing Study Areas. Then check if each Study Area 
-meets User's Criteria
+    Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
     - Pros : Lesser data structures required. Therefore lesser memory required.
     - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
     
 - Alternative 2 : 
-There exists four flags : port availability, indoor, outdoor, capacity.
-Create adjacency lists that maps the flag to the Study Area itself. If the Study Area contains that 
-attribute, the Study Area is added in that specific attribute list. Depending on the type of attribute, the adjacency
-list can be implemented using different data structure.
+There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
+Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
+Depending on the type of attribute, the adjacency list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
-![study_area_det](images/study_area_det.PNG)
+![study_area_det](images/studyAreaDet.PNG)
 
 This will result in the following adjacency lists : 
 
@@ -356,6 +357,7 @@ No -> null
 Capacity: 
 
 4 -> {Opposite Town Green (Outside Starbucks)} 
+
 5 -> {Starbucks} 
 
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
@@ -420,14 +422,14 @@ To edit a configuration, click `Run` then click on `Edit Configurations`. Procee
 
 Afterwards, ensure that the configurations are as such:
 
-![Junit_config](images/JUnit_configuration.PNG)
+![Junit_config](images/JUnitConfiguration.PNG)
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
 This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
 
 Alternatively, you can click on this icon to run with coverage :
 
-![JUnit_test](images/JUnit_run_test.PNG)
+![JUnit_test](images/JUnitRunTest.PNG)
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
@@ -436,17 +438,17 @@ To run a subset of tests, you can right-click on a test package, test class, or 
 
 Firstly ensure that the gradle build has the following details: 
 
-![gradle_build](images/gradle_build.PNG)
+![gradle_build](images/gradleBuild.PNG)
 
 Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
 
 Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
 
-![elephant_icon](images/elephant_icon.PNG)
+![elephant_icon](images/elephantIcon.PNG)
 
 Now the configuration is set to gradle. Proceed to click the icon:
 
-![gradle_run_test](images/gradle_run_test.PNG)
+![gradle_run_test](images/gradleRunTest.PNG)
 
 
 [comment]: # (@@author GanapathySanathBalaji) 
@@ -486,6 +488,7 @@ meets your needs and is conducive, should you urgently need one.
  |v2.0|user|undo an added note|increase my efficiency|
  |v2.0|user|redo a removed notes|increase my efficiency|
  |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
+ |v2.0|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
 
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
@@ -509,21 +512,24 @@ meets your needs and is conducive, should you urgently need one.
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
  * *availStudyAreas* - ArrayList of StudyArea objects that contains the list of available Study Areas
- * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns true if the either one of the alternate 
- paths in [the sequence diagram](#interaction-within-organices-submodule) returns a true value
+ * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns as true if the either one of the alternate 
+ paths in [the sequence diagram](#isAvail) returns a true value
  * *executeStudyCommand()* - This method executes the Study Area User Interface
- * *hasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
- * *isIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
+ * *getHasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
+ * *getIsIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
  * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
- by user.
+ by user.<a href="containsSearchKey"></a>
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
- entered by the user. This method is invoked when under the [default](#interaction-within-organices-submodule) condition as search by name, address or locations 
- does not require any flags, instead it utilises a loose search. 
+ entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
+ does not require any flags, instead it utilises a loose search 
  * *ports_flag* - refers to "-p" flag
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
-
+ * *loadDictionary()* - this method will load the data for the mapping (of loose search terms to name/address/faculty of the study area) from the text files and store it into the dictionary class. This mapping is later used when [containSearchKey()](#containsSearchKey) method calls the Dictionary class 
+ to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
+ * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
+ 
 [comment]: # (@@NizarMohd)
 ## Appendix E: Instructions for Manual Testing    
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 

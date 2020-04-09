@@ -1,10 +1,12 @@
 @startuml
 
+mainframe sd searchList() iterates through studyAreaList to get ArrayList of StudyArea, availStudyAreas
 
 participant ":StudyAreaCommand" as StudyAreaCommand
+box "\nstudy area package\n" #white
 participant ":StudyAreaList" as StudyAreaList
 participant ":StudyArea" as StudyArea
-
+end box
 
 StudyAreaCommand -> StudyAreaList : searchList()
 
@@ -15,35 +17,26 @@ activate StudyAreaList
     StudyAreaList --> StudyAreaList: flags
   deactivate StudyAreaList
 
-
     loop every studyArea in StudyAreaList
-    StudyAreaList -> StudyAreaList: isAvailstudyArea()
-    activate StudyAreaList
-      alt ports_flag
-        StudyAreaList -> StudyArea : hasPorts()
-        activate StudyArea
-        deactivate StudyArea
-      else indoor_flag
-        StudyAreaList -> StudyArea : isIndoor()
-        activate StudyArea
-       deactivate StudyArea
-      else outdoor_flag
-        StudyAreaList -> StudyArea : isIndoor()
-        activate StudyArea
-        deactivate StudyArea
-      else size_flag
-        StudyAreaList -> StudyArea : getMaxPax()
-        activate StudyArea
-        deactivate StudyArea
-      end
-    StudyAreaList --> StudyAreaList: isAvail
-    deactivate StudyAreaList
+|||
+      loop every flag in flags
+|||
+StudyAreaList -> StudyAreaList : isAvailStudyArea()
+      ref over StudyAreaList, StudyArea
+invoke isAvailStudyArea() over
+each flag in String Array flags
+and update isAvail
+      end ref
+StudyAreaList --> StudyAreaList : isAvail
+end //loop2
+
     opt isAvail
-      StudyAreaList -> StudyAreaList: availStudyArea.add(studyArea)
+      StudyAreaList -> StudyAreaList: availStudyAreas.add(studyArea)
     end
-  end
+  end //loop1
 
 StudyAreaList --> StudyAreaCommand: availStudyAreas
 deactivate StudyAreaList
+hide footbox
 
 @enduml
