@@ -1,6 +1,7 @@
 package studyarea;
 
 import exception.IllegalStudyAreaException;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -36,7 +37,7 @@ public class StudyAreaList {
 
     // Assigns studyAreaList into object's studyAreaList.
     public StudyAreaList(ArrayList<StudyArea> studyAreaList) {
-        assert !studyAreaList.isEmpty() : "StudyAreaList cannot be empty";
+        assert !studyAreaList.isEmpty() : Constants.ASSERT_EMPTY_STUDY_AREA_LIST_WARNING;
         this.studyAreaList = studyAreaList;
     }
 

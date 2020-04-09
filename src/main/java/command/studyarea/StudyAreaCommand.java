@@ -5,15 +5,10 @@ import studyarea.StudyArea;
 import studyarea.StudyAreaList;
 import ui.Ui;
 import java.util.ArrayList;
-import static ui.Constants.AVAILABLE_STUDY_AREAS;
-import static ui.Constants.BYE_COMMAND;
-import static ui.Constants.EMPTY_LIST;
-import static ui.Constants.EMPTY_LOCATION;
-import static ui.Constants.END_MESSAGE;
-import static ui.Constants.HELP_COMMAND;
-import static ui.Constants.PROMPT_USER;
-import static ui.Constants.SHORT_DESCRIPTION;
-import static ui.Constants.START_STUDY_AREA_SEARCH;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static ui.Constants.*;
 
 
 //@@author NizarMohd
@@ -23,6 +18,7 @@ import static ui.Constants.START_STUDY_AREA_SEARCH;
 
 public class StudyAreaCommand {
 
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * List out all the StudyAreas that match with User's preference.
@@ -51,8 +47,10 @@ public class StudyAreaCommand {
     public static String validateCommand(String command) throws IllegalStudyAreaException {
         command = command.trim();
         if (command.isBlank()) {
+            LOGGER.log(Level.INFO, EMPTY_STRING_LOGGER);
             throw new IllegalStudyAreaException(EMPTY_LOCATION);
         } else if (command.length() == 1) {
+            LOGGER.log(Level.INFO, SHORT_STRING_LOGGER);
             throw new IllegalStudyAreaException(SHORT_DESCRIPTION);
         }
         return command;
@@ -84,6 +82,7 @@ public class StudyAreaCommand {
                 printList(availStudyAreas, ui);
                 ui.printMessage(PROMPT_USER);
             } catch (IllegalStudyAreaException e) {
+                LOGGER.log(Level.INFO, WRONG_STUDY_AREA_COMMAND_LOGGER);
                 ui.printMessage(e.getMessage());
             }
             break;
@@ -108,6 +107,7 @@ public class StudyAreaCommand {
             try {
                 status = filterCommand(command, studyAreaList,  ui);
             } catch (IllegalStudyAreaException e) {
+                LOGGER.log(Level.INFO, WRONG_STUDY_AREA_COMMAND_LOGGER);
                 ui.printMessage(e.getMessage());
             }
         }

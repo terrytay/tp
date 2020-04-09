@@ -10,8 +10,45 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static ui.Constants.*;
+import static ui.Constants.ASSERT_FIRST_DAY_MISMATCH;
+import static ui.Constants.ASSERT_MONTH_NOT_SET;
+import static ui.Constants.ASSERT_YEAR_NOT_SET;
+import static ui.Constants.BACK_IN_MAIN_INTERFACE;
+import static ui.Constants.BYE;
+import static ui.Constants.CALENDAR_HAS_BEEN_PRINTED_SUCCESSFULLY;
+import static ui.Constants.COL;
+import static ui.Constants.COMMA;
+import static ui.Constants.DAYS;
+import static ui.Constants.DEC;
+import static ui.Constants.DIVIDER;
+import static ui.Constants.ENTER_DESIRED_MONTH;
+import static ui.Constants.INVALID_MONTH;
+import static ui.Constants.INVALID_MONTH_LOGGER;
+import static ui.Constants.INVALID_MONTH_RANGE;
+import static ui.Constants.INVALID_MONTH_RANGE_LOGGER;
+import static ui.Constants.INVALID_YEAR;
+import static ui.Constants.INVALID_YEAR_LOGGER;
+import static ui.Constants.JAN;
+import static ui.Constants.MAP_CANNOT_BE_EMPTY;
+import static ui.Constants.MAX_COL;
+import static ui.Constants.MAX_LIST_SIZE;
+import static ui.Constants.MAX_ROW;
+import static ui.Constants.MULTIPLE_WHITE_SPACES;
+import static ui.Constants.NON_INTEGER_YEAR;
+import static ui.Constants.NON_INTEGER_YEAR_LOGGER;
+import static ui.Constants.NOW;
+import static ui.Constants.ONLY_MONTH_AND_YEAR;
+import static ui.Constants.ONLY_MONTH_AND_YEAR_LOGGER;
+import static ui.Constants.PADDING;
+import static ui.Constants.PADDING1;
+import static ui.Constants.PADDING2;
+import static ui.Constants.PADDING3;
+import static ui.Constants.PAST_MONTH;
+import static ui.Constants.PAST_MONTH_LOGGER;
+import static ui.Constants.SPACE;
+import static ui.Constants.SPACES;
+import static ui.Constants.TASKS_FOR;
+import static ui.Constants.USER_EXITING_CALENDAR_VIEW;
 
 //@@author NizarMohd
 /**
@@ -32,7 +69,7 @@ public class CalendarView {
      * This constructs the class.
      * @param inUi allows for interaction with the user.
      */
-    public CalendarView(Ui inUi) {
+    public CalendarView(Ui inUi)  {
         ui = inUi;
         getInput();                                     // year and month will be set if user enters correctly.
         if (year != -1 && month != -1) {       // check if year and month is set
@@ -71,8 +108,8 @@ public class CalendarView {
      * This method sets the first day val. This prevent double error messages when user enters invalid command.
      */
     private void setFirstDay() {
-        assert year != -1 : "Year not set!";
-        assert month != -1 : "Month not set!";
+        assert year != -1 : ASSERT_YEAR_NOT_SET;
+        assert month != -1 : ASSERT_MONTH_NOT_SET;
         this.firstDay = YearMonth.of(year, month).atDay(1);
     }
 
@@ -80,7 +117,7 @@ public class CalendarView {
      * This method sets the last day val. This prevent double error messages when user enters invalid command.
      */
     private void setLastDay() {
-        assert this.firstDay.getDayOfMonth() == 1 : "firstDay is not first day of month";
+        assert this.firstDay.getDayOfMonth() == 1 : ASSERT_FIRST_DAY_MISMATCH;
         this.lastDay = this.firstDay.getMonth().length(this.firstDay.isLeapYear());
     }
 
@@ -191,12 +228,12 @@ public class CalendarView {
         try {
             int inMonth = Integer.parseInt(in);
             if (inMonth < JAN || inMonth > DEC) {
-                LOGGER.log(Level.INFO, "Invalid month range entered by User");
+                LOGGER.log(Level.INFO, INVALID_MONTH_RANGE_LOGGER);
                 throw new CalendarException(INVALID_MONTH_RANGE);
             }
             month = inMonth;
         } catch (NumberFormatException e) {
-            LOGGER.log(Level.INFO, "Month entered by User is not an integer");
+            LOGGER.log(Level.INFO, INVALID_MONTH_LOGGER);
             throw new CalendarException(INVALID_MONTH);
         }
     }
@@ -211,12 +248,12 @@ public class CalendarView {
             int inYear = Integer.parseInt(in);
             int thisYear = LocalDate.now().getYear();
             if (inYear < thisYear) {
-                LOGGER.log(Level.INFO, "Year entered by User is outdated");
+                LOGGER.log(Level.INFO, INVALID_YEAR_LOGGER);
                 throw new CalendarException(INVALID_YEAR);
             }
             year = inYear;
         } catch (NumberFormatException e) {
-            LOGGER.log(Level.INFO, "Year entered by User is not an integer");
+            LOGGER.log(Level.INFO, NON_INTEGER_YEAR_LOGGER);
             throw new CalendarException(NON_INTEGER_YEAR);
         }
     }
@@ -228,7 +265,7 @@ public class CalendarView {
      */
     public static void checkInputLength(String[] input) throws CalendarException {
         if (input.length != 2) {
-            LOGGER.log(Level.INFO, "User entered more or lesser than 2 arguments");
+            LOGGER.log(Level.INFO, ONLY_MONTH_AND_YEAR_LOGGER);
             throw new CalendarException(ONLY_MONTH_AND_YEAR);
         }
     }
@@ -273,7 +310,7 @@ public class CalendarView {
         if (year == thisYear) {
             int thisMonth = LocalDate.now().getMonthValue();
             if (month < thisMonth) {
-                LOGGER.log(Level.INFO, "User entered month that is oudated");
+                LOGGER.log(Level.INFO, PAST_MONTH_LOGGER);
                 throw new CalendarException(PAST_MONTH);
             }
         }
@@ -296,7 +333,7 @@ public class CalendarView {
                 month = LocalDate.now().getMonthValue();
                 year = LocalDate.now().getYear();
                 isWrongCommand = false;
-            } else if (input[0].equals("bye")) {
+            } else if (input[0].equals(BYE)) {
                 exit = true;
                 isWrongCommand = false;
             } else {
@@ -325,7 +362,7 @@ public class CalendarView {
      */
     public void printCalendar() {
         if (exit) {
-            LOGGER.log(Level.INFO, "User exiting calendar view");
+            LOGGER.log(Level.INFO, USER_EXITING_CALENDAR_VIEW);
             ui.printLine();
             ui.printMessage(BACK_IN_MAIN_INTERFACE);
             return;
@@ -336,7 +373,7 @@ public class CalendarView {
         for (int i = 0; i < MAX_ROW; i++) {
             printBox(i);
         }
-        LOGGER.log(Level.INFO, "Calendar has been printed successfully");
+        LOGGER.log(Level.INFO, CALENDAR_HAS_BEEN_PRINTED_SUCCESSFULLY);
     }
 
 }
