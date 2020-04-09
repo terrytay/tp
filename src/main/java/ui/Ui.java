@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static java.lang.System.lineSeparator;
 import static ui.Constants.DAB;
 import static ui.Constants.FLAGS;
@@ -39,7 +41,11 @@ import static ui.Constants.LOGO;
 import static ui.Constants.MAX_LINE_LENGTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.START_MESSAGE;
+import static ui.Constants.SUCCESSFUL_CLOSING_OF_UI_LOGGER;
+import static ui.Constants.SUCCESSFUL_UI_CREATION_LOGGER;
 import static ui.Constants.TAB;
+import static ui.Constants.UI_END_LOGGER;
+import static ui.Constants.UI_START_LOGGER;
 
 //@@author NizarMohd
 /**
@@ -49,6 +55,7 @@ import static ui.Constants.TAB;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * This is the constructor used to create the Ui class in Duke.run().
@@ -87,6 +94,7 @@ public class Ui {
 
     public void close() {
         this.in.close();
+        LOGGER.log(Level.INFO, SUCCESSFUL_CLOSING_OF_UI_LOGGER);
     }
 
     /**
@@ -134,6 +142,7 @@ public class Ui {
         this.out.println(START_MESSAGE);
         printHelp(false);
         printLine();
+        LOGGER.log(Level.INFO, UI_START_LOGGER);
     }
 
 
@@ -159,6 +168,7 @@ public class Ui {
 
     public void printByeMessage() {
         printMessage(GOODBYE_MESSAGE + DAB);
+        LOGGER.log(Level.INFO, UI_END_LOGGER);
     }
 
     //@@author hongquan448

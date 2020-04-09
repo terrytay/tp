@@ -522,7 +522,7 @@ meets your needs and is conducive, should you urgently need one.
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
  entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
  does not require any flags, instead it utilises a loose search 
- * *ports_flag* - refers to "-p" flag
+ * *ports_flag* - refers to "-p" flag <a href="flags"></a>
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
@@ -677,12 +677,40 @@ meets your needs and is conducive, should you urgently need one.
 ### Testing for Study Area Search
 
 #### Search by location, name, address 
- * To test for accuracy of loose search, test "bux" to see if it returns locations related to Starbucks.
+
+1. To test accuracy of loose search:
+ 
+    a. Test case : `bux` <br>
+     Expected: returns locations related to Starbucks.
+     
+     *Note*: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
+
+1. To test for normal search: 
+
+    a. Test case : `UTown` <br>
+    Expected: returns locations associated to UTown.<br>
 
 #### Search by flags only 
- * To test for accuracy of flags, test either "-p", "-i", "-o" or "-s {integer}"
+
+ 1. To test for accuracy of flags:<br>
+    a. Test case: `-p` <br>
+    Expected: List of study areas with ports available.<br>
+    b. Test case: `-i`<br>
+    Expected: List of study areas that are indoors.<br>
+    c. Test case: `-o`<br>
+     Expected: List of study areas that are outdoors.<br>
+    d. Test case: `-s` `integer`<br>
+     Expected: List of study areas that has a capacity of the stated integer value or more. <br>
  
- 
+ 1. To test for wrong flag usage: <br>
+    a. Test case: `-z`<br>
+    Expected: Error message pertaining to wrong usage of flags.<br>
 #### Search with both, (1) location, name or address , and , (2) flags 
- * To test for accuracy, test "{location/name/address} {flags}".
- * Since flags must come as a second argument in this case, test for "{flags} {location/name/address}"
+
+1. To test for accuracy:<br>
+    a. Test case:  `location/name/address`  `flags`<br>
+    Expected: List of study areas that contains the search key and the [flags](#flags).<br>
+    
+1. Since flags must come as a second argument in this case:<br>
+    a.Test case: `flags` `location/name/address}`<br>
+    Expected: Error message pertaining to commands position.<br>
