@@ -181,12 +181,13 @@ The task component contains 8 separate classes. They are as follows:
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
-   1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
+   1. Dictionary : Class to map user input to specific terms used in StudyAreaList. 
     
    2. StudyArea : Class that is used to model Study Areas. 
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
 
+Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
 [comment]: # (@@author terrytay)
 
@@ -311,6 +312,8 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
+<a href="isAvail"></a>
+
 ![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
@@ -356,6 +359,7 @@ No -> null
 Capacity: 
 
 4 -> {Opposite Town Green (Outside Starbucks)} 
+
 5 -> {Starbucks} 
 
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
@@ -486,6 +490,7 @@ meets your needs and is conducive, should you urgently need one.
  |v2.0|user|undo an added note|increase my efficiency|
  |v2.0|user|redo a removed notes|increase my efficiency|
  |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
+ |v2.0|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
 
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
@@ -509,21 +514,24 @@ meets your needs and is conducive, should you urgently need one.
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
  * *availStudyAreas* - ArrayList of StudyArea objects that contains the list of available Study Areas
- * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns true if the either one of the alternate 
- paths in [the sequence diagram](#interaction-within-organices-submodule) returns a true value
+ * *isAvail* - This is a boolean value returned by isAvailStudyArea. It returns as true if the either one of the alternate 
+ paths in [the sequence diagram](#isAvail) returns a true value
  * *executeStudyCommand()* - This method executes the Study Area User Interface
- * *hasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
- * *isIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
+ * *getHasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
+ * *getIsIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
  * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
- by user.
+ by user.<a href="containsSearchKey"></a>
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
- entered by the user. This method is invoked when under the [default](#interaction-within-organices-submodule) condition as search by name, address or locations 
- does not require any flags, instead it utilises a loose search. 
+ entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
+ does not require any flags, instead it utilises a loose search 
  * *ports_flag* - refers to "-p" flag
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
-
+ * *loadDictionary()* - this method will load the data for the mapping (of loose search terms to name/address/faculty of the study area) from the text files and store it into the dictionary class. This mapping is later used when [containSearchKey()](#containsSearchKey) method calls the Dictionary class 
+ to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
+ * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
+ 
 [comment]: # (@@NizarMohd)
 ## Appendix E: Instructions for Manual Testing    
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
