@@ -1,3 +1,4 @@
+[comment]: # (@@author NizarMohd)
 <!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
 <style>
 img {
@@ -69,7 +70,7 @@ div {
 
 ### 1.1. Purpose
 
-The document is meant to teach you on how OrgaNice! was developed and the design and implementations behind the software.
+The document is meant to guide you on how OrgaNice! was developed and the design and implementations behind the software.
 With this document, you should have a better understanding of the framework of the application. 
 
 ### 1.2. Target Reader
@@ -88,15 +89,14 @@ it is capable of assisting students in finding Study Areas that meets their desi
 ### 1.4. Main Features
 
 1. Scheduling Tasks
-    - You can manage tasks based on priority for events and countdown for deadlines.
-1. Study Area. For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+    - You can manage tasks based on priority for events and countdown for deadlines.For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+1. Study Area. 
     - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
     criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
 1. Notes
-	- You can enter notes based on school modules. Notes support undo and redo operations.
+	- You can enter notes based on school modules. Notes support undo and redo operations.For more information of the design and implementation for this feature, click [here](#33-operation-of-notes)
 
 ## 2. Design   
-    
 
 [comment]: # (@@author GanapathySanathBalaji)
 ### 2.1. Architecture  
@@ -325,16 +325,14 @@ Aspect: How to search based on User input.
 
 - Alternative 1 (Current Choice) :
  
-    Iterate through the list of all existing Study Areas. Then check if each Study Area 
-meets User's Criteria
+    Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
     - Pros : Lesser data structures required. Therefore lesser memory required.
     - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
     
 - Alternative 2 : 
-There exists four flags : port availability, indoor, outdoor, capacity.
-Create adjacency lists that maps the flag to the Study Area itself. If the Study Area contains that 
-attribute, the Study Area is added in that specific attribute list. Depending on the type of attribute, the adjacency
-list can be implemented using different data structure.
+There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
+Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
+Depending on the type of attribute, the adjacency list can be implemented using different data structure.
 
 For example, let's take only the two study areas as the entire data set.
 
