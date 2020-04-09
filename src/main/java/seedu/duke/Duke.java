@@ -20,8 +20,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
-import static ui.Constants.*;
+import static ui.Constants.BYE_COMMAND;
+import static ui.Constants.NOTES_COMMAND;
+import static ui.Constants.STUDY_AREA_COMMAND;
+import static ui.Constants.SUCCESSFUL_UI_CREATION_LOGGER;
 
 
 /**
