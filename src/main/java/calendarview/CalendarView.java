@@ -8,33 +8,10 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedList;
-import static ui.Constants.BACK_IN_MAIN_INTERFACE;
-import static ui.Constants.COL;
-import static ui.Constants.COMMA;
-import static ui.Constants.DAYS;
-import static ui.Constants.DEC;
-import static ui.Constants.DIVIDER;
-import static ui.Constants.ENTER_DESIRED_MONTH;
-import static ui.Constants.INVALID_MONTH;
-import static ui.Constants.INVALID_MONTH_RANGE;
-import static ui.Constants.INVALID_YEAR;
-import static ui.Constants.JAN;
-import static ui.Constants.MAP_CANNOT_BE_EMPTY;
-import static ui.Constants.MAX_COL;
-import static ui.Constants.MAX_LIST_SIZE;
-import static ui.Constants.MAX_ROW;
-import static ui.Constants.MULTIPLE_WHITE_SPACES;
-import static ui.Constants.NON_INTEGER_YEAR;
-import static ui.Constants.NOW;
-import static ui.Constants.ONLY_MONTH_AND_YEAR;
-import static ui.Constants.PADDING;
-import static ui.Constants.PADDING1;
-import static ui.Constants.PADDING2;
-import static ui.Constants.PADDING3;
-import static ui.Constants.SPACE;
-import static ui.Constants.SPACES;
-import static ui.Constants.TASKS_FOR;
-import static ui.Constants.PAST_MONTH;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static ui.Constants.*;
 
 //@@author NizarMohd
 /**
@@ -42,6 +19,7 @@ import static ui.Constants.PAST_MONTH;
  */
 public class CalendarView {
     private HashMap<Integer, LinkedList<Task>> map;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static boolean exit = false;
     private  LocalDate firstDay;
     public static int month = -1;
@@ -65,6 +43,22 @@ public class CalendarView {
     }
 
     /**
+     * This method retrieves the month set by the user.
+     * @return int value associated to the month entered.
+     */
+    public int getMonth() {
+        return month;
+    }
+
+    /**
+     * This method retrieves the year set by the user.
+     * @return int value associated to the year of the user.
+     */
+    public int getYear() {
+        return year;
+    }
+
+    /**
      * This sets the mapping between days to Tasks.
      * @param inMap this is the incoming created by CalendarCommand.
      */
@@ -77,6 +71,8 @@ public class CalendarView {
      * This method sets the first day val. This prevent double error messages when user enters invalid command.
      */
     private void setFirstDay() {
+        assert year != -1 : "Year not set!";
+        assert month != -1 : "Month not set!";
         this.firstDay = YearMonth.of(year, month).atDay(1);
     }
 
@@ -84,6 +80,7 @@ public class CalendarView {
      * This method sets the last day val. This prevent double error messages when user enters invalid command.
      */
     private void setLastDay() {
+        assert this.firstDay.getDayOfMonth() == 1 : "firstDay is not first day of month";
         this.lastDay = this.firstDay.getMonth().length(this.firstDay.isLeapYear());
     }
 
@@ -194,10 +191,12 @@ public class CalendarView {
         try {
             int inMonth = Integer.parseInt(in);
             if (inMonth < JAN || inMonth > DEC) {
+                LOGGER.log(Level.INFO, "Invalid month range entered by User");
                 throw new CalendarException(INVALID_MONTH_RANGE);
             }
             month = inMonth;
         } catch (NumberFormatException e) {
+            LOGGER.log(Level.INFO, "Month entered by User is not an integer");
             throw new CalendarException(INVALID_MONTH);
         }
     }
@@ -212,10 +211,12 @@ public class CalendarView {
             int inYear = Integer.parseInt(in);
             int thisYear = LocalDate.now().getYear();
             if (inYear < thisYear) {
+                LOGGER.log(Level.INFO, "Year entered by User is outdated");
                 throw new CalendarException(INVALID_YEAR);
             }
             year = inYear;
         } catch (NumberFormatException e) {
+            LOGGER.log(Level.INFO, "Year entered by User is not an integer");
             throw new CalendarException(NON_INTEGER_YEAR);
         }
     }
@@ -227,6 +228,7 @@ public class CalendarView {
      */
     public static void checkInputLength(String[] input) throws CalendarException {
         if (input.length != 2) {
+            LOGGER.log(Level.INFO, "User entered more or lesser than 2 arguments");
             throw new CalendarException(ONLY_MONTH_AND_YEAR);
         }
     }
@@ -271,6 +273,7 @@ public class CalendarView {
         if (year == thisYear) {
             int thisMonth = LocalDate.now().getMonthValue();
             if (month < thisMonth) {
+                LOGGER.log(Level.INFO, "User entered month that is oudated");
                 throw new CalendarException(PAST_MONTH);
             }
         }
@@ -322,6 +325,7 @@ public class CalendarView {
      */
     public void printCalendar() {
         if (exit) {
+            LOGGER.log(Level.INFO, "User exiting calendar view");
             ui.printLine();
             ui.printMessage(BACK_IN_MAIN_INTERFACE);
             return;
@@ -332,5 +336,7 @@ public class CalendarView {
         for (int i = 0; i < MAX_ROW; i++) {
             printBox(i);
         }
+        LOGGER.log(Level.INFO, "Calendar has been printed successfully");
     }
+
 }

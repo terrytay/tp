@@ -33,14 +33,16 @@ public class CalendarCommand extends Command {
     /**
      * This method retrieves the mapping between the days to the current tasks for that month.
      * @param tasks this is the list of tasks in taskList.
-     * @param c this is the calendarView class that was instantiated to convert the tasks into calendar view.
+     * @param thisMonth is the month that user wants to view
+     * @param thisYear is the year, with respect to the month that user wants to view
      * @return a hashMap that maps the days to its designated tasks.
      */
-    public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, CalendarView c) {
+    public static HashMap<Integer, LinkedList<Task>> checkExistingTasks(ArrayList<Task> tasks, int thisMonth,
+                                                                        int thisYear) {
         HashMap<Integer, LinkedList<Task>> dayToTaskHashMap = new HashMap<>();
         for (Task task : tasks) {
             LocalDate date = task.getDate();
-            if (date.getMonthValue() == c.month && date.getYear() == c.year) {
+            if (date.getMonthValue() == thisMonth && date.getYear() == thisYear) {
                 int day = date.getDayOfMonth();
                 dayToTaskHashMap.computeIfAbsent(day, k -> new LinkedList<Task>());
                 dayToTaskHashMap.get(day).add(task);
@@ -54,7 +56,10 @@ public class CalendarCommand extends Command {
     @Override
     public void executeCommand(TaskList taskList, Ui ui) {
         CalendarView c = new CalendarView(ui);
-        HashMap<Integer, LinkedList<Task>> map = checkExistingTasks(taskList.tasks, c);
+        int thisMonth = c.getMonth();
+        int thisYear = c.getYear();
+        assert thisMonth != -1 && thisYear != -1 : "Year and Month not set!";
+        HashMap<Integer, LinkedList<Task>> map = checkExistingTasks(taskList.tasks, thisMonth, thisYear);
         c.setMap(map);
         c.printCalendar();
         ui.printLine();

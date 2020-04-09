@@ -36,6 +36,7 @@ public class StudyAreaList {
 
     // Assigns studyAreaList into object's studyAreaList.
     public StudyAreaList(ArrayList<StudyArea> studyAreaList) {
+        assert !studyAreaList.isEmpty() : "StudyAreaList cannot be empty";
         this.studyAreaList = studyAreaList;
     }
 
@@ -164,6 +165,7 @@ public class StudyAreaList {
                 flags[1] = Integer.toString(Integer.parseInt(commands[i + 1]));
                 i++;
             } else if (commands[i].contains(FLAG)) {
+                assert commands[i].contains(FLAG);
                 isNotFlag = false;
                 checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
