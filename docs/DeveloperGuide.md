@@ -187,7 +187,7 @@ The task component contains 8 separate classes. They are as follows:
    
    3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
 
-Details on the attributes and methods are listed in the [glossary](#appendix-d-glossary)
+Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
 [comment]: # (@@author terrytay)
 
@@ -528,7 +528,6 @@ meets your needs and is conducive, should you urgently need one.
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
- * *
  * *loadDictionary()* - this method will load the data for the mapping (of loose search terms to name/address/faculty of the study area) from the text files and store it into the dictionary class. This mapping is later used when [containSearchKey()](#containsSearchKey) method calls the Dictionary class 
  to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
  * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
