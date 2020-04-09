@@ -8,6 +8,7 @@ import exception.command.InvalidDueTimeException;
 import exception.command.SearchKeywordEmptyException;
 import exception.command.TaskDateBeforeCurrentDateException;
 import exception.command.TaskPriorityNotIntegerException;
+import ui.Constants;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -24,19 +25,23 @@ import static ui.Constants.DATE_PATTERN;
 import static ui.Constants.DELIMITER;
 import static ui.Constants.EDIT_DATE;
 import static ui.Constants.EDIT_DESCRIPTION;
+import static ui.Constants.EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED;
 import static ui.Constants.ENTER_NEW_DATE_MESSAGE;
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
 import static ui.Constants.ENTER_NEW_PRIORITY_MESSAGE;
 import static ui.Constants.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
 import static ui.Constants.ERROR_MESSAGE;
+import static ui.Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
 import static ui.Constants.INVALID_DATE;
 import static ui.Constants.INVALID_DATE_ENTERED;
+import static ui.Constants.INVALID_EDIT_OPTION_NOT_DETECTED_BY_APPLICATION;
 import static ui.Constants.INVALID_OPTION_ENTERED;
 import static ui.Constants.INVALID_PRIORITY_VALUE;
 import static ui.Constants.NEW_LINE_CHARACTER;
 import static ui.Constants.NO;
 import static ui.Constants.OPTION_TO_EDIT_DATE;
 import static ui.Constants.OPTION_TO_EDIT_DESCRIPTION;
+import static ui.Constants.PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION;
 import static ui.Constants.PRIORITY_NOT_INTEGER;
 import static ui.Constants.SEARCH_KEYWORD_EMPTY;
 import static ui.Constants.SPACE;
@@ -239,6 +244,7 @@ public class Deadline extends Task {
             LOGGER.log(Level.INFO, DATE_AFTER_CURRENT_DATE);
             throw new TaskDateBeforeCurrentDateException();
         }
+
     }
 
     /**
@@ -256,6 +262,10 @@ public class Deadline extends Task {
             throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
+        assert !this.description.isBlank() : EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED;
+        assert !this.description.contains(Character.toString('/'))
+                && !this.description.contains(Character.toString('#')) :
+                ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
     //@@author hongquan448
@@ -329,6 +339,7 @@ public class Deadline extends Task {
         printOptionsToEdit(ui);
         int fieldToBeEdited;
         fieldToBeEdited = getFieldToBeEdited(ui);
+        assert fieldToBeEdited > 0 && fieldToBeEdited <= 5 : INVALID_EDIT_OPTION_NOT_DETECTED_BY_APPLICATION;
         switch (fieldToBeEdited) {
         case EDIT_DESCRIPTION:
             editDescription(ui);
@@ -440,6 +451,7 @@ public class Deadline extends Task {
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
+        assert !date.isBefore(LocalDate.now()) : PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
     /**
@@ -533,6 +545,7 @@ public class Deadline extends Task {
             }
             details = detailsBuilder.toString();
         }
+        assert details.length() < 26 : Constants.DETAIL_OF_TASK_NOT_SHORTENED_PROPERLY;
         return details;
     }
 }

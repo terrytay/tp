@@ -12,7 +12,7 @@ import ui.Ui;
 
 import java.time.LocalDate;
 
-import static command.AddEventCommand.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
+import static ui.Constants.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
 
 //@@author GanapathySanathBalaji
 /**

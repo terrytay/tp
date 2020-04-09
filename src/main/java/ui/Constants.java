@@ -338,4 +338,18 @@ public class Constants {
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
     public static final String HELP_DESCRIPTION_24 = TAB + "calendar ----------------------------------"
             + " View existing tasks in Calender view";
+    public static final String START_TIME_AFTER_END_TIME_ERROR_MESSAGE = "Start time after end time exception "
+            + "not thrown";
+    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Date past current day exception not thrown";
+    public static final String EMPTY_DESC_EXP_NOT_THROWN = "Empty description exception not thrown";
+    public static final String DETAIL_OF_TASK_NOT_SHORTENED_PROPERLY = "Detail of task not shortened properly";
+    public static final String EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED = "Empty description exception not"
+            + " thrown when required";
+    public static final String ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION = "Illegal character in"
+            + " description not identified by application";
+    public static final String COMPLETION_STATUS_ERROR_MESSAGE = "Completion status should be a boolean value from "
+            + "the following list [{True,TRUE,true},{False,FALSE,false}]";
+    public static final String PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION = "Past date not identified by application";
+    public static final String INVALID_EDIT_OPTION_NOT_DETECTED_BY_APPLICATION = "Invalid edit option not detected"
+            + " by application";
 }

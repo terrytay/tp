@@ -19,8 +19,11 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
+import static ui.Constants.PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION;
 import static ui.Constants.SPACE;
+import static ui.Constants.START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
 
 //@@author GanapathySanathBalaji
 /**
@@ -30,6 +33,8 @@ public class Event extends Task {
 
     public static final String EMPTY_DESCRIPTION_MESSAGE = "New description entered by user while editing "
             + "the task is empty";
+    public static final char HASH_SYMBOL = '#';
+    public static final char FORWARD_SLASH_SYMBOL = '/';
     private String description;
     private LocalDate date;
     private LocalTime startTime;
@@ -164,10 +169,15 @@ public class Event extends Task {
         if (description.isBlank()) {
             throw new EmptyDescriptionException();
         }
-        if (description.contains(Character.toString('/')) || description.contains(Character.toString('#'))) {
+        if (description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
+                || description.contains(Character.toString(HASH_SYMBOL))) {
             throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
+        assert !this.description.isBlank() : Constants.EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED;
+        assert !this.description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
+                && !this.description.contains(Character.toString(HASH_SYMBOL)) :
+                Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
     /**
@@ -205,6 +215,7 @@ public class Event extends Task {
             }
             details = detailsBuilder.toString();
         }
+        assert details.length() < 26 : Constants.DETAIL_OF_TASK_NOT_SHORTENED_PROPERLY;
         return details;
     }
 
@@ -264,6 +275,7 @@ public class Event extends Task {
         printOptionsToEdit(ui);
         int fieldToBeEdited;
         fieldToBeEdited = getFieldToBeEdited(ui);
+        assert fieldToBeEdited > 0 && fieldToBeEdited <= 5 : Constants.INVALID_EDIT_OPTION_NOT_DETECTED_BY_APPLICATION;
         switch (fieldToBeEdited) {
         case Constants.EDIT_DESCRIPTION:
             editDescription(ui);
@@ -333,6 +345,7 @@ public class Event extends Task {
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
+        assert !endTime.isBefore(startTime) : START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
     }
 
     /**
@@ -358,6 +371,7 @@ public class Event extends Task {
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
+        assert !endTime.isBefore(startTime) : START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
     }
 
     /**
@@ -383,6 +397,7 @@ public class Event extends Task {
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
+        assert !date.isBefore(LocalDate.now()) : PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
     /**
@@ -404,6 +419,10 @@ public class Event extends Task {
                 exceptionEncountered = true;
             }
         } while (exceptionEncountered);
+        assert !description.isEmpty() : Constants.EMPTY_DESC_EXP_NOT_THROWN;
+        assert !this.description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
+                && !this.description.contains(Character.toString(HASH_SYMBOL)) :
+                Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
     /**
