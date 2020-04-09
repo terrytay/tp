@@ -549,10 +549,10 @@ meets your needs and is conducive, should you urgently need one.
 
 1. Adding a new deadline task to the list
     
-    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+    a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
     b. Test case: `deadline homework /d 2020-05-06 /t 12:00 /p 5`<br>
-    Expected: New deadine task with the specified details should be added to the list. A message is displayed which includes the details of the deadline task added.
+    Expected: New deadline task with the specified details should be added to the list. A message is displayed which includes the details of the deadline task added.
     
     c. Test case: `deadline project /d 11-12-2020 /t 12:00 /p 2`<br>
     Expected: No new deadline task should be added. Error details are shown in the interface.
@@ -564,7 +564,7 @@ meets your needs and is conducive, should you urgently need one.
 
 1. Adding a new event task to the list
     
-    a. Prerequsites: Application is in the main interface     (i.e, not inside study area, notes interface).
+    a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
     b. Test case: `event exam /d 2020-05-07 /s 10:00 /e 12:00 /p 5`<br>
     Expected: New event task with the specified details should be added to the list. A message is displayed which includes the details of the event task added.
@@ -579,7 +579,7 @@ meets your needs and is conducive, should you urgently need one.
 
 1. Creating a schedule based on user's requirements
 
-    a. Prerequsites: Application is in the main interface. (i.e, not inside study area, notes interface).
+    a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
     b. Test case: `schedule 2`<br>
       Expected: A message asking for the requirements of the tasks is displayed. After the requirements are entered successfully, the schedule generated is shown and stored in the list of tasks. Please follow these test cases mentioned later to test the interface used to get the requirements.
@@ -593,7 +593,7 @@ meets your needs and is conducive, should you urgently need one.
 
 2. Entering details of individual tasks to be done.
 
-    a. Prerequsites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
+    a. Prerequisites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
 
     b. Test case: `math exam preparation /f 2 /d 5`<br>
        Expected: No error message should be displayed. The interface should ask for the details of the next task.
@@ -608,7 +608,7 @@ meets your needs and is conducive, should you urgently need one.
 
 1. Marking a deadline task as done while all tasks are listed
 
-    a. Prerequsites: List all tasks using the `view` command. Atleast one deadline task and one event in the list. For the following test cases it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
+    a. Prerequisites: List all tasks using the `view` command. Atleast one deadline task and one event in the list. For the following test cases it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
     
     b. Test case: `done 1`<br>
       Expected: Deadline task at the first index of the list should be marked as "COMPLETED". Details of the marked task is shown in the interface.
@@ -633,7 +633,7 @@ meets your needs and is conducive, should you urgently need one.
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
     b. Test case: `edit 1`<br>
-       Expected: A new interface diplayed which guides user on how to edit the various feilds of the first task in the list. After the process is over, Details of the edited task is shown in the interface.
+       Expected: A new interface displayed which guides user on how to edit the various fields of the first task in the list. After the process is over, Details of the edited task is shown in the interface.
        
     c. Test case: `edit 0`<br>
        Expected: No task is edited. Error details shown in the interface.
