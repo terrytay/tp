@@ -46,7 +46,7 @@ class StudyAreaTest {
 
     //@@author NizarMohd
     /**
-     * Checks for accurace of toString() format.
+     * Checks for accuracy of toString() format.
      */
     @Test
     void testToString() {
