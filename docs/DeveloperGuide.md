@@ -706,7 +706,7 @@ meets your needs and is conducive, should you urgently need one.
        `delete z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
 
-
+[comment]: # (@@author NizarMohd)
 ### Testing for Study Area Search
 
 Prerequisites: Enter Study Area Search Interface by entering `study`.
@@ -778,4 +778,4 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     
     d. Test case: `2` `2020`<br>
     Expected: Error message as month requested is outdated compared to the current month.
-    
+[comment]: # (@@author )
