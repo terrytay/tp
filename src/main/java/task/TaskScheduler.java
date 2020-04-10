@@ -16,6 +16,7 @@ public class TaskScheduler {
     public static final String NINE_AM = "09:00";
     public static final String NINE_PM = "21:00";
     public static final String PRIORITY_FOR_SCHEDULED_TASKS = "0";
+    public static final String UNEXPECTED_ERROR = "Unexpected error";
     private int numberOfTasksToSchedule;
     private PriorityQueue<SchedulableTask> taskQueue;
     private ArrayList<Task> toBeAddedToList;
@@ -134,7 +135,7 @@ public class TaskScheduler {
                 toBeAddedToList.add(new Event(taskToBeScheduledNext.taskDescription, iterator.toString(), startOfDay,
                         endOfDay, defaultPriority));
             } catch (Exception e) {
-                ui.printMessage("Unexpected error");
+                ui.printMessage(UNEXPECTED_ERROR);
             }
         }
         return currentDay;

@@ -1,11 +1,11 @@
 package resourceloader;
 
 //@@author NizarMohd
+
 /**
  * This class contains all the back up data for Study Area Loader, in case locations.txt and dictionary.txt
  * does not exist.
  */
-
 class BackUpData {
     static final String BACKUP_DICTIONARY = "engineering~eng~engin~engine~foe\n"
             + "utown~university town~u-town~u town\n"

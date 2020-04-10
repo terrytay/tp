@@ -21,6 +21,17 @@ import static ui.Constants.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
 public class AddDeadlineCommand extends Command {
 
     public static final String SLASH_SYMBOL = "/";
+    public static final char DUE_TIME_IDENTIFIER = 't';
+    public static final char SINGLE_SPACE_CHARACTER = ' ';
+    public static final char PRIORITY_IDENTIFIER = 'p';
+    public static final char DATE_IDENTIFIER = 'd';
+    public static final int INDEX_OF_DESCRIPTION = 0;
+    public static final int INDEX_OF_DATE = 1;
+    public static final int INDEX_OF_DUE_TIME = 2;
+    public static final int INDEX_OF_PRIORITY = 3;
+    public static final int NUMBER_OF_FIELDS_REQUIRED = 4;
+    public static final int INDEX_OF_DETAILS = 1;
+    public static final boolean DEFAULT_STATUS_ON_CREATION = false;
 
     /** The new event to be added. */
     Deadline newDeadline;
@@ -37,13 +48,13 @@ public class AddDeadlineCommand extends Command {
         if (isOneWordCommand) {
             throw new DeadlineDetailsNotProvidedException();
         }
-        String[] details = deadlineDetails[1].split(SLASH_SYMBOL);
+        String[] details = deadlineDetails[INDEX_OF_DETAILS].split(SLASH_SYMBOL);
         isCorrectFormat(details);
-        String description = details[0];
-        String date = details[1].substring(2);
-        String dueTime = details[2].substring(2);
-        String priority = details[3].substring(2);
-        newDeadline =  new Deadline(description, date, dueTime, priority, false);
+        String description = details[INDEX_OF_DESCRIPTION];
+        String date = details[INDEX_OF_DATE].substring(2);
+        String dueTime = details[INDEX_OF_DUE_TIME].substring(2);
+        String priority = details[INDEX_OF_PRIORITY].substring(2);
+        newDeadline =  new Deadline(description, date, dueTime, priority, DEFAULT_STATUS_ON_CREATION);
         assert !newDeadline.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
     }
 
@@ -54,28 +65,28 @@ public class AddDeadlineCommand extends Command {
      * @throws Exception If any of the fields are missing.
      */
     private void isCorrectFormat(String[] details) throws Exception {
-        if (details.length != 4) {
+        if (details.length != NUMBER_OF_FIELDS_REQUIRED) {
             throw new DeadlineCreationFormatNotFollowedException();
         }
         try {
-            String description = details[0];
+            String description = details[INDEX_OF_DESCRIPTION];
             checkDescription(description);
-            String date = details[1];
+            String date = details[INDEX_OF_DATE];
             checkDate(date);
-            String dueTime = details[2];
+            String dueTime = details[INDEX_OF_DUE_TIME];
             checkDueTime(dueTime);
-            String priority = details[3];
+            String priority = details[INDEX_OF_PRIORITY];
             checkPriority(priority);
-            if (details[0].isBlank()) {
+            if (details[INDEX_OF_DESCRIPTION].isBlank()) {
                 throw new TaskCreationDescriptionMissingException();
             }
-            if (details[1].substring(2).isBlank()) {
+            if (details[INDEX_OF_DATE].substring(2).isBlank()) {
                 throw new TaskCreationDateMissingException();
             }
-            if (details[2].substring(2).isBlank()) {
+            if (details[INDEX_OF_DUE_TIME].substring(2).isBlank()) {
                 throw new DeadlineCreationDueTimeMissingException();
             }
-            if (details[3].substring(2).isBlank()) {
+            if (details[INDEX_OF_PRIORITY].substring(2).isBlank()) {
                 throw new TaskCreationPriorityMissingException();
             }
         } catch (IndexOutOfBoundsException e) {
@@ -102,7 +113,7 @@ public class AddDeadlineCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkDate(String date) throws Exception {
-        if (date.charAt(0) != 'd' || date.charAt(1) != ' ') {
+        if (date.charAt(0) != DATE_IDENTIFIER || date.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new DeadlineCreationFormatNotFollowedException();
         }
         if (date.substring(2).isBlank()) {
@@ -117,7 +128,7 @@ public class AddDeadlineCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkPriority(String priority) throws Exception {
-        if (priority.charAt(0) != 'p' || priority.charAt(1) != ' ') {
+        if (priority.charAt(0) != PRIORITY_IDENTIFIER || priority.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new DeadlineCreationFormatNotFollowedException();
         }
         if (priority.substring(2).isBlank()) {
@@ -132,7 +143,7 @@ public class AddDeadlineCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkDueTime(String dueTime) throws Exception {
-        if (dueTime.charAt(0) != 't' || dueTime.charAt(1) != ' ') {
+        if (dueTime.charAt(0) != DUE_TIME_IDENTIFIER || dueTime.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new DeadlineCreationFormatNotFollowedException();
         }
         if (dueTime.substring(2).isBlank()) {
