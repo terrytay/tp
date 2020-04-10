@@ -20,6 +20,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ui.Constants.DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS;
+import static ui.Constants.DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG;
 import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
 import static ui.Constants.PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION;
 import static ui.Constants.SPACE;
@@ -33,8 +35,6 @@ public class Event extends Task {
 
     public static final String EMPTY_DESCRIPTION_MESSAGE = "New description entered by user while editing "
             + "the task is empty";
-    public static final char HASH_SYMBOL = '#';
-    public static final char FORWARD_SLASH_SYMBOL = '/';
     private String description;
     private LocalDate date;
     private LocalTime startTime;
@@ -167,16 +167,18 @@ public class Event extends Task {
     private void parseDescription(String description) throws Exception {
 
         if (description.isBlank()) {
+            LOGGER.log(Level.INFO, DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG);
             throw new EmptyDescriptionException();
         }
-        if (description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
-                || description.contains(Character.toString(HASH_SYMBOL))) {
+        if (description.contains(Character.toString(Constants.FORWARD_SLASH_SYMBOL))
+                || description.contains(Character.toString(Constants.HASH_SYMBOL))) {
+            LOGGER.log(Level.INFO, DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS);
             throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
         assert !this.description.isBlank() : Constants.EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED;
-        assert !this.description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
-                && !this.description.contains(Character.toString(HASH_SYMBOL)) :
+        assert !this.description.contains(Character.toString(Constants.FORWARD_SLASH_SYMBOL))
+                && !this.description.contains(Character.toString(Constants.HASH_SYMBOL)) :
                 Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 
@@ -420,8 +422,8 @@ public class Event extends Task {
             }
         } while (exceptionEncountered);
         assert !description.isEmpty() : Constants.EMPTY_DESC_EXP_NOT_THROWN;
-        assert !this.description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
-                && !this.description.contains(Character.toString(HASH_SYMBOL)) :
+        assert !this.description.contains(Character.toString(Constants.FORWARD_SLASH_SYMBOL))
+                && !this.description.contains(Character.toString(Constants.HASH_SYMBOL)) :
                 Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 

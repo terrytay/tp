@@ -31,6 +31,8 @@ import static ui.Constants.ENTER_NEW_DESCRIPTION_MESSAGE;
 import static ui.Constants.ENTER_NEW_PRIORITY_MESSAGE;
 import static ui.Constants.ENTER_VALID_NUMBER_FROM_LIST_MESSAGE;
 import static ui.Constants.ERROR_MESSAGE;
+import static ui.Constants.FORWARD_SLASH_SYMBOL;
+import static ui.Constants.HASH_SYMBOL;
 import static ui.Constants.ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
 import static ui.Constants.INVALID_DATE;
 import static ui.Constants.INVALID_DATE_ENTERED;
@@ -256,15 +258,18 @@ public class Deadline extends Task {
     private void parseDescription(String description) throws Exception {
 
         if (description.isBlank()) {
+            LOGGER.log(Level.INFO, Constants.DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG);
             throw new EmptyDescriptionException();
         }
-        if (description.contains("/") || description.contains("#")) {
+        if (description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
+                || description.contains(Character.toString(HASH_SYMBOL))) {
+            LOGGER.log(Level.INFO, Constants.DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS);
             throw new DescriptionContainsInvalidCharacterException();
         }
         this.description = description;
         assert !this.description.isBlank() : EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED;
-        assert !this.description.contains(Character.toString('/'))
-                && !this.description.contains(Character.toString('#')) :
+        assert !this.description.contains(Character.toString(FORWARD_SLASH_SYMBOL))
+                && !this.description.contains(Character.toString(HASH_SYMBOL)) :
                 ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION;
     }
 

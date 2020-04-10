@@ -382,4 +382,9 @@ public class Constants {
     public static final String SUCCESSFUL_LOCATIONS_IMPORT_LOGGER = "study areas imported to system successfully";
     public static final String SUCCESSFUL_DATA_FILE_CREATION_LOGGER = "created new data files for locations and "
             + "dictionary successfully";
+    public static final char HASH_SYMBOL = '#';
+    public static final char FORWARD_SLASH_SYMBOL = '/';
+    public static final String DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG = "Description entered by user is empty";
+    public static final String DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS = "Description entered by "
+            + "user contains illegal characters";
 }
