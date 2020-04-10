@@ -66,7 +66,7 @@ public class Duke {
      */
     private static void runCommands() {
         String fullCommand;
-        fullCommand = ui.getUserIn().trim().toLowerCase();
+        fullCommand = ui.getUserIn().trim();
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
                 switchCommands(fullCommand);
