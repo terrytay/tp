@@ -635,14 +635,27 @@ meets your needs and is conducive, should you urgently need one.
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
     b. Test case: `edit 1`<br>
-       Expected: A new interface displayed which guides user on how to edit the various fields of the first task in the list. After the process is over, Details of the edited task is shown in the interface.
+       Expected: A new interface displayed which guides user on how to edit the various fields of the first task in the list. The interface used to edit the individual fields can be tested using the next point. After the process is over, Details of the edited task is shown in the interface.
        
     c. Test case: `edit 0`<br>
        Expected: No task is edited. Error details shown in the interface.
        
-    d. Other incorrect edit commands to try: `edit`,      `edit x` (where x is larger than the list size),     `edit y` (where y is an negative integer),
+    d. Other incorrect edit commands to try: `edit`, `edit x` (where x is larger than the list size),     `edit y` (where y is an negative integer),
        `edit z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
+       
+2. Editing individual fields
+
+    a. Prerequisites: Entered a valid `edit` command and for this example it is assumed that the user entered `2` to edit the date field. Other fields can be tested similarly.<br>
+    
+    b. Test case: `2020-06-06` (future date)<br>
+    Expected: Date for task is changed successfully. Details of the edited task displayed.
+
+    c. Test case: `03-04-2020` <br>
+    Expected: Date of task isn't changed and the user is asked to reenter date. Error details are shown in interface.
+    
+    d. Other incorrect dates to enter: `2020-02-03` (Past date), `2020/05/05` <br>
+    Expected: Similar to the previous case.
 
 #### Searching for tasks
 
