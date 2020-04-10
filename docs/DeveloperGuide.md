@@ -343,26 +343,26 @@ For example, let's take only the two study areas as the entire data set.
 ![study_area_det](images/studyAreaDet.PNG)
 <div>Figure 12. Sample Data</div>
 <br>
+
 This will result in the following adjacency lists : 
 
 Environment: 
 
-Indoor -> {Starbucks} 
+Indoor -> {Starbucks} <br>
 Outdoor -> {Opposite Town Green (Outside Starbucks)} 
 
 *Data Structure* : 2D Array, with only two rows (For indoors and outdoors)
 
 Ports: 
 
-Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
+Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
 No -> null
 
 *Data Structure* : 2D Array, with only two rows (For Yes and No)
 
 Capacity: 
 
-4 -> {Opposite Town Green (Outside Starbucks)} 
-
+4 -> {Opposite Town Green (Outside Starbucks)} <br>
 5 -> {Starbucks} 
 
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
@@ -393,7 +393,7 @@ contains operations to add, remove, enter and list modules.
 A ModuleManager class is used to hold operations for a module. These operations are achieved by working together
 with the Parser class and Command class. Operations supported are add, list, undo, redo. 
 
-Add operations are fairly simple, primarily using the add method of hashmap library. The implementation of
+Add operations are fairly simple, primarily using the add method of HashMap library. The implementation of
 undo and redo is stated here below.
 
 Each time an AddCommand object is called, CommandStack will determine if operation is add, undo or redo.
@@ -404,20 +404,20 @@ CommandStack class is then cleared.
 <br><br>
 If operation is to undo added notes, the CommandStack will remove the last added note from
 the CommandStack and pass it to the Command class to execute the undo action by removing it from the module
-contained in the hashmap. Also, this note will be added to the redoStack list.
+contained in the HashMap. Also, this note will be added to the redoStack list.
 <br><br>
 If operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
 pass it to the Command class to execute the redo action by adding this note into the module contained in the
-hashmap.
+HashMap.
 <br><br>
 The reason why we chose two linked lists to support these operations is because it reduces the SLOC needed to
-write the logic. An alternative is to actually remember the state of the hashmap before an operation and save
-it to another hashmap. However, this approach will take up more memory and reduces the performance of the application. 
+write the logic. An alternative is to actually remember the state of the HashMap before an operation and save
+it to another HashMap. However, this approach will take up more memory and reduces the performance of the application. 
 
 [comment]: # (@@author NizarMohd)
 ## 4. Testing 
 
-Currently we have two runners to execute the tests, JUnit and Gradle.
+Currently we have two runners to execute the tests, JUnit and Gradle.<br>
 *Note*: It is advisable to run tests with coverage, to ensure that 90% of the paths are covered.
 
 
