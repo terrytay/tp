@@ -791,4 +791,79 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     
     d. Test case: `2` `2020`<br>
     Expected: Error message as month requested is outdated compared to the current month.
-[comment]: # (@@author )
+
+[comment]: # (@@terrytay)    
+### Testing for Notes
+
+#### Module Interface
+Prerequisites: Enter Notes taking feature by entering `notes`.
+
+1. To add a module, `add` is entered with the module code.
+
+    a. Test case: `add CS2113T`<br>
+    Expected: CS2113T has been created
+    
+    b. Test case: `add`<br>
+    Expected: Please enter a valid command. e.g. To add a module, enter "add [modulename]"
+    
+2. To remove a module, `remove` is entered with the module code.
+
+    a. Test case: `remove CS2113T`, `Y` (Assuming CS2113T has been created from step 1a)<br>
+    Expected: CS2113T has been removed
+    
+    b. Test case: `remove CS2113T`, `n` (Assuming CS2113T has been created from step 1a)<br>
+    Expected: Remove operation has been cancelled.
+    
+    c. Test case: `remove CS2107` (Assuming CS2107 has not been added using step 1a)<br>
+    Expected: Module not found.
+    
+3. To enter a module, `enter` is entered with the module code.
+
+    a. Test case: `enter CS2113T`<br>
+    Expected: Notes for CS2113T...
+    
+4. List all modules, `list` is entered.
+
+    a. Test case: `list` (Assuming list is populated)<br>
+    Expected: [module1, module2, ... , moduleN]
+    
+    a. Test case: `list` (Assuming empty)<br>
+    Expected: No modules found.
+
+5. To display Help interface, use `help` <br>
+    
+    a. Test case: `help`<br>
+    Expected: [add modulecode] to add a module... interface is shown.
+        
+6. To leave Notes, use `bye`<br>
+
+    a. Test case: `bye`<br>
+    Expected: Notes saved successfully.
+              	 Thank you for using notes.
+        
+#### Inside a Module
+
+1. To add a note:
+
+    Test case: `add hello test msg`<br>
+    Expected: SUCCESS
+
+2. To undo a note: (undoing step 1)
+
+    Test case: `undo`<br>
+    Expected: SUCCESS
+    
+3. To redo a note: 
+    
+    Test case: `redo`<br>
+    Expected: SUCCESS
+    
+4. To list all notes:
+
+    Test case: `list`<br>
+    Expected: hello test msg
+    
+5. To go back to modules:
+
+    a. Test case: `back`<br>
+    Expected: You are now back at Notes main page.
