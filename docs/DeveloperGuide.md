@@ -20,7 +20,7 @@ div {
   z-index: 99; 
   border: none; 
   outline: none; 
-  background-color: lightblue; 
+  background-color: darkblue; 
   color: white; 
   cursor: pointer; 
   padding: 15px; 
@@ -223,8 +223,7 @@ Inside Notes component, there exist these classes:
  1. The requirements captured are stored in the SchedulableTask object. 
  1. Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
  (Early Deadline First) algorithm.
- 1. If a feasible schedule is found it is 
- displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
+ 1. If a feasible schedule is found it is displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 	
    The following sequence diagrams explain how tasks are scheduled.
@@ -267,6 +266,15 @@ Aspect: How to capture the user's requirements and handle them.
 
      Finally, the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user). 
+
+#### 3.1.3 Future Enhancements
+
+The current version of the application doesn't take into account the other tasks present, however, the priority 
+values can still be used to decide the more important task. <br>
+In v3.0 our application will support
+ 1. scheduling tasks while avoiding tasks present previously 
+ 1. add support for tasks to be scheduled preemptively (i.e, tasks can be scheduled over non-contiguous days)
+ 1. Change the default priority value assigned to scheduled tasks
 
 [comment]: # (@@author NizarMohd)
 
@@ -512,6 +520,7 @@ meets your needs and is conducive, should you urgently need one.
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
 * Environment Requirement :  
+    * Mainstream OS
     * Java 11
     * 32-bit or 64-bit environment
     * Command Line Interface
@@ -527,6 +536,10 @@ meets your needs and is conducive, should you urgently need one.
 
 ## Appendix D: Glossary    
 
+ * *Mainstream OS* - Windows, Linux, Unix, OS-X
+ * *priority* - Value used to indicate the importance of a task. The task with a higher priority value is considered to
+ be more important
+ * *EDF Algorithm* - **E**arliest **D**eadline **F**irst is a dynamic priority scheduling algorithm
  * *flag* - Criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
@@ -556,7 +569,7 @@ meets your needs and is conducive, should you urgently need one.
 
 ### Initial launch
 
-1.  Opening the application
+*  Opening the application
 
     a. Download the jar file and copy into an empty folder.
    
@@ -566,7 +579,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Adding a deadline task
 
-1. Adding a new deadline task to the list
+* Adding a new deadline task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -581,7 +594,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Adding an event task
 
-1. Adding a new event task to the list
+* Adding a new event task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -596,7 +609,7 @@ meets your needs and is conducive, should you urgently need one.
     
 #### Scheduling tasks
 
-1. Creating a schedule based on the user's requirements
+* Creating a schedule based on the user's requirements
 
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -610,7 +623,7 @@ meets your needs and is conducive, should you urgently need one.
        `schedule z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case.
 
-2. Entering details of individual tasks to be done.
+* Entering details of individual tasks to be done.
 
     a. Prerequisites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
 
@@ -625,7 +638,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Marking a deadline task as done
 
-1. Marking a deadline task as done while all tasks are listed
+* Marking a deadline task as done while all tasks are listed
 
     a. Prerequisites: List all tasks using the `view` command. At least one deadline task and one event in the list. For the following test cases, it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
     
@@ -641,13 +654,13 @@ meets your needs and is conducive, should you urgently need one.
     e. Test case: `done 0`<br>
        Expected: No deadline is marked as done. Error details are shown in the interface.
        
-    f. Other incorrect done commands to try: `done`,          `done x` (where x is larger than the list size),       `done y` (where y is a negative integer),
+    f. Other incorrect done commands to try: `done`, `done x` (where x is larger than the list size),       `done y` (where y is a negative integer),
        `done z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case
 
 #### Editing a task
 
-1. Editing a task while all tasks are listed
+* Editing a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
@@ -661,7 +674,7 @@ meets your needs and is conducive, should you urgently need one.
        `edit z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case
        
-2. Editing individual fields
+* Editing individual fields
 
     a. Prerequisites: Entered a valid `edit` command and for this example, it is assumed that the user entered `2` to edit the date field. Other fields can be tested similarly.<br>
     
@@ -676,7 +689,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Searching for tasks
 
-1. Searching for tasks based on their description
+* Searching for tasks based on their description
  
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -692,7 +705,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Deleting a task
 
-1. Deleting a task while all tasks are listed
+* Deleting a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
@@ -706,21 +719,21 @@ meets your needs and is conducive, should you urgently need one.
        `delete z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
 
-
+[comment]: # (@@author NizarMohd)
 ### Testing for Study Area Search
 
 Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by location, name, address 
 
-1. To test for accuracy of loose search:
+* To test for accuracy of loose search:
  
     a. Test case: `bux` <br>
      Expected: returns locations related to Starbucks.
      
      __Note__: Testers can add or refer to mapping in back up data file, in any case, more abbreviations are required to support an even more loose search.
 
-1. To test for normal search: 
+* To test for normal search: 
 
     a. Test case: `UTown` <br>
     Expected: returns locations associated to UTown.<br>
@@ -729,7 +742,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by flags only 
 
- 1. To test for accuracy of flags:
+* To test for accuracy of flags:
  
     a. Test case: `-p` <br>
     Expected: List of study areas with ports available.<br>
@@ -743,7 +756,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
     d. Test case: `-s` `integer`<br>
      Expected: List of study areas that have a capacity of the stated integer value or more. <br>
  
- 1. To test for wrong flag usage: <br>
+* To test for wrong flag usage: <br>
  
     a. Test case: `-z`<br>
     Expected: Error message on wrong usage of flags.<br>
@@ -752,12 +765,12 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search with both, (1) location,name or address, and , (2) flags 
 
-1. To test for accuracy:<br>
+* To test for accuracy:<br>
     a. Test case:  `location/name/address`  `flags`<br>
     Expected: List of study areas that contain the search key and the [flags](#flags).<br>
     
-1. Since flags must come as a second argument in this case:<br>
-    a.Test case: `flags` `location/name/address}`<br>
+* Since flags must come as a second argument in this case:<br>
+    a. Test case: `flags` `location/name/address}`<br>
     Expected: Error message on commands position.<br>
 
 ### Testing for Calendar
@@ -765,7 +778,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 Prerequisites: Enter Calendar View by entering `calendar`.
 
-1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
+* To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
         
     a. Test case: `now`<br>
     Expected: Calendar view for current month is listed.
@@ -778,7 +791,8 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     
     d. Test case: `2` `2020`<br>
     Expected: Error message as month requested is outdated compared to the current month.
-    
+
+[comment]: # (@@terrytay)    
 ### Testing for Notes
 
 #### Module Interface
