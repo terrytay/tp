@@ -1195,30 +1195,49 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 ## 5. Command Summary
 
 ### OrgaNice Main Features
-`deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks <br>
-`event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks <br>
-`delete <index number of task>` - Deletes task at specified index <br>
-`done <index of deadline>` - Mark the deadline at the specified index as done <br>
-`edit <index number of task>` - Used to edit task at specified index <br>
-`clear` - Clears the list of tasks <br>
-`view` - Displays the current list of tasks <br>
-`priority_view` - Displays the current list of tasks sorted by priority <br>
-`countdown` - Displays the current list in countdown format <br>
-`search <keyword found in task>` - Lists all matching tasks in the list containing the keyword <br>
-`bye` - Exit the Application / Study Area interface <br>
-`study` - Enter study area search interface <br>
-`notes` - Enter notes taking interface <br>
+* `deadline <deadline details> /d <date> /t <due time> /p <priority of deadline>` - Adds a new Deadline task to the list of tasks <br>
+e.g. `deadline assignment /d 2020-06-06 /t 12:00 /p 4` <br>
+
+* `event <event details> /d <date> /s <start time> /e <end time> /p <priority of event>` - Adds a new Event task to the list of tasks <br>
+e.g. `event exam /d 2020-06-07 /s 09:00 /e 12:00 /p 5`<br>
+
+* `delete <index number of task>` - Deletes task at specified index <br>
+e.g. `delete 1`<br>
+
+* `done <index of deadline>` - Mark the deadline at the specified index as done <br>
+e.g. `done 1` (Assumption: Task at index 1 is a deadline task) <br>
+
+
+* `edit <index number of task>` - Used to edit task at specified index <br>
+e.g. `edit 1`<br>
+
+* `clear` - Clears the list of tasks <br>
+
+* `view` - Displays the current list of tasks <br>
+
+* `priority_view` - Displays the current list of tasks sorted by priority <br>
+
+* `countdown` - Displays the current list in countdown format <br>
+
+* `search <keyword found in task>` - Lists all matching tasks in the list containing the keyword <br>
+e.g. `search project`<br>
+
+* `bye` - Exit the Application / Study Area interface <br>
+
+* `study` - Enter study area search interface <br>
+
+* `notes` - Enter notes taking interface <br>
 
 ### Study Area Search Interface
 
-`name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
+* `name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
 entered. 
 
 Click [here](#3132-start-search) for more details on how `name\address\faculty` and `flags` should be entered.
 
 ### Calendar 
 
-`calendar` - To enter Calendar view.
+* `calendar` - To enter Calendar view.
 
 Click [here](#315-calendar-view) for more details on how to use the Calendar view.
 
@@ -1227,7 +1246,6 @@ Click [here](#315-calendar-view) for more details on how to use the Calendar vie
 
 ## 6. Formats Used
 
-Description of tasks shouldn't contain `/` and `#` characters, as they are used for a special purpose by the application.<br>
+Description of tasks shouldn't contain `/` and `#` characters, as they are used for a special purpose by the application<br>
 Time should be in the form of `HH:MM` (24 Hour Format, HH - Hour, MM - Minute) <br>
 Date should be in the form of `YYYY-MM-DD` (YYYY - Year, MM - Month, DD - Day) <br>
-
