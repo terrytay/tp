@@ -6,6 +6,10 @@ import task.TaskList;
 import ui.Ui;
 
 //@@author NizarMohd
+
+/**
+ * Functions as a parent class for commands which takes in a parameter for the index of the task.
+ */
 public class CommandWithIndex extends Command {
 
 

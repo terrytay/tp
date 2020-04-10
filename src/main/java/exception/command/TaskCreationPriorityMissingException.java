@@ -4,6 +4,10 @@ import exception.CustomException;
 
 //@@author GanapathySanathBalaji
 
+
+/**
+ * Exception is thrown if the user didn't enter a priority when creating a task.
+ */
 public class TaskCreationPriorityMissingException extends CustomException {
 
     public static final String PRIORITY_ENTERED_IS_EMPTY = "Priority entered is empty,"
