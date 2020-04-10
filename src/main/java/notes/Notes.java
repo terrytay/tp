@@ -73,7 +73,7 @@ public class Notes {
                 String code = input.nextLine();
                 ArrayList<String> messages = new ArrayList<>();
                 String message = input.nextLine();
-                while (!message.equals("-----")) {
+                while (!message.equals(Constants.NOTES_KEY_WORD)) {
                     messages.add(message);
                     message = input.nextLine();
                 }
@@ -100,7 +100,7 @@ public class Notes {
                 for (String message : messages) {
                     fw.write(message + "\n");
                 }
-                fw.write("-----\n");
+                fw.write(Constants.NOTES_KEY_WORD + "\n");
             } catch (IOException e) {
                 ui.printLine();
                 e.printStackTrace();
