@@ -330,9 +330,11 @@ public class Constants {
     public static final String NOTES_BYE = "bye";
     public static final String NOTES_HELP = "help";
 
+    public static final String HAS_BEEN_CREATED_BEFORE = "This module already exist.";
     public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
             + " e.g. To add a module, enter \"add [modulename]\"";
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
+    public static final String MODULE_BYE_MSG = "You are now back at Notes main page.";
     public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
     public static final String NO_MODULE_FOUND = "No modules found.";
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";

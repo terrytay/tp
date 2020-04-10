@@ -20,7 +20,7 @@ div {
   z-index: 99; 
   border: none; 
   outline: none; 
-  background-color: lightblue; 
+  background-color: darkblue; 
   color: white; 
   cursor: pointer; 
   padding: 15px; 
@@ -84,17 +84,17 @@ The target reader of this developer guide are:
 ### 1.3. Brief Description
 
 OrgaNice! is a task manager integrated with a Study Area search function. You can use it to manage your tasks, be it events or deadlines. On top of that, 
-it is capable of assisting students in finding Study Areas that meets their desired criteria.
+it is capable of assisting students in finding Study Areas that meet their desired criteria.
 
 ### 1.4. Main Features
 
 1. Scheduling Tasks
-    - You can manage tasks based on priority for events and countdown for deadlines.For more information of the design and implementation for this feature, click [here](#31-scheduling-tasks)
+    - You can manage tasks based on priority for events and countdown for deadlines. For more information on the design and implementation for this feature, click [here](#31-scheduling-tasks)
 1. Study Area. 
-    - You can find a Study Area that meets your criteria. The software however have a limited number of supported 
-    criteria. For more information of the design and implementation for this feature, click [here](#32-listing-study-areas)
+    - You can find a Study Area that meets your criteria. The software, however, have a limited number of supported 
+    criteria. For more information on the design and implementation for this feature, click [here](#32-listing-study-areas)
 1. Notes
-	- You can enter notes based on school modules. Notes support undo and redo operations.For more information of the design and implementation for this feature, click [here](#33-operation-of-notes)
+	- You can enter notes based on school modules. Notes support undo and redo operations. For more information on the design and implementation for this feature, click [here](#33-operation-of-notes)
 
 ## 2. Design   
 
@@ -105,11 +105,11 @@ it is capable of assisting students in finding Study Areas that meets their desi
 <div>Figure 1. Overall Architecture of OrgaNice!</div>
 <br>
 
-1. Duke - Main component which controls the flow of execution.
+1. Duke - The Main component which controls the flow of execution.
 
 1. Ui - Component used to get input from the user and display results on the monitor.
 
-1. Parser - Component used to abstract out the command based on user's input, so that the command can be executed later.
+1. Parser - Component used to abstract out the command based on the user's input, so that the command can be executed later.
 
 1. Command - Component contains information and implementation on how to execute various types of commands.
 
@@ -143,22 +143,22 @@ The Task component depends on 3 other components,
 <br>
 The task component contains 8 separate classes. They are as follows:  
  
-  1. Task : Abstract class used to model a generic task. 
+  1. Task: Abstract class used to model a generic task. 
    
-  2. Event : Specialized task class used to model events.  
+  2. Event: Specialized task class used to model events.  
   
-  3. Deadline : Specialized task class used to model a deadline.   
+  3. Deadline: Specialized task class used to model a deadline.   
    
-  4. TaskType : Enumeration class used to denote the various task types.   
+  4. TaskType: Enumeration class used to denote the various task types.   
   
-  5. TaskList : Container class used to store list of tasks and handle related operations. 
+  5. TaskList: Container class used to store the list of tasks and handle related operations. 
    
-  6. SchedulableTask : Class used to model a task which is scheduled based on user's requirements.  
+  6. SchedulableTask: Class used to model a task that is scheduled based on user's requirements.  
   
-  7. TaskComparator : Contains a custom comparator used to compare two schedulable tasks based on their 
+  7. TaskComparator: Contains a custom comparator used to compare two schedulable tasks based on their 
   numberOfDaysLeft attribute.  
   
-  8.  TaskScheduler : Class used to check for feasibility and schedule a list of tasks based on user's requirements.     
+  8. TaskScheduler: Class used to check for feasibility and schedule a list of tasks based on the user's requirements.     
      
 
 [comment]: # (@@author NizarMohd)
@@ -181,11 +181,11 @@ The task component contains 8 separate classes. They are as follows:
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
-   1. Dictionary : Class to map user input to specific terms used in StudyAreaList. 
+   1. Dictionary: Class to map user input to specific terms used in StudyAreaList. 
     
-   2. StudyArea : Class that is used to model Study Areas. 
+   2. StudyArea: Class that is used to model Study Areas. 
    
-   3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
+   3. StudyAreaList: Class that handles the list of available Study Areas based on User input.  
 
 Details on the methods are listed in the [glossary](#appendix-d-glossary)
 
@@ -197,17 +197,17 @@ Details on the methods are listed in the [glossary](#appendix-d-glossary)
 <br>
 The Notes component is self-contained apart from calling UI class for Strings output.
 <br> 
-Inside Notes component, there exists these classes:
+Inside Notes component, there exist these classes:
   
-1. NotesInvoker : Class to start the Notes
+1. NotesInvoker: Class to start the Notes
 	
-2. Notes : Class to support operations for the modules in the Notes, acts as interface.
+2. Notes: Class to support operations for the modules in the Notes, acts as an interface.
 	
-3. Modulelist: Class to implement actual modules operations and store modules list.
+3. ModuleList: Class to implement actual modules operations and store modules list.
 	
-4. Command : Package containing Command interface, Add command, Command Stack classes.
+4. Command: Package containing Command interface, Add command, Command Stack classes.
 	
-5. Parser : Class to parse commands for command-based operations.
+5. Parser: Class to parse commands for command-based operations.
 
 
 ## 3. Implementation
@@ -218,13 +218,12 @@ Inside Notes component, there exists these classes:
 [comment]: # (@@author GanapathySanathBalaji)
 
 #### 3.1.1 Implementation 
-   Inorder to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
+   In order to schedule tasks based on the user's requirement a separate SchedulableTask class was created. 
  1. The user's requirements (Name, Time to complete it, Deadline) are captured for each of the tasks to be scheduled. 
  1. The requirements captured are stored in the SchedulableTask object. 
  1. Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
  (Early Deadline First) algorithm.
- 1. If a feasible schedule is found it is 
- displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
+ 1. If a feasible schedule is found it is displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 	
    The following sequence diagrams explain how tasks are scheduled.
@@ -246,27 +245,36 @@ Inside Notes component, there exists these classes:
  <div>Figure 7. Sub Diagram 2</div>
  <br>
  
- * `Add the scheduled tasks to current list of tasks`
+ * `Add the scheduled tasks to the current list of tasks`
  
  ![Sub Diagram 3](images/ScheduleSub3.png)
  <div>Figure 8. Sub Diagram 3</div>
  <br> 
  
 #### 3.1.2 Alternatives
-Aspect : How to capture user's requirements and handle it.
+Aspect: How to capture the user's requirements and handle them.
 
- - Alternative 1 (Current Choice) : Create a separate SchedulableTask object to store user's requirements for each task 
+ - Alternative 1 (Current Choice) : Create a separate SchedulableTask object to store the user's requirements for each task 
                                     to be scheduled.
-      - Pros : New class object can be customised without affecting core functionality of the product if the attributes provided by 
+      - Pros: New class objects can be customised without affecting the core functionality of the product if the attributes provided by 
       the user (to tasks to be scheduled) changes.
-      - Cons : New methods similar to previously implemented methods have to be created instead of being reused.
+      - Cons: New methods similar to previously implemented methods have to be created instead of being reused.
       
- - Alternative 2 : Modify existing event or deadline class to model user's requirements.
-      - Pros : It reuses methods and reduces coupling between classes in the TaskComponent.
-      - Cons : Major changes would be required throughout various components of the application to accommodate the new feature. 
+ - Alternative 2: Modify existing event or deadline class to model the user's requirements.
+      - Pros: It reuses methods and reduces coupling between classes in the TaskComponent.
+      - Cons: Major changes would be required throughout various components of the application to accommodate the new feature. 
 
-     Finally the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
+     Finally, the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user). 
+
+#### 3.1.3 Future Enhancements
+
+The current version of the application doesn't take into account the other tasks present, however, the priority 
+values can still be used to decide the more important task. <br>
+In v3.0 our application will support
+ 1. scheduling tasks while avoiding tasks present previously 
+ 1. add support for tasks to be scheduled preemptively (i.e, tasks can be scheduled over non-contiguous days)
+ 1. Change the default priority value assigned to scheduled tasks
 
 [comment]: # (@@author NizarMohd)
 
@@ -286,7 +294,7 @@ To do as mentioned above, the StudyAreaList class implements the following main 
 
 - searchList() : 
     - This method will iterate through all the Study Areas in the ArrayList studyAreaList while calling other methods 
-    to carry out the search. Once process has ended, the method will return a list of the Study Area, availStudyArea, 
+    to fulfil the search requirements. Once process has ended, the method will return a list of the Study Area, availStudyArea, 
     that meets the User requirement.
 - getFlagsInfo() : 
     - This method will retrieve the flags entered by User, at the same time validating the User input. The criteria 
@@ -294,7 +302,7 @@ To do as mentioned above, the StudyAreaList class implements the following main 
     flags in version 2.
 - isAvailStudyArea() : 
     - This method does the check mentioned above and returns a boolean value. Based on the flags detected, 
-    the method will iterate through the flags array and check if the Study Area's attribute matches each flag stated in
+    the method will iterate through the flags array and check if the Study Area's attribute match each flag stated in
     flags. If isAvailStudyArea returns as true for all flags, the Study Area is then added to the output list, 
     availStudyArea. 
 
@@ -326,19 +334,19 @@ Aspect: How to search based on User input.
 - Alternative 1 (Current Choice) :
  
     Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
-    - Pros : Lesser data structures required. Therefore lesser memory required.
-    - Cons : Linear search, therefore, with bigger size of data, search may take longer. <br>
+    - Pros: Lesser data structures required. Therefore lesser memory required.
+    - Cons: Linear search, therefore, with a bigger size of data, the search may take longer. <br>
 
     
 - Alternative 2 : 
 
 
-There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
+There exist four flags: port availability, indoor, outdoor, capacity. Create adjacency lists that map the flag to the 
 Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
-Depending on the type of attribute, the adjacency list can be implemented using different data structure.
+Depending on the type of attribute, the adjacency list can be implemented using different data structures.
 
 
-For example, let's take only the two study areas as the entire data set.
+For example, let's take only the two study areas below as the entire data set.
 
 ![study_area_det](images/studyAreaDet.PNG)
 <div>Figure 12. Sample Data</div>
@@ -358,26 +366,26 @@ Ports:
 Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
 No -> null
 
-*Data Structure* : 2D Array, with only two rows (For Yes and No)
+*Data Structure*: 2D Array, with only two rows (For Yes and No)
 
 Capacity: 
 
 4 -> {Opposite Town Green (Outside Starbucks)} <br>
 5 -> {Starbucks} 
 
-*Data Structure* : HashMap<Integer, ArrayList<String>> 
+*Data Structure*: HashMap<Integer, ArrayList<String>> 
 
 The creation and initialisation of the lists are done when the software is setting up.  Therefore, each flag 
-has its own list. Based on user criteria, concatenate an output list with the Study Areas that are found in all
+has its designated list. Based on user criteria, concatenate an output list with the Study Areas that are found in all
 of the relevant flag lists stated by the user. If more than one requirement is entered by the user, only the Study 
 Areas appears in all the related attributes specified by the User will be added to the output list.
 
-- Pros : Data is categorised based on flags.
-- Cons : More memory is required as more data structures are used. Since methods invoked during the search are also 
+- Pros: Data is categorised based on flags.
+- Cons: More memory is required as more data structures are used. Since methods invoked during the search are also 
 linear, time taken to complete the search will be longer if more data are present. Overall, this approach is harder 
 to implement.
 
-Therefore, the first alternative is chosen, as it is much easier to implement and lesser memory is used while conducting the search.
+Therefore, the first alternative is chosen, as it is much easier to implement and lesser memory is used while searching
 
 [comment]: # (@@author terrytay)
 
@@ -391,50 +399,50 @@ contains operations to add, remove, enter and list modules.
 <br>
 
 A ModuleManager class is used to hold operations for a module. These operations are achieved by working together
-with the Parser class and Command class. Operations supported are add, list, undo, redo. 
+with the Parser class and Command class. Operations supported are: add, list, undo, redo. 
 
-Add operations are fairly simple, primarily using the add method of HashMap library. The implementation of
+Add operations are fairly simple, primarily using the add method of the HashMap library. The implementation of
 undo and redo is stated here below.
 
-Each time an AddCommand object is called, CommandStack will determine if operation is add, undo or redo.
+Each time an AddCommand object is called, CommandStack will determine if the operation is add, undo or redo.
 <br><br>
-If operation is to add notes, the notes will be added to the value in the module key. At the same time, 
+If the operation is to add notes, the notes will be added to the value in the module key. At the same time, 
 this note that is added is also added to a CommandStack list in the CommandStack class. The redoStack list in the 
 CommandStack class is then cleared.
 <br><br>
-If operation is to undo added notes, the CommandStack will remove the last added note from
+If the operation is to undo added notes, the CommandStack will remove the last added note from
 the CommandStack and pass it to the Command class to execute the undo action by removing it from the module
 contained in the HashMap. Also, this note will be added to the redoStack list.
 <br><br>
-If operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
+If the operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
 pass it to the Command class to execute the redo action by adding this note into the module contained in the
 HashMap.
 <br><br>
-The reason why we chose two linked lists to support these operations is because it reduces the SLOC needed to
+The reason why we chose two linked lists to support these operations is that it reduces the SLOC needed to
 write the logic. An alternative is to actually remember the state of the HashMap before an operation and save
 it to another HashMap. However, this approach will take up more memory and reduces the performance of the application. 
 
 [comment]: # (@@author NizarMohd)
 ## 4. Testing 
 
-Currently we have two runners to execute the tests, JUnit and Gradle.<br>
+Currently, we have two runners to execute the tests, JUnit and Gradle.<br>
 *Note*: It is advisable to run tests with coverage, to ensure that 90% of the paths are covered.
 
 
 #### Using IntelliJ JUnit
 
-Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration, if there isn't any to run all tests. 
+Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration if there isn't any to run all tests. 
 
 To edit a configuration, click `Run` then click on `Edit Configurations`. Proceed to click the `+` icon, followed by `JUnit`
 
-Afterwards, ensure that the configurations are as such:
+Afterward, ensure that the configurations are as such:
 
 ![Junit_config](images/JUnitConfiguration.PNG)
 <div>Figure 13. Configuring JUnit Tests</div>
 <br>
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
-This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
+This allows for you to see which path has the test covered so that you can ensure at least 90% of the paths are covered when testing.
 
 Alternatively, you can click on this icon to run with coverage :
 
@@ -447,23 +455,23 @@ To run a subset of tests, you can right-click on a test package, test class, or 
 
 #### Using Gradle
 
-Firstly ensure that the gradle build has the following details: 
+Firstly ensure that the Gradle build has the following details: 
 
-![gradle_build](images/gradleBuild.PNG)
+![Gradle_build](images/gradleBuild.PNG)
 <div>Figure 15. Expected Gradle Build </div>
 <br>
 
-Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
+Next, to run using Gradle, you can click on the Gradle plugin icon at the left-hand side
 
-Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
+Then click on the elephant icon (as seen below) and search for `Gradle test` then proceed to click on it.
 
 ![elephant_icon](images/elephantIcon.PNG)
 <div>Figure 16. Gradle Icon</div>
 <br>
 
-Now the configuration is set to gradle. Proceed to click the icon:
+Now the configuration is set to Gradle. Proceed to click the icon:
 
-![gradle_run_test](images/gradleRunTest.PNG)
+![Gradle_run_test](images/gradleRunTest.PNG)
 <div>Figure 17. Running Gradle Test</div>
 <br>
 
@@ -473,8 +481,8 @@ Now the configuration is set to gradle. Proceed to click the icon:
 ### Target User Profile  
 
 Mainly NUS students and professors who :
-* need to manage their tasks, events and deadlines
-* prefer desktop app over other types
+* need to manage their tasks, events, and deadlines
+* prefer a desktop app over other types
 * are new to the faculty (or freshmen) , and require knowledge on conducive areas to study
 * have specific needs for a conducive Study Area
 
@@ -512,6 +520,7 @@ meets your needs and is conducive, should you urgently need one.
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
 * Environment Requirement :  
+    * Mainstream OS
     * Java 11
     * 32-bit or 64-bit environment
     * Command Line Interface
@@ -519,7 +528,7 @@ meets your needs and is conducive, should you urgently need one.
 * Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
 * Performance Requirement :
-    * Should be able to hold upto 1000 tasks without noticeable delay in performance for typical usage. <br> 
+    * Should be able to hold up to 1000 tasks without noticeable delay in performance for typical usage. <br> 
 * Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
@@ -527,6 +536,10 @@ meets your needs and is conducive, should you urgently need one.
 
 ## Appendix D: Glossary    
 
+ * *Mainstream OS* - Windows, Linux, Unix, OS-X
+ * *priority* - Value used to indicate the importance of a task. The task with a higher priority value is considered to
+ be more important
+ * *EDF Algorithm* - **E**arliest **D**eadline **F**irst is a dynamic priority scheduling algorithm
  * *flag* - Criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
@@ -536,17 +549,17 @@ meets your needs and is conducive, should you urgently need one.
  * *executeStudyCommand()* - This method executes the Study Area User Interface
  * *getHasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
  * *getIsIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
- * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
- by user.<a name="containsSearchKey"></a>
- * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
+ * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size stated
+ by the user.<a name="containsSearchKey"></a>
+ * *containsSearchKey()* - This method returns true if the Study Area's name, faculty or address contain the search key 
  entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
- does not require any flags, instead it utilises a loose search 
+ does not require any flags, instead, it utilises a loose search 
  * *ports_flag* - refers to "-p" flag <a name="flags"></a>
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
  * *loadDictionary()* - this method will load the data for the mapping (of loose search terms to name/address/faculty of the study area) from the text files and store it into the dictionary class. This mapping is later used when [containSearchKey()](#containsSearchKey) method calls the Dictionary class 
- to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
+ to search through the map (by invoking parseKey) for any study area associated with the loose search terms.
  * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
  
 [comment]: # (@@author)
@@ -556,7 +569,7 @@ meets your needs and is conducive, should you urgently need one.
 
 ### Initial launch
 
-1.  Opening the application
+*  Opening the application
 
     a. Download the jar file and copy into an empty folder.
    
@@ -566,7 +579,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Adding a deadline task
 
-1. Adding a new deadline task to the list
+* Adding a new deadline task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -577,11 +590,11 @@ meets your needs and is conducive, should you urgently need one.
     Expected: No new deadline task should be added. Error details are shown in the interface.
     
     d. Other incorrect deadline creation commands: `deadline`,`deadline /d /t /p`<br>
-    Expected: Similar to previous test case.
+    Expected: Similar to the previous test case.
 
 #### Adding an event task
 
-1. Adding a new event task to the list
+* Adding a new event task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -592,11 +605,11 @@ meets your needs and is conducive, should you urgently need one.
     Expected: No new event task should be added. Error details are shown in the interface.
     
     d. Other incorrect event creation commands: `event`,`event /d /s /e /p`<br>
-    Expected: Similar to previous test case.
+    Expected: Similar to the previous test case.
     
 #### Scheduling tasks
 
-1. Creating a schedule based on user's requirements
+* Creating a schedule based on the user's requirements
 
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -606,11 +619,11 @@ meets your needs and is conducive, should you urgently need one.
     c. Test case: `schedule 0`<br>
        Expected: No tasks are scheduled. Error details are shown in the interface.
        
-    d. Other incorrect schedule commands to try:`schedule`,    `schedule y` (where y is an negative integer),
+    d. Other incorrect schedule commands to try: `schedule`,    `schedule y` (where y is an negative integer),
        `schedule z` (where z isn't an integer)<br>
-       Expected: Similar to previous test case
+       Expected: Similar to the previous test case.
 
-2. Entering details of individual tasks to be done.
+* Entering details of individual tasks to be done.
 
     a. Prerequisites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
 
@@ -625,9 +638,9 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Marking a deadline task as done
 
-1. Marking a deadline task as done while all tasks are listed
+* Marking a deadline task as done while all tasks are listed
 
-    a. Prerequisites: List all tasks using the `view` command. Atleast one deadline task and one event in the list. For the following test cases it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
+    a. Prerequisites: List all tasks using the `view` command. At least one deadline task and one event in the list. For the following test cases, it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
     
     b. Test case: `done 1`<br>
       Expected: Deadline task at the first index of the list should be marked as "COMPLETED". Details of the marked task is shown in the interface.
@@ -636,47 +649,47 @@ meets your needs and is conducive, should you urgently need one.
        Expected: When tasks marked as done already are set to be marked again, A message is displayed stating that the task was already marked.
        
     d. Test case: `done 2`<br>
-       Expected: A message is displayed stating that task of event type can't be marked as done.
+       Expected: A message is displayed stating that the task of event type can't be marked as done.
        
     e. Test case: `done 0`<br>
        Expected: No deadline is marked as done. Error details are shown in the interface.
        
-    f. Other incorrect done commands to try: `done`,          `done x` (where x is larger than the list size),       `done y` (where y is an negative integer),
+    f. Other incorrect done commands to try: `done`, `done x` (where x is larger than the list size),       `done y` (where y is a negative integer),
        `done z` (where z isn't an integer)<br>
-       Expected: Similar to previous test case
+       Expected: Similar to the previous test case
 
 #### Editing a task
 
-1. Editing a task while all tasks are listed
+* Editing a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
     b. Test case: `edit 1`<br>
-       Expected: A new interface displayed which guides user on how to edit the various fields of the first task in the list. The interface used to edit the individual fields can be tested using the next point. After the process is over, Details of the edited task is shown in the interface.
+       Expected: A new interface displayed which guides the user on how to edit the various fields of the first task in the list. The interface used to edit the individual fields can be tested using the next point. After the process is over, Details of the edited task is shown in the interface.
        
     c. Test case: `edit 0`<br>
-       Expected: No task is edited. Error details shown in the interface.
+       Expected: No task is edited. Error details are shown in the interface.
        
-    d. Other incorrect edit commands to try: `edit`, `edit x` (where x is larger than the list size),     `edit y` (where y is an negative integer),
+    d. Other incorrect edit commands to try: `edit`, `edit x` (where x is larger than the list size),     `edit y` (where y is a negative integer),
        `edit z` (where z isn't an integer)<br>
-       Expected: Similar to previous test case
+       Expected: Similar to the previous test case
        
-2. Editing individual fields
+* Editing individual fields
 
-    a. Prerequisites: Entered a valid `edit` command and for this example it is assumed that the user entered `2` to edit the date field. Other fields can be tested similarly.<br>
+    a. Prerequisites: Entered a valid `edit` command and for this example, it is assumed that the user entered `2` to edit the date field. Other fields can be tested similarly.<br>
     
     b. Test case: `2020-06-06` (future date)<br>
     Expected: Date for task is changed successfully. Details of the edited task displayed.
 
     c. Test case: `03-04-2020` <br>
-    Expected: Date of task isn't changed and the user is asked to reenter date. Error details are shown in interface.
+    Expected: Date of task isn't changed and the user is asked to reenter date. Error details are shown in the interface.
     
     d. Other incorrect dates to enter: `2020-02-03` (Past date), `2020/05/05` <br>
     Expected: Similar to the previous case.
 
 #### Searching for tasks
 
-1. Searching for tasks based on their description
+* Searching for tasks based on their description
  
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -684,15 +697,15 @@ meets your needs and is conducive, should you urgently need one.
        Expected: THe list of tasks containing the string 'math' is shown.
        
     c. Test case: `search  `<br>
-       Expected: Search operation isn't performed and no list is shown. Error details shown in the interface.
+       Expected: Search operation isn't performed and no list is shown. Error details are shown in the interface.
        
     d. Other incorrect search commands to try: `searchfor math`, `searchmath`<br>
-       Expected: Similar to previous test case
+       Expected: Similar to the previous test case
 
 
 #### Deleting a task
 
-1. Deleting a task while all tasks are listed
+* Deleting a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
@@ -700,36 +713,36 @@ meets your needs and is conducive, should you urgently need one.
        Expected: First task is deleted from the list. Details of the deleted task shown in the interface.
        
     c. Test case: `delete 0`<br>
-       Expected: No task is deleted. Error details shown in the interface.
+       Expected: No task is deleted. Error details are shown in the interface.
        
-    d. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size),     `delete y` (where y is an negative integer),
+    d. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size),     `delete y` (where y is a negative integer),
        `delete z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
 
-
+[comment]: # (@@author NizarMohd)
 ### Testing for Study Area Search
 
 Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by location, name, address 
 
-1. To test accuracy of loose search:
+* To test for accuracy of loose search:
  
-    a. Test case : `bux` <br>
+    a. Test case: `bux` <br>
      Expected: returns locations related to Starbucks.
      
-     __Note__: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
+     __Note__: Testers can add or refer to mapping in back up data file, in any case, more abbreviations are required to support an even more loose search.
 
-1. To test for normal search: 
+* To test for normal search: 
 
-    a. Test case : `UTown` <br>
+    a. Test case: `UTown` <br>
     Expected: returns locations associated to UTown.<br>
     
 
 
 #### Search by flags only 
 
- 1. To test for accuracy of flags:
+* To test for accuracy of flags:
  
     a. Test case: `-p` <br>
     Expected: List of study areas with ports available.<br>
@@ -741,31 +754,31 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
      Expected: List of study areas that are outdoors.<br>
      
     d. Test case: `-s` `integer`<br>
-     Expected: List of study areas that has a capacity of the stated integer value or more. <br>
+     Expected: List of study areas that have a capacity of the stated integer value or more. <br>
  
- 1. To test for wrong flag usage: <br>
+* To test for wrong flag usage: <br>
  
     a. Test case: `-z`<br>
-    Expected: Error message pertaining to wrong usage of flags.<br>
+    Expected: Error message on wrong usage of flags.<br>
 
 
 
-#### Search with both, (1) location, name or address , and , (2) flags 
+#### Search with both, (1) location,name or address, and , (2) flags 
 
-1. To test for accuracy:<br>
+* To test for accuracy:<br>
     a. Test case:  `location/name/address`  `flags`<br>
-    Expected: List of study areas that contains the search key and the [flags](#flags).<br>
+    Expected: List of study areas that contain the search key and the [flags](#flags).<br>
     
-1. Since flags must come as a second argument in this case:<br>
-    a.Test case: `flags` `location/name/address}`<br>
-    Expected: Error message pertaining to commands position.<br>
+* Since flags must come as a second argument in this case:<br>
+    a. Test case: `flags` `location/name/address}`<br>
+    Expected: Error message on commands position.<br>
 
 ### Testing for Calendar
 
 
 Prerequisites: Enter Calendar View by entering `calendar`.
 
-1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
+* To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
         
     a. Test case: `now`<br>
     Expected: Calendar view for current month is listed.
@@ -774,8 +787,74 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     Expected: Calendar view for month of May in year 2500 is listed.
     
     c. Test case:  `may` `twenty-twenty`<br>
-    Expected: Error message as month and year has to be integer.
+    Expected: Error message as month and year has to be an integer.
     
     d. Test case: `2` `2020`<br>
-    Expected: Error message as month requested is outdated compared to current month.
+    Expected: Error message as month requested is outdated compared to the current month.
+
+[comment]: # (@@terrytay)    
+### Testing for Notes
+
+#### Module Interface
+Prerequisites: Enter Notes taking feature by entering `notes`.
+
+* To add a module, `add` is entered with the module code.
+
+    Test case: `add CS2113T`<br>
+    Expected: CS2113T has been created
     
+* To remove a module, `remove` is entered with the module code.
+
+    Test case: `remove CS2113T`, `Y` (Assuming CS2113T has been created from step 1a)<br>
+    Expected: CS2113T has been removed
+    
+* To enter a module, `enter` is entered with the module code.
+
+    Test case: `enter CS2113T`<br>
+    Expected: Notes for CS2113T...
+    
+* List all modules, `list` is entered.
+
+    Test case: `list` (Assuming list is populated)<br>
+    Expected: [module1, module2, ... , moduleN]
+    
+    Test case: `list` (Assuming empty)<br>
+    Expected: No modules found.
+
+* To display Help interface, use `help` <br>
+    
+    Test case: `help`<br>
+    Expected: [add modulecode] to add a module... interface is shown.
+        
+* To leave Notes, use `bye`<br>
+
+    Test case: `bye`<br>
+    Expected: Notes saved successfully.
+              	 Thank you for using notes.
+        
+#### Inside a Module
+
+* To add a note:
+
+    Test case: `add hello test msg`<br>
+    Expected: SUCCESS
+
+* To undo a note: (undoing step 1)
+
+    Test case: `undo`<br>
+    Expected: SUCCESS
+    
+* To redo a note: 
+    
+    Test case: `redo`<br>
+    Expected: SUCCESS
+    
+* To list all notes:
+
+    Test case: `list`<br>
+    Expected: hello test msg
+    
+* To go back to modules:
+
+    Test case: `back`<br>
+    Expected: You are now back at Notes main page.
