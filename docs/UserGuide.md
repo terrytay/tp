@@ -1017,7 +1017,11 @@ Expected output:
 
 #### To view tasks for future months
 
-*NOTE*: Input for both month and year must be integers. This feature only support current and future months. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+*NOTE*: <br>
+1. Input for both month and year must be integers. 
+1. This feature only support current and future months. 
+1. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+
 
 Example of usage: 
 
@@ -1064,7 +1068,7 @@ Expected output:
 
 #### 3.15.3 To escape from Calendar View Command 
 
-In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
+In any case that you wish not to exit calendar mode after entering it, you can enter "bye" to exit.
 
 Example of usage: 
 
@@ -1206,8 +1210,18 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 `notes` - Enter notes taking interface <br>
 
 ### Study Area Search Interface
-`{name\address\faculty} {flags}` - Returns a list of Study Areas, if any of the existing data matches the requirement 
-entered. Click [here](#3132-start-search) for more details on how {name\address\faculty} and {flags} should be entered.
+
+`name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
+entered. 
+
+Click [here](#3132-start-search) for more details on how `name\address\faculty` and `flags` should be entered.
+
+### Calendar 
+
+`calendar` - To enter Calendar view.
+
+Click [here](#315-calendar-view) for more details on how to use the Calendar view.
+
 
 <a name="formats"></a>
 

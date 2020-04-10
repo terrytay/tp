@@ -312,7 +312,7 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
-<a href="isAvail"></a>
+<a name="isAvail"></a>
 
 ![Study_Area_Sequence_Diagram_subModules2](images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
@@ -327,37 +327,42 @@ Aspect: How to search based on User input.
  
     Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
     - Pros : Lesser data structures required. Therefore lesser memory required.
-    - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
+    - Cons : Linear search, therefore, with bigger size of data, search may take longer. <br>
+
     
 - Alternative 2 : 
+
+
 There exists four flags : port availability, indoor, outdoor, capacity. Create adjacency lists that maps the flag to the 
 Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
 Depending on the type of attribute, the adjacency list can be implemented using different data structure.
 
+
 For example, let's take only the two study areas as the entire data set.
 
 ![study_area_det](images/studyAreaDet.PNG)
+<div>Figure 12. Sample Data</div>
+<br>
 
 This will result in the following adjacency lists : 
 
 Environment: 
 
-Indoor -> {Starbucks} 
+Indoor -> {Starbucks} <br>
 Outdoor -> {Opposite Town Green (Outside Starbucks)} 
 
 *Data Structure* : 2D Array, with only two rows (For indoors and outdoors)
 
 Ports: 
 
-Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
+Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
 No -> null
 
 *Data Structure* : 2D Array, with only two rows (For Yes and No)
 
 Capacity: 
 
-4 -> {Opposite Town Green (Outside Starbucks)} 
-
+4 -> {Opposite Town Green (Outside Starbucks)} <br>
 5 -> {Starbucks} 
 
 *Data Structure* : HashMap<Integer, ArrayList<String>> 
@@ -388,7 +393,7 @@ contains operations to add, remove, enter and list modules.
 A ModuleManager class is used to hold operations for a module. These operations are achieved by working together
 with the Parser class and Command class. Operations supported are add, list, undo, redo. 
 
-Add operations are fairly simple, primarily using the add method of hashmap library. The implementation of
+Add operations are fairly simple, primarily using the add method of HashMap library. The implementation of
 undo and redo is stated here below.
 
 Each time an AddCommand object is called, CommandStack will determine if operation is add, undo or redo.
@@ -399,20 +404,22 @@ CommandStack class is then cleared.
 <br><br>
 If operation is to undo added notes, the CommandStack will remove the last added note from
 the CommandStack and pass it to the Command class to execute the undo action by removing it from the module
-contained in the hashmap. Also, this note will be added to the redoStack list.
+contained in the HashMap. Also, this note will be added to the redoStack list.
 <br><br>
 If operation is to redo removed notes, the CommandStack will remove the last added note in redoStack list and
 pass it to the Command class to execute the redo action by adding this note into the module contained in the
-hashmap.
+HashMap.
 <br><br>
 The reason why we chose two linked lists to support these operations is because it reduces the SLOC needed to
-write the logic. An alternative is to actually remember the state of the hashmap before an operation and save
-it to another hashmap. However, this approach will take up more memory and reduces the performance of the application. 
+write the logic. An alternative is to actually remember the state of the HashMap before an operation and save
+it to another HashMap. However, this approach will take up more memory and reduces the performance of the application. 
 
 [comment]: # (@@author NizarMohd)
 ## 4. Testing 
 
-Currently we have two runners to execute the tests, JUnit and Gradle.
+Currently we have two runners to execute the tests, JUnit and Gradle.<br>
+*Note*: It is advisable to run tests with coverage, to ensure that 90% of the paths are covered.
+
 
 #### Using IntelliJ JUnit
 
@@ -423,6 +430,8 @@ To edit a configuration, click `Run` then click on `Edit Configurations`. Procee
 Afterwards, ensure that the configurations are as such:
 
 ![Junit_config](images/JUnitConfiguration.PNG)
+<div>Figure 13. Configuring JUnit Tests</div>
+<br>
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
 This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
@@ -430,6 +439,8 @@ This allows for you to see which path has the test covered, so that you can ensu
 Alternatively, you can click on this icon to run with coverage :
 
 ![JUnit_test](images/JUnitRunTest.PNG)
+<div>Figure 14. Running JUnit Tests</div>
+<br>
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
@@ -439,16 +450,22 @@ To run a subset of tests, you can right-click on a test package, test class, or 
 Firstly ensure that the gradle build has the following details: 
 
 ![gradle_build](images/gradleBuild.PNG)
+<div>Figure 15. Expected Gradle Build </div>
+<br>
 
 Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
 
 Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
 
 ![elephant_icon](images/elephantIcon.PNG)
+<div>Figure 16. Gradle Icon</div>
+<br>
 
 Now the configuration is set to gradle. Proceed to click the icon:
 
 ![gradle_run_test](images/gradleRunTest.PNG)
+<div>Figure 17. Running Gradle Test</div>
+<br>
 
 
 [comment]: # (@@author GanapathySanathBalaji) 
@@ -520,11 +537,11 @@ meets your needs and is conducive, should you urgently need one.
  * *getHasPorts()* - This method returns true if the Study Area has a port, and false if otherwise
  * *getIsIndoor()* - This method returns true if the Study Area is indoors, and false if otherwise
  * *isSizeCapable()* - This method returns true if the maximum size of the Study Area is capable of containing the size staed
- by user.<a href="containsSearchKey"></a>
+ by user.<a name="containsSearchKey"></a>
  * *containsSearchKey()* - This method returns true if the Study Area's name,faculty or address contains the search key 
  entered by the user. This method is invoked when under the [default](#isAvail) condition as search by name, address or locations 
  does not require any flags, instead it utilises a loose search 
- * *ports_flag* - refers to "-p" flag <a href="flags"></a>
+ * *ports_flag* - refers to "-p" flag <a name="flags"></a>
  * *indoor_flag* - refers to "-i" flag
  * *outdoor_flag* - refers to "-o" flag
  * *size_flag* - refers to "-s" flag
@@ -532,7 +549,7 @@ meets your needs and is conducive, should you urgently need one.
  to search through the map (by invoking parseKey) for any study area associated to the loose search terms.
  * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
  
-[comment]: # (@@NizarMohd)
+[comment]: # (@@author)
 ## Appendix E: Instructions for Manual Testing    
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
  software's features.
@@ -689,7 +706,10 @@ meets your needs and is conducive, should you urgently need one.
        `delete z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
 
+
 ### Testing for Study Area Search
+
+Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by location, name, address 
 
@@ -698,7 +718,7 @@ meets your needs and is conducive, should you urgently need one.
     a. Test case : `bux` <br>
      Expected: returns locations related to Starbucks.
      
-     *Note*: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
+     __Note__: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
 
 1. To test for normal search: 
 
@@ -709,19 +729,27 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Search by flags only 
 
- 1. To test for accuracy of flags:<br>
+ 1. To test for accuracy of flags:
+ 
     a. Test case: `-p` <br>
     Expected: List of study areas with ports available.<br>
+    
     b. Test case: `-i`<br>
     Expected: List of study areas that are indoors.<br>
+    
     c. Test case: `-o`<br>
      Expected: List of study areas that are outdoors.<br>
+     
     d. Test case: `-s` `integer`<br>
      Expected: List of study areas that has a capacity of the stated integer value or more. <br>
  
  1. To test for wrong flag usage: <br>
+ 
     a. Test case: `-z`<br>
     Expected: Error message pertaining to wrong usage of flags.<br>
+
+
+
 #### Search with both, (1) location, name or address , and , (2) flags 
 
 1. To test for accuracy:<br>
@@ -731,3 +759,23 @@ meets your needs and is conducive, should you urgently need one.
 1. Since flags must come as a second argument in this case:<br>
     a.Test case: `flags` `location/name/address}`<br>
     Expected: Error message pertaining to commands position.<br>
+
+### Testing for Calendar
+
+
+Prerequisites: Enter Calendar View by entering `calendar`.
+
+1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
+        
+    a. Test case: `now`<br>
+    Expected: Calendar view for current month is listed.
+    
+    b. Test case: `5` `2500`<br>
+    Expected: Calendar view for month of May in year 2500 is listed.
+    
+    c. Test case:  `may` `twenty-twenty`<br>
+    Expected: Error message as month and year has to be integer.
+    
+    d. Test case: `2` `2020`<br>
+    Expected: Error message as month requested is outdated compared to current month.
+    
