@@ -390,4 +390,7 @@ public class Constants {
     public static final String DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG = "Description entered by user is empty";
     public static final String DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS = "Description entered by "
             + "user contains illegal characters";
+
+    public static final String NOTES_KEY_WORD_ERROR = "Sorry \"-----\" cannot be used as it is a reserved word.";
+    public static final String NOTES_KEY_WORD = "-----";
 }
