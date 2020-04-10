@@ -223,8 +223,7 @@ Inside Notes component, there exist these classes:
  1. The requirements captured are stored in the SchedulableTask object. 
  1. Then, the TaskScheduler object finds the optimum schedule based on the user's requirements using the EDF 
  (Early Deadline First) algorithm.
- 1. If a feasible schedule is found it is 
- displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
+ 1. If a feasible schedule is found it is displayed, else a message stating that a schedule based on the user's requirements can't be made is displayed.
  
 	
    The following sequence diagrams explain how tasks are scheduled.
@@ -267,6 +266,15 @@ Aspect: How to capture the user's requirements and handle them.
 
      Finally, the first alternative was implemented as it was easier to implement and maintain it if changes were required to 
 the user's requirements (e.g. Changes to the number of parameters provided by the user). 
+
+#### 3.1.3 Future Enhancements
+
+The current version of the application doesn't take into account the other tasks present, however, the priority 
+values can still be used to decide the more important task. <br>
+In v3.0 our application will support
+ 1. scheduling tasks while avoiding tasks present previously 
+ 1. add support for tasks to be scheduled preemptively (i.e, tasks can be scheduled over non-contiguous days)
+ 1. Change the default priority value assigned to scheduled tasks
 
 [comment]: # (@@author NizarMohd)
 
@@ -512,6 +520,7 @@ meets your needs and is conducive, should you urgently need one.
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
 * Environment Requirement :  
+    * Mainstream OS
     * Java 11
     * 32-bit or 64-bit environment
     * Command Line Interface
@@ -527,6 +536,10 @@ meets your needs and is conducive, should you urgently need one.
 
 ## Appendix D: Glossary    
 
+ * *Mainstream OS* - Windows, Linux, Unix, OS-X
+ * *priority* - Value used to indicate the importance of a task. The task with a higher priority value is considered to
+ be more important
+ * *EDF Algorithm* - **E**arliest **D**eadline **F**irst is a dynamic priority scheduling algorithm
  * *flag* - Criteria that are supported by the software. Currently supported flags are, -i for indoors, -o for outdoors,
  -p for Study Areas with ports and -s for the number of people that the Study Area should facilitate 
  * *available Study Area* - Study Areas that matches the User requirement, therefore _available_ for usage
@@ -641,7 +654,7 @@ meets your needs and is conducive, should you urgently need one.
     e. Test case: `done 0`<br>
        Expected: No deadline is marked as done. Error details are shown in the interface.
        
-    f. Other incorrect done commands to try: `done`,          `done x` (where x is larger than the list size),       `done y` (where y is a negative integer),
+    f. Other incorrect done commands to try: `done`, `done x` (where x is larger than the list size),       `done y` (where y is a negative integer),
        `done z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case
 
