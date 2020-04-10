@@ -45,7 +45,14 @@ public class Parser {
             case Constants.NOTES_PARSER_ADD:
                 if (hasMinimumLength(userInput, 2)) {
                     String message = userInput.split(userCommandText + Constants.SPACE)[1];
-                    return new AddCommand(moduleManager, message, userCommandText);
+                    if (message.equals(Constants.NOTES_KEY_WORD)) {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_KEY_WORD_ERROR);
+                        ui.printLine();
+                        return null;
+                    } else {
+                        return new AddCommand(moduleManager, message, userCommandText);
+                    }
                 } else {
                     ui.printLine();
                     ui.printMessage(Constants.NOTES_PARSER_INVALID_INPUT);
