@@ -20,7 +20,7 @@ div {
   z-index: 99; 
   border: none; 
   outline: none; 
-  background-color: lightblue; 
+  background-color: darkblue; 
   color: white; 
   cursor: pointer; 
   padding: 15px; 
@@ -556,7 +556,7 @@ meets your needs and is conducive, should you urgently need one.
 
 ### Initial launch
 
-1.  Opening the application
+*  Opening the application
 
     a. Download the jar file and copy into an empty folder.
    
@@ -566,7 +566,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Adding a deadline task
 
-1. Adding a new deadline task to the list
+* Adding a new deadline task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -581,7 +581,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Adding an event task
 
-1. Adding a new event task to the list
+* Adding a new event task to the list
     
     a. Prerequisites: Application is in the main interface     (i.e, not inside study area, notes interface).
 
@@ -596,7 +596,7 @@ meets your needs and is conducive, should you urgently need one.
     
 #### Scheduling tasks
 
-1. Creating a schedule based on the user's requirements
+* Creating a schedule based on the user's requirements
 
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -610,7 +610,7 @@ meets your needs and is conducive, should you urgently need one.
        `schedule z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case.
 
-2. Entering details of individual tasks to be done.
+* Entering details of individual tasks to be done.
 
     a. Prerequisites: A valid call of the `schedule` command    is done. The interface is awaiting the details of      the tasks to be entered.
 
@@ -625,7 +625,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Marking a deadline task as done
 
-1. Marking a deadline task as done while all tasks are listed
+* Marking a deadline task as done while all tasks are listed
 
     a. Prerequisites: List all tasks using the `view` command. At least one deadline task and one event in the list. For the following test cases, it is assumed that the first index of the list is a deadline task, which is still pending and that the second task is an event task.
     
@@ -647,7 +647,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Editing a task
 
-1. Editing a task while all tasks are listed
+* Editing a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
@@ -661,7 +661,7 @@ meets your needs and is conducive, should you urgently need one.
        `edit z` (where z isn't an integer)<br>
        Expected: Similar to the previous test case
        
-2. Editing individual fields
+* Editing individual fields
 
     a. Prerequisites: Entered a valid `edit` command and for this example, it is assumed that the user entered `2` to edit the date field. Other fields can be tested similarly.<br>
     
@@ -676,7 +676,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Searching for tasks
 
-1. Searching for tasks based on their description
+* Searching for tasks based on their description
  
     a. Prerequisites: Application is in the main interface. (i.e, not inside study area, notes interface).
 
@@ -692,7 +692,7 @@ meets your needs and is conducive, should you urgently need one.
 
 #### Deleting a task
 
-1. Deleting a task while all tasks are listed
+* Deleting a task while all tasks are listed
  
     a. Prerequisites: List all tasks using the `view` command. Multiple tasks in the list.
 
@@ -713,14 +713,14 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by location, name, address 
 
-1. To test for accuracy of loose search:
+* To test for accuracy of loose search:
  
     a. Test case: `bux` <br>
      Expected: returns locations related to Starbucks.
      
      __Note__: Testers can add or refer to mapping in back up data file, in any case, more abbreviations are required to support an even more loose search.
 
-1. To test for normal search: 
+* To test for normal search: 
 
     a. Test case: `UTown` <br>
     Expected: returns locations associated to UTown.<br>
@@ -729,7 +729,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by flags only 
 
- 1. To test for accuracy of flags:
+* To test for accuracy of flags:
  
     a. Test case: `-p` <br>
     Expected: List of study areas with ports available.<br>
@@ -743,7 +743,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
     d. Test case: `-s` `integer`<br>
      Expected: List of study areas that have a capacity of the stated integer value or more. <br>
  
- 1. To test for wrong flag usage: <br>
+* To test for wrong flag usage: <br>
  
     a. Test case: `-z`<br>
     Expected: Error message on wrong usage of flags.<br>
@@ -752,12 +752,12 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search with both, (1) location,name or address, and , (2) flags 
 
-1. To test for accuracy:<br>
+* To test for accuracy:<br>
     a. Test case:  `location/name/address`  `flags`<br>
     Expected: List of study areas that contain the search key and the [flags](#flags).<br>
     
-1. Since flags must come as a second argument in this case:<br>
-    a.Test case: `flags` `location/name/address}`<br>
+* Since flags must come as a second argument in this case:<br>
+    a. Test case: `flags` `location/name/address}`<br>
     Expected: Error message on commands position.<br>
 
 ### Testing for Calendar
@@ -765,7 +765,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 Prerequisites: Enter Calendar View by entering `calendar`.
 
-1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
+* To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
         
     a. Test case: `now`<br>
     Expected: Calendar view for current month is listed.
