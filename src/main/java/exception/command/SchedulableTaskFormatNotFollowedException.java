@@ -4,7 +4,10 @@ import exception.CustomException;
 
 //@@author GanapathySanathBalaji
 public class SchedulableTaskFormatNotFollowedException extends CustomException {
+
+    public static final String PLEASE_FOLLOW_THE_FORMAT_SPECIFIED = "Please follow the format specified";
+
     public SchedulableTaskFormatNotFollowedException() {
-        super("Please follow the format specified");
+        super(PLEASE_FOLLOW_THE_FORMAT_SPECIFIED);
     }
 }
