@@ -781,7 +781,7 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     
 ### Testing for Notes
 
-### Module Interface
+#### Module Interface
 Prerequisites: Enter Notes taking feature by entering `notes`.
 
 1. To add a module, `add` is entered with the module code.
@@ -827,7 +827,7 @@ Prerequisites: Enter Notes taking feature by entering `notes`.
     Expected: Notes saved successfully.
               	 Thank you for using notes.
         
-### Inside a Module
+#### Inside a Module
 
 1. To add a note:
 
