@@ -9,6 +9,8 @@ import notes.modules.command.ListCommand;
 import ui.Constants;
 import ui.Ui;
 
+import static ui.Constants.SPACE2;
+
 //@@author terrytay
 public class Parser {
     private String userCommandText;
@@ -27,21 +29,47 @@ public class Parser {
     public Command parseCommand(String userInput, ModuleManager moduleManager, Ui ui) throws Exception {
         try {
             this.userInput = userInput;
-            userCommandText = userInput.split(Constants.SPACE)[0];
+            userCommandText = userInput.split(Constants.SPACE2)[0];
 
             switch (userCommandText) {
             case Constants.NOTES_PARSER_REDO:
             case Constants.NOTES_PARSER_UNDO:
-                return new AddCommand(
-                        moduleManager, userCommandText);
+                if (!isIncorrectLength(userInput, 1)) {
+                    return new AddCommand(moduleManager, userCommandText);
+                } else {
+                    ui.printLine();
+                    ui.printMessage(Constants.NOTES_PARSER_INVALID_INPUT_2);
+                    ui.printLine();
+                    return null;
+                }
             case Constants.NOTES_PARSER_ADD:
-                String message = userInput.split(userCommandText + Constants.SPACE)[1];
-                return new AddCommand(
-                        moduleManager, message, userCommandText);
+                if (hasMinimumLength(userInput, 2)) {
+                    String message = userInput.split(userCommandText + Constants.SPACE)[1];
+                    return new AddCommand(moduleManager, message, userCommandText);
+                } else {
+                    ui.printLine();
+                    ui.printMessage(Constants.NOTES_PARSER_INVALID_INPUT);
+                    ui.printLine();
+                    return null;
+                }
             case Constants.NOTES_PARSER_LIST:
-                return new ListCommand(moduleManager.getMessages(), ui);
+                if (!isIncorrectLength(userInput, 1)) {
+                    return new ListCommand(moduleManager.getMessages(), ui);
+                } else {
+                    ui.printLine();
+                    ui.printMessage(Constants.NOTES_PARSER_INVALID_INPUT_2);
+                    ui.printLine();
+                    return null;
+                }
             case Constants.NOTES_PARSER_BACK:
-                return new ExitCommand();
+                if (!isIncorrectLength(userInput, 1)) {
+                    return new ExitCommand();
+                } else {
+                    ui.printLine();
+                    ui.printMessage(Constants.NOTES_PARSER_INVALID_INPUT_2);
+                    ui.printLine();
+                    return null;
+                }
             default:
                 throw new Exception();
             }
@@ -55,5 +83,19 @@ public class Parser {
             ui.printLine();
         }
         return null;
+    }
+
+    private boolean isIncorrectLength(String userInput, int requiredLength) {
+        if (userInput.split(SPACE2).length != requiredLength) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean hasMinimumLength(String userInput, int minimumLength) {
+        if (userInput.split(SPACE2).length >= minimumLength) {
+            return true;
+        }
+        return false;
     }
 }

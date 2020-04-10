@@ -48,6 +48,8 @@ public class ModuleManager {
                 isExit = true;
             }
         } while (!isExit);
+        ui.printLine();
+        ui.printMessage(Constants.MODULE_BYE_MSG);
     }
 
     /**
