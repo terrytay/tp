@@ -1,14 +1,13 @@
 package notes;
 
-import exception.NotesCommandException;
 import ui.Constants;
 import ui.Ui;
 
 import java.io.IOException;
-import java.util.Scanner;
 
-import static ui.Constants.SPACE;
+import static ui.Constants.SPACE2;
 import static ui.Constants.TAB;
+import static ui.Constants.SPACE;
 
 
 //@@author terrytay
@@ -33,30 +32,67 @@ public class NotesInvoker {
             try {
                 String userInput = ui.getUserIn();
                 ui.printLine();
-                choice = userInput.split(SPACE)[0];
+                choice = userInput.split(SPACE2)[0];
                 String code;
+
                 switch (choice) {
                 case Constants.NOTES_ADD:
-                    code = userInput.split(SPACE)[1];
-                    notes.createModule(code);
+                    if (!isIncorrectLength(userInput, 2)) {
+                        code = userInput.split(SPACE2)[1];
+                        notes.createModule(code);
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 case Constants.NOTES_REMOVE:
-                    code = userInput.split(SPACE)[1];
-                    notes.deleteModule(code);
+                    if (!isIncorrectLength(userInput, 2)) {
+                        code = userInput.split(SPACE2)[1];
+                        notes.deleteModule(code);
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 case Constants.NOTES_ENTER:
-                    code = userInput.split(SPACE)[1];
-                    notes.enterModule(code);
+                    if (!isIncorrectLength(userInput, 2)) {
+                        code = userInput.split(SPACE2)[1];
+                        notes.enterModule(code);
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 case Constants.NOTES_LIST:
-                    notes.listModules();
+                    if (!isIncorrectLength(userInput, 1)) {
+                        notes.listModules();
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 case Constants.NOTES_BYE:
-                    notes.exportModules();
-                    isExit = true;
+                    if (!isIncorrectLength(userInput, 1)) {
+                        notes.exportModules();
+                        isExit = true;
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 case Constants.NOTES_HELP:
-                    displayMenu(ui);
+                    if (!isIncorrectLength(userInput, 1)) {
+                        displayMenu(ui);
+                    } else {
+                        ui.printLine();
+                        ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
+                        ui.printLine();
+                    }
                     break;
                 default:
                     ui.printMessage(Constants.INVALID_NOTES_COMMAND_MESSAGE);
@@ -82,5 +118,12 @@ public class NotesInvoker {
         ui.printOut(TAB + SPACE + Constants.LIST_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.EXIT_MODULE_MESSAGE, true);
         ui.printOut(TAB + SPACE + Constants.HELP_MODULE_MESSAGE, true);
+    }
+
+    private boolean isIncorrectLength(String userInput, int requiredLength) {
+        if (userInput.split(SPACE2).length != requiredLength) {
+            return true;
+        }
+        return false;
     }
 }
