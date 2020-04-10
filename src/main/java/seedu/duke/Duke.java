@@ -23,6 +23,7 @@ import java.util.logging.SimpleFormatter;
 import static ui.Constants.BYE_COMMAND;
 import static ui.Constants.NOTES_COMMAND;
 import static ui.Constants.STUDY_AREA_COMMAND;
+import static ui.Constants.SUCCESSFUL_UI_CREATION_LOGGER;
 
 
 /**
@@ -45,6 +46,7 @@ public class Duke {
     public Duke()  {
         try {
             setupLogger();
+            LOGGER.log(Level.INFO, SUCCESSFUL_UI_CREATION_LOGGER);
             parser = new Parser();
             taskLoader = new TaskLoader(Constants.FILE_PATH_EVENTS);
             taskList = new TaskList(taskLoader.loadFile());
@@ -64,7 +66,7 @@ public class Duke {
      */
     private static void runCommands() {
         String fullCommand;
-        fullCommand = ui.getUserIn().trim().toLowerCase();
+        fullCommand = ui.getUserIn().trim();
         while (!fullCommand.equals(BYE_COMMAND)) {
             try {
                 switchCommands(fullCommand);

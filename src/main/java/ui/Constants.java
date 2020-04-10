@@ -338,4 +338,53 @@ public class Constants {
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";
     public static final String HELP_DESCRIPTION_24 = TAB + "calendar ----------------------------------"
             + " View existing tasks in Calender view";
+    public static final String START_TIME_AFTER_END_TIME_ERROR_MESSAGE = "Start time after end time exception "
+            + "not thrown";
+    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Date past current day exception not thrown";
+    public static final String EMPTY_DESC_EXP_NOT_THROWN = "Empty description exception not thrown";
+    public static final String DETAIL_OF_TASK_NOT_SHORTENED_PROPERLY = "Detail of task not shortened properly";
+    public static final String EMPTY_DESCRIPTION_EXCEPTION_NOT_THROWN_WHEN_REQUIRED = "Empty description exception not"
+            + " thrown when required";
+    public static final String ILLEGAL_CHARACTER_IN_DESCRIPTION_NOT_IDENTIFIED_BY_APPLICATION = "Illegal character in"
+            + " description not identified by application";
+    public static final String COMPLETION_STATUS_ERROR_MESSAGE = "Completion status should be a boolean value from "
+            + "the following list [{True,TRUE,true},{False,FALSE,false}]";
+    public static final String PAST_DATE_NOT_IDENTIFIED_BY_APPLICATION = "Past date not identified by application";
+    public static final String INVALID_EDIT_OPTION_NOT_DETECTED_BY_APPLICATION = "Invalid edit option not detected"
+            + " by application";
+    public static final String MONTH_YEAR_NOT_SET_LOGGER = "system has not set month or year for calendar view!";
+    public static final String MONTH_YEAR_NOT_SET = "Month and/or year is not set!";
+    public static final String ASSERT_YEAR_NOT_SET = "Year not set!";
+    public static final String ASSERT_MONTH_NOT_SET = "Month not set!";
+    public static final String ASSERT_FIRST_DAY_MISMATCH = "firstDay is not first day of month";
+    public static final String INVALID_MONTH_RANGE_LOGGER = "Invalid month range entered by User";
+    public static final String INVALID_MONTH_LOGGER = "Month entered by User is not an integer";
+    public static final String INVALID_YEAR_LOGGER = "Year entered by User is outdated";
+    public static final String NON_INTEGER_YEAR_LOGGER = "Year entered by User is not an integer";
+    public static final String ONLY_MONTH_AND_YEAR_LOGGER = "User entered more or lesser than 2 arguments";
+    public static final String PAST_MONTH_LOGGER = "User entered month that is outdated";
+    public static final String BYE = "bye";
+    public static final String USER_EXITING_CALENDAR_VIEW = "User exiting calendar view";
+    public static final String CALENDAR_HAS_BEEN_PRINTED_SUCCESSFULLY = "Calendar has been printed successfully";
+    public static final String ASSERT_EMPTY_STUDY_AREA_LIST_WARNING = "StudyAreaList cannot be empty";
+    public static final String MISSING_DICTIONARY_FILE_LOGGER = "Dictionary file is missing from library folder";
+    public static final String DICTIONARY_FILE_IS_NOT_FOUND = "Dictionary file is not found";
+    public static final String SUCCESSFUL_DICTIONARY_LOAD_LOGGER = "Dictionary is loaded successfully";
+    public static final String SUCCESSFUL_UI_CREATION_LOGGER = "UI has successfully been created";
+    public static final String SUCCESSFUL_CLOSING_OF_UI_LOGGER = "UI has been closed successfully";
+    public static final String UI_START_LOGGER = "UI started interaction with User";
+    public static final String UI_END_LOGGER = "UI ended interaction with User";
+    public static final String WRONG_STUDY_AREA_COMMAND_LOGGER = "User entered command wrongly.";
+    public static final String SHORT_STRING_LOGGER = "User entered a short string";
+    public static final String EMPTY_STRING_LOGGER = "User entered empty string";
+    public static final String MISSING_DATA_FILES_LOGGER = "locations.txt is missing from library folder.";
+    public static final String ERROR_DICTIONARY_LOGGER = "Error with dictionary class";
+    public static final String SUCCESSFUL_LOCATIONS_IMPORT_LOGGER = "study areas imported to system successfully";
+    public static final String SUCCESSFUL_DATA_FILE_CREATION_LOGGER = "created new data files for locations and "
+            + "dictionary successfully";
+    public static final char HASH_SYMBOL = '#';
+    public static final char FORWARD_SLASH_SYMBOL = '/';
+    public static final String DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG = "Description entered by user is empty";
+    public static final String DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS = "Description entered by "
+            + "user contains illegal characters";
 }

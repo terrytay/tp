@@ -9,6 +9,7 @@ import exception.command.TaskCreationDescriptionMissingException;
 import exception.command.TaskCreationPriorityMissingException;
 import task.Event;
 import task.TaskList;
+import ui.Constants;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -19,9 +20,6 @@ import java.time.LocalDate;
  */
 public class AddEventCommand extends Command {
 
-    public static final String START_TIME_AFTER_END_TIME_ERROR_MESSAGE = "Start time after end time exception "
-            + "not thrown";
-    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Date past current day exception not thrown";
     public static final String SLASH_SYMBOL = "/";
 
     /** The new event to be added. */
@@ -47,8 +45,9 @@ public class AddEventCommand extends Command {
         String endTime = details[3].substring(2);
         String priority = details[4].substring(2);
         newEvent =  new Event(description,date,startTime,endTime,priority);
-        assert !newEvent.getStartTime().isAfter(newEvent.getEndTime()) : START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
-        assert !newEvent.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
+        assert !newEvent.getStartTime().isAfter(newEvent.getEndTime()) :
+                Constants.START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
+        assert !newEvent.getDate().isBefore(LocalDate.now()) : Constants.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
     }
 
     /**

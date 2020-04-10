@@ -34,6 +34,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	*  Documented the architecture section, Task component and made their respective UML diagrams.
 	* Documented the implementation for scheduling tasks, along with one main sequence diagram and three sub diagrams used as reference frames in the main diagram.
 	* Documented a few user stories.
+	* Documented instructions for manual testing related to task based commands.
 * **Contributions to  team-based tasks :**
 	* Managed the release of v1.0 and v2.0.
 	* Refactored code and created separate parser and command classes.
