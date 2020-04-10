@@ -38,6 +38,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 * **Contributions to team-based tasks :**
 	* Assisted with integration of the forking workflow during the earlier stage, as there were mismatch after resolving merge conflicts.
 	* Refactored code by removing some of the magic literals into constants and moving constants into its own class, Constant class. 
+	* Assisted with the Ui of the system by integrating Ui to classes that requires communication with the user.
 	* Obtained the design for logo and goodbye dab. Credits: [Generator for logo](http://patorjk.com/software/taag/#p=display&f=Graffiti&t=TypeSomething), [image source for goodbye dab](https://www.netclipart.com/isee/iRwmhJb_bt21-rj-transparent-background/), [generator for goodbye dab](https://asciiart.club/)
     * Added test cases using JUnit for study area command, calendar view and study area list.
 * **Review/mentoring contributions:**
