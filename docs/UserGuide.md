@@ -1017,7 +1017,11 @@ Expected output:
 
 #### To view tasks for future months
 
-*NOTE*: Input for both month and year must be integers. This feature only support current and future months. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+*NOTE*: <br>
+1. Input for both month and year must be integers. 
+1. This feature only support current and future months. 
+1. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+
 
 Example of usage: 
 
@@ -1064,7 +1068,7 @@ Expected output:
 
 #### 3.15.3 To escape from Calendar View Command 
 
-In any case that you wish not to view in calendar mode, you can enter "bye" to exit.
+In any case that you wish not to exit calendar mode after entering it, you can enter "bye" to exit.
 
 Example of usage: 
 

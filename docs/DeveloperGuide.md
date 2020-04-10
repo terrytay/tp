@@ -706,7 +706,10 @@ meets your needs and is conducive, should you urgently need one.
        `delete z` (where z isn't an integer)<br>
        Expected: Similar to previous test case
 
+
 ### Testing for Study Area Search
+
+Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by location, name, address 
 
@@ -747,7 +750,6 @@ meets your needs and is conducive, should you urgently need one.
 
 
 
-    
 #### Search with both, (1) location, name or address , and , (2) flags 
 
 1. To test for accuracy:<br>
@@ -757,3 +759,23 @@ meets your needs and is conducive, should you urgently need one.
 1. Since flags must come as a second argument in this case:<br>
     a.Test case: `flags` `location/name/address}`<br>
     Expected: Error message pertaining to commands position.<br>
+
+### Testing for Calendar
+
+
+Prerequisites: Enter Calendar View by entering `calendar`.
+
+1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.
+        
+    a. Test case: `now`<br>
+    Expected: Calendar view for current month is listed.
+    
+    b. Test case: `5` `2500`
+    Expected: Calendar view for month of May in year 2500 is listed.
+    
+    c. Test case:  `may` `twenty-twenty`
+    Expected: Error message as month and year has to be integer.
+    
+    d. Test case: `2` `2020`
+    Expected: Error message as month requested is outdated compared to current month.
+    
