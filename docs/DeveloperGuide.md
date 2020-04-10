@@ -471,24 +471,26 @@ meets your needs and is conducive, should you urgently need one.
 
 ## Appendix B: User Stories    
  
- |Version| As a ... | I want to ... | So that I can ...| 
- |--------|----------|---------------|------------------|
- |v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
- |v1.0|user|add a new task|keep track of it|  
- |v1.0|user|edit a task|change it's details if required| 
- |v1.0|user|delete a task|remove tasks that are cancelled| 
- |v1.0|user|view my list of tasks sorted based on their date|be aware of all the tasks that are due/happening soon|  
- |v1.0|user|view my list of tasks sorted based on their priority|be aware of the more important tasks|  
- |v1.0|user|find a task by name|locate a task without having to go through the entire list|    
- |v1.0|student|find a Study Area based on location and environment|have a conducive space to study|
- |v1.0|professor|locate a Study Area that is outdoors| conduct consultations without worrying of making noise|
- |v2.0|user|mark deadline as done|check to see if I have pending deadlines|
- |v2.0|user|to delete a Module|clean up my finished notes|
- |v2.0|user|create a Module|add notes inside|
- |v2.0|user|undo an added note|increase my efficiency|
- |v2.0|user|redo a removed notes|increase my efficiency|
- |v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
- |v2.0|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
+ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+ 
+ |Priority|Version| As a ... | I want to ... | So that I can ...| 
+ |-------|--------|----------|---------------|------------------|
+ |`* * *`|v1.0|new user|see list of commands supported|refer to them when I forget how to use the application|  
+ |`* * *`|v1.0|user|add a new task|keep track of it|  
+ |`* *`  |v1.0|user|edit a task|change it's details if required| 
+ |`* * *`|v1.0|user|delete a task|remove tasks that are cancelled| 
+ |`* *`  |v1.0|user|view my list of tasks sorted based on their date|be aware of all the tasks that are due/happening soon|  
+ |`* *`  |v1.0|user|view my list of tasks sorted based on their priority|be aware of the more important tasks|  
+ |`* *`  |v1.0|user|find a task by name|locate a task without having to go through the entire list|    
+ |`* * *`|v1.0|student|find a Study Area based on location and environment|have a conducive space to study|
+ |`* * *`|v1.0|professor|locate a Study Area that is outdoors| conduct consultations without worrying of making noise|
+ |`* *`  |v2.0|user|mark deadline as done|check to see if I have pending deadlines|
+ |`* * *`|v2.0|user|to delete a Module|clean up my finished notes|
+ |`* * *`|v2.0|user|create a Module|add notes inside|
+ |`* *`  |v2.0|user|undo an added note|increase my efficiency|
+ |`* *`  |v2.0|user|redo a removed notes|increase my efficiency|
+ |`* * *`|v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
+ |`* * *`|v2.1|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
 
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
@@ -500,7 +502,7 @@ meets your needs and is conducive, should you urgently need one.
 * Quality Requirement :
     * Usage should be intuitive, and easy to use even by a novice. <br>
 * Performance Requirement :
-    * Should be able to hold upto 1000 tasks without noticable delay in performance for typical usage. <br> 
+    * Should be able to hold upto 1000 tasks without noticeable delay in performance for typical usage. <br> 
 * Reliability Requirement: 
     * Data for Study Areas should be up to date and accurate.<br>  
     
@@ -689,6 +691,8 @@ meets your needs and is conducive, should you urgently need one.
 
     a. Test case : `UTown` <br>
     Expected: returns locations associated to UTown.<br>
+    
+
 
 #### Search by flags only 
 
