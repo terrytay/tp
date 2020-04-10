@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 //@@author GanapathySanathBalaji
 
+/**
+ * Abstract class used to model a task.
+ */
 public abstract class Task {
 
     public TaskType taskType;
