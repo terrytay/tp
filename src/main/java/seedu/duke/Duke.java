@@ -77,7 +77,7 @@ public class Duke {
             }   finally {
                 taskLoader.saveTasks(taskList.tasks);
             }
-            fullCommand = ui.getUserIn().trim().toLowerCase();
+            fullCommand = ui.getUserIn().trim();
         }
         ui.printLine();
     }
