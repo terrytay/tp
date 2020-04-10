@@ -10,6 +10,8 @@ import ui.Ui;
  */
 public class SearchCommand extends Command {
 
+    public static final int KEYWORD = 1;
+
     /** The word to be searched for. */
     String keyword;
 
@@ -25,7 +27,7 @@ public class SearchCommand extends Command {
         if (isOneWordCommand) {
             throw new SearchMissingTermsException();
         }
-        this.keyword = commandSplit[1];
+        this.keyword = commandSplit[KEYWORD];
     }
 
 

@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import static java.lang.System.lineSeparator;
 import static ui.Constants.DAB;
 import static ui.Constants.FLAGS;
@@ -42,7 +43,6 @@ import static ui.Constants.MAX_LINE_LENGTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.START_MESSAGE;
 import static ui.Constants.SUCCESSFUL_CLOSING_OF_UI_LOGGER;
-import static ui.Constants.SUCCESSFUL_UI_CREATION_LOGGER;
 import static ui.Constants.TAB;
 import static ui.Constants.UI_END_LOGGER;
 import static ui.Constants.UI_START_LOGGER;
@@ -157,7 +157,6 @@ public class Ui {
     /**
      * Prints an empty line.
      */
-
     public void printEmptyLine() {
         System.out.println();
     }
@@ -165,7 +164,6 @@ public class Ui {
     /**
      * Prints the closing message.
      */
-
     public void printByeMessage() {
         printMessage(GOODBYE_MESSAGE + DAB);
         LOGGER.log(Level.INFO, UI_END_LOGGER);
@@ -215,6 +213,7 @@ public class Ui {
      * made to ensure suitability with the program.
      * This method ensures that the message printed is within the standard<br>
      * length.
+     *
      * @param message is the String that we intend to format to a standard length<br>
      *                per line.<br>
      * @param maxLength This is the standard length intended to be formatted.
@@ -243,6 +242,7 @@ public class Ui {
 
     /**
      * This allows for other classes to print without formatMessage's format.
+     *
      * @param message This is the message to be printed.
      * @param withLine This controls if nextLine have to be printed.
      */

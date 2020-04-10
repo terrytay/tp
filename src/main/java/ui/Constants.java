@@ -3,7 +3,7 @@ package ui;
 import java.io.File;
 
 /**
- * This class contains all the constants required for Ui.
+ * This class contains most of the constants required for Ui.
  */
 public class Constants {
     public static final String FILE_PATH_STUDYAREAS = "library" + File.separator + "locations.txt";
