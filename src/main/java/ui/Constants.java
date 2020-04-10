@@ -24,6 +24,7 @@ public class Constants {
     public static final String WRONG_FLAG_USAGE = "Flags indicated are wrongly used. Please enter \"help\" for the"
             + " supported flags!";
     public static final String SPACE = " ";
+    public static final String SPACE2 = "\\s+";
     public static final String WRONG_FLAG_ARGUMENT_POSITION = "Flags are to be used only after location";
     public static final String START_STUDY_AREA_SEARCH = "Please enter the location for your desired study area. "
             + "Enter \"help\" for a list of supported flags. Flags should only come after location, if a criteria for"
@@ -257,14 +258,14 @@ public class Constants {
             + " To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
     public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
-    public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter notes for its notes";
+    public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter module for its notes";
     public static final String LIST_MODULE_MESSAGE = "[list] to list modules";
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
     public static final String HELP_MODULE_MESSAGE = "[help] to list all the commands again";
     public static final String INVALID_NOTES_COMMAND_MESSAGE = "Please enter a valid command.";
     public static final String NOTES_PATH = "library/notes.txt";
     public static final String NOTES_FILE_NOT_FOUND = "No notes are created as of now. All notes will automatically"
-            + "be saved.";
+            + " be saved.";
     public static final String DIVIDER = "-----------------------------------------------------------------------"
             + "---------------------------------------------------------------------------------------------------"
             + "---------------------------";
@@ -330,9 +331,11 @@ public class Constants {
     public static final String NOTES_BYE = "bye";
     public static final String NOTES_HELP = "help";
 
+    public static final String HAS_BEEN_CREATED_BEFORE = "This module already exist.";
     public static final String NOTES_EXCEPTION_MSG = "Please enter a valid command."
             + " e.g. To add a module, enter \"add [modulename]\"";
     public static final String NOTES_BYE_MSG = "Thank you for using notes.";
+    public static final String MODULE_BYE_MSG = "You are now back at Notes main page.";
     public static final String THE_TASK_LIST_ISN_T_CLEARED = "The task list isn't cleared.";
     public static final String NO_MODULE_FOUND = "No modules found.";
     public static final String PAST_MONTH = "Month entered is outdated. Please enter only current or future months";

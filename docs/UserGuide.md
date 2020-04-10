@@ -584,7 +584,7 @@ Expected outcome:
    The current version of the application doesn't take into account the other tasks present, however, the priority 
 values can still be used to decide the more important task. In v3.0 our application will support scheduling tasks 
 while avoiding tasks present previously and also add support for tasks to be scheduled preemptively (i.e, tasks can be 
-scheduled over non-contiguous days) .
+scheduled over non-contiguous days).
 
     
 [comment]: # (@@author NizarMohd)     
@@ -905,6 +905,8 @@ Example of usage:
 Expected Outcome:
     
     back
+    ________________________________________________________________________________________________
+          You are now back at Notes main page.
     ________________________________________________________________________________________________
     help
     ________________________________________________________________________________________________
