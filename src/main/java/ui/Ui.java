@@ -84,13 +84,13 @@ public class Ui {
      */
 
     public String getUserIn()  {
-            try {
-                String s = this.in.nextLine();
-                return s;
-            } catch (Exception e) {
-               return "";
-            }
+        try {
+            String s = this.in.nextLine();
+            return s;
+        } catch (Exception e) {
+            return "";
         }
+    }
 
     /**
      * This method closes the Input Stream after usage is completed.
