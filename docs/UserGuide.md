@@ -1210,8 +1210,18 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 `notes` - Enter notes taking interface <br>
 
 ### Study Area Search Interface
-`{name\address\faculty} {flags}` - Returns a list of Study Areas, if any of the existing data matches the requirement 
-entered. Click [here](#3132-start-search) for more details on how {name\address\faculty} and {flags} should be entered.
+
+`name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
+entered. 
+
+Click [here](#3132-start-search) for more details on how `name\address\faculty` and `flags` should be entered.
+
+### Calendar 
+
+`calendar` - To enter Calendar view.
+
+Click [here](#315-calendar-view) for more details on how to use the Calendar view.
+
 
 <a name="formats"></a>
 
