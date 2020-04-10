@@ -36,7 +36,11 @@ public class Parser {
     public static final String HELP_COMMAND = "help";
     public static final String CREATE_SCHEDULE_COMMAND = "schedule";
     public static final String DONE_COMMAND = "done";
-    public static final  String CALENDAR_COMMAND = "calendar";
+    public static final String CALENDAR_COMMAND = "calendar";
+    public static final String EMPTY_LINE_ENTERED_PLEASE_ENTER_A_VALID_LINE = "Empty Line entered,"
+            + " Please enter a valid line";
+    public static final String INVALID_COMMAND_ENTERED_PLEASE_ENTER_A_VALID_COMMAND = "Invalid command entered,"
+            + " Please enter a valid command";
 
 
     /**
@@ -92,10 +96,10 @@ public class Parser {
             command = new CalendarCommand(isOneWordCommand);
             break;
         case EMPTY_COMMAND:
-            throw new Exception("Empty Line entered, Please enter a valid line");
+            throw new Exception(EMPTY_LINE_ENTERED_PLEASE_ENTER_A_VALID_LINE);
             // Break statement can't be reached if added
         default:
-            throw new Exception("Invalid command entered, Please enter a valid command");
+            throw new Exception(INVALID_COMMAND_ENTERED_PLEASE_ENTER_A_VALID_COMMAND);
             // Break statement can't be reached if added
         }
         return command;

@@ -2,7 +2,6 @@ package command;
 
 import calendarview.CalendarView;
 import calendarview.TaskComparator;
-import exception.CalendarException;
 import exception.MisuseOfCalendarCommandException;
 import task.Task;
 import task.TaskList;
@@ -18,6 +17,8 @@ import java.util.LinkedList;
  * This class deals with the command used for Calendar View.
  */
 public class CalendarCommand extends Command {
+
+    public static final String YEAR_AND_MONTH_NOT_SET = "Year and Month not set!";
 
     /**
      * This constructs the command.
@@ -59,7 +60,7 @@ public class CalendarCommand extends Command {
         CalendarView c = new CalendarView(ui);
         int thisMonth = c.getMonth();
         int thisYear = c.getYear();
-        assert thisMonth != -1 && thisYear != -1 : "Year and Month not set!";
+        assert thisMonth != -1 && thisYear != -1 : YEAR_AND_MONTH_NOT_SET;
         HashMap<Integer, LinkedList<Task>> map = checkExistingTasks(taskList.tasks, thisMonth, thisYear);
         c.setMap(map);
         c.printCalendar();
