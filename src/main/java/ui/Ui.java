@@ -1,15 +1,14 @@
 package ui;
 
 
-import studyarea.StudyArea;
 
+import studyarea.StudyArea;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static java.lang.System.lineSeparator;
 import static ui.Constants.DAB;
 import static ui.Constants.FLAGS;
@@ -84,9 +83,14 @@ public class Ui {
      * @return String input from User.
      */
 
-    public String getUserIn() {
-        return this.in.nextLine();
-    }
+    public String getUserIn()  {
+            try {
+                String s = this.in.nextLine();
+                return s;
+            } catch (Exception e) {
+               return "";
+            }
+        }
 
     /**
      * This method closes the Input Stream after usage is completed.
