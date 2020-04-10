@@ -5,9 +5,22 @@ import exception.command.MissingIndexException;
 import task.TaskList;
 import ui.Ui;
 
+//@@author NizarMohd
+
+/**
+ * Functions as a parent class for commands which takes in a parameter for the index of the task.
+ */
 public class CommandWithIndex extends Command {
 
 
+    public static final String DELETE_COMMAND = "delete";
+    public static final String EDIT_COMMAND = "edit";
+    public static final String DONE_COMMAND = "done";
+    public static final String INDEX_TO_DELETE_NOT_MENTIONED = "Index to delete not mentioned";
+    public static final String INDEX_TO_EDIT_NOT_MENTIONED = "Index to edit not mentioned";
+    public static final String INDEX_TO_BE_MARKED_AS_DONE_NOT_MENTIONED = "Index to be marked as done not mentioned";
+    public static final int COMMAND_TYPE = 0;
+    public static final int INDEX = 1;
     /** Denotes the index at which the executeCommand method will operate at. */
     private static int index;
 
@@ -21,11 +34,11 @@ public class CommandWithIndex extends Command {
      */
     public CommandWithIndex(String[] commandSplit, boolean isOneWordCommand) throws Exception {
         if (isOneWordCommand) {
-            String errorMessage = getErrorMessage(commandSplit[0]);
+            String errorMessage = getErrorMessage(commandSplit[COMMAND_TYPE]);
             throw new MissingIndexException(errorMessage);
         }
         try {
-            setIndex(Integer.parseInt(commandSplit[1]));
+            setIndex(Integer.parseInt(commandSplit[INDEX]));
         } catch (NumberFormatException e) {
             throw new IndexNotIntegerException();
         }
@@ -55,12 +68,12 @@ public class CommandWithIndex extends Command {
      */
     public String getErrorMessage(String commandType) {
         switch (commandType) {
-        case "delete":
-            return "Index to delete not mentioned";
-        case "edit" :
-            return "Index to edit not mentioned";
-        case "done" :
-            return "Index to be marked as done not mentioned";
+        case DELETE_COMMAND:
+            return INDEX_TO_DELETE_NOT_MENTIONED;
+        case EDIT_COMMAND:
+            return INDEX_TO_EDIT_NOT_MENTIONED;
+        case DONE_COMMAND:
+            return INDEX_TO_BE_MARKED_AS_DONE_NOT_MENTIONED;
         default:
             return null;
         }

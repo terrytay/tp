@@ -22,6 +22,9 @@ import static ui.Constants.RE_ENTER_VALID_INDEX_TO_MARK_AS_DONE_MESSAGE;
 public class TaskList {
 
 
+    public static final String ARE_YOU_SURE_THAT_YOU_WANT_TO_CLEAR_THE_LIST = "Are you sure that you want to clear "
+            + "the list? [Y/N]";
+    public static final String YES = "y";
     /**
      * Stores the task's information.
      */
@@ -170,9 +173,9 @@ public class TaskList {
      */
     public void clearTasks(Ui ui) {
         ui.printLine();
-        ui.printMessage("Are you sure that you want to clear the list? [Y/N]");
+        ui.printMessage(ARE_YOU_SURE_THAT_YOU_WANT_TO_CLEAR_THE_LIST);
         String choice = ui.getUserIn();
-        if (choice.trim().toLowerCase().equals("y")) {
+        if (choice.trim().toLowerCase().equals(YES)) {
             tasks.clear();
             ui.printMessage(Constants.TASK_LIST_CLEARED_MESSAGE);
         } else {
@@ -191,7 +194,7 @@ public class TaskList {
         tasksSortedByPriority.sort(Comparator.comparingInt(Task::getPriority));
         Collections.reverse(tasksSortedByPriority);
         ui.printLine();
-        if (tasks.size() > 0) {
+        if (!tasks.isEmpty()) {
             printTasksSortedByPriority(ui, tasksSortedByPriority);
         } else {
             ui.printMessage(Constants.LIST_EMPTY_MESSAGE);
@@ -223,7 +226,7 @@ public class TaskList {
         ArrayList<Task> tasksSortedByDate = tasks;
         tasksSortedByDate.sort(Comparator.comparing(Task::getDate));
         ui.printLine();
-        if (tasks.size() > 0) {
+        if (!tasks.isEmpty()) {
             printTasksSortedByDate(ui, tasksSortedByDate);
         } else {
             ui.printMessage(Constants.LIST_EMPTY_MESSAGE);

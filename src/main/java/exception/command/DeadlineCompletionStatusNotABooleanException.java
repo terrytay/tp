@@ -1,11 +1,16 @@
 package exception.command;
 
 import exception.CustomException;
+import ui.Constants;
 
 //@@author GanapathySanathBalaji
+
+/**
+ * Exception thrown if the value entered by the user for the completion status isn't a valid boolean value.
+ */
 public class DeadlineCompletionStatusNotABooleanException extends CustomException {
+
     public DeadlineCompletionStatusNotABooleanException() {
-        super("Completion status should be a boolean value from the following list"
-                + " [{True,TRUE,true},{False,FALSE,false}]");
+        super(Constants.COMPLETION_STATUS_ERROR_MESSAGE);
     }
 }

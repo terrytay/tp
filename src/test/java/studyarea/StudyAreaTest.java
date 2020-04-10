@@ -25,12 +25,12 @@ class StudyAreaTest {
 
     @Test
     void hasPort() {
-        assertEquals(true, location1.hasPort());
+        assertEquals(true, location1.getHasPort());
     }
 
     @Test
     void isIndoor() {
-        assertEquals(true, location1.isIndoor());
+        assertEquals(true, location1.getIsIndoor());
     }
 
     @Test
@@ -46,7 +46,7 @@ class StudyAreaTest {
 
     //@@author NizarMohd
     /**
-     * Checks for accurace of toString() format.
+     * Checks for accuracy of toString() format.
      */
     @Test
     void testToString() {

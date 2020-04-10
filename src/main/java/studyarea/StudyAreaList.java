@@ -1,6 +1,7 @@
 package studyarea;
 
 import exception.IllegalStudyAreaException;
+import ui.Constants;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -164,6 +165,7 @@ public class StudyAreaList {
                 flags[1] = Integer.toString(Integer.parseInt(commands[i + 1]));
                 i++;
             } else if (commands[i].contains(FLAG)) {
+                assert commands[i].contains(FLAG);
                 isNotFlag = false;
                 checkFlag(flags, commands, i,false);
                 switch (commands[i].charAt(1)) {
@@ -209,13 +211,13 @@ public class StudyAreaList {
         if (carryOn) {
             switch (flag) {
             case PORTS_FLAG:
-                isAvail = studyArea.hasPort();
+                isAvail = studyArea.getHasPort();
                 break;
             case INDOOR_FLAG:
-                isAvail = studyArea.isIndoor();
+                isAvail = studyArea.getIsIndoor();
                 break;
             case OUTDOOR_FLAG:
-                isAvail = !studyArea.isIndoor();
+                isAvail = !studyArea.getIsIndoor();
                 break;
             case SIZE_FLAG:  // allows user to find by capacity <= MaxPax
                 isAvail = studyArea.isSizeCapable(flags[1]);

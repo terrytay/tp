@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@@author GanapathySanathBalaji
 
+/**
+ * Contains all test regarding the SchedulableTask Class.
+ */
 class SchedulableTaskTest {
 
     @Test
@@ -113,14 +116,14 @@ class SchedulableTaskTest {
         try {
             newTaskToBeScheduled.setDetails(taskDetails);
         } catch (Exception e) {
-            assertEquals("Number of days to finish should be greater than 1", e.getMessage());
+            assertEquals("Number of days to finish should be greater than 0", e.getMessage());
         }
 
         taskDetails = new String[]{"Sample task", "f -1", "d 2"};
         try {
             newTaskToBeScheduled.setDetails(taskDetails);
         } catch (Exception e) {
-            assertEquals("Number of days to finish should be greater than 1", e.getMessage());
+            assertEquals("Number of days to finish should be greater than 0", e.getMessage());
         }
     }
 
@@ -131,14 +134,14 @@ class SchedulableTaskTest {
         try {
             newTaskToBeScheduled.setDetails(taskDetails);
         } catch (Exception e) {
-            assertEquals("Number of days left should be greater than 1", e.getMessage());
+            assertEquals("Number of days left should be greater than 0", e.getMessage());
         }
 
         taskDetails = new String[]{"Sample task", "f 1", "d -1"};
         try {
             newTaskToBeScheduled.setDetails(taskDetails);
         } catch (Exception e) {
-            assertEquals("Number of days left should be greater than 1", e.getMessage());
+            assertEquals("Number of days left should be greater than 0", e.getMessage());
         }
     }
 

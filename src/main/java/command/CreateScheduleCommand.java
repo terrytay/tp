@@ -13,6 +13,8 @@ import ui.Ui;
  */
 public class CreateScheduleCommand extends Command {
 
+    public static final String TASKS_SUCCESSFULLY_SCHEDULED = "Tasks successfully scheduled.";
+    public static final String TASKS_COULDN_T_BE_SCHEDULED = "Tasks couldn't be scheduled.";
     TaskScheduler taskScheduler;
 
     /**
@@ -43,10 +45,10 @@ public class CreateScheduleCommand extends Command {
     public void executeCommand(TaskList taskList, Ui ui) {
         taskScheduler.getTasks(ui);
         if (taskScheduler.scheduleTasks(ui)) {
-            ui.printMessage("Tasks successfully scheduled.");
+            ui.printMessage(TASKS_SUCCESSFULLY_SCHEDULED);
             taskScheduler.addScheduleToList(taskList, ui);
         } else {
-            ui.printMessage("Tasks couldn't be scheduled.");
+            ui.printMessage(TASKS_COULDN_T_BE_SCHEDULED);
         }
         ui.printLine();
     }

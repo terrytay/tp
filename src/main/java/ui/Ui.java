@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static java.lang.System.lineSeparator;
 import static ui.Constants.DAB;
 import static ui.Constants.FLAGS;
@@ -39,7 +42,10 @@ import static ui.Constants.LOGO;
 import static ui.Constants.MAX_LINE_LENGTH;
 import static ui.Constants.SPACE;
 import static ui.Constants.START_MESSAGE;
+import static ui.Constants.SUCCESSFUL_CLOSING_OF_UI_LOGGER;
 import static ui.Constants.TAB;
+import static ui.Constants.UI_END_LOGGER;
+import static ui.Constants.UI_START_LOGGER;
 
 //@@author NizarMohd
 /**
@@ -49,6 +55,7 @@ import static ui.Constants.TAB;
 public class Ui {
     private final Scanner in;
     private final PrintStream out;
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
      * This is the constructor used to create the Ui class in Duke.run().
@@ -87,6 +94,7 @@ public class Ui {
 
     public void close() {
         this.in.close();
+        LOGGER.log(Level.INFO, SUCCESSFUL_CLOSING_OF_UI_LOGGER);
     }
 
     /**
@@ -134,6 +142,7 @@ public class Ui {
         this.out.println(START_MESSAGE);
         printHelp(false);
         printLine();
+        LOGGER.log(Level.INFO, UI_START_LOGGER);
     }
 
 
@@ -148,7 +157,6 @@ public class Ui {
     /**
      * Prints an empty line.
      */
-
     public void printEmptyLine() {
         System.out.println();
     }
@@ -156,9 +164,9 @@ public class Ui {
     /**
      * Prints the closing message.
      */
-
     public void printByeMessage() {
         printMessage(GOODBYE_MESSAGE + DAB);
+        LOGGER.log(Level.INFO, UI_END_LOGGER);
     }
 
     //@@author hongquan448
@@ -205,6 +213,7 @@ public class Ui {
      * made to ensure suitability with the program.
      * This method ensures that the message printed is within the standard<br>
      * length.
+     *
      * @param message is the String that we intend to format to a standard length<br>
      *                per line.<br>
      * @param maxLength This is the standard length intended to be formatted.
@@ -233,6 +242,7 @@ public class Ui {
 
     /**
      * This allows for other classes to print without formatMessage's format.
+     *
      * @param message This is the message to be printed.
      * @param withLine This controls if nextLine have to be printed.
      */

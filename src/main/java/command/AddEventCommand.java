@@ -9,6 +9,7 @@ import exception.command.TaskCreationDescriptionMissingException;
 import exception.command.TaskCreationPriorityMissingException;
 import task.Event;
 import task.TaskList;
+import ui.Constants;
 import ui.Ui;
 
 import java.time.LocalDate;
@@ -19,10 +20,19 @@ import java.time.LocalDate;
  */
 public class AddEventCommand extends Command {
 
-    public static final String START_TIME_AFTER_END_TIME_ERROR_MESSAGE = "Start time after end time exception "
-            + "not thrown";
-    public static final String DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE = "Date past current day exception not thrown";
     public static final String SLASH_SYMBOL = "/";
+    public static final int INDEX_OF_DESCRIPTION = 0;
+    public static final int INDEX_OF_DATE = 1;
+    public static final int INDEX_OF_START_TIME = 2;
+    public static final int INDEX_OF_END_TIME = 3;
+    public static final int INDEX_OF_PRIORITY = 4;
+    public static final int INDEX_OF_DETAILS = 1;
+    public static final int NUMBER_OF_FIELDS_REQUIRED = 5;
+    public static final char PRIORITY_IDENTIFIER = 'p';
+    public static final char SINGLE_SPACE_CHARACTER = ' ';
+    public static final char END_TIME_IDENTIFIER = 'e';
+    public static final char START_TIME_IDENTIFIER = 's';
+    public static final char DATE_IDENTIFIER = 'd';
 
     /** The new event to be added. */
     Event newEvent;
@@ -39,16 +49,17 @@ public class AddEventCommand extends Command {
         if (isOneWordCommand) {
             throw new EventDetailsNotProvidedException();
         }
-        String[] details = eventDetails[1].split(SLASH_SYMBOL);
+        String[] details = eventDetails[INDEX_OF_DETAILS].split(SLASH_SYMBOL);
         isCorrectFormat(details);
-        String description = details[0];
-        String date = details[1].substring(2);
-        String startTime = details[2].substring(2);
-        String endTime = details[3].substring(2);
-        String priority = details[4].substring(2);
+        String description = details[INDEX_OF_DESCRIPTION];
+        String date = details[INDEX_OF_DATE].substring(2);
+        String startTime = details[INDEX_OF_START_TIME].substring(2);
+        String endTime = details[INDEX_OF_END_TIME].substring(2);
+        String priority = details[INDEX_OF_PRIORITY].substring(2);
         newEvent =  new Event(description,date,startTime,endTime,priority);
-        assert !newEvent.getStartTime().isAfter(newEvent.getEndTime()) : START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
-        assert !newEvent.getDate().isBefore(LocalDate.now()) : DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
+        assert !newEvent.getStartTime().isAfter(newEvent.getEndTime()) :
+                Constants.START_TIME_AFTER_END_TIME_ERROR_MESSAGE;
+        assert !newEvent.getDate().isBefore(LocalDate.now()) : Constants.DATE_BEFORE_CURRENT_DATE_ERROR_MESSAGE;
     }
 
     /**
@@ -58,19 +69,19 @@ public class AddEventCommand extends Command {
      * @throws Exception If any of the fields are missing.
      */
     private void isCorrectFormat(String[] details) throws Exception {
-        if (details.length != 5) {
+        if (details.length != NUMBER_OF_FIELDS_REQUIRED) {
             throw new EventCreationFormatNotFollowedException();
         }
         try {
-            String description = details[0];
+            String description = details[INDEX_OF_DESCRIPTION];
             checkDescription(description);
-            String date = details[1];
+            String date = details[INDEX_OF_DATE];
             checkDate(date);
-            String startTime = details[2];
+            String startTime = details[INDEX_OF_START_TIME];
             checkStartTime(startTime);
-            String endTime = details[3];
+            String endTime = details[INDEX_OF_END_TIME];
             checkEndTime(endTime);
-            String priority = details[4];
+            String priority = details[INDEX_OF_PRIORITY];
             checkPriority(priority);
         } catch (IndexOutOfBoundsException e) {
             throw new EventCreationFormatNotFollowedException();
@@ -84,7 +95,7 @@ public class AddEventCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkPriority(String priority) throws Exception {
-        if (priority.charAt(0) != 'p' || priority.charAt(1) != ' ') {
+        if (priority.charAt(0) != PRIORITY_IDENTIFIER || priority.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new EventCreationFormatNotFollowedException();
         }
         if (priority.substring(2).isBlank()) {
@@ -99,7 +110,7 @@ public class AddEventCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkEndTime(String endTime) throws Exception {
-        if (endTime.charAt(0) != 'e' || endTime.charAt(1) != ' ') {
+        if (endTime.charAt(0) != END_TIME_IDENTIFIER || endTime.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new EventCreationFormatNotFollowedException();
         }
         if (endTime.substring(2).isBlank()) {
@@ -114,7 +125,7 @@ public class AddEventCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkStartTime(String startTime) throws Exception {
-        if (startTime.charAt(0) != 's' || startTime.charAt(1) != ' ') {
+        if (startTime.charAt(0) != START_TIME_IDENTIFIER || startTime.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new EventCreationFormatNotFollowedException();
         }
         if (startTime.substring(2).isBlank()) {
@@ -129,7 +140,7 @@ public class AddEventCommand extends Command {
      * @throws Exception If wrong format is used.
      */
     private void checkDate(String date) throws Exception {
-        if (date.charAt(0) != 'd' || date.charAt(1) != ' ') {
+        if (date.charAt(0) != DATE_IDENTIFIER || date.charAt(1) != SINGLE_SPACE_CHARACTER) {
             throw new EventCreationFormatNotFollowedException();
         }
         if (date.substring(2).isBlank()) {
