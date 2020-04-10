@@ -257,7 +257,7 @@ public class Constants {
             + " Notes are stored based on modules."
             + " To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
-    public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
+    public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to remove a module";
     public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter module for its notes";
     public static final String LIST_MODULE_MESSAGE = "[list] to list modules";
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";
@@ -390,4 +390,7 @@ public class Constants {
     public static final String DESCRIPTION_ENTERED_BY_USER_IS_EMPTY_LOG = "Description entered by user is empty";
     public static final String DESCRIPTION_ENTERED_BY_USER_CONTAINS_ILLEGAL_CHARACTERS = "Description entered by "
             + "user contains illegal characters";
+
+    public static final String NOTES_KEY_WORD_ERROR = "Sorry \"-----\" cannot be used as it is a reserved word.";
+    public static final String NOTES_KEY_WORD = "-----";
 }
