@@ -6,6 +6,9 @@ import ui.Ui;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static ui.Constants.NOTES_KEY_WORD;
+import static ui.Constants.NOTES_KEY_WORD_ERROR;
+
 
 //@@author terrytay
 public class ModulesList {
@@ -36,6 +39,11 @@ public class ModulesList {
      * @param code Module Code.
      */
     public void createModule(String code) {
+        if (code.equals(NOTES_KEY_WORD)) {
+            this.ui.printLine();
+            this.ui.printMessage(NOTES_KEY_WORD_ERROR);
+            this.ui.printLine();
+        }
         if (getModule(code) == null) {
             modules.putIfAbsent(code, new ArrayList<>());
             String success = String.format("%s has been created\n", code);
@@ -83,6 +91,7 @@ public class ModulesList {
 
     /**
      * Enters the module interface of moduleManager.
+     *
      * @param code module code
      * @throws Exception for ModuleManager
      */
