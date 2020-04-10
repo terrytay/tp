@@ -36,9 +36,13 @@ public class ModulesList {
      * @param code Module Code.
      */
     public void createModule(String code) {
-        modules.putIfAbsent(code, new ArrayList<>());
-        String success = String.format("%s has been created\n", code);
-        this.ui.printMessage(success);
+        if (getModule(code) == null) {
+            modules.putIfAbsent(code, new ArrayList<>());
+            String success = String.format("%s has been created\n", code);
+            this.ui.printMessage(success);
+        } else {
+            this.ui.printMessage(Constants.HAS_BEEN_CREATED_BEFORE);
+        }
 
     }
 
