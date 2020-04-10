@@ -171,4 +171,38 @@ class TaskListTest {
         }
     }
 
+    @Test
+    void checkIndexBounds_validIndex() {
+        if (taskList.getTaskListSize() > 0) {
+            try {
+                taskList.checkIndexBounds(0);
+            } catch (Exception e) {
+                fail("Valid index identified as invalid");
+            }
+        }
+    }
+
+    @Test
+    void checkIndexBounds_negativeIndex_throwException() {
+        try {
+            taskList.checkIndexBounds(-1);
+            fail("Negative index not identified to be invalid");
+        } catch (Exception e) {
+            assertEquals("Invalid index entered. Please enter a "
+                    + "valid index to be marked as done",e.getMessage());
+        }
+    }
+
+    @Test
+    void checkIndexBounds_indexLargerThanSizeMinus1_throwException() {
+        if (taskList.getTaskListSize() > 0) {
+            try {
+                taskList.checkIndexBounds(taskList.getTaskListSize());
+                fail("Index larger than size - 1 not identified to be invalid");
+            } catch (Exception e) {
+                assertEquals("Invalid index entered. Please enter a "
+                        + "valid index to be marked as done", e.getMessage());
+            }
+        }
+    }
 }
