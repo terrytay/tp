@@ -757,7 +757,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
     Expected: List of study areas that contain the search key and the [flags](#flags).<br>
     
 * Since flags must come as a second argument in this case:<br>
-    a.Test case: `flags` `location/name/address}`<br>
+    a. Test case: `flags` `location/name/address}`<br>
     Expected: Error message on commands position.<br>
 
 ### Testing for Calendar
