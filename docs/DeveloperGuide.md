@@ -718,7 +718,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
     a. Test case : `bux` <br>
      Expected: returns locations related to Starbucks.
      
-     *Note*: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
+     __Note__: Testers can add or refer to mapping in backup data file, in any case more abbreviations are required to support an even more loose search.
 
 1. To test for normal search: 
 
@@ -729,7 +729,7 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 #### Search by flags only 
 
- 1. To test for accuracy of flags:<br>
+ 1. To test for accuracy of flags:
  
     a. Test case: `-p` <br>
     Expected: List of study areas with ports available.<br>
@@ -765,17 +765,17 @@ Prerequisites: Enter Study Area Search Interface by entering `study`.
 
 Prerequisites: Enter Calendar View by entering `calendar`.
 
-1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.
+1. To view tasks in calendar view, arguments accepted are `now` for current month or `MM` `YYYY` for future months.<br>
         
     a. Test case: `now`<br>
     Expected: Calendar view for current month is listed.
     
-    b. Test case: `5` `2500`
+    b. Test case: `5` `2500`<br>
     Expected: Calendar view for month of May in year 2500 is listed.
     
-    c. Test case:  `may` `twenty-twenty`
+    c. Test case:  `may` `twenty-twenty`<br>
     Expected: Error message as month and year has to be integer.
     
-    d. Test case: `2` `2020`
+    d. Test case: `2` `2020`<br>
     Expected: Error message as month requested is outdated compared to current month.
     
