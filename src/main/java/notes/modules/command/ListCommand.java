@@ -25,8 +25,8 @@ public class ListCommand implements Command {
             for (String message : messages) {
                 this.ui.printMessage(message);
             }
-            this.ui.printLine();
         }
+        this.ui.printLine();
     }
 
     public void undo() {
