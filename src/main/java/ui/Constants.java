@@ -257,7 +257,7 @@ public class Constants {
             + " Notes are stored based on modules."
             + " To get started: add a module, enter a module and start adding notes!";
     public static final String ADD_MODULE_MESSAGE = "[add modulecode] to add a module";
-    public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to add a module";
+    public static final String REMOVE_MODULE_MESSAGE = "[remove modulecode] to remove a module";
     public static final String ENTER_MODULE_MESSAGE = "[enter modulecode] to enter module for its notes";
     public static final String LIST_MODULE_MESSAGE = "[list] to list modules";
     public static final String EXIT_MODULE_MESSAGE = "[bye] to go back to OrgaNice main page";

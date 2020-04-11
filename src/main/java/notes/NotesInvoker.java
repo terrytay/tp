@@ -41,9 +41,7 @@ public class NotesInvoker {
                         code = userInput.split(SPACE2)[1];
                         notes.createModule(code);
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 case Constants.NOTES_REMOVE:
@@ -51,9 +49,7 @@ public class NotesInvoker {
                         code = userInput.split(SPACE2)[1];
                         notes.deleteModule(code);
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 case Constants.NOTES_ENTER:
@@ -61,18 +57,14 @@ public class NotesInvoker {
                         code = userInput.split(SPACE2)[1];
                         notes.enterModule(code);
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 case Constants.NOTES_LIST:
                     if (!isIncorrectLength(userInput, 1)) {
                         notes.listModules();
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 case Constants.NOTES_BYE:
@@ -80,18 +72,14 @@ public class NotesInvoker {
                         notes.exportModules();
                         isExit = true;
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 case Constants.NOTES_HELP:
                     if (!isIncorrectLength(userInput, 1)) {
                         displayMenu(ui);
                     } else {
-                        ui.printLine();
                         ui.printMessage(Constants.NOTES_EXCEPTION_MSG);
-                        ui.printLine();
                     }
                     break;
                 default:
