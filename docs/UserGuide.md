@@ -1,34 +1,3 @@
-<style>
-#topButton {
-  display: none; 
-  position: fixed; 
-  bottom: 20px;
-  right: 30px; 
-  z-index: 99; 
-  border: none; 
-  outline: none; 
-  background-color: darkblue; 
-  color: white; 
-  cursor: pointer; 
-  padding: 15px; 
-  border-radius: 10px; 
-  font-size: 18px; 
-}
-
-#topButton:hover {
-  background-color: #555;
-}
-</style>
-
-<button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
-
-<script src="jsCodes/topButton.js"></script>
-
-<form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
-    <input type="submit" value="Go back to main page" />
-</form>
-
-
 # OrgaNice! - User Guide
 
 ## Table Of Contents
