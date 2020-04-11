@@ -1169,8 +1169,9 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 ## 4. FAQ
 Q: When loading the interface on the command line, why was the logo cut off and certain format disrupted?<br>
 A: You need to be using the software at full screen before launching the software. If this happens, exit the software,
-go to fullscreen mode, then restart the software. Everything should run smoothly. 
+go to fullscreen mode, then restart the software. Everything should run smoothly.
 <br>
+
 Q: How to transfer the task list data from one computer to an other computer?<br>
 A: Just copy the "TaskList.txt" file which could be found at the library folder under directory
    as the jar file and paste it to the library folder under the location containing the jar file in the other
