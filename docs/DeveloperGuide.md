@@ -522,7 +522,7 @@ meets your needs and is conducive, should you urgently need one.
  |`* * *`|v3.0|user|edit priority value assigned to scheduled tasks|have more flexibility with the priority values used in my list|
 
 
-[comment]: # (@@NizarMohd) 
+[comment]: # (@@author NizarMohd) 
 ## Appendix C: Non-Functional Requirements    
 * Environment Requirement :  
     * Mainstream OS
@@ -567,7 +567,7 @@ meets your needs and is conducive, should you urgently need one.
  to search through the map (by invoking parseKey) for any study area associated with the loose search terms.
  * *parseKey()* - this method will check if the loose search term entered by the user maps to any data of the study areas that we have. If so, it returns true.
  
-[comment]: # (@@author)
+[comment]: # (@@author GanapathySanathBalaji) 
 ## Appendix E: Instructions for Manual Testing    
  __NOTE__: These tests are not exhaustive and testers have to do more exploratory testing to ensure the accuracy of the 
  software's features.
@@ -797,7 +797,7 @@ Prerequisites: Enter Calendar View by entering `calendar`.
     d. Test case: `2` `2020`<br>
     Expected: Error message as month requested is outdated compared to the current month.
 
-[comment]: # (@@terrytay)    
+[comment]: # (@@author terrytay)    
 ### Testing for Notes
 
 #### Module Interface
