@@ -305,7 +305,7 @@ public class CalendarView {
      * @throws CalendarException if month entered is not current and not future.
      */
     public static void checkIfPast() throws CalendarException {
-        if(month == -1 || year == -1) {     // if month or year not set
+        if (month == -1 || year == -1) {     // if month or year not set
             return;
         }
         int thisYear = LocalDate.now().getYear();
