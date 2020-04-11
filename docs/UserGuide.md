@@ -7,10 +7,6 @@ img {
     margin-right: auto;
     width: auto;
 }
-div {
-    text-align: center;
-    font-size: x-small;
-}
 
 #topButton {
   display: none; 
@@ -26,6 +22,7 @@ div {
   padding: 15px; 
   border-radius: 10px; 
   font-size: 18px; 
+  text-alignment: center;
 }
 
 #topButton:hover {
