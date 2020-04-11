@@ -89,7 +89,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 		[#75](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/75) [#125](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/125)
 * **Contributions beyond the project team:**
 	* Reported 6 bugs during the [PE Dry Run](https://github.com/NizarMohd/ped/issues).
-	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28)
+	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28#pullrequestreview-384379913)
 	
 	
 
