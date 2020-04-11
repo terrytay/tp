@@ -1,6 +1,7 @@
 package ui;
 
 
+import exception.command.IllegalCharactersEnteredException;
 import studyarea.StudyArea;
 
 import java.io.InputStream;
@@ -53,7 +54,7 @@ import static ui.Constants.UI_START_LOGGER;
  *
  */
 public class Ui {
-    private final Scanner in;
+    private Scanner in;
     private final PrintStream out;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -83,15 +84,40 @@ public class Ui {
      *
      * @return String input from User.
      */
-
     public String getUserIn() {
-        return this.in.nextLine();
+        boolean isExceptionEncountered;
+        String input = "";
+        do {
+            isExceptionEncountered = false;
+            try {
+                input = getNextLine();
+            } catch (Exception e) {
+                isExceptionEncountered = true;
+                printLine();
+                printMessage(e.getMessage());
+                printLine();
+            }
+        } while (isExceptionEncountered);
+        return input;
+    }
+
+    /**
+     * Returns the line typed in by the user as input and throws an exceptions when user enters an illegal character.
+     *
+     * @return String representing the line entered by the user.
+     * @throws Exception If the usr enters an illegal character.
+     */
+    private String getNextLine() throws Exception {
+        if (!in.hasNext()) {
+            in = new Scanner(System.in);
+            throw new IllegalCharactersEnteredException();
+        }
+        return in.nextLine();
     }
 
     /**
      * This method closes the Input Stream after usage is completed.
      */
-
     public void close() {
         this.in.close();
         LOGGER.log(Level.INFO, SUCCESSFUL_CLOSING_OF_UI_LOGGER);
@@ -100,7 +126,6 @@ public class Ui {
     /**
      * Prints a line made up of '_'.
      */
-
     public void printLine() {
         this.out.println(LINE);
     }
@@ -111,7 +136,6 @@ public class Ui {
      *
      * @param message is the String that we intend to format to a standard length per line.
      */
-
     public void printMessage(String message) {
         if (message.equals(GOODBYE_MESSAGE + DAB)) {
             this.out.println(TAB + GOODBYE_MESSAGE);
