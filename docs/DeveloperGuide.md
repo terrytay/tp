@@ -20,7 +20,7 @@ div {
   z-index: 99; 
   border: none; 
   outline: none; 
-  background-color: darkblue; 
+  background-color: #0ED7D3; 
   color: white; 
   cursor: pointer; 
   padding: 15px; 
@@ -29,7 +29,7 @@ div {
 }
 
 #topButton:hover {
-  background-color: #0ED7D3;
+  background-color: #15E3DF;
 }
 </style>
 
