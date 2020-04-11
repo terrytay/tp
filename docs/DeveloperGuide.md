@@ -39,17 +39,15 @@ div {
 
 <style>
 a.backlink {
-	background-color: blue;
-  box-shadow: 0 5px 0 darkred;
+	background-color: #0ED7D3;
   color: white;
   padding: 1em 1.5em;
   position: relative;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 a.backlink:hover {
-  background-color: #ce0606;
+  background-color: #15E3DF;
   cursor: pointer;
 }
 
@@ -59,7 +57,7 @@ a.backlink:active {
 }
 </style>
 
-<a href="https://ay1920s2-cs2113t-t12-3.github.io/tp/" class="backlink">Back to OrgaNice's main page</a>
+<a href="https://ay1920s2-cs2113t-t12-3.github.io/tp/" class="backlink">Back to OrgaNice!'s main page</a>
 
 # Developer Guide    
 
