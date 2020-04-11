@@ -1231,6 +1231,8 @@ e.g. `search project`<br>
 
 * `notes` - Enter notes taking interface <br>
 
+[comment]: # (@@author )
+
 ### Study Area Search Interface
 
 * `name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
