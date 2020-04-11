@@ -38,26 +38,24 @@ div {
 <script src="jsCodes/topButton.js"></script>
 
 <style>
-.backlink {
-	a {
-		background-color: red;
-	  box-shadow: 0 5px 0 darkred;
-	  color: white;
-	  padding: 1em 1.5em;
-	  position: relative;
-	  text-decoration: none;
-	  text-transform: uppercase;
-	}
+.backlink a {
+	background-color: red;
+  box-shadow: 0 5px 0 darkred;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-	a:hover {
-	  background-color: #ce0606;
-	  cursor: pointer;
-	}
+.backlink a:hover {
+  background-color: #ce0606;
+  cursor: pointer;
+}
 
-	a:active {
-	  box-shadow: none;
-	  top: 5px;
-	}
+.backlink a:active {
+  box-shadow: none;
+  top: 5px;
 }
 </style>
 
