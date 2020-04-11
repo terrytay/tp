@@ -35,7 +35,7 @@ div {
 
 <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
 
-<script src="jsCodes/topButton.js"></script>
+<script src="../jsCodes/topButton.js"></script>
 
 <form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
     <input type="submit" value="Go back to main page" />
