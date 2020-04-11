@@ -332,14 +332,14 @@ To edit a configuration, click `Run` then click on `Edit Configurations`. Procee
 
 Afterwards, ensure that the configurations are as such:
 
-![Junit_config](images/JUnit_configuration.PNG)
+![Junit_config](../images/JUnitConfiguration.PNG)
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
 This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
 
 Alternatively, you can click on this icon to run with coverage :
 
-![JUnit_test](images/JUnit_run_test.PNG)
+![JUnit_test](../images/JUnitRunTest.PNG)
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
@@ -348,14 +348,14 @@ To run a subset of tests, you can right-click on a test package, test class, or 
 
 Firstly ensure that the gradle build has the following details: 
 
-![gradle_build](images/gradle_build.PNG)
+![gradle_build](../images/gradleBuild.PNG)
 
 Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
 
 Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
 
-![elephant_icon](images/elephant_icon.PNG)
+![elephant_icon](../images/elephant_icon.PNG)
 
 Now the configuration is set to gradle. Proceed to click the icon:
 
-![gradle_run_test](images/gradle_run_test.PNG)
+![gradle_run_test](../images/gradle_run_test.PNG)

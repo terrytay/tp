@@ -516,6 +516,11 @@ meets your needs and is conducive, should you urgently need one.
  |`* *`  |v2.0|user|redo a removed notes|increase my efficiency|
  |`* * *`|v2.0|user|create a schedule based on requirements|customise my tasks accordingly|
  |`* * *`|v2.1|user|look at the list of tasks in calendar view| see the list of tasks in one glance with relation to its schedule|
+ |`* * *`|v3.0|user|check the availability of a study area |use it at that specific timing| 
+ |`* * *`|v3.0|user|schedule tasks while avoiding present task|prevent clashes between tasks|
+ |`* * *`|v3.0|user|schedule tasks preemptively|stagger the timeline of the tasks depending on the availability of free time in my schedule|
+ |`* * *`|v3.0|user|edit priority value assigned to scheduled tasks|have more flexibility with the priority values used in my list|
+
 
 [comment]: # (@@NizarMohd) 
 ## Appendix C: Non-Functional Requirements    

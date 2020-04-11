@@ -716,7 +716,8 @@ Expected output:
    The current implementation does not include real-time availability of the study areas. In version 3.0 we hope to be
    able to retrieve real-time availability of public study areas, like the ones in U-Town. In order to do so we would 
    require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
-   a specific point of time at a specific area.
+   a specific point of time at a specific area. Also, due to time constraint, we were not able to gather an exhaustive 
+   list for the study area. At version 3.0 we aim to reach full breadth for the data on study areas in NUS.
 
 
 [comment]: # (@@author terrytay)     
