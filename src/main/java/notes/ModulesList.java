@@ -40,11 +40,8 @@ public class ModulesList {
      */
     public void createModule(String code) {
         if (code.equals(NOTES_KEY_WORD)) {
-            this.ui.printLine();
             this.ui.printMessage(NOTES_KEY_WORD_ERROR);
-            this.ui.printLine();
-        }
-        if (getModule(code) == null) {
+        } else if (getModule(code) == null) {
             modules.putIfAbsent(code, new ArrayList<>());
             String success = String.format("%s has been created\n", code);
             this.ui.printMessage(success);
