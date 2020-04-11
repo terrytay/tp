@@ -730,7 +730,7 @@ These modules can easily be imported or exported for your convenience.
 
 #### 3.14.1 Entering Notes Taking Interface
 
-To enter the Notes Taking interface, you can enter 'notes' in the main interface. You will then be 
+To enter the Notes Taking interface, you can enter `notes` in the main interface. You will then be 
 guided to the Notes Taking interface. 
 
 #### Usage
