@@ -1,6 +1,0 @@
-theme: jekyll-materialdocs
-
-
-plugins:
-  - jekyll-include-cache
-
