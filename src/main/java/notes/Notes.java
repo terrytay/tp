@@ -65,7 +65,6 @@ public class Notes {
             if (f.createNewFile()) {
                 ui.printLine();
                 ui.printMessage(Constants.NOTES_FILE_NOT_FOUND);
-                ui.printLine();
             }
             HashMap<String, ArrayList<String>> modules = new HashMap<>();
             Scanner input = new Scanner(f);

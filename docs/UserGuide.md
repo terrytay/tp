@@ -49,7 +49,7 @@
     3.12. [Schedule tasks](#schedule) <br>
     3.13. [Study Area Search Feature](#studyArea) <br>
     3.14. [Notes Taking Feature](#notes) <br>
-    3.15. [Calendar View](#314-calendar-view)<br>
+    3.15. [Calendar View](#315-calendar-view)<br>
     3.16. [Exit the Application / Study Area interface](#exit) <br>
     3.17. [Saving the data](#save-tasks) <br>
     3.18. [Clearing old tasks](#clear-old-tasks) <br>
@@ -716,7 +716,8 @@ Expected output:
    The current implementation does not include real-time availability of the study areas. In version 3.0 we hope to be
    able to retrieve real-time availability of public study areas, like the ones in U-Town. In order to do so we would 
    require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
-   a specific point of time at a specific area.
+   a specific point of time at a specific area. Also, due to time constraint, we were not able to gather an exhaustive 
+   list for the study area. At version 3.0 we aim to reach full breadth for the data on study areas in NUS.
 
 
 [comment]: # (@@author terrytay)     
@@ -729,7 +730,7 @@ These modules can easily be imported or exported for your convenience.
 
 #### 3.14.1 Entering Notes Taking Interface
 
-To enter the Notes Taking interface, you can enter 'notes' in the main interface. You will then be 
+To enter the Notes Taking interface, you can enter `notes` in the main interface. You will then be 
 guided to the Notes Taking interface. 
 
 #### Usage
@@ -1070,7 +1071,7 @@ Expected output:
 
 #### 3.15.3 To escape from Calendar View Command 
 
-In any case that you wish not to exit calendar mode after entering it, you can enter "bye" to exit.
+In any case that you wish to exit calendar mode after entering it, you can enter "bye" to exit.
 
 Example of usage: 
 
@@ -1230,12 +1231,26 @@ e.g. `search project`<br>
 
 * `notes` - Enter notes taking interface <br>
 
+[comment]: # (@@author )
+
 ### Study Area Search Interface
 
 * `name\address\faculty` `flags` - Returns a list of Study Areas, if any of the existing data matches the requirement 
 entered. 
 
 Click [here](#3132-start-search) for more details on how `name\address\faculty` and `flags` should be entered.
+
+### Notes Taking Interface
+
+Follow the steps below to quickly get started with taking notes:
+
+* `add [module code]` - Adds a module to the Notes taking interface so that you can start taking notes.
+
+* `enter [module code]` - Enters the interface for the module.
+
+* `add [message here]` - Adds a message to the module.
+
+Click [here](#notes) for more details on how to use Notes.
 
 ### Calendar 
 

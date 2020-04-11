@@ -1,3 +1,46 @@
+[comment]: # (@@author NizarMohd)    
+<!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
+<style>
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+div {
+    text-align: center;
+    font-size: x-small;
+}
+
+#topButton {
+  display: none; 
+  position: fixed; 
+  bottom: 20px;
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: darkblue; 
+  color: white; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
+}
+
+#topButton:hover {
+  background-color: #555;
+}
+</style>
+
+<button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+
+<script src="../jsCodes/topButton.js"></script>
+
+<form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
+    <input type="submit" value="Go back to main page" />
+</form>
+
 # Nizar Mohd - Project Portfolio Page
 
 # Project: OrgaNice!
@@ -25,7 +68,7 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 * **Minor Enhancement:** added the ability to mark deadlines as done, by extension, adding a boolean attribute, isDone, to Deadline class.
 * **Minor Enhancement:** added the ability to print messages in a specific format, which is with indentation and of a fixed length.
     * Credits: The implementation of the code was extracted from [stackOverflow](https://stackoverflow.com/questions/7528045/large-string-split-into-lines-with-maximum-length-in-java)
-* **Contributions to [UG](#contributions-to-user-guide)**
+* **Contributions to [UG](#contributions-to-user-guide-extract)**
 	* Documented the for features (3.13 & 3.15)
 	* Added some details for FAQ (Q1 , 3 & 5)
 * **Contributions to the [DG](#contributions-to-the-developers-guide-extracts)**
@@ -45,8 +88,8 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 	* Reviewed the following PR's: 
 		[#75](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/75) [#125](https://github.com/AY1920S2-CS2113T-T12-3/tp/pull/125)
 * **Contributions beyond the project team:**
-	* Reported 6 bugs during the [PE Dry Run](https://github.com/NizarMohd/ped).
-	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28)
+	* Reported 6 bugs during the [PE Dry Run](https://github.com/NizarMohd/ped/issues).
+	* Reviewed another team's [DG](https://github.com/nus-cs2113-AY1920S2/tp/pull/28#pullrequestreview-384379913)
 	
 	
 
@@ -55,9 +98,8 @@ Link : [RepoSense Dashboard](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/
 
 This section is extracted to show a sample documentation that I have done for the User Guide.
 
-[comment]: # (@@author NizarMohd)     
+ 
 <a name="studyArea"></a>
-
 ### 3.13 Study Area Search Feature
 
 You can search for study areas based on criteria that you desire by using this feature. You are free to loosely search. 
@@ -184,7 +226,137 @@ Expected output:
    The current implementation does not include real-time availability of the study areas. In version 3.0 we hope to be
    able to retrieve real-time availability of public study areas, like the ones in U-Town. In order to do so we would 
    require access to real-time data like CCTV monitors of the study areas to detect if there is an available seat at 
-   a specific point of time at a specific area.
+   a specific point of time at a specific area. Also, due to time constraint, we were not able to gather an exhaustive 
+   list for the study area. At version 3.0 we aim to reach full breadth for the data on study areas in NUS.
+
+
+
+### 3.15. Calendar View
+
+
+#### 3.15.1. Enter Calendar
+Example of usage:
+
+`calendar`
+
+Expected output: 
+
+    ________________________________________________________________________________________________
+         Enter the month and year that you wish to see:
+    ________________________________________________________________________________________________
+
+
+#### 3.15.2. Enter Desired Month to View
+
+#### To view tasks for current month
+Example of usage:
+ 
+`now`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: APRIL, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                           |                           |                           |                          1|                          2|                          3|                          4|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          5|                          6|                          7|                          8|                          9|                         10|                         11|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         12|                         13|                         14|                         15|                         16|                         17|                         18|
+    |                           |                           |                           |                           |                           |                           | [D][N] submit cg2028 r... |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         19|                         20|                         21|                         22|                         23|                         24|                         25|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         26|                         27|                         28|                         29|                         30|                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+#### To view tasks for future months
+
+*NOTE*: <br>
+1. Input for both month and year must be integers. 
+1. This feature only supports the current and future months. 
+1. Any details that exceed the limit within the designated box for the day, will have the last three displayed characters as ellipses.
+
+
+Example of usage: 
+
+`5 2020`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+    Tasks for: MAY, 2020
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |SUN                        |MON                        |TUE                        |WED                        |THU                        |FRI                        |SAT                        |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         31|                           |                           |                           |                           |                          1|                          2|
+    |                           |                           |                           |                           |                           |                           | [E] cs2113 final exam     |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                          3|                          4|                          5|                          6|                          7|                          8|                          9|
+    |                           | [D][N] math assignment    |                           |                           |                           |                           |                           |
+    |                           | [D][N] physics assignm... |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         10|                         11|                         12|                         13|                         14|                         15|                         16|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         17|                         18|                         19|                         20|                         21|                         22|                         23|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    |                         24|                         25|                         26|                         27|                         28|                         29|                         30|
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    |                           |                           |                           |                           |                           |                           |                           |
+    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ________________________________________________________________________________________________
+
+#### 3.15.3 To escape from Calendar View Command 
+
+In any case that you wish not to exit calendar mode after entering it, you can enter "bye" to exit.
+
+Example of usage: 
+
+`bye`
+
+Expected output:
+
+    ________________________________________________________________________________________________
+         You are now back in main interface. Enter "help" for a
+         list of supported commands
+    ________________________________________________________________________________________________
 
 
 
@@ -194,8 +366,10 @@ The sections I contributed to in the Developer's Guide are as follows.
 Note that the content below just shows an extract of the documentation I have done.
 The purpose of the extract is to show my documentation capability.
 
-### Extract 1 (Object Diagram)
+### Extract 1 (Class Diagram)
 
+### 2.3. Study Area Component  
+ 
 ### 2.3. Study Area Component  
    
  The Study Area component depends on 3 other components,  
@@ -210,16 +384,17 @@ The purpose of the extract is to show my documentation capability.
   into text files when the User first run the software. Eventually, data will be referred from the created text file.   
   
 ![Study Area Component](../images/StudyAreaObjectDiagram.png) 
-<div>Figure 3. Object diagram for Study Area Component</div>
+<div>Figure 3. Class diagram for Study Area Component</div>
 <br>
  The Study Area component contains 3 separate classes. They are as follows:  
   
-   1. Dictionary : Class to map user input to specific terms used in StudyAreaList.
+   1. Dictionary: Class to map user input to specific terms used in StudyAreaList. 
     
-   2. StudyArea : Class that is used to model Study Areas. 
+   2. StudyArea: Class that is used to model Study Areas. 
    
-   3. StudyAreaList : Class that handles the list of available Study Areas based on User input.  
+   3. StudyAreaList: Class that handles the list of available Study Areas based on User input.  
 
+Details on the methods are listed in the [glossary](https://ay1920s2-cs2113t-t12-3.github.io/tp/DeveloperGuide.html#appendix-d-glossary)
 
 ### Extract 2 (Sequence Diagram)
 
@@ -239,7 +414,7 @@ To do as mentioned above, the StudyAreaList class implements the following main 
 
 - searchList() : 
     - This method will iterate through all the Study Areas in the ArrayList studyAreaList while calling other methods 
-    to carry out the search. Once process has ended, the method will return a list of the Study Area, availStudyArea, 
+    to fulfil the search requirements. Once process has ended, the method will return a list of the Study Area, availStudyArea, 
     that meets the User requirement.
 - getFlagsInfo() : 
     - This method will retrieve the flags entered by User, at the same time validating the User input. The criteria 
@@ -247,7 +422,7 @@ To do as mentioned above, the StudyAreaList class implements the following main 
     flags in version 2.
 - isAvailStudyArea() : 
     - This method does the check mentioned above and returns a boolean value. Based on the flags detected, 
-    the method will iterate through the flags array and check if the Study Area's attribute matches each flag stated in
+    the method will iterate through the flags array and check if the Study Area's attribute match each flag stated in
     flags. If isAvailStudyArea returns as true for all flags, the Study Area is then added to the output list, 
     availStudyArea. 
 
@@ -265,6 +440,8 @@ Below would be a sequence diagram to demonstrate how the search algorithm is ope
 <div>Figure 10. Interaction within Study Area Search Interface</div>
 <br>
 
+<a name="isAvail"></a>
+
 ![Study_Area_Sequence_Diagram_subModules2](../images/isAvailStudyArea.png)
 <div>Figure 11. Interaction when isAvailStudyArea is invoked</div>
 <br>
@@ -276,86 +453,111 @@ Aspect: How to search based on User input.
 
 - Alternative 1 (Current Choice) :
  
-    Iterate through the list of all existing Study Areas. Then check if each Study Area 
-meets User's Criteria
-    - Pros : Lesser data structures required. Therefore lesser memory required.
-    - Cons : Linear search, therefore, with bigger size of data, search may take longer. 
+    Iterate through the list of all existing Study Areas. Then check if each Study Area meets User's Criteria
+    - Pros: Lesser data structures required. Therefore lesser memory required.
+    - Cons: Linear search, therefore, with a bigger size of data, the search may take longer. <br>
+
     
 - Alternative 2 : 
-There exists four flags : port availability, indoor, outdoor, capacity.
-Create adjacency lists that maps the flag to the Study Area itself. If the Study Area contains that 
-attribute, the Study Area is added in that specific attribute list. Depending on the type of attribute, the adjacency
-list can be implemented using different data structure.
 
-For example, let's take only the two study areas as the entire data set.
 
-![study_area](../images/studyAreaDet.PNG)
+There exist four flags: port availability, indoor, outdoor, capacity. Create adjacency lists that map the flag to the 
+Study Area itself. If the Study Area contains that attribute, the Study Area is added in that specific attribute list. 
+Depending on the type of attribute, the adjacency list can be implemented using different data structures.
+
+
+For example, let's take only the two study areas below as the entire data set.
+
+![study_area_det](../images/studyAreaDet.PNG)
+<div>Figure 12. Sample Data</div>
+<br>
 
 This will result in the following adjacency lists : 
-Environment: <br>
-Indoor -> {Starbucks} 
-Outdoor -> {Opposite Town Green (Outside Starbucks)} <br>
-*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)<br>
-Ports: <br>
-Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}
-No -> null<br>
-*Data Structure* : 2D Array, with only two rows (For Yes and No)<br>
-Capacity: <br>
-4 -> {Opposite Town Green (Outside Starbucks)} 
-5 -> {Starbucks} <br>
-*Data Structure* : HashMap<Integer, ArrayList<String>> <br>
+
+Environment: 
+
+Indoor -> {Starbucks} <br>
+Outdoor -> {Opposite Town Green (Outside Starbucks)} 
+
+*Data Structure* : 2D Array, with only two rows (For indoors and outdoors)
+
+Ports: 
+
+Yes -> {Opposite Town Green (Outside Starbucks), Starbucks}<br>
+No -> null
+
+*Data Structure*: 2D Array, with only two rows (For Yes and No)
+
+Capacity: 
+
+4 -> {Opposite Town Green (Outside Starbucks)} <br>
+5 -> {Starbucks} 
+
+*Data Structure*: HashMap<Integer, ArrayList<String>> 
 
 The creation and initialisation of the lists are done when the software is setting up.  Therefore, each flag 
-has its own list. Based on user criteria, concatenate an output list with the Study Areas that are found in all
+has its designated list. Based on user criteria, concatenate an output list with the Study Areas that are found in all
 of the relevant flag lists stated by the user. If more than one requirement is entered by the user, only the Study 
 Areas appears in all the related attributes specified by the User will be added to the output list.
 
-- Pros : Data is categorised based on flags.
-- Cons : More memory is required as more data structures are used. Since methods invoked during the search are also 
+- Pros: Data is categorised based on flags.
+- Cons: More memory is required as more data structures are used. Since methods invoked during the search are also 
 linear, time taken to complete the search will be longer if more data are present. Overall, this approach is harder 
 to implement.
 
-Therefore, the first alternative is chosen, as it is much easier to implement and lesser memory is used while conducting the search.
+Therefore, the first alternative is chosen, as it is much easier to implement and lesser memory is used while searching
 
-### Extract 3 
+### Extract 3 (General Documentation)
 
-[comment]: # (@@author NizarMohd)
 ## 4. Testing 
 
-Currently we have two runners to execute the tests, JUnit and Gradle.
+Currently, we have two runners to execute the tests, JUnit and Gradle.<br>
+*Note*: It is advisable to run tests with coverage, to ensure that 90% of the paths are covered.
+
 
 #### Using IntelliJ JUnit
 
-Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration, if there isn't any to run all tests. 
+Firstly check if the configuration, "All in 'tp.test'" exist. You need to edit a configuration if there isn't any to run all tests. 
 
 To edit a configuration, click `Run` then click on `Edit Configurations`. Proceed to click the `+` icon, followed by `JUnit`
 
-Afterwards, ensure that the configurations are as such:
+Afterward, ensure that the configurations are as such:
 
-![Junit_config](images/JUnit_configuration.PNG)
+![Junit_config](../images/JUnitConfiguration.PNG)
+<div>Figure 13. Configuring JUnit Tests</div>
+<br>
 
 To run all tests, right-click on the src/test/java folder and choose Run 'All in 'tp.tests'' with coverage
-This allows for you to see which path has the test covered, so that you can ensure at least 90% of the paths are covered when testing.
+This allows for you to see which path has the test covered so that you can ensure at least 90% of the paths are covered when testing.
 
 Alternatively, you can click on this icon to run with coverage :
 
-![JUnit_test](images/JUnit_run_test.PNG)
+![JUnit_test](../images/JUnitRunTest.PNG)
+<div>Figure 14. Running JUnit Tests</div>
+<br>
 
 
 To run a subset of tests, you can right-click on a test package, test class, or a test and choose Run with coverage.
 
 #### Using Gradle
 
-Firstly ensure that the gradle build has the following details: 
+Firstly ensure that the Gradle build has the following details: 
 
-![gradle_build](images/gradle_build.PNG)
+![Gradle_build](../images/gradleBuild.PNG)
+<div>Figure 15. Expected Gradle Build </div>
+<br>
 
-Next, to run using gradle, you can click on the gradle plugin icon at the left hand side
+Next, to run using Gradle, you can click on the Gradle plugin icon at the left-hand side
 
-Then click on the elephant icon (as seen below) and search for `gradle test` then proceed to click on it.
+Then click on the elephant icon (as seen below) and search for `Gradle test` then proceed to click on it.
 
-![elephant_icon](images/elephant_icon.PNG)
+![elephant_icon](../images/elephantIcon.PNG)
+<div>Figure 16. Gradle Icon</div>
+<br>
 
-Now the configuration is set to gradle. Proceed to click the icon:
+Now the configuration is set to Gradle. Proceed to click the icon:
 
-![gradle_run_test](images/gradle_run_test.PNG)
+![Gradle_run_test](../images/gradleRunTest.PNG)
+<div>Figure 17. Running Gradle Test</div>
+<br>
+
