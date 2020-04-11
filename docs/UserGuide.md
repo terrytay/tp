@@ -1071,7 +1071,7 @@ Expected output:
 
 #### 3.15.3 To escape from Calendar View Command 
 
-In any case that you wish not to exit calendar mode after entering it, you can enter "bye" to exit.
+In any case that you wish to exit calendar mode after entering it, you can enter "bye" to exit.
 
 Example of usage: 
 
