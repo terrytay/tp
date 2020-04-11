@@ -52,10 +52,10 @@
 ## 2. Quick Start
  
  * Ensure you have Java 11 or above installed in your Computer.
- * Download the latest OrgaNice!.jar from [here](https://github.com/AY1920S2-CS2113T-T12-3/tp/releases) and place it in an empty folder. 
+ * Download the latest [CS2113T-T12-3][OrgaNice!].jar from [here](https://github.com/AY1920S2-CS2113T-T12-3/tp/releases) and place it in an empty folder. 
  * Open Command Prompt. **NOTE: Please ensure that the command prompt is at full screen BEFORE running the jar file**
  * Navigate to the folder with the jar.
- * Type the following command:  java -jar OrgaNice!.jar to run it.
+ * Type the following command:  java -jar [CS2113T-T12-3][OrgaNice!].jar to run it.
  
  A text based UI should appear with the following lines.
   
@@ -1136,29 +1136,30 @@ The tasklist only includes the tasks which have date beyond the current date. Th
 <a name="faq"></a>
 
 ## 4. FAQ
-    Q: When loading the interface on the command line, why was the logo cut off and certain format disrupted? 
-    A: You need to be using the software at full screen before launching the software. If this happens, exit the software,
-    go to fullscreen mode, then restart the software. Everything should run smoothly. 
-    
-    Q: How to transfer the task list data from one computer to an other computer?
-    A: Just copy the "TaskList.txt" file which could be found at the library folder under directory
-       as the jar file and paste it to the library folder under the location containing the jar file in the other
-       computer. This should transfer the required data.
-       
-    Q: The software says that library/TaskList.txt does not exist. What do I do?
-    A: Go to the software's root folder and check to see if the library folder exists. If so, delete the library folder 
-       and rerun the software. The software would have created a fresh set of data files required for the system to run.
-       
-    Q: The software says that library/locations.txt or library/dictionary.txt does not exist. What do I do?
-    A: Go to the software's root folder and check to see if the library folder exists. Proceed to check if TaskList.txt 
-       exist. If so, transfer it to a temporary folder. Delete the library folder and rerun the software. Transfer the 
-       content from the old TaskList.txt to the new TaskList.txt
-       
-    Q: How do I import and export Notes?
-    A: Notes are stored in library/notes.txt. To export and import Notes, simply transfer this file to another device 
-       with OrgaNice installed in the same directory /library/. You can open the text file to see how we actually 
-       structure our notes information inside to write your own notes.txt.
-       
+Q: When loading the interface on the command line, why was the logo cut off and certain format disrupted?<br>
+A: You need to be using the software at full screen before launching the software. If this happens, exit the software,
+go to fullscreen mode, then restart the software. Everything should run smoothly.
+<br>
+
+Q: How to transfer the task list data from one computer to an other computer?<br>
+A: Just copy the "TaskList.txt" file which could be found at the library folder under directory
+   as the jar file and paste it to the library folder under the location containing the jar file in the other
+   computer. This should transfer the required data.
+<br>   
+Q: The software says that library/TaskList.txt does not exist. What do I do?<br>
+A: Go to the software's root folder and check to see if the library folder exists. If so, delete the library folder 
+   and rerun the software. The software would have created a fresh set of data files required for the system to run.
+<br>   
+Q: The software says that library/locations.txt or library/dictionary.txt does not exist. What do I do?<br>
+A: Go to the software's root folder and check to see if the library folder exists. Proceed to check if TaskList.txt 
+   exist. If so, transfer it to a temporary folder. Delete the library folder and rerun the software. Transfer the 
+   content from the old TaskList.txt to the new TaskList.txt
+<br>   
+Q: How do I import and export Notes?<br>
+A: Notes are stored in library/notes.txt. To export and import Notes, simply transfer this file to another device 
+   with OrgaNice! installed in the same directory /library/. You can open the text file to see how we actually 
+   structure our notes information inside to write your own notes.txt.
+<br>       
 
 <a name="command-summary"></a>
 
