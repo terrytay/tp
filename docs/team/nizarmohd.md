@@ -35,7 +35,7 @@ div {
 
 <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
 
-<script src="jsCodes/topButton.js"></script>
+<script src="docs/jsCodes/topButton.js"></script>
 
 <style>
 a.backlink {
