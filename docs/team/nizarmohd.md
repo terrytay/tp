@@ -1,4 +1,4 @@
-[comment]: # (@@author NizarMohd)    
+[comment]: # (@@author NizarMohd)
 <!-- top button was extracted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp -->
 <style>
 img {
@@ -7,7 +7,7 @@ img {
     margin-right: auto;
     width: auto;
 }
-.this {
+div {
     text-align: center;
     font-size: x-small;
 }
@@ -20,7 +20,7 @@ img {
   z-index: 99; 
   border: none; 
   outline: none; 
-  background-color: darkblue; 
+  background-color: #0ED7D3; 
   color: white; 
   cursor: pointer; 
   padding: 15px; 
@@ -29,17 +29,35 @@ img {
 }
 
 #topButton:hover {
-  background-color: #555;
+  background-color: #15E3DF;
 }
 </style>
 
 <button onclick="topFunction()" id="topButton" title="Go to top">Top</button>
 
-<script src="../jsCodes/topButton.js"></script>
+<script src="jsCodes/topButton.js"></script>
 
-<form action="https://ay1920s2-cs2113t-t12-3.github.io/tp/">
-    <input type="submit" value="Go back to main page" />
-</form>
+<style>
+a.backlink {
+	background-color: #0ED7D3;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+}
+
+a.backlink:hover {
+  background-color: #15E3DF;
+  cursor: pointer;
+}
+
+a.backlink:active {
+  box-shadow: none;
+  top: 5px;
+}
+</style>
+
+<a href="https://ay1920s2-cs2113t-t12-3.github.io/tp/" class="backlink">Back to OrgaNice!'s main page</a>
 
 # Nizar Mohd - Project Portfolio Page
 
