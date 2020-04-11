@@ -38,8 +38,8 @@ div {
 <script src="jsCodes/topButton.js"></script>
 
 <style>
-.backlink a {
-	background-color: red;
+a.backlink {
+	background-color: blue;
   box-shadow: 0 5px 0 darkred;
   color: white;
   padding: 1em 1.5em;
@@ -48,12 +48,12 @@ div {
   text-transform: uppercase;
 }
 
-.backlink a:hover {
+a.backlink:hover {
   background-color: #ce0606;
   cursor: pointer;
 }
 
-.backlink a:active {
+a.backlink:active {
   box-shadow: none;
   top: 5px;
 }
